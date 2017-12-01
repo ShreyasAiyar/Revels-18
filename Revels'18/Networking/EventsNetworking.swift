@@ -52,6 +52,7 @@ struct EventsNetworking{
                 let eventObject = Events(dictionary: event)
                 events.append(eventObject)
             }
+            saveEventsToCoreData(eventsData: events)
         }
 
     }
@@ -61,17 +62,29 @@ struct EventsNetworking{
             return
         }
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let eventsEntity = NSEntityDescription.entity(forEntityName: "Event", in: managedContext)
-        let event:NSManagedObject! = NSManagedObject(entity: eventsEntity!, insertInto: managedContext)
-        for eventObject in eventsData{
-            event.setValue(eventObject.eid, forKey: "eventID")
-        }
+        
+        // MARK: Deleting Records From CoreData
+        let eventsDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Event")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: eventsDeleteRequest)
         
         do{
-            try managedContext.save()
+            try managedContext.execute(batchDeleteRequest)
         }
         catch{
-            print("Saving To CoreData Failed")
+            print("Deleting Error Failed")
+        }
+        
+        // MARK: Updating Records In CoreData After Deletion
+        let eventsEntity = NSEntityDescription.entity(forEntityName: "Event", in: managedContext)
+        for eventObject in eventsData{
+            let event:NSManagedObject! = NSManagedObject(entity: eventsEntity!, insertInto: managedContext)
+            event.setValue(eventObject.eid, forKey: "eventID")
+            do{
+                try managedContext.save()
+            }
+            catch{
+                print("Saving To CoreData Failed")
+            }
         }
         
         fetchEventsFromCoreData()
@@ -81,14 +94,14 @@ struct EventsNetworking{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
+
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         let eventsFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Event")
         
         var events:[NSManagedObject] = []
-        
         events = try! managedContext.fetch(eventsFetchRequest)
         for eventObject in events{
-            print (eventObject.value(forKey: "eventID") as! String)
+            print (eventObject.value(forKey: "eventID") as? String)
             
         }
         
