@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */; };
-		B152CBB21FD057A500A73107 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBB11FD057A500A73107 /* CoreDataStack.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
@@ -16,13 +15,11 @@
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
 		B1D3CB881FCEB55300E8AD7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB871FCEB55300E8AD7A /* Assets.xcassets */; };
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
-		B1D3CB951FCEB5B900E8AD7A /* HTTPRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB941FCEB5B900E8AD7A /* HTTPRequests.swift */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionCollectionViewController.swift; sourceTree = "<group>"; };
-		B152CBB11FD057A500A73107 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels'18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels'18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,7 +29,6 @@
 		B1D3CB871FCEB55300E8AD7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1D3CB8A1FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1D3CB941FCEB5B900E8AD7A /* HTTPRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequests.swift; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,14 +43,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B152CBB01FD0578F00A73107 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				B152CBB11FD057A500A73107 /* CoreDataStack.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		B1D3CB711FCEB55300E8AD7A = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +62,6 @@
 		B1D3CB7C1FCEB55300E8AD7A /* Revels'18 */ = {
 			isa = PBXGroup;
 			children = (
-				B152CBB01FD0578F00A73107 /* CoreData */,
 				B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */,
 				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
 				B1D3CB981FCEB94500E8AD7A /* Model */,
@@ -100,7 +87,6 @@
 		B1D3CB931FCEB58D00E8AD7A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B1D3CB941FCEB5B900E8AD7A /* HTTPRequests.swift */,
 				B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */,
 			);
 			path = Networking;
@@ -202,9 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B152CBB21FD057A500A73107 /* CoreDataStack.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
-				B1D3CB951FCEB5B900E8AD7A /* HTTPRequests.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,
