@@ -23,8 +23,8 @@ class LastPageViewController: UIViewController {
 
     @IBAction func continueButtonSelected(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let collectionViewController = storyboard.instantiateViewController(withIdentifier: "eventsView")
-        self.present(collectionViewController, animated: true, completion: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
+        self.present(tabBarController, animated: true, completion: nil)
         
     }
     
