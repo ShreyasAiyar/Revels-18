@@ -16,6 +16,7 @@
 		B1D3CB881FCEB55300E8AD7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB871FCEB55300E8AD7A /* Assets.xcassets */; };
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
+		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B1D3CB8A1FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */,
 				B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */,
+				B1ED69CB1FD18C520009662A /* LastPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,
 				B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */,
+				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,11 +337,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5326B8B5XG;
 				INFOPLIST_FILE = "Revels'18/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Manipal.Revels-18";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -348,11 +353,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5326B8B5XG;
 				INFOPLIST_FILE = "Revels'18/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Manipal.Revels-18";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

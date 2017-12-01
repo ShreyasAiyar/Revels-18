@@ -79,6 +79,9 @@ struct EventsNetworking{
         for eventObject in eventsData{
             let event:NSManagedObject! = NSManagedObject(entity: eventsEntity!, insertInto: managedContext)
             event.setValue(eventObject.eid, forKey: "eventID")
+            event.setValue(eventObject.cid, forKey: "eventCategoryID")
+            event.setValue(eventObject.cname, forKey: "eventCategoryName")
+            event.setValue(eventObject.day, forKey: "day")
             do{
                 try managedContext.save()
             }
