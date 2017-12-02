@@ -20,7 +20,10 @@ class EventsCollectionCollectionViewController: UICollectionViewController {
 //        let activityIndicator = NAActivityIndicatorView(frame:self.frame)
 //        activityIndicator.startAnimating()
         // MARK: Calling EventsNetworking
-        EventsNetworking.eventsMain()
+        let successfulCall = EventsNetworking.eventsMain()
+        if successfulCall == false{
+            
+        }
 //        activityIndicator.stopAnimating()
         
         // Uncomment the following line to preserve selection between presentations
