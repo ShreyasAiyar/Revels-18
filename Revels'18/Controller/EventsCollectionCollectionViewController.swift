@@ -7,24 +7,38 @@
 //
 
 import UIKit
-
+import NVActivityIndicatorView
 
 private let reuseIdentifier = "Cell"
 
 
-class EventsCollectionCollectionViewController: UICollectionViewController {
+class EventsCollectionCollectionViewController: UICollectionViewController,NVActivityIndicatorViewable {
 
+    
+    let cacheCheck = CacheCheck()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let activityIndicator = NAActivityIndicatorView(frame:self.frame)
-//        activityIndicator.startAnimating()
         // MARK: Calling EventsNetworking
-        let successfulCall = EventsNetworking.eventsMain()
-        if successfulCall == false{
-            
+        
+        
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 500
+        NVActivityIndicatorView.DEFAULT_TYPE = .orbit
+        
+        let activityData = ActivityData()
+        EventsNetworking.eventsMain()
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        if(cacheCheck.checkIfCacheExists() == false){
+            NVActivityIndicatorPresenter.sharedInstance.setMessage("No Internet :(")
         }
-//        activityIndicator.stopAnimating()
+        else{
+        NVActivityIndicatorPresenter.sharedInstance.setMessage("All Done!")
+        }
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

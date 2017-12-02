@@ -46,26 +46,27 @@ struct EventsNetworking{
     }
     
     
-    static func eventsMain() -> Bool{
+    static func eventsMain(){
         let eventsURL = "https://api.mitportals.in/events/"
         var events:[Events] = []
+        var success:Bool
         
         makeHTTPRequestForEvents(eventsURL: eventsURL){
             result in
-            switch result{
+            switch result{   
             case .Success(let parsedJSON):
                 for event in parsedJSON["data"] as! [Dictionary<String,String>]{
                     let eventObject = Events(dictionary: event)
                     events.append(eventObject)
+                    
                 }
                 saveEventsToCoreData(eventsData: events)
         
             case .Error(let errorMessage):
                 print(errorMessage)
-                return
+                
         }
     }
-        return false
             
 }
         
@@ -101,8 +102,6 @@ struct EventsNetworking{
                     print("Saving To CoreData Failed")
                 }
             }
-            
-            fetchEventsFromCoreData()
         }
         
         static func fetchEventsFromCoreData(){
