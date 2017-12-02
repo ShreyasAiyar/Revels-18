@@ -39,11 +39,4 @@ struct Events{
     }
     
     
-    
-    
-    
-    
-    
-    
-    
 }

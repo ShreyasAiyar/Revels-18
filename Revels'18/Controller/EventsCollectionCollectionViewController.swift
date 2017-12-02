@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 private let reuseIdentifier = "Cell"
 
 
@@ -15,7 +16,12 @@ class EventsCollectionCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let activityIndicator = NAActivityIndicatorView(frame:self.frame)
+//        activityIndicator.startAnimating()
+        // MARK: Calling EventsNetworking
         EventsNetworking.eventsMain()
+//        activityIndicator.stopAnimating()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

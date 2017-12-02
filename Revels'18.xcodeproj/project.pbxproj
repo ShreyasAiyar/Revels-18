@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B13787701FD2886200B7120D /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137876F1FD2886200B7120D /* AboutModel.swift */; };
+		B13787721FD2899600B7120D /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787711FD2899600B7120D /* AboutTableViewController.swift */; };
+		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B137876F1FD2886200B7120D /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
+		B13787711FD2899600B7120D /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
@@ -45,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B137876E1FD284CD00B7120D /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */,
+				B1ED69CB1FD18C520009662A /* LastPageViewController.swift */,
+			);
+			path = LandingPage;
+			sourceTree = "<group>";
+		};
 		B1D3CB711FCEB55300E8AD7A = {
 			isa = PBXGroup;
 			children = (
@@ -64,26 +79,27 @@
 		B1D3CB7C1FCEB55300E8AD7A /* Revels'18 */ = {
 			isa = PBXGroup;
 			children = (
-				B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */,
-				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
 				B1D3CB981FCEB94500E8AD7A /* Model */,
 				B1D3CB971FCEB93F00E8AD7A /* View */,
-				B1D3CB961FCEB92E00E8AD7A /* Controller */,
 				B1D3CB931FCEB58D00E8AD7A /* Networking */,
-				B1D3CB921FCEB56F00E8AD7A /* Extra */,
-				B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */,
+				B137876E1FD284CD00B7120D /* LandingPage */,
+				B1D3CB961FCEB92E00E8AD7A /* Controller */,
+				B1D3CB921FCEB56F00E8AD7A /* Other */,
 				B1D3CB8C1FCEB55300E8AD7A /* Info.plist */,
+				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
 			);
 			path = "Revels'18";
 			sourceTree = "<group>";
 		};
-		B1D3CB921FCEB56F00E8AD7A /* Extra */ = {
+		B1D3CB921FCEB56F00E8AD7A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */,
+				B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */,
 				B1D3CB871FCEB55300E8AD7A /* Assets.xcassets */,
 				B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */,
 			);
-			path = Extra;
+			path = Other;
 			sourceTree = "<group>";
 		};
 		B1D3CB931FCEB58D00E8AD7A /* Networking */ = {
@@ -97,9 +113,8 @@
 		B1D3CB961FCEB92E00E8AD7A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */,
 				B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */,
-				B1ED69CB1FD18C520009662A /* LastPageViewController.swift */,
+				B13787711FD2899600B7120D /* AboutTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +122,7 @@
 		B1D3CB971FCEB93F00E8AD7A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B13787731FD28A8C00B7120D /* AboutViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */,
+				B137876F1FD2886200B7120D /* AboutModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +215,9 @@
 				B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */,
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */,
+				B13787701FD2886200B7120D /* AboutModel.swift in Sources */,
+				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
+				B13787721FD2899600B7120D /* AboutTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
