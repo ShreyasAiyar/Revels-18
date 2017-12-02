@@ -29,7 +29,7 @@
 		B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
-		B1D3CB7A1FCEB55300E8AD7A /* Revels'18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels'18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D3CB821FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1D3CB851FCEB55300E8AD7A /* Revels_18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Revels_18.xcdatamodel; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		B1D3CB7B1FCEB55300E8AD7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1D3CB7A1FCEB55300E8AD7A /* Revels'18.app */,
+				B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1D3CB791FCEB55300E8AD7A /* Revels'18 */ = {
+		B1D3CB791FCEB55300E8AD7A /* Revels-18 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1D3CB8F1FCEB55300E8AD7A /* Build configuration list for PBXNativeTarget "Revels'18" */;
+			buildConfigurationList = B1D3CB8F1FCEB55300E8AD7A /* Build configuration list for PBXNativeTarget "Revels-18" */;
 			buildPhases = (
 				B1D3CB761FCEB55300E8AD7A /* Sources */,
 				B1D3CB771FCEB55300E8AD7A /* Frameworks */,
@@ -151,9 +151,9 @@
 			);
 			dependencies = (
 			);
-			name = "Revels'18";
+			name = "Revels-18";
 			productName = "Revels'18";
-			productReference = B1D3CB7A1FCEB55300E8AD7A /* Revels'18.app */;
+			productReference = B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B1D3CB751FCEB55300E8AD7A /* Build configuration list for PBXProject "Revels'18" */;
+			buildConfigurationList = B1D3CB751FCEB55300E8AD7A /* Build configuration list for PBXProject "Revels-18" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,7 +185,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1D3CB791FCEB55300E8AD7A /* Revels'18 */,
+				B1D3CB791FCEB55300E8AD7A /* Revels-18 */,
 			);
 		};
 /* End PBXProject section */
@@ -385,7 +385,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B1D3CB751FCEB55300E8AD7A /* Build configuration list for PBXProject "Revels'18" */ = {
+		B1D3CB751FCEB55300E8AD7A /* Build configuration list for PBXProject "Revels-18" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1D3CB8D1FCEB55300E8AD7A /* Debug */,
@@ -394,7 +394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1D3CB8F1FCEB55300E8AD7A /* Build configuration list for PBXNativeTarget "Revels'18" */ = {
+		B1D3CB8F1FCEB55300E8AD7A /* Build configuration list for PBXNativeTarget "Revels-18" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1D3CB901FCEB55300E8AD7A /* Debug */,
