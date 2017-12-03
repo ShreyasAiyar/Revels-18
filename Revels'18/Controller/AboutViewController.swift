@@ -35,6 +35,14 @@ class AboutViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         cell.aboutLabel.text = aboutModelObject.aboutList[indexPath.row]
         return cell
     }
-
-   
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row{
+        case 0:
+            performSegue(withIdentifier: "RevelsHomePage", sender: self)
+        default:
+            print("No Segue Defined Yet")
+        }
+        
+    }
 }

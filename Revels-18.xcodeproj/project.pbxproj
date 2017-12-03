@@ -21,6 +21,7 @@
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
 		B1DDC7791FD422F400EC0DDC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC7781FD422F400EC0DDC /* AboutViewController.swift */; };
+		B1DDC77B1FD4436300EC0DDC /* RevelsHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DDC77A1FD4436300EC0DDC /* RevelsHomePageController.swift */; };
 		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
 		B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */; };
 		B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */; };
@@ -49,6 +50,7 @@
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		B1DDC7781FD422F400EC0DDC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		B1DDC77A1FD4436300EC0DDC /* RevelsHomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelsHomePageController.swift; sourceTree = "<group>"; };
 		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */,
 				B1DDC7781FD422F400EC0DDC /* AboutViewController.swift */,
+				B1DDC77A1FD4436300EC0DDC /* RevelsHomePageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DDC77B1FD4436300EC0DDC /* RevelsHomePageController.swift in Sources */,
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,

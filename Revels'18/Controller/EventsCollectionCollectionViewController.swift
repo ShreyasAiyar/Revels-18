@@ -17,30 +17,24 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
     
     let cacheCheck = CacheCheck()
     let eventsNetworkingObject = EventsNetworking()
+    let httpRequestObject = HTTPRequest()
+    let eventsURL = "https://api.mitportals.in/events/"
+    var events:[Events] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // MARK: Calling EventsNetworking
-
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 300
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScale
         
-        startAnimating()
-        eventsNetworkingObject.eventsMain()
-        stopAnimating()
+        eventsMain()
         
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+    
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,36 +72,30 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    
+    func eventsMain(){
+        
+        startAnimating()
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: eventsURL){
+            result in
+            switch result{
+            case .Success(let parsedJSON):
+                for event in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let eventObject = Events(dictionary: event)
+                    self.events.append(eventObject)
+                }
+                self.eventsNetworkingObject.saveEventsToCoreData(eventsData: self.events)
+                self.stopAnimating()
+                
+            case .Error(let errorMessage):
+                print(errorMessage)
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Please Connect To The Internet")
+                
+            }
+        }
+        
     }
-    */
+
 
 }
