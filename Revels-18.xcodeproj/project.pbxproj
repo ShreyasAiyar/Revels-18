@@ -26,6 +26,8 @@
 		B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */; };
 		B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */; };
 		B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302471FD3D648003A89E7 /* ResultsModel.swift */; };
+		B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302491FD3D750003A89E7 /* ScheduleModel.swift */; };
+		B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
 		B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		B1F302471FD3D648003A89E7 /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
+		B1F302491FD3D750003A89E7 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 				B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */,
 				B1F302471FD3D648003A89E7 /* ResultsModel.swift */,
 				B137876F1FD2886200B7120D /* AboutModel.swift */,
+				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
+				B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			files = (
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
+				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
@@ -324,6 +331,7 @@
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */,
 				B13787701FD2886200B7120D /* AboutModel.swift in Sources */,
+				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,
 				B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */,
 				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 				B13787721FD2899600B7120D /* AboutTableViewController.swift in Sources */,

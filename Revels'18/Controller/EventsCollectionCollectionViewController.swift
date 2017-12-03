@@ -36,6 +36,7 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
         }
         else{
         NVActivityIndicatorPresenter.sharedInstance.setMessage("All Done!")
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
         }
         
         

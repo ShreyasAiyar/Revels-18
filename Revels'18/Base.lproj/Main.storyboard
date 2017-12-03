@@ -110,11 +110,11 @@
                             <outlet property="delegate" destination="JTw-T7-5FA" id="r6I-9s-rpZ"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Events" id="6F5-gx-CAm"/>
+                    <tabBarItem key="tabBarItem" title="Events" selectedImage="Trophy" id="6F5-gx-CAm"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jcz-Hz-Y9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2250" y="-851"/>
+            <point key="canvasLocation" x="1951" y="-1143"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GGv-lT-uT0">
@@ -182,11 +182,11 @@
             </objects>
             <point key="canvasLocation" x="2528.8000000000002" y="1083.5082458770617"/>
         </scene>
-        <!--About-->
+        <!--Navigation Controller-->
         <scene sceneID="V8H-Uf-Srv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fac-SW-eNk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="YbT-hr-kzf"/>
+                    <tabBarItem key="tabBarItem" selectedImage="Tab Bar More" systemItem="more" id="YbT-hr-kzf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PBn-oT-xix">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -202,4 +202,8 @@
             <point key="canvasLocation" x="1673" y="1084"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tab Bar More" width="120" height="120"/>
+        <image name="Trophy" width="25" height="25"/>
+    </resources>
 </document>
