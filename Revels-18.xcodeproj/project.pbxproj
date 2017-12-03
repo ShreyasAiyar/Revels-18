@@ -22,6 +22,10 @@
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
 		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
+		B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */; };
+		B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */; };
+		B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */; };
+		B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302471FD3D648003A89E7 /* ResultsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
+		B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
+		B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		B1F302471FD3D648003A89E7 /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */,
+				B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */,
+				B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -157,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */,
+				B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */,
+				B1F302471FD3D648003A89E7 /* ResultsModel.swift */,
 				B137876F1FD2886200B7120D /* AboutModel.swift */,
 			);
 			path = Model;
@@ -300,6 +312,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
+				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
@@ -307,8 +321,10 @@
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,
 				B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */,
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
+				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */,
 				B13787701FD2886200B7120D /* AboutModel.swift in Sources */,
+				B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */,
 				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 				B13787721FD2899600B7120D /* AboutTableViewController.swift in Sources */,
 			);

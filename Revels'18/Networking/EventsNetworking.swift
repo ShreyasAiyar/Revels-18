@@ -10,48 +10,16 @@ import Foundation
 import CoreData
 import UIKit
 
-struct EventsNetworking{
+class EventsNetworking{
     
-    enum Result<T>:Error{
-        case Success(T)
-        case Error(String)
-    }
+    let httpRequestObject = HTTPRequest()
     
-    static func makeHTTPRequestForEvents (eventsURL:String, completion: @escaping (Result<[String:Any]>) -> ()){
-        guard let url = URL(string:eventsURL) else{
-            print("No URL Provided")
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url){
-            (data,reponse,error) in
-            
-            guard error == nil else{
-                return completion(.Error("No Connection"))
-            }
-            guard let data = data else{
-                print("No Data Found")
-                return completion(.Error("No Data Found"))
-            }
-            let dataString:String! = String(data:data,encoding: .utf8)
-            let jsonData = dataString.data(using: .utf8)!
-            guard let parsedJSON = try? JSONSerialization.jsonObject(with: jsonData) as? [String:Any] else{
-                print("Parsing Failed")
-                return completion(.Error("Parsing Failed"))
-            }
-            DispatchQueue.main.async {
-                completion(.Success(parsedJSON!))
-            }
-        }
-        task.resume()
-    }
-    
-    
-    static func eventsMain(){
+
+    func eventsMain(){
         let eventsURL = "https://api.mitportals.in/events/"
         var events:[Events] = []
-        var success:Bool
         
-        makeHTTPRequestForEvents(eventsURL: eventsURL){
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: eventsURL){
             result in
             switch result{   
             case .Success(let parsedJSON):
@@ -60,7 +28,7 @@ struct EventsNetworking{
                     events.append(eventObject)
                     
                 }
-                saveEventsToCoreData(eventsData: events)
+                self.saveEventsToCoreData(eventsData: events)
         
             case .Error(let errorMessage):
                 print(errorMessage)
@@ -70,7 +38,7 @@ struct EventsNetworking{
             
 }
         
-        static func saveEventsToCoreData(eventsData:[Events]){
+        func saveEventsToCoreData(eventsData:[Events]){
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
@@ -104,7 +72,7 @@ struct EventsNetworking{
             }
         }
         
-        static func fetchEventsFromCoreData(){
+         func fetchEventsFromCoreData(){
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
