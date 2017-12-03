@@ -21,10 +21,16 @@ struct Schedule{
     let date:String
     
     init(dictionary:Dictionary<String,String>) {
-        self.eid = dictionary["eid"]
-        self.ename = dictionary["ename"]
-        self.catid = dictionary["catid"]
-        self.catname = dictionary["catname"]
+        self.eid = dictionary["eid"]!
+        self.ename = dictionary["ename"]!
+        self.catid = dictionary["catid"]!
+        self.catname = dictionary["catname"]!
+        self.round = dictionary["round"]!
+        self.venue = dictionary["venue"]!
+        self.stime = dictionary["stime"]!
+        self.etime = dictionary["etime"]!
+        self.day = dictionary["day"]!
+        self.date = dictionary["date"]!
         
     }
     

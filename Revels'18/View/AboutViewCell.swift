@@ -13,9 +13,9 @@ class AboutViewCell: UITableViewCell {
 
     @IBOutlet weak var aboutLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

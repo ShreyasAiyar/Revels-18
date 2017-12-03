@@ -15,8 +15,8 @@ struct Categories{
     let cdesc:String
     
     init(dictionary:Dictionary<String,String>) {
-        self.cid = dictionary["cid"]
-        self.cname = dictionary["cname"]
-        self.cdesc = dictionary["cdesc"]
+        self.cid = dictionary["cid"]!
+        self.cname = dictionary["cname"]!
+        self.cdesc = dictionary["cdesc"]!
     }
 }

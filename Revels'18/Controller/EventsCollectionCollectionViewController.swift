@@ -16,28 +16,21 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
 
     
     let cacheCheck = CacheCheck()
+    let eventsNetworkingObject = EventsNetworking()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // MARK: Calling EventsNetworking
-        
-        
+
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 500
-        NVActivityIndicatorView.DEFAULT_TYPE = .orbit
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 300
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballScale
         
-        let activityData = ActivityData()
-        EventsNetworking.eventsMain()
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
-        if(cacheCheck.checkIfCacheExists() == false){
-            NVActivityIndicatorPresenter.sharedInstance.setMessage("No Internet :(")
-        }
-        else{
-        NVActivityIndicatorPresenter.sharedInstance.setMessage("All Done!")
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-        }
+        startAnimating()
+        eventsNetworkingObject.eventsMain()
+        stopAnimating()
         
         
         

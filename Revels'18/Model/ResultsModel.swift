@@ -17,11 +17,12 @@ struct Results{
     let pos:String
     
     init(dictionary:Dictionary<String,String>) {
-        self.tid = dictionary["tid"]
-        self.cat = dictionary["cat"]
-        self.eve = dictionary["eve"]
-        self.evename = dictionary["evename"]
-        self.round = dictionary["round"]
-        self.pos = dictionary["pos"]
+        self.tid = dictionary["tid"]!
+        self.cat = dictionary["cat"]!
+        self.eve = dictionary["eve"]!
+        self.evename = dictionary["evename"]!
+        self.round = dictionary["round"]!
+        self.pos = dictionary["pos"]!
+    }
     
 }
