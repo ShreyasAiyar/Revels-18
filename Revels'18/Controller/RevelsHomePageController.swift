@@ -20,18 +20,17 @@ class RevelsHomePageController: UIViewController,WKUIDelegate {
         
         // MARK : Change The HomePage URL
         
-        let revelsHomePageURL = URL(string: "http://alpha.mitrevels.in/index.php")
+        let revelsHomePageURL = URL(string: "https://alpha.mitrevels.in/index.php")
         let myRequest = URLRequest(url: revelsHomePageURL!)
-        webView.load(myRequest)
+        self.webView!.load(myRequest)
 
     }
     
     override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
-        
+        super.loadView()
+        self.webView = WKWebView()
+        self.view = self.webView!
+
     }
     
 

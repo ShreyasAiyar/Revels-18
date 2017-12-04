@@ -27,7 +27,7 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
         
         // MARK: Calling EventsNetworking
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 300
         NVActivityIndicatorView.DEFAULT_TYPE = .ballScale
         
         eventsMain()
@@ -90,7 +90,10 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
                 
             case .Error(let errorMessage):
                 print(errorMessage)
-                NVActivityIndicatorPresenter.sharedInstance.setMessage("Please Connect To The Internet")
+                DispatchQueue.main.async {
+                    NVActivityIndicatorPresenter.sharedInstance.setMessage("You Seem To Be Offline")
+                    NSLog("Connection Could Not Be Established")
+                }
                 
             }
         }

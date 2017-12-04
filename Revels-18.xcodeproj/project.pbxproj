@@ -12,6 +12,7 @@
 		B13787701FD2886200B7120D /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137876F1FD2886200B7120D /* AboutModel.swift */; };
 		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B152CBAF1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */; };
+		B15937D31FD51F5700A2F40A /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15937D21FD51F5700A2F40A /* CategoriesNetworking.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 		B137876F1FD2886200B7120D /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B152CBAE1FD0542A00A73107 /* EventsCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionCollectionViewController.swift; sourceTree = "<group>"; };
+		B15937D21FD51F5700A2F40A /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */,
+				B15937D21FD51F5700A2F40A /* CategoriesNetworking.swift */,
 				B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */,
 			);
 			path = Networking;
@@ -324,6 +327,7 @@
 				B1DDC77B1FD4436300EC0DDC /* RevelsHomePageController.swift in Sources */,
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
+				B15937D31FD51F5700A2F40A /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
