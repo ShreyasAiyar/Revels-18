@@ -9,5 +9,5 @@
 import Foundation
 
 class About{
-    let aboutList:[String] = ["Revels Homepage","About Revels","Live Blog","Developers"]
+    let aboutList:[String] = ["Revels Homepage","About Revels","Live Blog","Developers","Favourites"]
 }

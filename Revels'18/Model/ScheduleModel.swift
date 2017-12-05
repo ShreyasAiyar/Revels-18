@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Schedule{
+struct Schedules{
     let eid:String
     let ename:String
     let catid:String

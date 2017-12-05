@@ -1,5 +1,5 @@
 //
-//  CategoriesNetworking.swift
+//  GlobalDataVariables.swift
 //  Revels-18
 //
 //  Created by Shreyas Aiyar on 04/12/17.
@@ -7,13 +7,7 @@
 //
 
 import Foundation
-import CoreData
-import UIKit
 
-class CategoriesNetworking{
-    
-    let httpRequestObject = HTTPRequest()
-    
-    
+class GlobalDataVariables{
     
 }

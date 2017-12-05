@@ -27,8 +27,8 @@ class EventsCollectionCollectionViewController: UICollectionViewController,NVAct
         
         // MARK: Calling EventsNetworking
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 300
-        NVActivityIndicatorView.DEFAULT_TYPE = .ballScale
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
+        NVActivityIndicatorView.DEFAULT_TYPE = .pacman
         
         eventsMain()
         
