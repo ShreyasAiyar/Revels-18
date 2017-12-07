@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,9 +87,9 @@
         <!--Categories-->
         <scene sceneID="uEQ-Hb-2Xk">
             <objects>
-                <collectionViewController storyboardIdentifier="EventsView" id="JTw-T7-5FA" customClass="EventsCollectionCollectionViewController" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="EventsView" id="JTw-T7-5FA" customClass="CategoriesPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Y9u-vx-ZfZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rgz-hx-ns2">
@@ -114,7 +113,7 @@
                             <outlet property="delegate" destination="JTw-T7-5FA" id="r6I-9s-rpZ"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Categories" id="6F5-gx-CAm"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="Categories" id="6F5-gx-CAm"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jcz-Hz-Y9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,28 +124,29 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarView" automaticallyAdjustsScrollViewInsets="NO" id="gJG-Kx-nAg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="S43-4z-QuL">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S43-4z-QuL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                     </tabBar>
                     <connections>
+                        <segue destination="FUN-Om-ZFx" kind="relationship" relationship="viewControllers" id="Zvq-S0-7LS"/>
                         <segue destination="JTw-T7-5FA" kind="relationship" relationship="viewControllers" id="maf-VP-sHI"/>
                         <segue destination="D5V-JN-PUo" kind="relationship" relationship="viewControllers" id="PQE-BL-UhP"/>
-                        <segue destination="Fac-SW-eNk" kind="relationship" relationship="viewControllers" id="YnH-oI-cL3"/>
+                        <segue destination="ugJ-lW-9zf" kind="relationship" relationship="viewControllers" id="H4r-pX-qd8"/>
+                        <segue destination="caD-AB-fvG" kind="relationship" relationship="viewControllers" id="jge-z8-fM9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muX-7V-WtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="659"/>
         </scene>
-        <!--Events-->
+        <!--Schedule-->
         <scene sceneID="tlS-1Y-rXg">
             <objects>
                 <viewController id="D5V-JN-PUo" customClass="SchedulePage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oZU-IS-g5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-Ac-J7Q">
@@ -222,7 +222,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xrs-vj-IY8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" id="G3T-rc-WaF"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="Calendar" id="G3T-rc-WaF"/>
                     <connections>
                         <outlet property="searchBar" destination="eMh-6G-VFf" id="mtL-BD-APX"/>
                         <outlet property="segmentedControl" destination="YtE-Oq-7PR" id="nYb-W5-FUO"/>
@@ -231,112 +231,186 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sES-Xg-iCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013.5999999999999" y="-245.12743628185908"/>
+            <point key="canvasLocation" x="2034" y="-248"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="V8H-Uf-Srv">
+        <!--Home-->
+        <scene sceneID="R9Y-dI-3li">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t9L-ke-IZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fac-SW-eNk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="Tab Bar More" systemItem="more" id="YbT-hr-kzf">
-                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="PBn-oT-xix">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ocg-Fe-Cvr" kind="relationship" relationship="rootViewController" id="ubu-sK-Y7s"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="945" y="1481"/>
-        </scene>
-        <!--About-->
-        <scene sceneID="mlq-ic-HLb">
-            <objects>
-                <viewController id="ocg-Fe-Cvr" customClass="AboutViewController" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uPR-2u-vMJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                <viewController id="FUN-Om-ZFx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cED-QP-bVz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GIZ-5c-jtd">
-                                <rect key="frame" x="0.0" y="160" width="375" height="342"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" id="PA4-2a-wpd" customClass="AboutViewCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PA4-2a-wpd" id="4VT-Y0-jBo">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITo-X6-bqm">
-                                                    <rect key="frame" x="15" y="11" width="42" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ITo-X6-bqm" firstAttribute="leading" secondItem="4VT-Y0-jBo" secondAttribute="leadingMargin" id="UcA-U4-IPh"/>
-                                                <constraint firstItem="ITo-X6-bqm" firstAttribute="top" secondItem="4VT-Y0-jBo" secondAttribute="topMargin" id="VCt-s6-GLL"/>
-                                                <constraint firstItem="ITo-X6-bqm" firstAttribute="bottom" secondItem="4VT-Y0-jBo" secondAttribute="bottomMargin" id="v3p-w7-Hje"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="aboutLabel" destination="ITo-X6-bqm" id="wU1-Fn-i41"/>
-                                            <segue destination="Lb4-JY-MYy" kind="show" identifier="RevelsHomePage" id="UQC-8x-9DU"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Revels Logo" translatesAutoresizingMaskIntoConstraints="NO" id="x6O-H8-ERp">
-                                <rect key="frame" x="130" y="25" width="115" height="115"/>
-                            </imageView>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3I-8L-Rx2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                                <items>
+                                    <navigationItem title="Home" id="eDW-ha-GDV"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.1176481619477272" green="0.11764507740736008" blue="0.11764716356992722" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GIZ-5c-jtd" firstAttribute="leading" secondItem="FZ8-Vv-mZY" secondAttribute="leading" id="1ja-cC-1ec"/>
-                            <constraint firstItem="x6O-H8-ERp" firstAttribute="centerX" secondItem="uPR-2u-vMJ" secondAttribute="centerX" id="Dyt-Br-0Hs"/>
-                            <constraint firstItem="x6O-H8-ERp" firstAttribute="leading" secondItem="FZ8-Vv-mZY" secondAttribute="leading" constant="130" id="E8b-Wy-6vB"/>
-                            <constraint firstItem="GIZ-5c-jtd" firstAttribute="trailing" secondItem="FZ8-Vv-mZY" secondAttribute="trailing" id="KyT-gG-TrV"/>
-                            <constraint firstItem="GIZ-5c-jtd" firstAttribute="top" secondItem="x6O-H8-ERp" secondAttribute="bottom" constant="20" id="LzZ-4V-JBq"/>
-                            <constraint firstItem="x6O-H8-ERp" firstAttribute="top" secondItem="FZ8-Vv-mZY" secondAttribute="top" constant="25" id="Vvt-ZQ-PIv"/>
-                            <constraint firstItem="GIZ-5c-jtd" firstAttribute="bottom" secondItem="FZ8-Vv-mZY" secondAttribute="bottom" id="efT-c2-X2t"/>
-                            <constraint firstItem="GIZ-5c-jtd" firstAttribute="top" secondItem="FZ8-Vv-mZY" secondAttribute="top" constant="160" id="mE4-xl-rvM"/>
+                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="leading" secondItem="h1R-yt-FHZ" secondAttribute="leading" id="Uhy-ku-75X"/>
+                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="top" secondItem="h1R-yt-FHZ" secondAttribute="top" id="iXI-8Q-tcg"/>
+                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="trailing" secondItem="h1R-yt-FHZ" secondAttribute="trailing" id="wXt-aj-0qd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FZ8-Vv-mZY"/>
+                        <viewLayoutGuide key="safeArea" id="h1R-yt-FHZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About" largeTitleDisplayMode="always" id="u3M-RX-8m7"/>
-                    <connections>
-                        <outlet property="tableView" destination="GIZ-5c-jtd" id="369-wp-7TH"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home" id="FbB-oS-LQt"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uS2-nF-uBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Kr-df-FaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910" y="1480"/>
+            <point key="canvasLocation" x="2062" y="659"/>
         </scene>
-        <!--Revels Home Page Controller-->
+        <!--Revels Home Page-->
         <scene sceneID="Fk3-Q2-5hw">
             <objects>
-                <viewController id="Lb4-JY-MYy" customClass="RevelsHomePageController" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RevelsHomePage" id="Lb4-JY-MYy" customClass="RevelsHomePage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f8M-z5-yl0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-OS-Zqv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teg-lW-zYl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <items>
+                                            <navigationItem title="Title" id="UxW-hl-9KJ">
+                                                <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="goE-Sq-uk8">
+                                                    <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAL-2J-OT5">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="603"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Xe-OS-Zqv" firstAttribute="bottom" secondItem="awe-he-Vq9" secondAttribute="bottom" id="AIh-C7-2bo"/>
+                            <constraint firstItem="9Xe-OS-Zqv" firstAttribute="trailing" secondItem="awe-he-Vq9" secondAttribute="trailing" id="Juf-r5-uoE"/>
+                            <constraint firstItem="9Xe-OS-Zqv" firstAttribute="top" secondItem="awe-he-Vq9" secondAttribute="top" id="Pz7-Zk-kgg"/>
+                            <constraint firstItem="9Xe-OS-Zqv" firstAttribute="leading" secondItem="awe-he-Vq9" secondAttribute="leading" id="Zqf-L5-pW4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="awe-he-Vq9"/>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="OAL-2J-OT5" id="0G6-nG-qiF"/>
+                        <outlet property="navigationBar" destination="teg-lW-zYl" id="uEg-id-TpW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyY-9o-3nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3806" y="1480"/>
+            <point key="canvasLocation" x="3102" y="965"/>
+        </scene>
+        <!--Revels Cup-->
+        <scene sceneID="0vV-6w-rkb">
+            <objects>
+                <tableViewController id="ugJ-lW-9zf" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IXN-xL-tEG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gQS-ds-eDm">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gQS-ds-eDm" id="vBt-ix-Ffj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ugJ-lW-9zf" id="Vrc-Rh-gwp"/>
+                            <outlet property="delegate" destination="ugJ-lW-9zf" id="i2d-cc-2on"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Revels Cup" image="Tropy" id="fSn-VI-VYW"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXp-sg-uZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2062" y="1499"/>
+        </scene>
+        <!--Results-->
+        <scene sceneID="E5v-Ot-aTN">
+            <objects>
+                <viewController id="caD-AB-fvG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FPG-dx-zVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lyC-rO-lUb"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Results" image="Results" id="Cb0-t5-ZgG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Lw-LsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="1500"/>
+        </scene>
+        <!--About Revels Page-->
+        <scene sceneID="T0J-u3-FlJ">
+            <objects>
+                <viewController storyboardIdentifier="AboutRevels" id="GtM-7r-lSC" customClass="AboutRevelsPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b4w-wY-t6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xbE-CF-SaQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysg-nT-A0d">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <items>
+                                            <navigationItem title="About Revels " largeTitleDisplayMode="always" id="Sjt-BF-ChO">
+                                                <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="3hO-ti-NnK">
+                                                    <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <action selector="doneButtonClicked:" destination="GtM-7r-lSC" id="Vx0-Sh-kXo"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDZ-cn-RnF">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="603"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xbE-CF-SaQ" firstAttribute="trailing" secondItem="cLX-0G-9lb" secondAttribute="trailing" id="JBP-Uo-MLO"/>
+                            <constraint firstItem="xbE-CF-SaQ" firstAttribute="leading" secondItem="cLX-0G-9lb" secondAttribute="leading" id="WTv-j4-REk"/>
+                            <constraint firstItem="xbE-CF-SaQ" firstAttribute="bottom" secondItem="cLX-0G-9lb" secondAttribute="bottom" id="kU3-yd-jkn"/>
+                            <constraint firstItem="xbE-CF-SaQ" firstAttribute="top" secondItem="cLX-0G-9lb" secondAttribute="top" id="vxX-YO-DhP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cLX-0G-9lb"/>
+                    </view>
+                    <connections>
+                        <outlet property="aboutRevelsTextView" destination="HDZ-cn-RnF" id="xBO-UX-76i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yCy-83-06f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3102" y="1614"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Revels Logo" width="512" height="512"/>
-        <image name="Tab Bar More" width="120" height="120"/>
+        <image name="Calendar" width="25" height="25"/>
+        <image name="Categories" width="25" height="25"/>
+        <image name="Home" width="25" height="25"/>
+        <image name="Results" width="25" height="25"/>
+        <image name="Tropy" width="25" height="25"/>
     </resources>
 </document>

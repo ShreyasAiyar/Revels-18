@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 private let reuseIdentifier = "Cell"
 
 
-class EventsCollectionCollectionViewController: UICollectionViewController,NVActivityIndicatorViewable {
+class CategoriesPage: UICollectionViewController,NVActivityIndicatorViewable {
 
     
     let cacheCheck = CacheCheck()

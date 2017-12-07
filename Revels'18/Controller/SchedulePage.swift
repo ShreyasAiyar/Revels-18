@@ -26,20 +26,24 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Fetching Data..."
         NVActivityIndicatorView.DEFAULT_TYPE = .pacman
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         self.currentIndex = 0
+        
+        
         fetchSchedules()
+        
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-     cell.eventName.text = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
-     cell.categoryLabel.text = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "catname") as! String
+     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
+     cell.categoryLabel.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "catname") as! String
+        
      return cell
     }
 
@@ -52,6 +56,14 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         return scheduleDataSource[currentIndex].count
     }
     
+    func leftSwipe(sender:UISwipeGestureRecognizer){
+        if(currentIndex - 1 >= 0){
+            currentIndex = currentIndex - 1
+            segmentedControl.selectedSegmentIndex = currentIndex
+            tableView.reloadData()
+        }
+    }
+    
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
@@ -59,10 +71,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         tableView.reloadData()
     }
     
-    
-    func sear
-    
-    
+
     
     func fetchSchedules(){
         startAnimating()
