@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,7 +100,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CategoriesCell" id="lvi-3H-8UG">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoriesCell" id="lvi-3H-8UG">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -128,6 +129,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                     </tabBar>
                     <connections>
                         <segue destination="FUN-Om-ZFx" kind="relationship" relationship="viewControllers" id="Zvq-S0-7LS"/>
@@ -241,18 +243,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3I-8L-Rx2">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nva-Aw-gtV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                                 <items>
-                                    <navigationItem title="Home" id="eDW-ha-GDV"/>
+                                    <navigationItem title="Home" id="Y9d-rT-9z0">
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Item" image="More" id="nup-Vq-ctD"/>
+                                            <barButtonItem title="Item" image="Favorites" id="1Kx-xn-dRe"/>
+                                            <barButtonItem title="Item" image="Add-User" id="KOB-1W-hgq"/>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="leading" secondItem="h1R-yt-FHZ" secondAttribute="leading" id="Uhy-ku-75X"/>
-                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="top" secondItem="h1R-yt-FHZ" secondAttribute="top" id="iXI-8Q-tcg"/>
-                            <constraint firstItem="N3I-8L-Rx2" firstAttribute="trailing" secondItem="h1R-yt-FHZ" secondAttribute="trailing" id="wXt-aj-0qd"/>
+                            <constraint firstItem="Nva-Aw-gtV" firstAttribute="leading" secondItem="h1R-yt-FHZ" secondAttribute="leading" id="6gS-Gf-jsy"/>
+                            <constraint firstItem="Nva-Aw-gtV" firstAttribute="top" secondItem="h1R-yt-FHZ" secondAttribute="top" id="W4t-YN-T3v"/>
+                            <constraint firstItem="Nva-Aw-gtV" firstAttribute="trailing" secondItem="h1R-yt-FHZ" secondAttribute="trailing" id="uKg-Yo-LQC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1R-yt-FHZ"/>
                     </view>
@@ -261,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kr-df-FaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="659"/>
+            <point key="canvasLocation" x="2013.5999999999999" y="658.92053973013503"/>
         </scene>
         <!--Revels Home Page-->
         <scene sceneID="Fk3-Q2-5hw">
@@ -275,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teg-lW-zYl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <items>
                                             <navigationItem title="Title" id="UxW-hl-9KJ">
                                                 <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="goE-Sq-uk8">
@@ -285,7 +293,7 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAL-2J-OT5">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -332,7 +340,7 @@
                             <outlet property="delegate" destination="ugJ-lW-9zf" id="i2d-cc-2on"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Revels Cup" image="Tropy" id="fSn-VI-VYW"/>
+                    <tabBarItem key="tabBarItem" title="Revels Cup" image="Trophy" id="fSn-VI-VYW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXp-sg-uZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -407,10 +415,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar" width="25" height="25"/>
-        <image name="Categories" width="25" height="25"/>
-        <image name="Home" width="25" height="25"/>
-        <image name="Results" width="25" height="25"/>
-        <image name="Tropy" width="25" height="25"/>
+        <image name="Add-User" width="30" height="30"/>
+        <image name="Calendar" width="30" height="30"/>
+        <image name="Categories" width="30" height="30"/>
+        <image name="Favorites" width="30" height="30"/>
+        <image name="Home" width="30" height="30"/>
+        <image name="More" width="30" height="30"/>
+        <image name="Results" width="30" height="30"/>
+        <image name="Trophy" width="30" height="30"/>
     </resources>
 </document>

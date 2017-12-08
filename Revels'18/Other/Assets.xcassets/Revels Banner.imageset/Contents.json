@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Revels Banner.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Home@2x.png",
       "scale" : "2x"
     },
     {
