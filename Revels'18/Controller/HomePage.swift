@@ -16,20 +16,17 @@ class HomePage: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageFrame:CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!+20, width:
-            (self.navigationController?.navigationBar.frame.width)!, height: 100)
-        let headerView:UIView = UIView(frame: imageFrame)
+            (self.navigationController?.navigationBar.frame.width)!, height: 150)
 
+        let image:UIImageView = UIImageView(frame: imageFrame)
+        image.image = UIImage(named: "Revels Banner")
+        self.tableView.tableHeaderView = image
         
-        let revelsImage:UIImage! = UIImage(named: "Revels Banner")
-        let image:UIImageView = UIImageView(image: revelsImage!)
-        image.contentMode = .scaleToFill
-        image.clipsToBounds = true
-        headerView.addSubview(image)
+        self.tableView.rowHeight = 110
+        self.tableView.sectionIndexColor = UIColor.red
         
+        self.tableView.backgroundColor = UIColor.lightGray
         
-        self.tableView.tableHeaderView = headerView
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,12 +51,23 @@ class HomePage: UITableViewController {
         return sectionHeaders[section]
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.white
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
         cell.firstLabel.text = "Conclave"
         cell.secondLabel.text = "Conclave"
         cell.thirdLabel.text = "Conclave"
         cell.fourthLabel.text = "Conclave"
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.backgroundColor = UIColor.white
+        
         return cell
 
 
