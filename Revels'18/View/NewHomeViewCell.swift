@@ -9,7 +9,7 @@
 import UIKit
 
 class NewHomeViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var homeLabel: UILabel!
     
 }

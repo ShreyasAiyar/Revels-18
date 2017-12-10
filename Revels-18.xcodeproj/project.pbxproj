@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		37A44E69D6A8026C27B2BC26 /* Pods_Revels_18.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3169E0A72D3AC9F0C64F1E /* Pods_Revels_18.framework */; };
+		B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10141EC1FDD06C40048B540 /* HomePage.swift */; };
 		B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111C98C1FD31C95005DB863 /* CacheCheck.swift */; };
 		B13787701FD2886200B7120D /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137876F1FD2886200B7120D /* AboutModel.swift */; };
 		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */; };
-		B18FF85E1FDC077A00BC47E7 /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
@@ -20,7 +20,6 @@
 		B1AF0A1F1FDA33160038B199 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF0A1E1FDA33160038B199 /* HomePageModel.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
 		B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */; };
-		B1C4EEA31FDAE46800D6359D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA21FDAE46800D6359D /* HomePage.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
 		B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB811FCEB55300E8AD7A /* Main.storyboard */; };
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
@@ -43,11 +42,11 @@
 		13146CD48AE8724EE7AABC10 /* Pods-Revels-18.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels-18.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels-18/Pods-Revels-18.debug.xcconfig"; sourceTree = "<group>"; };
 		8002BEA00B4CDA944CE12E13 /* Pods-Revels-18.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels-18.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels-18/Pods-Revels-18.release.xcconfig"; sourceTree = "<group>"; };
 		9F3169E0A72D3AC9F0C64F1E /* Pods_Revels_18.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Revels_18.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10141EC1FDD06C40048B540 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		B111C98C1FD31C95005DB863 /* CacheCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCheck.swift; sourceTree = "<group>"; };
 		B137876F1FD2886200B7120D /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPage.swift; sourceTree = "<group>"; };
-		B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomePage.swift; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		B1AF0A1E1FDA33160038B199 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
 		B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
-		B1C4EEA21FDAE46800D6359D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D3CB821FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,12 +170,11 @@
 		B1D3CB961FCEB92E00E8AD7A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B1C4EEA21FDAE46800D6359D /* HomePage.swift */,
+				B10141EC1FDD06C40048B540 /* HomePage.swift */,
 				B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */,
 				B1DDC77A1FD4436300EC0DDC /* RevelsHomePage.swift */,
 				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
 				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
-				B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -353,7 +350,6 @@
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
-				B1C4EEA31FDAE46800D6359D /* HomePage.swift in Sources */,
 				B1AF0A1F1FDA33160038B199 /* HomePageModel.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
@@ -364,7 +360,7 @@
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
-				B18FF85E1FDC077A00BC47E7 /* NewHomePage.swift in Sources */,
+				B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */,
 				B13787701FD2886200B7120D /* AboutModel.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,

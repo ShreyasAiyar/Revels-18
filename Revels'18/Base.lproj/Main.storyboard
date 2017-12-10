@@ -90,7 +90,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="EventsView" id="JTw-T7-5FA" customClass="CategoriesPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Y9u-vx-ZfZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rgz-hx-ns2">
@@ -125,7 +125,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarView" automaticallyAdjustsScrollViewInsets="NO" id="gJG-Kx-nAg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S43-4z-QuL">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="S43-4z-QuL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,7 +148,7 @@
             <objects>
                 <viewController id="D5V-JN-PUo" customClass="SchedulePage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oZU-IS-g5d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-Ac-J7Q">
@@ -236,68 +236,108 @@
             <point key="canvasLocation" x="2014" y="-139"/>
         </scene>
         <!--Home-->
-        <scene sceneID="BQX-5M-zU5">
+        <scene sceneID="PZ2-su-UOz">
             <objects>
-                <collectionViewController id="tlU-0f-ott" customClass="NewHomePage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p39-6v-NS6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <viewController id="MEb-MX-0xR" customClass="HomePage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K1o-sb-alK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="whh-MD-4h2">
-                            <size key="itemSize" width="65" height="65"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewHomeCell" id="h6N-yC-BBl" customClass="NewHomeViewCell" customModule="Revels_18" customModuleProvider="target">
-                                <rect key="frame" x="10" y="50" width="65" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhX-Gt-BNQ">
-                                            <rect key="frame" x="-6" y="40" width="76" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <size key="customSize" width="65" height="65"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="stc-V3-aNT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" rowHeight="100" id="lix-y0-FbI" customClass="HomeViewCell" customModule="Revels_18" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lix-y0-FbI" id="B09-VV-DAz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-af-r42">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CGg-vt-kdN">
+                                                        <size key="itemSize" width="97" height="69"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="Gv2-On-MC9" customClass="NewHomeViewCell" customModule="Revels_18" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="15.5" width="97" height="69"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="97" height="69"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLK-g1-Px5">
+                                                                        <rect key="frame" x="0.0" y="24" width="97" height="21"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <connections>
+                                                                <outlet property="homeLabel" destination="ZLK-g1-Px5" id="Xxc-Kl-TdT"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="lix-y0-FbI" id="mwP-Xg-luA"/>
+                                                        <outlet property="delegate" destination="lix-y0-FbI" id="Zch-TZ-TAT"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hTf-af-r42" secondAttribute="trailing" id="8kq-Xe-3SA"/>
+                                                <constraint firstItem="hTf-af-r42" firstAttribute="top" secondItem="B09-VV-DAz" secondAttribute="top" id="Hsf-x6-kAC"/>
+                                                <constraint firstItem="hTf-af-r42" firstAttribute="leading" secondItem="B09-VV-DAz" secondAttribute="leading" id="QRZ-H4-VFc"/>
+                                                <constraint firstAttribute="bottom" secondItem="hTf-af-r42" secondAttribute="bottom" id="bWj-vs-Nm0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="homeLabel" destination="IhX-Gt-BNQ" id="Cu5-aI-F9s"/>
+                                    <outlet property="dataSource" destination="MEb-MX-0xR" id="ukx-fq-ho4"/>
+                                    <outlet property="delegate" destination="MEb-MX-0xR" id="RNa-nS-nVP"/>
                                 </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="DVM-ps-bVm">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="tlU-0f-ott" id="EgT-ct-w38"/>
-                            <outlet property="delegate" destination="tlU-0f-ott" id="nGK-o4-IDf"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Home" largeTitleDisplayMode="always" id="tuU-IP-bMa">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="Add-User" id="xRH-54-fo6">
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="stc-V3-aNT" firstAttribute="leading" secondItem="oAP-3Q-KC4" secondAttribute="leading" id="9ch-Ag-bAh"/>
+                            <constraint firstItem="stc-V3-aNT" firstAttribute="bottom" secondItem="oAP-3Q-KC4" secondAttribute="bottom" id="Asz-CB-Zhf"/>
+                            <constraint firstItem="stc-V3-aNT" firstAttribute="top" secondItem="oAP-3Q-KC4" secondAttribute="top" id="CsO-l3-Wxw"/>
+                            <constraint firstItem="stc-V3-aNT" firstAttribute="trailing" secondItem="oAP-3Q-KC4" secondAttribute="trailing" id="lOP-Sa-pnA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oAP-3Q-KC4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="Ufb-eO-ax1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Add-User" id="dtp-E6-LKe">
                             <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="More" id="iGI-SC-r1i">
+                            <barButtonItem title="Item" image="More" id="hmC-rA-o47">
                                 <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="moreButtonClicked:" destination="MEb-MX-0xR" id="ey9-83-4S3"/>
+                                </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="Favorites" id="b4g-cH-Txm">
+                            <barButtonItem title="Item" image="Favorites" id="gps-tI-h9k">
                                 <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Jp-FL-RSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="tableView" destination="stc-V3-aNT" id="cRj-f8-Zes"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QeU-xP-pV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3039.375" y="657.04225352112678"/>
+            <point key="canvasLocation" x="3078.75" y="655.9859154929577"/>
         </scene>
         <!--Revels Home Page-->
         <scene sceneID="Fk3-Q2-5hw">
@@ -343,14 +383,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyY-9o-3nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4267.5" y="965.49295774647885"/>
+            <point key="canvasLocation" x="3765" y="730"/>
         </scene>
         <!--Revels Cup-->
         <scene sceneID="0vV-6w-rkb">
             <objects>
                 <tableViewController id="ugJ-lW-9zf" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IXN-xL-tEG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -379,7 +419,7 @@
             <objects>
                 <viewController id="caD-AB-fvG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPG-dx-zVJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lyC-rO-lUb"/>
@@ -439,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCy-83-06f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3870" y="1697"/>
+            <point key="canvasLocation" x="3765" y="1430"/>
         </scene>
         <!--Home-->
         <scene sceneID="Qsu-fT-MNZ">
@@ -447,13 +487,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M4t-1b-ue4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="Sat-RL-dpp"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23M-hh-Fsp">
-                        <rect key="frame" x="0.0" y="20" width="320" height="93"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="23M-hh-Fsp">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="tlU-0f-ott" kind="relationship" relationship="rootViewController" id="LRE-JW-zMi"/>
+                        <segue destination="MEb-MX-0xR" kind="relationship" relationship="rootViewController" id="RaD-CL-qvm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psp-cC-Zi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
