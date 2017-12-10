@@ -17,7 +17,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        self.tableView.backgroundColor = UIColor.green
+//        let inset:UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+//        self.tableView.contentInset = inset
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -25,7 +27,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
         let imageFrame:CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!+20, width:
-            (self.navigationController?.navigationBar.frame.width)!, height: 150)
+            (self.navigationController?.navigationBar.frame.width)!, height: self.view.frame.height/5)
         
         
         
@@ -69,11 +71,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let labelFrame:CGRect = CGRect(x: 10, y: 0, width: 100, height: 50)
 
         let headerLabel = UILabel(frame: labelFrame)
-        headerLabel.text = "Categories"
         headerLabel.textColor = UIColor.red
         headerLabel.font = UIFont.boldSystemFont(ofSize: headerLabel.font.pointSize)
         headerView.addSubview(headerLabel)
-        
         
         let headerButton:UIButton = UIButton(type: UIButtonType.system)
         headerButton.setTitle("More", for: UIControlState.normal)
@@ -82,6 +82,16 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         headerButton.frame = buttonFrame
         headerView.addSubview(headerButton)
         
+        if(section == 0){
+            headerLabel.text = "Categories"
+        }
+        else if(section == 1){
+            headerLabel.text = "Events"
+        }
+        else if(section == 2){
+            headerLabel.text = "Results"
+        }
+        
         
         return headerView
     }
@@ -89,6 +99,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
     
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.view.tintColor = UIColor.red
         let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
             Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -104,7 +115,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         alertController.addAction(developerAction)
         alertController.addAction(proshowAction)
         
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true){
+        }
     }
     
     

@@ -29,7 +29,7 @@ extension HomeViewCell: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
         cell.homeLabel.text = "Conclave"
         cell.layer.cornerRadius = 10
-        cell.layer.backgroundColor = UIColor.lightGray.cgColor
+        cell.backgroundColor = UIColor.white
         return cell
     }
     
