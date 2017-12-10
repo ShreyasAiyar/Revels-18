@@ -12,6 +12,8 @@
 		B13787701FD2886200B7120D /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137876F1FD2886200B7120D /* AboutModel.swift */; };
 		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */; };
+		B18FF85E1FDC077A00BC47E7 /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */; };
+		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
@@ -45,6 +47,8 @@
 		B137876F1FD2886200B7120D /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPage.swift; sourceTree = "<group>"; };
+		B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomePage.swift; sourceTree = "<group>"; };
+		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				B1DDC77A1FD4436300EC0DDC /* RevelsHomePage.swift */,
 				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
 				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
+				B18FF85D1FDC077A00BC47E7 /* NewHomePage.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				B13787731FD28A8C00B7120D /* AboutViewCell.swift */,
 				B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */,
 				B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */,
+				B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
+				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
@@ -357,6 +364,7 @@
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
+				B18FF85E1FDC077A00BC47E7 /* NewHomePage.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */,
 				B13787701FD2886200B7120D /* AboutModel.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,
