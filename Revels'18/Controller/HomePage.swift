@@ -9,38 +9,66 @@
 import UIKit
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
-    
     let sectionHeaders:[String] = ["Events","Schedule","Results"]
+    let scrollView:UIScrollView = UIScrollView()
 
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.backgroundColor = UIColor.green
-//        let inset:UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-//        self.tableView.contentInset = inset
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         } else {
         }
         
-        let imageFrame:CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!+20, width:
-            (self.navigationController?.navigationBar.frame.width)!, height: self.view.frame.height/5)
+        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4)
+        scrollView.frame = imageFrame
+        scrollView.delegate = self
+        
+        let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+        revelsBanner.image = UIImage(named: "Revels Banner")
+        revelsBanner.contentMode = .scaleToFill
+        revelsBanner.clipsToBounds = true
+        
+        let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+        proshowBanner.image = UIImage(named: "Proshow Banner")
+        proshowBanner.contentMode = .scaleToFill
+        proshowBanner.clipsToBounds = true
+        
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isScrollEnabled = false
+        
+        scrollView.addSubview(revelsBanner)
+        scrollView.addSubview(proshowBanner)
+        
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height)
         
         
+        tableView.tableHeaderView = scrollView
         
-        let image:UIImageView = UIImageView(frame: imageFrame)
-        image.image = UIImage(named: "Revels Banner")
-        tableView.tableHeaderView = image
+        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+    }
+    
+    //MARK: Change PageWidth When More Images Added
+    
+    func moveToNextPage(){
+        let pageWidth:CGFloat = self.scrollView.frame.width
+        let maxWidth:CGFloat = pageWidth * 2
+        let contentOffset:CGFloat = self.scrollView.contentOffset.x
         
+        var slideToX = contentOffset + pageWidth
+        
+        if  contentOffset + pageWidth == maxWidth
+        {
+            slideToX = 0
+        }
+        self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionHeaders.count

@@ -20,6 +20,25 @@ class LastPageViewController: UIViewController {
         continueButton.layer.cornerRadius = 8
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        continueButton.alpha = 0
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.continueButton.frame.origin.y += 100
+        UIView.animate(withDuration: 2){
+            UIView.setAnimationRepeatCount(0)
+            self.continueButton.frame.origin.y -= 100
+            self.continueButton.alpha = 1.0
+        }
+    }
+    
 
     @IBAction func continueButtonSelected(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
