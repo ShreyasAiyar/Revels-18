@@ -176,11 +176,11 @@
 			isa = PBXGroup;
 			children = (
 				B10141EC1FDD06C40048B540 /* HomePage.swift */,
-				B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */,
-				B1DDC77A1FD4436300EC0DDC /* RevelsHomePage.swift */,
 				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
-				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
+				B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */,
 				B163159B1FDFAB2400D2B428 /* ResultsPage.swift */,
+				B1DDC77A1FD4436300EC0DDC /* RevelsHomePage.swift */,
+				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

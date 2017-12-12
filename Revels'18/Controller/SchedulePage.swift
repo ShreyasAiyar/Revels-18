@@ -11,8 +11,7 @@ import NVActivityIndicatorView
 import CoreData
 
 class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
-    
-    @IBOutlet weak var searchBar: UISearchBar!
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,17 +25,24 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.clipsToBounds = true
+        
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Fetching Data..."
-        NVActivityIndicatorView.DEFAULT_TYPE = .pacman
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
-        self.currentIndex = 0
-        
-        
+        //searchBar.delegate = self
+        setupSwipeGestures()
         fetchSchedules()
-        
-        
+    }
+    
+    
+    func setupSwipeGestures(){
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftSwiped))
+        leftSwipe.direction = .right
+        self.tableView.addGestureRecognizer(leftSwipe)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +62,8 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         return scheduleDataSource[currentIndex].count
     }
     
-    func leftSwipe(sender:UISwipeGestureRecognizer){
+    func leftSwiped(){
+        print("Left Swiped")
         if(currentIndex - 1 >= 0){
             currentIndex = currentIndex - 1
             segmentedControl.selectedSegmentIndex = currentIndex
@@ -73,6 +80,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
 
     
+    //MARK: Networking Call - Fetch Schedules
     func fetchSchedules(){
         startAnimating()
         var schedules:[Schedules] = []
