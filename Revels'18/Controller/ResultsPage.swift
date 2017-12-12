@@ -42,11 +42,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         
     }
     
-        func searchButtonPressed() {
+    func searchButtonPressed() {
         searchBar.alpha = 0
-        navigationItem.titleView = searchBar
+        
         navigationItem.setLeftBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems(nil, animated: true)
+        navigationItem.titleView = searchBar
         UIView.animate(withDuration: 0.5, animations: {
             self.searchBar.alpha = 1
         }, completion: { finished in
@@ -63,22 +64,49 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func hideSearchBar(){
+        navigationItem.titleView = nil
+        createBarButtonItems()
+    }
+    
+    //MARK: More Button Clicked
+    func moreButtonClicked(){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.view.tintColor = pinkColor
+        let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
+            Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutRevels")
+            self.present(aboutViewController, animated: true, completion: nil)
+        }
+        let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default, handler: nil)
+        
+        alertController.addAction(aboutAction)
+        alertController.addAction(cancelAction)
+        alertController.addAction(developerAction)
+        alertController.addAction(proshowAction)
+        
+        present(alertController, animated: true){
+        }
+    }
+    
+    
+    func reloadData(){
         
     }
     
+    //MARK: Create Bar Button Items Programatically
     func createBarButtonItems(){
-        let moreButtonItem:UIBarButtonItem = UIBarButtonItem()
+        let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
         moreButtonItem.image = UIImage(named: "More")
         moreButtonItem.tintColor = pinkColor
         
-        let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem()
-        reloadDataButtonItem.image = UIImage(named: "Synchronize")
+        let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Synchronize"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(reloadData))
         reloadDataButtonItem.tintColor = pinkColor
         
-        let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem()
-        searchBarButtonItem.image = UIImage(named: "Search")
+        let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Search"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(searchButtonPressed))
         searchBarButtonItem.tintColor = pinkColor
-        searchBarButtonItem.action = #selector("searchBarPressed")
         
         self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
         self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
@@ -88,6 +116,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     
+    //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
         cell.eventName.text = "Conclave"
@@ -118,7 +147,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         return 5
     }
 
-    
+    //MARK: Get JSON Data
     func resultsMain(){
         
     }
