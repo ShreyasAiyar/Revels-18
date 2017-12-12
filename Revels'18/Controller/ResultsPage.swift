@@ -39,7 +39,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 40
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
