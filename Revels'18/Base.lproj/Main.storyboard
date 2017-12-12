@@ -32,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-9x-qO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-707" y="656"/>
+            <point key="canvasLocation" x="-1176" y="656"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-289" y="656"/>
+            <point key="canvasLocation" x="-504" y="658"/>
         </scene>
         <!--Last Page View Controller-->
         <scene sceneID="6yB-JJ-Cem">
@@ -363,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyY-9o-3nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3557" y="659"/>
+            <point key="canvasLocation" x="4194" y="656"/>
         </scene>
         <!--Revels Cup-->
         <scene sceneID="0vV-6w-rkb">
@@ -421,17 +421,8 @@
                                     <constraint firstAttribute="trailing" secondItem="8x7-Em-sMg" secondAttribute="trailing" constant="8" id="f13-Xi-8Zn"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-ZA-grg">
-                                <rect key="frame" x="0.0" y="104" width="320" height="56"/>
-                                <color key="barTintColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQN-86-xpA">
-                                <rect key="frame" x="0.0" y="160" width="320" height="359"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="415"/>
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2" id="GnC-fi-pUe">
                                     <size key="itemSize" width="75" height="95"/>
@@ -479,14 +470,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Jbf-ZA-grg" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="43h-bR-cdu"/>
+                            <constraint firstItem="UQN-86-xpA" firstAttribute="top" secondItem="xz8-FQ-6gJ" secondAttribute="bottom" id="361-a5-ehb"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="4vi-pb-R8t"/>
-                            <constraint firstItem="Jbf-ZA-grg" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="CW6-nJ-BXt"/>
                             <constraint firstItem="UQN-86-xpA" firstAttribute="bottom" secondItem="BZ7-gL-m7m" secondAttribute="bottom" id="ISI-NH-wtS"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="top" secondItem="BZ7-gL-m7m" secondAttribute="top" id="OZh-kj-n9z"/>
-                            <constraint firstItem="UQN-86-xpA" firstAttribute="top" secondItem="Jbf-ZA-grg" secondAttribute="bottom" id="a4X-wa-mhh"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="azM-4Q-Db1"/>
-                            <constraint firstItem="Jbf-ZA-grg" firstAttribute="top" secondItem="xz8-FQ-6gJ" secondAttribute="bottom" id="iIB-yj-Uff"/>
                             <constraint firstItem="UQN-86-xpA" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="oef-1C-MKA"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="w1n-na-HOo"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="wBb-QS-2jz"/>
@@ -494,14 +482,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BZ7-gL-m7m"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Results" id="7y0-dd-lA7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="rkD-fF-Hng">
-                            <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="More" style="plain" id="yax-V8-kUg">
-                            <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Results" id="7y0-dd-lA7"/>
                     <connections>
                         <outlet property="resultsCollectionView" destination="UQN-86-xpA" id="zU5-kB-X2E"/>
                         <outlet property="segmentControl" destination="8x7-Em-sMg" id="fiR-mr-YKD"/>
@@ -561,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCy-83-06f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="656"/>
+            <point key="canvasLocation" x="3458" y="658"/>
         </scene>
         <!--Home-->
         <scene sceneID="Qsu-fT-MNZ">
