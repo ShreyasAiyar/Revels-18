@@ -13,6 +13,7 @@
 		B13787701FD2886200B7120D /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137876F1FD2886200B7120D /* AboutModel.swift */; };
 		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */; };
+		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
@@ -46,6 +47,7 @@
 		B137876F1FD2886200B7120D /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B152CBAE1FD0542A00A73107 /* CategoriesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPage.swift; sourceTree = "<group>"; };
+		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				B1DDC77A1FD4436300EC0DDC /* RevelsHomePage.swift */,
 				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
 				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
+				B163159B1FDFAB2400D2B428 /* ResultsPage.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
+				B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,

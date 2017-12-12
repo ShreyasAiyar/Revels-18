@@ -13,6 +13,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     let sectionHeaders:[String] = ["Events","Schedule","Results"]
     let scrollView:UIScrollView = UIScrollView()
+    let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
 
 
     override func viewDidLoad() {
@@ -96,7 +97,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let labelFrame:CGRect = CGRect(x: 10, y: 0, width: 100, height: 50)
 
         let headerLabel = UILabel(frame: labelFrame)
-        headerLabel.textColor = UIColor.red
+        headerLabel.textColor = pinkColor
         headerLabel.font = UIFont.boldSystemFont(ofSize: headerLabel.font.pointSize)
         headerView.addSubview(headerLabel)
         
@@ -124,7 +125,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
     
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.view.tintColor = UIColor.red
+        alertController.view.tintColor = pinkColor
         let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
             Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
