@@ -1,0 +1,6 @@
+framework module Pods_Revels_18 {
+  umbrella header "Pods-Revels-18-umbrella.h"
+
+  export *
+  module * { export * }
+}

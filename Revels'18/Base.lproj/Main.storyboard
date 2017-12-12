@@ -17,7 +17,7 @@
                 <pageViewController storyboardIdentifier="LandingPageView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Lic-B3-8Ca" customClass="LandingPageViewController" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKU-16-DOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2074" y="659"/>
+            <point key="canvasLocation" x="-289" y="-213"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FKr-bo-9Y3">
@@ -32,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-9x-qO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1212" y="658.92053973013503"/>
+            <point key="canvasLocation" x="-707" y="656"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="659"/>
+            <point key="canvasLocation" x="-289" y="656"/>
         </scene>
         <!--Last Page View Controller-->
         <scene sceneID="6yB-JJ-Cem">
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeU-xP-pV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3078.75" y="655.9859154929577"/>
+            <point key="canvasLocation" x="2687" y="659"/>
         </scene>
         <!--Revels Home Page-->
         <scene sceneID="Fk3-Q2-5hw">
@@ -363,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyY-9o-3nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4748" y="656"/>
+            <point key="canvasLocation" x="3557" y="659"/>
         </scene>
         <!--Revels Cup-->
         <scene sceneID="0vV-6w-rkb">
@@ -394,7 +394,7 @@
             </objects>
             <point key="canvasLocation" x="2062" y="1499"/>
         </scene>
-        <!--Home-->
+        <!--Results-->
         <scene sceneID="nBY-MG-hDx">
             <objects>
                 <viewController id="VZ6-lW-AnH" customClass="ResultsPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
@@ -408,8 +408,8 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8x7-Em-sMg">
                                         <rect key="frame" x="8" y="5" width="304" height="29"/>
                                         <segments>
+                                            <segment title="Event Results"/>
                                             <segment title="Sports Results"/>
-                                            <segment title="Second"/>
                                         </segments>
                                     </segmentedControl>
                                 </subviews>
@@ -423,21 +423,25 @@
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-ZA-grg">
                                 <rect key="frame" x="0.0" y="104" width="320" height="56"/>
+                                <color key="barTintColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQN-86-xpA">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQN-86-xpA">
                                 <rect key="frame" x="0.0" y="160" width="320" height="359"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GnC-fi-pUe">
-                                    <size key="itemSize" width="75" height="96"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2" id="GnC-fi-pUe">
+                                    <size key="itemSize" width="75" height="95"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultsCell" id="rDp-x0-Urf" customClass="ResultsCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="95"/>
+                                        <rect key="frame" x="10" y="10" width="75" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="95"/>
@@ -464,9 +468,10 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <size key="customSize" width="75" height="95"/>
                                         <connections>
+                                            <outlet property="categoryImage" destination="T2k-pG-F1P" id="0s2-ud-idz"/>
                                             <outlet property="eventName" destination="KSq-k1-w4q" id="hmr-O5-Hbv"/>
+                                            <outlet property="roundNo" destination="3AT-SR-ZpN" id="4cD-Mm-DU2"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -477,15 +482,19 @@
                             <constraint firstItem="Jbf-ZA-grg" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="43h-bR-cdu"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="4vi-pb-R8t"/>
                             <constraint firstItem="Jbf-ZA-grg" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="CW6-nJ-BXt"/>
+                            <constraint firstItem="UQN-86-xpA" firstAttribute="bottom" secondItem="BZ7-gL-m7m" secondAttribute="bottom" id="ISI-NH-wtS"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="top" secondItem="BZ7-gL-m7m" secondAttribute="top" id="OZh-kj-n9z"/>
+                            <constraint firstItem="UQN-86-xpA" firstAttribute="top" secondItem="Jbf-ZA-grg" secondAttribute="bottom" id="a4X-wa-mhh"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="azM-4Q-Db1"/>
                             <constraint firstItem="Jbf-ZA-grg" firstAttribute="top" secondItem="xz8-FQ-6gJ" secondAttribute="bottom" id="iIB-yj-Uff"/>
+                            <constraint firstItem="UQN-86-xpA" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="oef-1C-MKA"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="w1n-na-HOo"/>
                             <constraint firstItem="xz8-FQ-6gJ" firstAttribute="leading" secondItem="BZ7-gL-m7m" secondAttribute="leading" id="wBb-QS-2jz"/>
+                            <constraint firstItem="UQN-86-xpA" firstAttribute="trailing" secondItem="BZ7-gL-m7m" secondAttribute="trailing" id="zbm-ha-V5c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BZ7-gL-m7m"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="7y0-dd-lA7">
+                    <navigationItem key="navigationItem" title="Results" id="7y0-dd-lA7">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="rkD-fF-Hng">
                             <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                         </barButtonItem>
@@ -494,13 +503,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="resultsCollectionView" destination="UQN-86-xpA" id="zU5-kB-X2E"/>
                         <outlet property="segmentControl" destination="8x7-Em-sMg" id="fiR-mr-YKD"/>
                         <outlet property="segmentView" destination="xz8-FQ-6gJ" id="078-w2-dfe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1z-mp-maC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060.625" y="2340.8450704225352"/>
+            <point key="canvasLocation" x="2062" y="2340"/>
         </scene>
         <!--About Revels Page-->
         <scene sceneID="T0J-u3-FlJ">
@@ -551,7 +561,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCy-83-06f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3953" y="656"/>
+            <point key="canvasLocation" x="3116" y="656"/>
         </scene>
         <!--Home-->
         <scene sceneID="Qsu-fT-MNZ">
@@ -600,7 +610,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVc-xb-u3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="2341"/>
+            <point key="canvasLocation" x="945" y="2340"/>
         </scene>
     </scenes>
     <resources>

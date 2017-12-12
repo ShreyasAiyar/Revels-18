@@ -10,5 +10,9 @@ import UIKit
 
 class ResultsCell: UICollectionViewCell {
     
+    @IBOutlet weak var roundNo: UILabel!
     @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
+    
+    
 }

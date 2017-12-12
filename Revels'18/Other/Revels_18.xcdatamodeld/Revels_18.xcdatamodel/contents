@@ -18,6 +18,14 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Favourites" representedClassName="Favourites" syncable="YES" codeGenerationType="class"/>
+    <entity name="Result" representedClassName="Result" syncable="YES" codeGenerationType="class">
+        <attribute name="cat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eve" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="evename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
         <attribute name="catid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catname" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,5 +43,6 @@
         <element name="Event" positionX="-63" positionY="-27" width="128" height="195"/>
         <element name="Favourites" positionX="-54" positionY="45" width="128" height="45"/>
         <element name="Schedule" positionX="-54" positionY="45" width="128" height="195"/>
+        <element name="Result" positionX="-54" positionY="81" width="128" height="135"/>
     </elements>
 </model>
