@@ -19,6 +19,7 @@
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
+		B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */; };
 		B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
 		B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB811FCEB55300E8AD7A /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
+		B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */,
 				B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */,
 				B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */,
+				B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,
 				B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */,
 				B1E49F1B1FD66AFD00521661 /* ScheduleCell.swift in Sources */,
+				B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */,
 				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

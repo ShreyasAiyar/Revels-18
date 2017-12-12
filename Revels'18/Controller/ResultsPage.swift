@@ -7,21 +7,29 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class ResultsPage: UIViewController {
+class ResultsPage: UIViewController,NVActivityIndicatorViewable {
     
     let segmentLabels:[String] = ["Results","Sports Results"]
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.clipsToBounds = true
-        segmentControl.backgroundColor = UIColor.clear
-        segmentControl.tintColor = UIColor.clear
+        segmentControl.tintColor = pinkColor
+    }
+    
+    
+    
+    
+    
+    
+    func resultsMain(){
         
-
     }
 
 
