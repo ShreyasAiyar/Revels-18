@@ -45,8 +45,8 @@ class ScheduleNetworking{
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
         // MARK: Deleting Records From CoreData
-        let categoryDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Category")
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: categoryDeleteRequest)
+        let scheduleDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Schedule")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: scheduleDeleteRequest)
         
         do{
             try managedContext.execute(batchDeleteRequest)
@@ -95,6 +95,8 @@ class ScheduleNetworking{
         let day3Predicate = NSPredicate(format: "day == 3")
         let day4Predicate = NSPredicate(format: "day == 4")
         
+        allDays.removeAll()
+        
         scheduleFetchRequest.predicate = day1Predicate
         day1Schedules = try! managedContext.fetch(scheduleFetchRequest)
         allDays.append(day1Schedules)
@@ -111,6 +113,10 @@ class ScheduleNetworking{
         day4Schedules = try! managedContext.fetch(scheduleFetchRequest)
         allDays.append(day4Schedules)
         
+        print("All Days 0",allDays[0].count)
+        print("All Days 1",allDays[1].count)
+        print("All Days 2",allDays[2].count)
+        print("All Days 3",allDays[3].count)
         return allDays
         
  

@@ -12,6 +12,7 @@ class LandingPageViewController: UIPageViewController,UIPageViewControllerDataSo
     
     lazy var viewControllerList:[UIViewController] = {
         
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let page1 = storyboard.instantiateViewController(withIdentifier:"PageOne")
@@ -39,6 +40,7 @@ class LandingPageViewController: UIPageViewController,UIPageViewControllerDataSo
         let previousIndex = vcIndex - 1
         guard previousIndex >= 0 else {return nil}
         guard viewControllerList.count > previousIndex else {return nil}
+        
         
         return viewControllerList[previousIndex]
 

@@ -10,10 +10,12 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate,UICollectionViewDelegateFlowLayout{
+    
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var collectionView: UICollectionView!
     
     let cacheCheck = CacheCheck()
     let httpRequestObject = HTTPRequest()
@@ -25,61 +27,55 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureController()
+    }
+    
+    func configureController(){
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.clipsToBounds = true
-        
+
         NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Fetching Data..."
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         //searchBar.delegate = self
-        setupSwipeGestures()
         fetchSchedules()
-    }
-    
-    
-    func setupSwipeGestures(){
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftSwiped))
-        leftSwipe.direction = .right
-        self.tableView.addGestureRecognizer(leftSwipe)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
-     cell.categoryLabel.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "catname") as! String
         
-     return cell
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
-
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
+        cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "ename") as! String
+        cell.categoryLabel.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "catname") as! String
+        cell.layer.cornerRadius = 8
+        cell.backgroundColor = UIColor.white
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return scheduleDataSource[currentIndex].count
     }
     
-    func leftSwiped(){
-        print("Left Swiped")
-        if(currentIndex - 1 >= 0){
-            currentIndex = currentIndex - 1
-            segmentedControl.selectedSegmentIndex = currentIndex
-            tableView.reloadData()
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = self.view.frame.width - 20
+        let cellheight = CGFloat(80)
+        return CGSize(width: cellWidth, height: cellheight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+    }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
         print(currentIndex)
-        tableView.reloadData()
+        collectionView.reloadData()
     }
-    
 
-    
     //MARK: Networking Call - Fetch Schedules
     func fetchSchedules(){
         startAnimating()
@@ -95,6 +91,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
                 self.scheduleNetworkingObject.saveSchedulesToCoreData(scheduleData: schedules)
                 self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
                 self.stopAnimating()
+                self.collectionView.reloadData()
                 
             case .Error(let errorMessage):
                 print(errorMessage)

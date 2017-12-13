@@ -16,16 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
-        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
-            UserDefaults.standard.set(true, forKey: "notFirstInApp")
-            window?.rootViewController = landingPageViewController
-        }
-        else{
-            window?.rootViewController = tabBarController
-        }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
+//        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
+//        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
+//            UserDefaults.standard.set(true, forKey: "notFirstInApp")
+//            window?.rootViewController = landingPageViewController
+//        }
+//        else{
+//            window?.rootViewController = tabBarController
+//        }
         
 
         return true

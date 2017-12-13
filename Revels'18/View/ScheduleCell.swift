@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleCell: UITableViewCell {
+class ScheduleCell: UICollectionViewCell {
     
     
     @IBOutlet weak var eventName: UILabel!

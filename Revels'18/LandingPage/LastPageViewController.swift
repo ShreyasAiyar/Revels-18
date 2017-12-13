@@ -17,27 +17,28 @@ class LastPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        continueButton.setTitleColor(UIColor.white, for: .normal)
+        continueButton.setTitleColor(UIColor.red, for: .highlighted)
         continueButton.layer.cornerRadius = 8
+        continueButton.alpha = 0
+        self.continueButton.frame.origin.y -= 20
+        UIView.animate(withDuration: 1){
+            self.continueButton.frame.origin.y += 20
+            self.continueButton.alpha = 1.0
+        }
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        continueButton.alpha = 0
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        self.continueButton.frame.origin.y += 100
-        UIView.animate(withDuration: 2){
-            UIView.setAnimationRepeatCount(0)
-            self.continueButton.frame.origin.y -= 100
-            self.continueButton.alpha = 1.0
-        }
     }
+    
+
     
 
     @IBAction func continueButtonSelected(_ sender: UIButton) {
@@ -46,6 +47,8 @@ class LastPageViewController: UIViewController {
         self.present(tabBarController, animated: true, completion: nil)
         
     }
+    
+    
     
     
 }

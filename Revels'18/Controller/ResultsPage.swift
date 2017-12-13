@@ -91,7 +91,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         }
     }
     
-    
+    //MARK: Reload Data When Reload Button Clicked
     func reloadData(){
         
     }
