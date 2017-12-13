@@ -19,12 +19,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     var searchBar = UISearchBar()
-    //var searchBarButtonItem: UIBarButtonItem?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createBarButtonItems()
         
         //Mark: Configuring Navigation Controller
         self.navigationController?.navigationBar.isTranslucent = true
@@ -38,7 +38,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         searchBar.searchBarStyle = .minimal
         
         //MARK: Configure Bar Button Items
-        createBarButtonItems()
+        
         
     }
     
