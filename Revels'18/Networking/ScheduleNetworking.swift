@@ -112,11 +112,7 @@ class ScheduleNetworking{
         scheduleFetchRequest.predicate = day4Predicate
         day4Schedules = try! managedContext.fetch(scheduleFetchRequest)
         allDays.append(day4Schedules)
-        
-        print("All Days 0",allDays[0].count)
-        print("All Days 1",allDays[1].count)
-        print("All Days 2",allDays[2].count)
-        print("All Days 3",allDays[3].count)
+
         return allDays
         
  

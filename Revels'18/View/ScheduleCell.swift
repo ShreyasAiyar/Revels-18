@@ -12,7 +12,7 @@ class ScheduleCell: UICollectionViewCell {
     
     
     @IBOutlet weak var eventName: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     override func awakeFromNib() {

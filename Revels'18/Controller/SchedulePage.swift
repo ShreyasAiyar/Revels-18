@@ -50,7 +50,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "ename") as! String
-        cell.categoryLabel.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "catname") as! String
+        cell.timeLabel.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "stime") as! String
         cell.layer.cornerRadius = 8
         cell.backgroundColor = UIColor.white
         return cell
@@ -60,6 +60,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
         return scheduleDataSource[currentIndex].count
     }
     
+    //MARK: Configuring Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = self.view.frame.width - 20
         let cellheight = CGFloat(80)
