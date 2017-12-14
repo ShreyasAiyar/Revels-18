@@ -14,7 +14,7 @@ private let reuseIdentifier = "Cell"
 
 class CategoriesPage: UICollectionViewController,NVActivityIndicatorViewable {
 
-    
+    //MARK: Creating Objects
     let cacheCheck = CacheCheck()
     let eventsNetworkingObject = EventsNetworking()
     let httpRequestObject = HTTPRequest()
@@ -24,36 +24,21 @@ class CategoriesPage: UICollectionViewController,NVActivityIndicatorViewable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK: Calling EventsNetworking
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Pulling Data..."
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
-        NVActivityIndicatorView.DEFAULT_TYPE = .pacman
-        
-        eventsMain()
-        
+        configureController()
+    }
     
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+    func configureController(){
+        NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 100
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
+        eventsMain()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+    
+    
+    
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -68,12 +53,12 @@ class CategoriesPage: UICollectionViewController,NVActivityIndicatorViewable {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
     
         return cell
     }
     
     
+    //MARK: Networking Call - Fetch Categories
     func eventsMain(){
         
         startAnimating()

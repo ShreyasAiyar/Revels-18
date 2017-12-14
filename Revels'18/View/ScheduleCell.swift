@@ -10,14 +10,17 @@ import UIKit
 
 class ScheduleCell: UICollectionViewCell {
     
-    
+
     @IBOutlet weak var eventName: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var location: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        self.layer.cornerRadius = 5
     }
 
 

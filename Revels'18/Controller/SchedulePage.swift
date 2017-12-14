@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SafariServices
 import CoreData
 
 class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate,UICollectionViewDelegateFlowLayout{
@@ -36,9 +37,10 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     
     func configureController(){
         self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.clipsToBounds = true
 
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE = "Fetching Data..."
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -62,7 +64,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
         
         self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
         self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
-        
         self.navigationItem.title = "Results"
         
     }
@@ -81,9 +82,17 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
             let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutRevels")
             self.present(aboutViewController, animated: true, completion: nil)
         }
+        
+        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
+            Void in
+            let myURL = URL(string: "https://www.theverge.com")
+            let safariViewController = SFSafariViewController(url: myURL!)
+            self.present(safariViewController, animated: true,completion: nil)
+        }
+        
         let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default, handler: nil)
+        
         
         alertController.addAction(aboutAction)
         alertController.addAction(cancelAction)
@@ -132,9 +141,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "ename") as! String
-        cell.timeLabel.text! = scheduleDataSource[currentIndex][indexPath.section].value(forKey: "stime") as! String
-        cell.layer.cornerRadius = 8
-        cell.backgroundColor = UIColor.white
+        cell.time.text! = (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         return cell
     }
     
@@ -144,14 +151,31 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     
     //MARK: Configuring Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = self.view.frame.width - 20
+        let cellWidth = self.view.frame.width
         let cellheight = CGFloat(80)
         return CGSize(width: cellWidth, height: cellheight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: CGFloat(1))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let separatorLine = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ScheduleHeader", for: indexPath)
+        let separatorFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: CGFloat(1))
+        separatorLine.frame = separatorFrame
+        separatorLine.backgroundColor = UIColor.black
+        return separatorLine
+    }
+    
+    
+    
+    
+    
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex

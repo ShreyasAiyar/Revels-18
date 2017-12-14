@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -23,6 +24,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //            self.navigationController?.navigationBar.prefersLargeTitles = true
 //        } else {
 //        }
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.clipsToBounds = true
         
         let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
         scrollView.frame = imageFrame
@@ -109,13 +114,13 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         headerView.addSubview(headerButton)
         
         if(section == 0){
-            headerLabel.text = "Categories"
+            headerLabel.text = "Today's Events"
         }
         else if(section == 1){
-            headerLabel.text = "Events"
+            headerLabel.text = "Categories"
         }
         else if(section == 2){
-            headerLabel.text = "Results"
+            headerLabel.text = "Latest Results"
         }
         
         
@@ -132,9 +137,18 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutRevels")
             self.present(aboutViewController, animated: true, completion: nil)
         }
+        
+        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
+            Void in
+            let myURL = URL(string: "https://www.theverge.com")
+            let safariViewController = SFSafariViewController(url: myURL!)
+            self.present(safariViewController, animated: true,completion: nil)
+        }
+        
+        
         let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default, handler: nil)
+        
         
         alertController.addAction(aboutAction)
         alertController.addAction(cancelAction)

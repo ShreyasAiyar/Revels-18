@@ -28,7 +28,7 @@ extension HomeViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
         cell.homeLabel.text = "Conclave"
-        cell.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 5
         collectionView.backgroundColor = UIColor.white
         return cell
     }

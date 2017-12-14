@@ -8,25 +8,20 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 
-class RevelsHomePage: UIViewController,WKUIDelegate {
+class RevelsHomePage: UIViewController {
 
-    var webView: WKWebView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var mainView: UIView!
     
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame:  mainView.frame, configuration: webConfiguration)
-        webView.uiDelegate = self
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let myURL = URL(string: "https://www.theverge.com")
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+        let safariViewController = SFSafariViewController(url: myURL!)
+        present(safariViewController, animated: true, completion: nil)
     }
     
     
