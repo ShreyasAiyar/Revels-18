@@ -15,12 +15,6 @@ class ResultsCell: UICollectionViewCell {
     @IBOutlet weak var categoryImage: UIImageView!
     
     override func awakeFromNib() {
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width:0,height: 0.5)
-        self.layer.shadowRadius = 0.2
-        self.layer.shadowOpacity = 1.0
-        self.layer.masksToBounds = false;
-        self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 3
     }
 }

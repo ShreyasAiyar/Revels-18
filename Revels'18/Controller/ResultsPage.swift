@@ -42,7 +42,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         
     }
     
-    func searchButtonPressed() {
+    override func searchButtonPressed() {
         searchBar.alpha = 0
         
         navigationItem.setLeftBarButtonItems(nil, animated: true)
@@ -63,13 +63,9 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         hideSearchBar()
     }
     
-    func hideSearchBar(){
-        navigationItem.titleView = nil
-        createBarButtonItems()
-    }
     
     //MARK: More Button Clicked
-    func moreButtonClicked(){
+    override func moreButtonClicked(){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.view.tintColor = pinkColor
         let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
@@ -92,12 +88,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     //MARK: Reload Data When Reload Button Clicked
-    func reloadData(){
+    override func reloadData(){
         
     }
     
     //MARK: Create Bar Button Items Programatically
-    func createBarButtonItems(){
+    override func createBarButtonItems(){
         let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
         moreButtonItem.image = UIImage(named: "More")
         moreButtonItem.tintColor = pinkColor

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleCell: UICollectionViewCell {
+class ScheduleCell: UITableViewCell {
     
 
     @IBOutlet weak var eventName: UILabel!
@@ -19,8 +19,6 @@ class ScheduleCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
-        self.layer.cornerRadius = 5
     }
 
 

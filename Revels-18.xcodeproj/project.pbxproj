@@ -17,6 +17,7 @@
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
+		B1993B7D1FE3EEB30036EA66 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1993B7C1FE3EEB30036EA66 /* Extension.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
 		B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */; };
@@ -52,6 +53,7 @@
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
+		B1993B7C1FE3EEB30036EA66 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
 		B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			path = LandingPage;
 			sourceTree = "<group>";
 		};
+		B1993B7B1FE3ED200036EA66 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B1993B7C1FE3EEB30036EA66 /* Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B1D3CB711FCEB55300E8AD7A = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +144,7 @@
 		B1D3CB7C1FCEB55300E8AD7A /* Revels'18 */ = {
 			isa = PBXGroup;
 			children = (
+				B1993B7B1FE3ED200036EA66 /* Extensions */,
 				B1D3CB981FCEB94500E8AD7A /* Model */,
 				B1D3CB971FCEB93F00E8AD7A /* View */,
 				B111C98B1FD31C73005DB863 /* CoreData */,
@@ -364,6 +375,7 @@
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
+				B1993B7D1FE3EEB30036EA66 /* Extension.swift in Sources */,
 				B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */,
 				B152CBAF1FD0542A00A73107 /* CategoriesPage.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,

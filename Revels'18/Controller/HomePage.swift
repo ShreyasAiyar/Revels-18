@@ -19,15 +19,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if #available(iOS 11.0, *) {
-//            self.navigationController?.navigationBar.prefersLargeTitles = true
-//        } else {
-//        }
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController?.view.backgroundColor = .clear
-        self.navigationController?.navigationBar.clipsToBounds = true
+        configureNavigationBar()
         
         let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
         scrollView.frame = imageFrame
