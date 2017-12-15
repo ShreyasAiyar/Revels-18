@@ -6,6 +6,7 @@
 //  Copyright © 2017 Shreyas Aiyar. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import NVActivityIndicatorView
 import SafariServices
@@ -26,25 +27,24 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     let categoriesURL = "https://api.mitportals.in/schedule/"
     var scheduleDataSource:[[NSManagedObject]] = [[]]
     var currentIndex:Int = 0
+    var isSelected:[[Bool]] = [[]]
     let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItems()
         configureController()
+        isSelected.removeAll()
     }
     
     func configureController(){
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.clipsToBounds = true
-
-        NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
         collectionView.delegate = self
         collectionView.dataSource = self
-        //searchBar.delegate = self
+        searchBar.delegate = self
         fetchSchedules()
         
     }
@@ -69,7 +69,8 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     }
     //MARK: Reload Data When Reload Button Clicked
     func reloadData(){
-        
+        fetchSchedules()
+        self.collectionView.reloadData()
     }
     
     //MARK: More Button Clicked
@@ -130,9 +131,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
         navigationItem.titleView = nil
         createBarButtonItems()
     }
-    
-    
-    
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
@@ -149,11 +148,22 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
         return scheduleDataSource[currentIndex].count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.isSelected[currentIndex][indexPath.section] = !self.isSelected[currentIndex][indexPath.section]
+        self.collectionView.reloadItems(at: [IndexPath(row: 0, section: indexPath.section)])
+    }
+    
     //MARK: Configuring Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = self.view.frame.width
-        let cellheight = CGFloat(80)
-        return CGSize(width: cellWidth, height: cellheight)
+        let cellHeight:CGFloat
+        if isSelected[currentIndex][indexPath.section]{
+            cellHeight = 150
+        }
+        else{
+            cellHeight = 80
+        }
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -173,10 +183,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
     }
     
     
-    
-    
-    
-    
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
         print(currentIndex)
@@ -185,6 +191,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
 
     //MARK: Networking Call - Fetch Schedules
     func fetchSchedules(){
+        NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
         startAnimating()
         var schedules:[Schedules] = []
         httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
@@ -198,6 +205,10 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UICollectionVie
                 self.scheduleNetworkingObject.saveSchedulesToCoreData(scheduleData: schedules)
                 self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
                 self.stopAnimating()
+                self.isSelected.append([Bool](repeatElement(false, count: self.scheduleDataSource[0].count)))
+                self.isSelected.append([Bool](repeatElement(false, count: self.scheduleDataSource[1].count)))
+                self.isSelected.append([Bool](repeatElement(false, count: self.scheduleDataSource[2].count)))
+                self.isSelected.append([Bool](repeatElement(false, count: self.scheduleDataSource[3].count)))
                 self.collectionView.reloadData()
                 
             case .Error(let errorMessage):
