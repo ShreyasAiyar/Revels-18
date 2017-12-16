@@ -79,7 +79,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = (self.view.bounds.width)/5 - 10
+        let yourWidth = (self.view.bounds.width)/4 - 10
         let yourHeight = yourWidth + 20
         return CGSize(width: yourWidth, height: yourHeight)
     }

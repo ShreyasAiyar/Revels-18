@@ -74,7 +74,7 @@ extension UIViewController{
     }
     
     func configureNavigationBar(){
-        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.clipsToBounds = true
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
     }
