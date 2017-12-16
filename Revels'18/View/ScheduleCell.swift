@@ -14,11 +14,13 @@ class ScheduleCell: UITableViewCell {
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let highlightedImage = UIImage(named: "Favorites")
+        favouriteButton.setImage(highlightedImage, for: .selected)
     }
 
 

@@ -50,10 +50,10 @@ extension UIViewController{
         moreButtonItem.image = UIImage(named: "More")
         moreButtonItem.tintColor = pinkColor
         
-        let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Synchronize"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(reloadData))
+        let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadData))
         reloadDataButtonItem.tintColor = pinkColor
         
-        let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Search"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(searchButtonPressed))
+        let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
         searchBarButtonItem.tintColor = pinkColor
         
         self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
@@ -74,11 +74,8 @@ extension UIViewController{
     }
     
     func configureNavigationBar(){
-        
-        let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.clipsToBounds = true
-        
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
     }
     

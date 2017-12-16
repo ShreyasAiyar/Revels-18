@@ -11,12 +11,12 @@ import UIKit
 import CoreData
 
 class HTTPRequest{
-    enum Result<T>:Error{
+    enum Status<T>:Error{
         case Success(T)
         case Error(String)
     }
     
-     func makeHTTPRequestForEvents (eventsURL:String, completion: @escaping (Result<[String:Any]>) -> ()){
+     func makeHTTPRequestForEvents (eventsURL:String, completion: @escaping (Status<[String:Any]>) -> ()){
         guard let url = URL(string:eventsURL) else{
             print("No URL Provided")
             return

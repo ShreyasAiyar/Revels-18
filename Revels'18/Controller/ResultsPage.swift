@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import CoreData
 
 class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
@@ -16,18 +17,19 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     let segmentLabels:[String] = ["Results","Sports Results"]
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
     @IBOutlet weak var resultsCollectionView: UICollectionView!
+    let resultsURL = "https://api.mitportals.in/results/"
+    let resultNetworkingObject = ResultNetworking()
+    var resultsDataSource:[NSManagedObject] = []
+    let httpRequestObject = HTTPRequest()
     var searchBar = UISearchBar()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultsMain()
         createBarButtonItems()
-        configureNavigationBar()
-        resultsCollectionView.delegate = self
-        resultsCollectionView.dataSource = self
         configureNavigationBar()
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
@@ -36,7 +38,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     
     override func searchButtonPressed() {
         searchBar.alpha = 0
-        
         navigationItem.setLeftBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems(nil, animated: true)
         navigationItem.titleView = searchBar
@@ -57,19 +58,20 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     
 
     override func reloadData(){
-        
+        resultsMain()
+        self.resultsCollectionView.reloadData()
     }
     
     //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
-        cell.eventName.text = "Conclave"
-        cell.roundNo.text = "1"
+        cell.eventName.text = resultsDataSource[indexPath.row].value(forKey: "eve") as? String
+        cell.roundNo.text = resultsDataSource[indexPath.row].value(forKey: "round") as? String
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        return resultsDataSource.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -92,6 +94,29 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
 
     //MARK: Get JSON Data
     func resultsMain(){
+        startAnimating()
+        var results:[Results] = []
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){
+            status in
+            switch status{
+            case .Success(let parsedJSON):
+                for result in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let resultObject = Results(dictionary: result)
+                    results.append(resultObject)
+                }
+                self.resultNetworkingObject.saveResultsToCoreData(resultData: results)
+                self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
+                self.stopAnimating()
+                self.resultsCollectionView.reloadData()
+                
+            case .Error(let errorMessage):
+                print(errorMessage)
+                DispatchQueue.main.async {
+                    NVActivityIndicatorPresenter.sharedInstance.setMessage("You Seem To Be Offline")
+                }
+                
+            }
+        }
         
     }
 

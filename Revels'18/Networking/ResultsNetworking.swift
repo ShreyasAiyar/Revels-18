@@ -75,45 +75,15 @@ class ResultNetworking{
         
     }
     
-    func fetchScheduleFromCoreData() -> [[NSManagedObject]]{
-        var day1Schedules:[NSManagedObject] = []
-        var day2Schedules:[NSManagedObject] = []
-        var day3Schedules:[NSManagedObject] = []
-        var day4Schedules:[NSManagedObject] = []
-        var allDays:[[NSManagedObject]] = [[]]
-        
+    func fetchResultsFromCoreData() -> [NSManagedObject]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let scheduleFetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Schedule")
+        let resultFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Result")
         
-        let day1Predicate = NSPredicate(format: "day == 1")
-        let day2Predicate = NSPredicate(format: "day == 2")
-        let day3Predicate = NSPredicate(format: "day == 3")
-        let day4Predicate = NSPredicate(format: "day == 4")
-        
-        scheduleFetchRequest.predicate = day1Predicate
-        day1Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day1Schedules)
-        
-        scheduleFetchRequest.predicate = day2Predicate
-        day2Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day2Schedules)
-        
-        scheduleFetchRequest.predicate = day3Predicate
-        day3Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day3Schedules)
-        
-        scheduleFetchRequest.predicate = day4Predicate
-        day4Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day4Schedules)
-        
-        return allDays
-        
-        
+        var results:[NSManagedObject] = []
+        results = try! managedContext.fetch(resultFetchRequest)
+        return results
     }
-    
-    
-    
-    
+
 }
 
