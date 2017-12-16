@@ -25,9 +25,9 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     var scheduleDataSource:[[NSManagedObject]] = [[]]
     var filteredDataSource:[[NSManagedObject]] = [[]]
     var currentIndex:Int = 0
-    var isSelected:[[Bool]] = [[]]
     var searchController:UISearchController!
     var shouldShowSearchResults = false
+    var isSelectedIndex:[Int] = [-1,-1,-1,-1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchString = searchController.searchBar.text
-
     }
     
     
@@ -94,8 +93,22 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isSelectedIndex[currentIndex] = indexPath.row
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == isSelectedIndex[currentIndex]{
+            return CGFloat(150)
+        }
+        else{
+            return CGFloat(80)
+        }
     }
     
     

@@ -31,7 +31,12 @@ extension UIViewController{
             self.present(safariViewController, animated: true,completion: nil)
         }
         
-        let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
+        let developerAction = UIAlertAction(title: "Developers", style: .default){
+            Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let developerViewController = storyboard.instantiateViewController(withIdentifier: "DevelopersPage")
+            self.present(developerViewController, animated: true, completion: nil)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         

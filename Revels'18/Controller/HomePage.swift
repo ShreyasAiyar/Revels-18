@@ -36,7 +36,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func configureScrollBar(){
-        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.2)
+        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.4)
         scrollView.frame = imageFrame
         scrollView.delegate = self
         
@@ -93,10 +93,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.backgroundColor = UIColor.white
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return sectionHeaders[section]
-//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderCell") as! HomeHeaderCell
