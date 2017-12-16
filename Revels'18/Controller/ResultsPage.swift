@@ -25,22 +25,14 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItems()
-        
-        //Mark: Configuring Navigation Controller
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.clipsToBounds = true
-        segmentControl.tintColor = pinkColor
+        configureNavigationBar()
         resultsCollectionView.delegate = self
         resultsCollectionView.dataSource = self
-        
-        //MARK: Configuring Search Bar
+        configureNavigationBar()
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
-        
-        //MARK: Configure Bar Button Items
-        
-        
     }
+
     
     override func searchButtonPressed() {
         searchBar.alpha = 0
@@ -63,65 +55,17 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         hideSearchBar()
     }
     
-    
-    //MARK: More Button Clicked
-    override func moreButtonClicked(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.view.tintColor = pinkColor
-        let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
-            Void in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutRevels")
-            self.present(aboutViewController, animated: true, completion: nil)
-        }
-        let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default, handler: nil)
-        
-        alertController.addAction(aboutAction)
-        alertController.addAction(cancelAction)
-        alertController.addAction(developerAction)
-        alertController.addAction(proshowAction)
-        
-        present(alertController, animated: true){
-        }
-    }
-    
-    //MARK: Reload Data When Reload Button Clicked
+
     override func reloadData(){
         
     }
-    
-    //MARK: Create Bar Button Items Programatically
-    override func createBarButtonItems(){
-        let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
-        moreButtonItem.image = UIImage(named: "More")
-        moreButtonItem.tintColor = pinkColor
-        
-        let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Synchronize"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(reloadData))
-        reloadDataButtonItem.tintColor = pinkColor
-        
-        let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"Search"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(searchButtonPressed))
-        searchBarButtonItem.tintColor = pinkColor
-        
-        self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
-        self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
-        
-        self.navigationItem.title = "Results"
-        
-    }
-    
     
     //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
         cell.eventName.text = "Conclave"
         cell.roundNo.text = "1"
-        
-        
-        cell.layer.cornerRadius = 10
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -135,7 +79,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = (self.view.bounds.width)/5 - 10
         let yourHeight = yourWidth + 20
-        
         return CGSize(width: yourWidth, height: yourHeight)
     }
     

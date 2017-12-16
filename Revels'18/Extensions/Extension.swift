@@ -74,11 +74,8 @@ extension UIViewController{
     }
     
     func configureNavigationBar(){
+        
         let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
-        self.navigationController?.navigationBar.tintColor = pinkColor
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.clipsToBounds = true
         

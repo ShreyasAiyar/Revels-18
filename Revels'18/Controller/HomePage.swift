@@ -20,7 +20,20 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        
+        configureScrollBar()
+    }
+    
+    override func configureNavigationBar() {
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func configureScrollBar(){
         let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
         scrollView.frame = imageFrame
         scrollView.delegate = self
@@ -42,11 +55,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         scrollView.addSubview(proshowBanner)
         
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height)
-        
-        
         tableView.tableHeaderView = scrollView
         
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+        
     }
     
     //MARK: Change PageWidth When More Images Added
@@ -64,8 +76,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
     }
-
-    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,7 +88,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
-        cell.layer.cornerRadius = 10
         cell.backgroundColor = UIColor.white
         return cell
     }
@@ -86,22 +95,19 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerFrame:CGRect = CGRect(x: 0, y: 0, width: self.view.frame.width
-            , height: 80)
+        let headerFrame:CGRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80)
         let headerView = UIView(frame: headerFrame)
         
-        
-        let labelFrame:CGRect = CGRect(x: 10, y: 0, width: 100, height: 50)
+        let labelFrame:CGRect = CGRect(x: 10, y: 0, width: 150, height: 50)
 
         let headerLabel = UILabel(frame: labelFrame)
-        headerLabel.textColor = pinkColor
         headerLabel.font = UIFont.boldSystemFont(ofSize: headerLabel.font.pointSize)
         headerView.addSubview(headerLabel)
         
-        let headerButton:UIButton = UIButton(type: UIButtonType.system)
-        headerButton.setTitle("More", for: UIControlState.normal)
-        headerButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+        let headerButton:UIButton = UIButton(type: .custom)
+        headerButton.setTitle("See All", for: UIControlState.normal)
         let buttonFrame:CGRect = CGRect(x: (view.frame.width - 70), y: 0, width: 80, height: 50)
+        headerButton.tintColor = pinkColor
         headerButton.frame = buttonFrame
         headerView.addSubview(headerButton)
         
@@ -114,46 +120,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else if(section == 2){
             headerLabel.text = "Latest Results"
         }
-        
-        
         return headerView
     }
     
     @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
-    
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.view.tintColor = pinkColor
-        let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
-            Void in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutRevels")
-            self.present(aboutViewController, animated: true, completion: nil)
-        }
-        
-        let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
-            Void in
-            let myURL = URL(string: "https://www.theverge.com")
-            let safariViewController = SFSafariViewController(url: myURL!)
-            self.present(safariViewController, animated: true,completion: nil)
-        }
-        
-        
-        let developerAction = UIAlertAction(title: "Developers", style: .default, handler: nil)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        
-        alertController.addAction(aboutAction)
-        alertController.addAction(cancelAction)
-        alertController.addAction(developerAction)
-        alertController.addAction(proshowAction)
-        
-        present(alertController, animated: true){
-        }
+        moreButtonClicked()
     }
-    
-    
-    
-   
-    
-
 }
