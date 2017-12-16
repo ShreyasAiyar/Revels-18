@@ -25,6 +25,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func configureNavigationBar() {
         super.configureNavigationBar()
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
     
     
@@ -33,7 +36,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func configureScrollBar(){
-        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
+        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.2)
         scrollView.frame = imageFrame
         scrollView.delegate = self
         
@@ -95,37 +98,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //        return sectionHeaders[section]
 //    }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderCell") as! HomeHeaderCell
+        headerCell.nameLabel.text = sectionHeaders[section]
+        return headerCell
+    }
     
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//        let headerFrame:CGRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80)
-//        let headerView = UIView(frame: headerFrame)
-//
-//        let labelFrame:CGRect = CGRect(x: 10, y: 0, width: 150, height: 50)
-//
-//        let headerLabel = UILabel(frame: labelFrame)
-//        headerLabel.font = UIFont.boldSystemFont(ofSize: headerLabel.font.pointSize)
-//        headerView.addSubview(headerLabel)
-//
-//        let headerButton:UIButton = UIButton(type: .custom)
-//        headerButton.setTitle("See All", for: UIControlState.normal)
-//        let buttonFrame:CGRect = CGRect(x: (self.view.frame.width - 70), y: 0, width: 80, height: 50)
-//        headerButton.tintColor = pinkColor
-//        headerButton.frame = buttonFrame
-//        headerView.addSubview(headerButton)
-//
-//        if(section == 0){
-//            headerLabel.text = "Today's Events"
-//        }
-//        else if(section == 1){
-//            headerLabel.text = "Categories"
-//        }
-//        else if(section == 2){
-//            headerLabel.text = "Latest Results"
-//        }
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(50)
+    }
     
     @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
         moreButtonClicked()

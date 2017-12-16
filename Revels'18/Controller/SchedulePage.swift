@@ -11,7 +11,7 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchResultsUpdating{
     
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -23,16 +23,25 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     let scheduleNetworkingObject = ScheduleNetworking()
     let categoriesURL = "https://api.mitportals.in/schedule/"
     var scheduleDataSource:[[NSManagedObject]] = [[]]
+    var filteredDataSource:[[NSManagedObject]] = [[]]
     var currentIndex:Int = 0
     var isSelected:[[Bool]] = [[]]
-    var searchBar = UISearchBar()
+    var searchController:UISearchController!
+    var shouldShowSearchResults = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
         createBarButtonItems()
         configureNavigationBar()
+        configureSearchController()
         fetchSchedules()
+    }
+    
+    func configureSearchController(){
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
     }
     
     //MARK: Reload Data When Reload Button Clicked
@@ -43,23 +52,32 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
 
     //MARK: Configure Search Button
     override func searchButtonPressed() {
-        searchBar.alpha = 0
+        searchController.searchBar.alpha = 0
         navigationItem.setLeftBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems(nil, animated: true)
-        navigationItem.titleView = searchBar
+        navigationItem.titleView = searchController.searchBar
         UIView.animate(withDuration: 0.5, animations: {
-            self.searchBar.alpha = 1
+            self.searchController.searchBar.alpha = 1
         }, completion: { finished in
-            self.searchBar.becomeFirstResponder()
+            self.searchController.searchBar.becomeFirstResponder()
         })
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = true
         searchBar.showsCancelButton = true
+        tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
         hideSearchBar()
+        tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+
     }
     
     

@@ -65,7 +65,6 @@ extension UIViewController{
     }
     
     func searchButtonPressed(){
-        
     }
     
     func hideSearchBar(){
