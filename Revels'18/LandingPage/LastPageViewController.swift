@@ -18,8 +18,8 @@ class LastPageViewController: UIViewController {
         super.viewDidLoad()
         
         continueButton.setTitleColor(UIColor.white, for: .normal)
-        continueButton.setTitleColor(UIColor.red, for: .highlighted)
-        continueButton.layer.cornerRadius = 8
+        continueButton.setTitleColor(UIColor.lightGray, for: .highlighted)
+        continueButton.layer.cornerRadius = 15
         continueButton.alpha = 0
         self.continueButton.frame.origin.y -= 20
         UIView.animate(withDuration: 1){

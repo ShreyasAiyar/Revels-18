@@ -12,7 +12,7 @@ class HomeHeaderCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var seeAllButton: UIButton!
-    
+    @IBOutlet weak var grayView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

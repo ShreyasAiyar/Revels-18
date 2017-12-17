@@ -23,23 +23,16 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
         configureScrollBar()
     }
     
-    override func configureNavigationBar() {
-        super.configureNavigationBar()
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
-    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
     func configureScrollBar(){
-        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
+        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.3)
         scrollView.frame = imageFrame
         scrollView.delegate = self
-        scrollView.backgroundColor = UIColor.white
+        scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
         revelsBanner.image = UIImage(named: "Revels Banner")
         revelsBanner.contentMode = .scaleToFill
@@ -105,6 +98,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(50)
     }
+
     
     @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
         moreButtonClicked()
