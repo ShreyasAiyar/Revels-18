@@ -36,19 +36,21 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func configureScrollBar(){
-        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.4)
+        let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.5)
         scrollView.frame = imageFrame
         scrollView.delegate = self
-        
-        let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+        scrollView.backgroundColor = UIColor.white
+        let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
         revelsBanner.image = UIImage(named: "Revels Banner")
         revelsBanner.contentMode = .scaleToFill
         revelsBanner.clipsToBounds = true
+        revelsBanner.layer.cornerRadius = 5
         
-        let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+        let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width + 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
         proshowBanner.image = UIImage(named: "Proshow Banner")
         proshowBanner.contentMode = .scaleToFill
         proshowBanner.clipsToBounds = true
+        proshowBanner.layer.cornerRadius = 5
         
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isScrollEnabled = false

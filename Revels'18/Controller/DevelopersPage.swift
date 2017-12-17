@@ -11,9 +11,16 @@ import UIKit
 class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     var developerDataSource:[Developers] = []
-
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor.clear
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+        self.tableView.backgroundView = blurEffectView
+        self.tableView.separatorEffect = UIVibrancyEffect(blurEffect: blurEffect)
         configureDeveloperController()
     }
     
