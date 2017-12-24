@@ -14,9 +14,11 @@ import NVActivityIndicatorView
 extension UIViewController{
     
     func moreButtonClicked(){
-        let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
+        //let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
+        let whiteColor:UIColor = UIColor.white
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.view.tintColor = pinkColor
+            alertController.view.tintColor = whiteColor
         let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
             Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -51,15 +53,16 @@ extension UIViewController{
     
     func createBarButtonItems(){
         let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
+        let whiteColor:UIColor = UIColor.white
         let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
         moreButtonItem.image = UIImage(named: "More")
-        moreButtonItem.tintColor = pinkColor
+        moreButtonItem.tintColor = whiteColor
         
         let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadData))
-        reloadDataButtonItem.tintColor = pinkColor
+        reloadDataButtonItem.tintColor = whiteColor
         
         let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
-        searchBarButtonItem.tintColor = pinkColor
+        searchBarButtonItem.tintColor = whiteColor
         
         self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
         self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
@@ -79,7 +82,7 @@ extension UIViewController{
     
     func configureNavigationBar(){
         self.navigationController?.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.clipsToBounds = true
+        self.navigationController?.navigationBar.isTranslucent = false
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
     }
     
