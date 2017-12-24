@@ -33,19 +33,15 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         configureNavigationBar()
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
+        searchBar.tintColor = UIColor.white
     }
 
     
     override func searchButtonPressed() {
-        searchBar.alpha = 0
-        navigationItem.setLeftBarButtonItems(nil, animated: true)
-        navigationItem.setRightBarButtonItems(nil, animated: true)
+        super.searchButtonPressed()
+        self.searchBar.becomeFirstResponder()
+        searchBar.alpha = 1
         navigationItem.titleView = searchBar
-        UIView.animate(withDuration: 0.5, animations: {
-            self.searchBar.alpha = 1
-        }, completion: { finished in
-            self.searchBar.becomeFirstResponder()
-        })
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

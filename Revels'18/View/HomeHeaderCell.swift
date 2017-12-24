@@ -8,20 +8,26 @@
 
 import UIKit
 
+protocol SelectMoreButtonProtocol {
+    func selectButtonClicked(currentIndex:Int)
+}
+
 class HomeHeaderCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var seeAllButton: UIButton!
-    @IBOutlet weak var grayView: UIView!
+    var currentIndex:Int = 0
+    var delegate:SelectMoreButtonProtocol!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    @IBAction func seeAllButtonClicked(_ sender: Any) {
-        
+    @IBAction func seeAllButtonClicked(_ sender: UIButton) {
+        self.delegate.selectButtonClicked(currentIndex:currentIndex)
     }
     
 
 }
+

@@ -9,7 +9,8 @@
 import UIKit
 import SafariServices
 
-class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol {
+    
     
     @IBOutlet weak var tableView: UITableView!
     let sectionHeaders:[String] = ["Today's Events","Schedule","Results"]
@@ -19,6 +20,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureNavigationBar()
         configureScrollBar()
     }
@@ -91,7 +93,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderCell") as! HomeHeaderCell
+        headerCell.delegate = self
         headerCell.nameLabel.text = sectionHeaders[section]
+        headerCell.currentIndex = section
         return headerCell
     }
     
@@ -100,7 +104,17 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
 
     
-    @IBAction func moreButtonClicked(_ sender: UIBarButtonItem) {
-        moreButtonClicked()
+    func selectButtonClicked(currentIndex: Int) {
+        let storyboardObject = UIStoryboard(name: "Main", bundle: nil)
+        switch currentIndex{
+        case 0:
+            self.tabBarController?.selectedIndex = 1
+        case 1:
+            self.tabBarController?.selectedIndex = 2
+        case 2:
+            self.tabBarController?.selectedIndex = 4
+        default:
+            print("Does Nothing")
+        }
     }
 }

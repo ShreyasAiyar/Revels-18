@@ -64,6 +64,7 @@ extension UIViewController{
         let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
         searchBarButtonItem.tintColor = whiteColor
         
+        
         self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
         self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
     }
@@ -73,6 +74,8 @@ extension UIViewController{
     }
     
     func searchButtonPressed(){
+        navigationItem.setLeftBarButtonItems(nil, animated: true)
+        navigationItem.setRightBarButtonItems(nil, animated: true)
     }
     
     func hideSearchBar(){
