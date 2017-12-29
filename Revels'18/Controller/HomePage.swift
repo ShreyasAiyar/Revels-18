@@ -13,7 +13,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     
     @IBOutlet weak var tableView: UITableView!
-    let sectionHeaders:[String] = ["Today's Events","Schedule","Results"]
+    let sectionHeaders:[String] = ["Today's Events","Schedule","Results", "Instagram Feed"]
     let scrollView:UIScrollView = UIScrollView()
     let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
 
@@ -81,6 +81,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
         cell.backgroundColor = UIColor.white
         return cell
@@ -106,7 +107,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
 
     
     func selectButtonClicked(currentIndex: Int) {
-        let storyboardObject = UIStoryboard(name: "Main", bundle: nil)
         switch currentIndex{
         case 0:
             self.tabBarController?.selectedIndex = 1

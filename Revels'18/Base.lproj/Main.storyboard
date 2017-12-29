@@ -80,7 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="u79-lC-9dF" id="gPv-Kg-Lyb"/>
-                        <segue destination="gJG-Kx-nAg" kind="show" id="fjz-nQ-gZB"/>
+                        <segue destination="gJG-Kx-nAg" kind="show" identifier="InitialSegue" id="fjz-nQ-gZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ome-cI-qKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,6 +110,22 @@
             </objects>
             <point key="canvasLocation" x="945" y="659"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="qBA-ck-xo8">
+            <objects>
+                <viewController id="gtG-dj-Vcz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vi9-ot-a9c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EqQ-il-ESV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Categories" id="oDj-Gy-wbD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6q-li-a8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3062" y="-1005"/>
+        </scene>
         <!--Schedule Page-->
         <scene sceneID="tlS-1Y-rXg">
             <objects>
@@ -129,7 +145,7 @@
                                             <segment title="Day 3"/>
                                             <segment title="Day 4"/>
                                         </segments>
-                                        <color key="tintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segmentedValueChanged:" destination="D5V-JN-PUo" eventType="valueChanged" id="HRk-Ep-qw7"/>
                                         </connections>
@@ -146,7 +162,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScheduleCell" rowHeight="80" id="zbJ-1F-ISy" customClass="ScheduleCell" customModule="Revels_18" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScheduleCell" rowHeight="80" id="zbJ-1F-ISy" customClass="ScheduleCell" customModule="Revels_18" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zbJ-1F-ISy" id="cOH-au-76F">
@@ -240,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sES-Xg-iCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082.5" y="-144.71830985915494"/>
+            <point key="canvasLocation" x="3062" y="-144"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="PZ2-su-UOz">
@@ -254,7 +270,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" rowHeight="100" id="lix-y0-FbI" customClass="HomeViewCell" customModule="Revels_18" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" rowHeight="100" id="lix-y0-FbI" customClass="HomeViewCell" customModule="Revels_18" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lix-y0-FbI" id="B09-VV-DAz">
@@ -348,6 +364,15 @@
                                             <outlet property="seeAllButton" destination="ntc-Fg-cSL" id="PZw-CL-KDg"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InstaCell" rowHeight="300" id="38w-re-zuf" customClass="HomeHeaderCell" customModule="Revels_18" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="205.5" width="375" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="38w-re-zuf" id="7gh-11-khG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="MEb-MX-0xR" id="ukx-fq-ho4"/>
@@ -365,17 +390,17 @@
                         <viewLayoutGuide key="safeArea" id="oAP-3Q-KC4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Ufb-eO-ax1">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="Add-User" id="dtp-E6-LKe">
+                        <barButtonItem key="leftBarButtonItem" image="Add-User" id="dtp-E6-LKe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="More" id="hmC-rA-o47">
+                            <barButtonItem image="More" id="hmC-rA-o47">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="moreButtonSelected:" destination="MEb-MX-0xR" id="jBn-eg-Ybw"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="Favorites" id="gps-tI-h9k">
+                            <barButtonItem image="Favorites" id="gps-tI-h9k">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -386,12 +411,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeU-xP-pV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082.5" y="655.9859154929577"/>
+            <point key="canvasLocation" x="3082.4000000000001" y="655.32233883058473"/>
         </scene>
         <!--Favorites Page-->
         <scene sceneID="NCU-C9-Whx">
             <objects>
-                <viewController title="Favorites Page" id="nc1-7b-cuO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouritesPage" title="Favorites Page" id="nc1-7b-cuO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jLa-eU-2p5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -403,7 +428,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Favourites" id="f8b-nR-Szw">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="Lbu-gX-mVM">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Lbu-gX-mVM">
                                             <color key="tintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
                                     </navigationItem>
@@ -419,7 +444,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jFq-Va-8sM">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavouritesCell" id="jFq-Va-8sM">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -475,7 +500,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeveloperCell" rowHeight="80" id="bYL-Yq-phG" customClass="DeveloperCell" customModule="Revels_18" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeveloperCell" rowHeight="80" id="bYL-Yq-phG" customClass="DeveloperCell" customModule="Revels_18" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bYL-Yq-phG" id="1Js-7K-YcN">
@@ -490,7 +515,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVo-K8-RJi">
-                                                    <rect key="frame" x="90" y="29" width="39.5" height="20"/>
+                                                    <rect key="frame" x="90" y="30" width="39.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -499,6 +524,7 @@
                                             <constraints>
                                                 <constraint firstItem="0bt-2U-4hU" firstAttribute="top" secondItem="1Js-7K-YcN" secondAttribute="top" constant="5" id="5LW-Ah-62a"/>
                                                 <constraint firstItem="UVo-K8-RJi" firstAttribute="leading" secondItem="0bt-2U-4hU" secondAttribute="trailing" constant="10" id="9Mz-Qr-wwF"/>
+                                                <constraint firstAttribute="trailing" secondItem="UVo-K8-RJi" secondAttribute="trailing" constant="245.5" id="AjR-em-osr"/>
                                                 <constraint firstItem="UVo-K8-RJi" firstAttribute="centerY" secondItem="1Js-7K-YcN" secondAttribute="centerY" id="HGc-4J-tBW"/>
                                                 <constraint firstAttribute="bottom" secondItem="0bt-2U-4hU" secondAttribute="bottom" constant="5" id="Kfg-FV-ZFp"/>
                                                 <constraint firstItem="0bt-2U-4hU" firstAttribute="leading" secondItem="1Js-7K-YcN" secondAttribute="leading" constant="10" id="mrA-gJ-RIC"/>
@@ -642,7 +668,7 @@
                                             <segment title="Event Results"/>
                                             <segment title="Sports Results"/>
                                         </segments>
-                                        <color key="tintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -695,7 +721,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="About Revels" id="eLM-BB-ogg">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="9Vg-8i-2gP">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="9Vg-8i-2gP">
                                             <color key="tintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="doneButtonClicked:" destination="GtM-7r-lSC" id="gnT-9F-Zc9"/>
@@ -741,7 +767,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="23M-hh-Fsp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -771,7 +797,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="gz7-7K-mVk">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -797,7 +823,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="j5y-nA-cFB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -823,7 +849,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="qO2-og-5ae">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -833,48 +859,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="L1m-5p-T5y" kind="relationship" relationship="rootViewController" id="F1v-iC-AsH"/>
+                        <segue destination="gtG-dj-Vcz" kind="relationship" relationship="rootViewController" id="R4p-Sn-Bfb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czJ-Ck-8Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2014" y="-1004"/>
-        </scene>
-        <!--Categories-->
-        <scene sceneID="tyE-qJ-lEK">
-            <objects>
-                <collectionViewController storyboardIdentifier="CategoriesPage" id="L1m-5p-T5y" customClass="CategoriesPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Og-dm-9b2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tnv-wY-8F6">
-                            <size key="itemSize" width="90" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CategoriesCell" id="rX1-hq-yJZ">
-                                <rect key="frame" x="0.0" y="0.0" width="90" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="90" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                                <size key="customSize" width="90" height="100"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="L1m-5p-T5y" id="Yxg-72-vuC"/>
-                            <outlet property="delegate" destination="L1m-5p-T5y" id="ddV-ho-PYx"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Categories" id="FGd-gB-0vR"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QdW-Ge-DcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3062" y="-1004"/>
         </scene>
         <!--Revels Cup-->
         <scene sceneID="mix-lT-EUW">
@@ -885,7 +875,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7Kd-eB-iZg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92710572479999998" green="0.4309560657" blue="0.4745012522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
