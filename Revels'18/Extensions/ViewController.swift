@@ -14,11 +14,8 @@ import NVActivityIndicatorView
 extension UIViewController{
     
     func moreButtonClicked(){
-        //let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
-        let whiteColor:UIColor = UIColor.white
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alertController.view.tintColor = whiteColor
         let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
             Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -39,9 +39,9 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func configureSearchController(){
         searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search here..."
-        searchController.searchBar.delegate = self
     }
     
     //MARK: Reload Data When Reload Button Clicked

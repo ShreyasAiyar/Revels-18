@@ -20,15 +20,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureNavigationBar()
         configureScrollBar()
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+
     
     func configureScrollBar(){
         let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.3)
@@ -102,6 +97,12 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(50)
     }
+    
+    
+    @IBAction func moreButtonSelected(_ sender: UIBarButtonItem) {
+        super.moreButtonClicked()
+    }
+    
 
     
     func selectButtonClicked(currentIndex: Int) {
