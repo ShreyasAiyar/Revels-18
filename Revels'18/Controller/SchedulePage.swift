@@ -11,7 +11,7 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchResultsUpdating{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -25,24 +25,20 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     var scheduleDataSource:[[NSManagedObject]] = [[]]
     var filteredDataSource:[[NSManagedObject]] = [[]]
     var currentIndex:Int = 0
-    var searchController:UISearchController!
+    var searchBar = UISearchBar()
     var shouldShowSearchResults = false
     var isSelectedIndex:[Int] = [-1,-1,-1,-1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         createBarButtonItems()
         configureNavigationBar()
-        configureSearchController()
         fetchSchedules()
     }
     
-    func configureSearchController(){
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search here..."
-    }
+
+    
     
     //MARK: Reload Data When Reload Button Clicked
     override func reloadData(){
@@ -51,17 +47,16 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     }
 
     //MARK: Configure Search Button
-    override func searchButtonPressed() {
-        searchController.searchBar.alpha = 0
-        navigationItem.setLeftBarButtonItems(nil, animated: true)
-        navigationItem.setRightBarButtonItems(nil, animated: true)
-        navigationItem.titleView = searchController.searchBar
-        UIView.animate(withDuration: 0.5, animations: {
-            self.searchController.searchBar.alpha = 1
-        }, completion: { finished in
-            self.searchController.searchBar.becomeFirstResponder()
-        })
+     override func searchButtonPressed() {
+        super.searchButtonPressed()
+        searchBar.text = ""
+        searchBar.prompt = "Search Here"
+        searchBar.showsCancelButton = true
+        searchBar.alpha = 1
+        navigationItem.titleView = searchBar
+        self.searchBar.becomeFirstResponder()
     }
+    
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResults = true
@@ -74,10 +69,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         hideSearchBar()
         tableView.reloadData()
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        //let searchString = searchController.searchBar.text
-    }
+
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
