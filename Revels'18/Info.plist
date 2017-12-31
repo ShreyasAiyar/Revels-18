@@ -3,7 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>UIApplicationShortcutItems</key>
-	<array/>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>Manipal.Revels-18.SchedulePage</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Schedule</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Calendar</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

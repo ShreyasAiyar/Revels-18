@@ -17,16 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
-//        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
-//        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
-//            UserDefaults.standard.set(true, forKey: "notFirstInApp")
-//            window?.rootViewController = landingPageViewController
-//        }
-//        else{
-//            window?.rootViewController = tabBarController
-//        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
+        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
+            UserDefaults.standard.set(true, forKey: "notFirstInApp")
+            window?.rootViewController = landingPageViewController
+        }
+        else{
+            window?.rootViewController = tabBarController
+        }
         
 
         return true
@@ -98,6 +98,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+         let tabBarController = self.window?.rootViewController as? UITabBarController
+        
+        if shortcutItem.type == "Manipal.Revels-18.SchedulePage"{
+            tabBarController?.selectedIndex = 1
+        }
+        else if shortcutItem.type == "Manipal.Revels-18.ResultsPage"{
+            tabBarController?.selectedIndex = 4
         }
     }
 

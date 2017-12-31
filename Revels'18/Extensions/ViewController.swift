@@ -85,5 +85,13 @@ extension UIViewController{
         NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
     }
     
+    func presentEmptyView(){
+        
+    }
+    
+    func presentNoNetworkView(){
+        
+    }
+    
     
 }

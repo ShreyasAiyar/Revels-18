@@ -19,6 +19,7 @@
 		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B14DB3741FEDF5310065CDD8 /* CategoriesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14DB3731FEDF5310065CDD8 /* CategoriesPage.swift */; };
 		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
+		B17E7E341FF87823009F3950 /* InstaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E7E331FF87823009F3950 /* InstaCell.xib */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
@@ -59,6 +60,7 @@
 		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B14DB3731FEDF5310065CDD8 /* CategoriesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPage.swift; sourceTree = "<group>"; };
 		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
+		B17E7E331FF87823009F3950 /* InstaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstaCell.xib; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = LandingPage;
 			sourceTree = "<group>";
 		};
+		B17E7E351FF87C97009F3950 /* NIB Files */ = {
+			isa = PBXGroup;
+			children = (
+				B17E7E331FF87823009F3950 /* InstaCell.xib */,
+			);
+			path = "NIB Files";
+			sourceTree = "<group>";
+		};
 		B1993B7B1FE3ED200036EA66 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,10 +166,11 @@
 				B1993B7B1FE3ED200036EA66 /* Extensions */,
 				B1D3CB981FCEB94500E8AD7A /* Model */,
 				B1D3CB971FCEB93F00E8AD7A /* View */,
+				B1D3CB961FCEB92E00E8AD7A /* Controller */,
 				B111C98B1FD31C73005DB863 /* CoreData */,
 				B1D3CB931FCEB58D00E8AD7A /* Networking */,
 				B137876E1FD284CD00B7120D /* LandingPage */,
-				B1D3CB961FCEB92E00E8AD7A /* Controller */,
+				B17E7E351FF87C97009F3950 /* NIB Files */,
 				B1D3CB921FCEB56F00E8AD7A /* Other */,
 				B1D3CB8C1FCEB55300E8AD7A /* Info.plist */,
 				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
@@ -303,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */,
+				B17E7E341FF87823009F3950 /* InstaCell.xib in Resources */,
 				B1044B821FE24986001141B7 /* Media.xcassets in Resources */,
 				B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */,
 			);
