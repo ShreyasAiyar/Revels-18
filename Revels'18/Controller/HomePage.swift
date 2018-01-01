@@ -130,7 +130,12 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         super.moreButtonClicked()
     }
     
-
+    @IBAction func favoriteButtonSelected(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
+        self.present(favoritesViewController, animated: true, completion: nil)
+    }
+    
     
     func selectButtonClicked(currentIndex: Int) {
         switch currentIndex{

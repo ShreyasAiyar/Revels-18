@@ -19,6 +19,7 @@ struct Schedules{
     let etime:String
     let day:String
     let date:String
+    let favorite:Bool
     
     init(dictionary:Dictionary<String,String>) {
         self.eid = dictionary["eid"]!
@@ -31,12 +32,8 @@ struct Schedules{
         self.etime = dictionary["etime"]!
         self.day = dictionary["day"]!
         self.date = dictionary["date"]!
-        
+        self.favorite = false
     }
-    
-    
-    
-    
-    
+
 }
 

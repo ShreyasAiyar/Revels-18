@@ -74,7 +74,7 @@ class CategoriesNetworking{
         
     }
     
-    func retreiveCategoriesFromCoreData(){
+    func fetchCategoriesFromCoreData(){
         
     
         

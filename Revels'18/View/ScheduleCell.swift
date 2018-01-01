@@ -15,6 +15,7 @@ class ScheduleCell: UITableViewCell{
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
+    var eid:String!
     
     var delegate:AddToFavoritesProtocol!
     
@@ -26,10 +27,10 @@ class ScheduleCell: UITableViewCell{
     
     @IBAction func favoritesButtonClicked(_ sender: UIButton) {
         favouriteButton.isSelected = true
-        self.delegate.addToFavorites()
+        self.delegate.addToFavorites(eid: self.eid)
     }
 }
 
 protocol AddToFavoritesProtocol{
-    func addToFavorites()
+    func addToFavorites(eid:String)
 }

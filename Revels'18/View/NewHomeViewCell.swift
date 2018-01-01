@@ -15,5 +15,4 @@ class NewHomeViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.layer.cornerRadius = 5
     }
-    
 }

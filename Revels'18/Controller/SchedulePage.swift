@@ -32,13 +32,14 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        favoritesView.layer.cornerRadius = 5
         createBarButtonItems()
         configureNavigationBar()
         fetchSchedules()
     }
     
-    func addToFavorites() {
-        favoritesView.layer.cornerRadius = 5
+    func addToFavorites(eid:String) {
+        scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
         self.view.addSubview(favoritesView)
         favoritesView.center = self.tableView.center
         favoritesView.alpha = 0
@@ -101,9 +102,16 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
         cell.delegate = self
+        cell.eid = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "eid") as! String
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
+        if(scheduleDataSource[currentIndex][indexPath.row].value(forKey: "favorite") as! Bool  == true){
+            cell.favouriteButton.isSelected = true
+        }
+        else{
+            cell.favouriteButton.isSelected = false
+        }
         return cell
     }
     
@@ -128,6 +136,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         print(currentIndex)
         tableView.reloadData()
     }
+    
     
     //MARK: Networking Call - Fetch Schedules
     func fetchSchedules(){

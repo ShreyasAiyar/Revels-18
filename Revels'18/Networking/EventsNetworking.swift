@@ -14,30 +14,6 @@ class EventsNetworking{
     
     let httpRequestObject = HTTPRequest()
     
-    
-    func eventsMain(){
-        let eventsURL = "https://api.mitportals.in/events/"
-        var events:[Events] = []
-        
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: eventsURL){
-            result in
-            switch result{   
-            case .Success(let parsedJSON):
-                for event in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let eventObject = Events(dictionary: event)
-                    events.append(eventObject)
-                    
-                }
-                self.saveEventsToCoreData(eventsData: events)
-                
-            case .Error(let errorMessage):
-                print(errorMessage)
-                
-            }
-        }
-        
-    }
-    
     func saveEventsToCoreData(eventsData:[Events]){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return

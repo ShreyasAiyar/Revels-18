@@ -9,12 +9,12 @@
 import Foundation
 
 struct Results{
-    let tid:String
-    let cat:String
-    let eve:String
-    let evename:String
-    let round:String
-    let pos:String
+    var tid:String
+    var cat:String
+    var eve:String
+    var evename:String
+    var round:String
+    var pos:String
     
     init(dictionary:Dictionary<String,String>) {
         self.tid = dictionary["tid"]!

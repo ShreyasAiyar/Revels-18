@@ -75,15 +75,27 @@ class ResultNetworking{
         
     }
     
-    func fetchResultsFromCoreData() -> [NSManagedObject]{
+    func fetchResultsFromCoreData() -> [Results]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         let resultFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Result")
         
-        var results:[NSManagedObject] = []
-        results = try! managedContext.fetch(resultFetchRequest)
-        return results
+        var resultsCoreData:[NSManagedObject] = []
+        var resultsArray:[Results] = []
+        resultsCoreData = try! managedContext.fetch(resultFetchRequest)
+        
+        for result in resultsCoreData{
+            var resultDictionary:Dictionary<String,String> = [:]
+            resultDictionary["cat"] = result.value(forKey: "cat") as? String
+            resultDictionary["eve"] = result.value(forKey: "eve") as? String
+            resultDictionary["evename"] = result.value(forKey: "evename") as? String
+            resultDictionary["pos"] = result.value(forKey: "pos") as? String
+            resultDictionary["round"] = result.value(forKey: "round") as? String
+            resultDictionary["tid"] = result.value(forKey: "tid") as? String
+            let resultObject = Results(dictionary: resultDictionary)
+            resultsArray.append(resultObject)
+        }
+        return resultsArray
     }
-
 }
 

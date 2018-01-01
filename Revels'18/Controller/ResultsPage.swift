@@ -20,9 +20,11 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     let resultsURL = "https://api.mitportals.in/results/"
     let resultNetworkingObject = ResultNetworking()
-    var resultsDataSource:[NSManagedObject] = []
+    var resultsDataSource:[Results] = []
+    var filteredDataSource:[Results] = []
     let httpRequestObject = HTTPRequest()
     var searchBar = UISearchBar()
+    var searchActive:Bool = false
     
     
     
@@ -36,7 +38,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         searchBar.tintColor = UIColor.white
     }
 
-    
     override func searchButtonPressed() {
         super.searchButtonPressed()
         self.searchBar.becomeFirstResponder()
@@ -44,15 +45,31 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         navigationItem.titleView = searchBar
     }
     
+    //MARK: Search Functions
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
         hideSearchBar()
     }
     
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchPredicate = NSPredicate(format: "%@ in cat",searchText)
+    
+    }
+    
     override func reloadData(){
         resultsMain()
         self.resultsCollectionView.reloadData()
@@ -61,8 +78,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
-        cell.eventName.text = resultsDataSource[indexPath.row].value(forKey: "eve") as? String
-        cell.roundNo.text = resultsDataSource[indexPath.row].value(forKey: "round") as? String
+        cell.eventName.text = resultsDataSource[indexPath.row].evename
+        cell.roundNo.text = resultsDataSource[indexPath.row].round
         return cell
     }
     
@@ -75,18 +92,15 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = (self.view.bounds.width)/4 - 10
-        let yourHeight = yourWidth + 20
+        let yourWidth = 100
+        let yourHeight = 120
         return CGSize(width: yourWidth, height: yourHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
+
 
     //MARK: Get JSON Data
     func resultsMain(){
@@ -108,7 +122,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
             case .Error(let errorMessage):
                 print(errorMessage)
                 DispatchQueue.main.async {
-                    NVActivityIndicatorPresenter.sharedInstance.setMessage("You Seem To Be Offline")
+                    
                 }
                 
             }
