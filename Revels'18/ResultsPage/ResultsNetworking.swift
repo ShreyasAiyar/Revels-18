@@ -38,7 +38,6 @@ class ResultNetworking{
     }
     
     func saveResultsToCoreData(resultData:[Results]){
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }

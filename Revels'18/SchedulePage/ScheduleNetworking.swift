@@ -46,6 +46,7 @@ class ScheduleNetworking{
             schedule.setValue(scheduleObject.round, forKey: "round")
             schedule.setValue(scheduleObject.stime, forKey: "stime")
             schedule.setValue(scheduleObject.venue, forKey: "venue")
+            schedule.setValue(false, forKey: "favorite")
             do{
                 try managedContext.save()
             }

@@ -759,7 +759,7 @@
                     <connections>
                         <outlet property="resultsCollectionView" destination="UQN-86-xpA" id="zU5-kB-X2E"/>
                         <outlet property="segmentControl" destination="8x7-Em-sMg" id="fiR-mr-YKD"/>
-                        <outlet property="segmentView" destination="xz8-FQ-6gJ" id="078-w2-dfe"/>
+                        <outlet property="segmentView" destination="xz8-FQ-6gJ" id="IkX-qn-xVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1z-mp-maC" userLabel="First Responder" sceneMemberID="firstResponder"/>

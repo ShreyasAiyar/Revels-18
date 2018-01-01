@@ -12,9 +12,8 @@ import CoreData
 
 class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
-    
-    
     let segmentLabels:[String] = ["Results","Sports Results"]
+    
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var resultsCollectionView: UICollectionView!
@@ -25,7 +24,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     let httpRequestObject = HTTPRequest()
     var searchBar = UISearchBar()
     var searchActive:Bool = false
-    
     
     
     override func viewDidLoad() {
@@ -66,7 +64,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let searchPredicate = NSPredicate(format: "%@ in cat",searchText)
     
     }
     
@@ -92,8 +89,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = 100
-        let yourHeight = 120
+        let yourWidth = self.view.bounds.width/3 - 10
+        let yourHeight = yourWidth + 30
         return CGSize(width: yourWidth, height: yourHeight)
     }
     
@@ -106,23 +103,22 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     func resultsMain(){
         startAnimating()
         var results:[Results] = []
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){
-            status in
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){ status in
             switch status{
             case .Success(let parsedJSON):
                 for result in parsedJSON["data"] as! [Dictionary<String,String>]{
                     let resultObject = Results(dictionary: result)
                     results.append(resultObject)
                 }
+                self.resultsDataSource = results
                 self.resultNetworkingObject.saveResultsToCoreData(resultData: results)
-                self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
                 self.stopAnimating()
                 self.resultsCollectionView.reloadData()
                 
             case .Error(let errorMessage):
-                print(errorMessage)
                 DispatchQueue.main.async {
-                    
+                    print(errorMessage)
+                    self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
                 }
                 
             }
