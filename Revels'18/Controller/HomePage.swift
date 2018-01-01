@@ -8,18 +8,24 @@
 
 import UIKit
 import SafariServices
+import NVActivityIndicatorView
 
-class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol {
+class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable {
     
     
     @IBOutlet weak var tableView: UITableView!
     let sectionHeaders:[String] = ["Today's Events","Schedule","Results", "Instagram Feed"]
     let scrollView:UIScrollView = UIScrollView()
-    let pinkColor:UIColor = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
 
-
+    let httpRequestObject = HTTPRequest()
+    let instagramURL = "https://api.instagram.com/v1/tags/revels17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
+    var instaObjects:[Instagram] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "InstaCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+        
+        fetchInstagram()
         configureNavigationBar()
         configureScrollBar()
     }
@@ -77,14 +83,25 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if (section >= 3){
+            return 10
+        }
+        else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
-        cell.backgroundColor = UIColor.white
-        return cell
+        if(indexPath.section < 3){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
+            cell.backgroundColor = UIColor.white
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InstaCell") as! InstagramCell
+            return cell
+    
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -97,6 +114,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(40)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 3{
+            return CGFloat(667)
+        }
+        else{
+            return CGFloat(100)
+        }
     }
     
     
@@ -118,4 +144,25 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
             print("Does Nothing")
         }
     }
+    
+    func fetchInstagram(){
+        startAnimating()
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: instagramURL){
+            result in
+            switch result{
+            case .Success(let parsedJSON):
+                let instaData = parsedJSON as Dictionary<String,Any>
+                for instaDataItem in instaData["data"] as! [Dictionary<String,Any>]{
+                    let instaObject = Instagram(dictionary: instaDataItem)
+                    self.instaObjects.append(instaObject)
+                }
+                self.stopAnimating()
+                
+            case .Error(let errorString):
+                print(errorString)
+            }
+        }
+    }
+    
+    
 }

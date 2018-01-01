@@ -20,6 +20,8 @@
 		B15814E61FF8C99D00A362D7 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E51FF8C99D00A362D7 /* EmptyView.xib */; };
 		B15814E81FF8C9B500A362D7 /* NoInternetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E71FF8C9B500A362D7 /* NoInternetView.xib */; };
 		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
+		B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517011FF9012100C3D0F4 /* InstagramModel.swift */; };
+		B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517031FF93FC500C3D0F4 /* InstagramCell.swift */; };
 		B17E7E341FF87823009F3950 /* InstaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E7E331FF87823009F3950 /* InstaCell.xib */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
@@ -62,6 +64,8 @@
 		B15814E51FF8C99D00A362D7 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B15814E71FF8C9B500A362D7 /* NoInternetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoInternetView.xib; sourceTree = "<group>"; };
 		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
+		B16517011FF9012100C3D0F4 /* InstagramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModel.swift; sourceTree = "<group>"; };
+		B16517031FF93FC500C3D0F4 /* InstagramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
 		B17E7E331FF87823009F3950 /* InstaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstaCell.xib; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				B13787731FD28A8C00B7120D /* AboutViewCell.swift */,
 				B12C152C1FE4E14D0062461F /* HomeHeaderCell.swift */,
 				B12C15321FE578AF0062461F /* DeveloperCell.swift */,
+				B16517031FF93FC500C3D0F4 /* InstagramCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
 				B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */,
 				B12C15301FE5757E0062461F /* DevelopersModel.swift */,
+				B16517011FF9012100C3D0F4 /* InstagramModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -399,12 +405,14 @@
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
 				B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */,
+				B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */,
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,
 				B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */,
 				B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */,
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
+				B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */,
 				B1993B7D1FE3EEB30036EA66 /* ViewController.swift in Sources */,
 				B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,

@@ -11,9 +11,9 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol{
     
-
+    @IBOutlet var favoritesView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,7 +37,25 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         fetchSchedules()
     }
     
-
+    func addToFavorites() {
+        favoritesView.layer.cornerRadius = 5
+        self.view.addSubview(favoritesView)
+        favoritesView.center = self.tableView.center
+        favoritesView.alpha = 0
+        favoritesView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        UIView.animate(withDuration: 0.3){
+            self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.favoritesView.alpha = 1
+        }
+    }
+    
+    @IBAction func doneButtonSelected(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.favoritesView.alpha = 0
+        }){ (success:Bool) in
+            self.favoritesView.removeFromSuperview()
+        }
+    }
     
     
     //MARK: Reload Data When Reload Button Clicked
@@ -82,6 +100,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
+        cell.delegate = self
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String

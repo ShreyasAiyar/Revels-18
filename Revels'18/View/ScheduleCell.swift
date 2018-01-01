@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleCell: UITableViewCell {
+class ScheduleCell: UITableViewCell{
     
 
     @IBOutlet weak var eventName: UILabel!
@@ -16,12 +16,20 @@ class ScheduleCell: UITableViewCell {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
     
+    var delegate:AddToFavoritesProtocol!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let highlightedImage = UIImage(named: "Favorites")
+        let highlightedImage = UIImage(named: "BlurFavorites")
         favouriteButton.setImage(highlightedImage, for: .selected)
     }
+    
+    @IBAction func favoritesButtonClicked(_ sender: UIButton) {
+        favouriteButton.isSelected = true
+        self.delegate.addToFavorites()
+    }
+}
 
-
+protocol AddToFavoritesProtocol{
+    func addToFavorites()
 }
