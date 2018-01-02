@@ -666,33 +666,37 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="415"/>
                                 <color key="backgroundColor" red="0.95347005500000004" green="0.94886391950000004" blue="0.95807619060000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2" id="GnC-fi-pUe">
-                                    <size key="itemSize" width="75" height="95"/>
+                                    <size key="itemSize" width="100" height="125"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultsCell" id="rDp-x0-Urf" customClass="ResultsCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="75" height="95"/>
+                                        <rect key="frame" x="10" y="10" width="100" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="95"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="W6o-TY-Kg1">
-                                                    <rect key="frame" x="11" y="4" width="98" height="123"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="22g-nr-pI7">
+                                                    <rect key="frame" x="-11" y="12" width="129" height="137"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2k-pG-F1P">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="52"/>
+                                                            <rect key="frame" x="25" y="0.0" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="HDV-OE-dmn"/>
+                                                                <constraint firstAttribute="height" constant="50" id="b9B-d2-Pde"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSq-k1-w4q">
-                                                            <rect key="frame" x="0.0" y="54" width="0.0" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="55" width="0.0" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AT-SR-ZpN">
-                                                            <rect key="frame" x="0.0" y="80.5" width="0.0" height="14.5"/>
+                                                            <rect key="frame" x="32" y="74.5" width="36.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -703,13 +707,10 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="W6o-TY-Kg1" firstAttribute="leading" secondItem="rDp-x0-Urf" secondAttribute="leading" id="9XO-7y-mbW"/>
-                                            <constraint firstItem="W6o-TY-Kg1" firstAttribute="centerY" secondItem="rDp-x0-Urf" secondAttribute="centerY" id="L50-Bj-BWr"/>
-                                            <constraint firstItem="W6o-TY-Kg1" firstAttribute="centerX" secondItem="rDp-x0-Urf" secondAttribute="centerX" id="LhN-eM-P9U"/>
-                                            <constraint firstAttribute="bottom" secondItem="W6o-TY-Kg1" secondAttribute="bottom" id="Rvh-vp-TO4"/>
-                                            <constraint firstAttribute="trailing" secondItem="W6o-TY-Kg1" secondAttribute="trailing" id="U02-cF-Xpw"/>
-                                            <constraint firstItem="W6o-TY-Kg1" firstAttribute="top" secondItem="rDp-x0-Urf" secondAttribute="top" id="gyl-6v-b1C"/>
+                                            <constraint firstItem="22g-nr-pI7" firstAttribute="centerX" secondItem="rDp-x0-Urf" secondAttribute="centerX" id="FcR-Zh-XJK"/>
+                                            <constraint firstItem="22g-nr-pI7" firstAttribute="centerY" secondItem="rDp-x0-Urf" secondAttribute="centerY" id="Lhu-DR-4ky"/>
                                         </constraints>
+                                        <size key="customSize" width="100" height="125"/>
                                         <connections>
                                             <outlet property="categoryImage" destination="T2k-pG-F1P" id="0s2-ud-idz"/>
                                             <outlet property="eventName" destination="KSq-k1-w4q" id="hmr-O5-Hbv"/>
@@ -764,7 +765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1z-mp-maC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082.4000000000001" y="2308.695652173913"/>
+            <point key="canvasLocation" x="3080.625" y="2308.0985915492956"/>
         </scene>
         <!--About Revels Page-->
         <scene sceneID="T0J-u3-FlJ">

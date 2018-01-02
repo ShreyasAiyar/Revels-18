@@ -23,7 +23,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "InstaCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+        tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
         
         fetchInstagram()
         configureNavigationBar()
