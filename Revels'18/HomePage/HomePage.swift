@@ -9,6 +9,7 @@
 import UIKit
 import SafariServices
 import NVActivityIndicatorView
+import SDWebImage
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable {
     
@@ -23,9 +24,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
-        
         fetchInstagram()
+        tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
         configureNavigationBar()
         configureScrollBar()
     }
@@ -84,7 +84,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section >= 3){
-            return 10
+            return instaObjects.count
         }
         else{
             return 1
@@ -99,6 +99,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "InstaCell") as! InstagramCell
+            cell.nameLabel.text = instaObjects[indexPath.row].username
+            cell.captionLabel.text = instaObjects[indexPath.row].text
+            let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
+            let profileURL = URL(string : instaObjects[indexPath.row].profilePictureURL)
+            cell.instaView.sd_setImage(with: instaURL)
+            cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)"
+            cell.profileView.sd_setImage(with: profileURL)
+            cell.locationLabel.text = instaObjects[indexPath.row].location
+            cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)"
             return cell
     
         }
@@ -118,7 +127,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 3{
-            return CGFloat(667)
+            return 190 + self.view.bounds.width
         }
         else{
             return CGFloat(100)
@@ -162,9 +171,12 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
                     self.instaObjects.append(instaObject)
                 }
                 self.stopAnimating()
-                
+                self.tableView.reloadData()
+            
             case .Error(let errorString):
-                print(errorString)
+                DispatchQueue.main.async {
+                    print(errorString)
+                }
             }
         }
     }

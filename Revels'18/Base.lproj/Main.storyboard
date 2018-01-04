@@ -301,29 +301,21 @@
                             <blurEffect style="light"/>
                         </visualEffectView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bMx-vN-cSZ">
-                            <rect key="frame" x="25.5" y="35.5" width="150" height="139.5"/>
+                            <rect key="frame" x="28.5" y="53.5" width="144.5" height="103.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurFavorites" translatesAutoresizingMaskIntoConstraints="NO" id="3Jo-i0-MFJ">
-                                    <rect key="frame" x="35" y="0.0" width="80" height="80"/>
+                                    <rect key="frame" x="32" y="0.0" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="Wx9-gB-jPj"/>
                                         <constraint firstAttribute="width" constant="80" id="kpn-xW-Y4g"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added To Favorites!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-Bg-m1M">
-                                    <rect key="frame" x="0.0" y="84" width="150" height="19.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added To Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-Bg-m1M">
+                                    <rect key="frame" x="0.0" y="84" width="144.5" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vb-wE-B09">
-                                    <rect key="frame" x="55" y="107.5" width="40" height="32"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                    <state key="normal" title="Done"/>
-                                    <connections>
-                                        <action selector="doneButtonSelected:" destination="D5V-JN-PUo" eventType="touchUpInside" id="mcm-sg-yeU"/>
-                                    </connections>
-                                </button>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -413,7 +405,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="w2h-CY-Wgi"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -484,7 +476,7 @@
         <!--Favorites Page-->
         <scene sceneID="NCU-C9-Whx">
             <objects>
-                <viewController storyboardIdentifier="FavouritesPage" title="Favorites Page" id="nc1-7b-cuO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesPage" title="Favorites Page" id="nc1-7b-cuO" customClass="FavoritesPage" customModule="Revels_18" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jLa-eU-2p5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -498,6 +490,9 @@
                                     <navigationItem title="Favourites" id="f8b-nR-Szw">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Lbu-gX-mVM">
                                             <color key="tintColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonClicked:" destination="nc1-7b-cuO" id="0ob-vV-za5"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

@@ -30,6 +30,7 @@
 		B1993B7D1FE3EEB30036EA66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1993B7C1FE3EEB30036EA66 /* ViewController.swift */; };
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
+		B1B71C1C1FFD137C00D24383 /* FavoritesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */; };
 		B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */; };
 		B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */; };
 		B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */; };
@@ -75,6 +76,7 @@
 		B1993B7C1FE3EEB30036EA66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
+		B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPage.swift; sourceTree = "<group>"; };
 		B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsNetworking.swift; sourceTree = "<group>"; };
 		B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B1B71C1A1FFD133300D24383 /* FavoritesPage */ = {
+			isa = PBXGroup;
+			children = (
+				B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */,
+			);
+			path = FavoritesPage;
+			sourceTree = "<group>";
+		};
 		B1D3CB711FCEB55300E8AD7A = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +279,7 @@
 				B165170B1FFA912D00C3D0F4 /* AboutPage */,
 				B165170A1FFA910700C3D0F4 /* DevelopersPage */,
 				B16517091FFA90FA00C3D0F4 /* WorkshopsPage */,
+				B1B71C1A1FFD133300D24383 /* FavoritesPage */,
 				B165170D1FFA917400C3D0F4 /* Instagram */,
 				B165170C1FFA914E00C3D0F4 /* EventsPage */,
 				B1993B7B1FE3ED200036EA66 /* Extensions */,
@@ -401,10 +412,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Revels-18/Pods-Revels-18-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -466,6 +481,7 @@
 				B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */,
 				B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */,
 				B12C152D1FE4E14D0062461F /* HomeHeaderCell.swift in Sources */,
+				B1B71C1C1FFD137C00D24383 /* FavoritesPage.swift in Sources */,
 				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 				B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */,
 			);

@@ -37,6 +37,7 @@ extension UIViewController{
             self.present(developerViewController, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         
         
         alertController.addAction(aboutAction)

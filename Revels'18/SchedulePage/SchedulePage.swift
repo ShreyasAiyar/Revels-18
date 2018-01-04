@@ -43,25 +43,32 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         self.view.addSubview(favoritesView)
         favoritesView.center = self.tableView.center
         favoritesView.alpha = 0
-        favoritesView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        UIView.animate(withDuration: 0.3){
-            self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        UIView.animate(withDuration: 0.5){
+            self.favoritesView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.favoritesView.alpha = 1
         }
-    }
-    
-    @IBAction func doneButtonSelected(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, delay: 1, options: [.curveEaseIn], animations: {
+            self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
             self.favoritesView.alpha = 0
         }){ (success:Bool) in
             self.favoritesView.removeFromSuperview()
         }
     }
     
+//   @IBAction func doneButtonSelected(_ sender: UIButton) {
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.favoritesView.alpha = 0
+//        }){ (success:Bool) in
+//            self.favoritesView.removeFromSuperview()
+//        }
+//    }
+    
     
     //MARK: Reload Data When Reload Button Clicked
     override func reloadData(){
-        fetchSchedules()
+        //fetchSchedules()
+        self.scheduleDataSource = scheduleNetworkingObject.fetchScheduleFromCoreData()
         self.tableView.reloadData()
     }
 
@@ -106,6 +113,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
+        print(scheduleDataSource[currentIndex][indexPath.row].value(forKey: "favorite") as! Bool)
         if(scheduleDataSource[currentIndex][indexPath.row].value(forKey: "favorite") as! Bool  == true){
             cell.favouriteButton.isSelected = true
         }

@@ -6,5 +6,6 @@ target 'Revels-18' do
   use_frameworks!
 
 	pod 'NVActivityIndicatorView', '~> 3.6.0'
+	pod 'SDWebImage/WebP'
 
 end

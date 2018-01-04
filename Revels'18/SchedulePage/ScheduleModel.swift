@@ -19,7 +19,7 @@ struct Schedules{
     let etime:String
     let day:String
     let date:String
-    let favorite:Bool
+    let favorite:Bool?
     
     init(dictionary:Dictionary<String,String>) {
         self.eid = dictionary["eid"]!
