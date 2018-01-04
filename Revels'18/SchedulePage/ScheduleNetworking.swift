@@ -99,7 +99,7 @@ class ScheduleNetworking{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         let scheduleBatchUpdate = NSBatchUpdateRequest(entityName: "Schedule")
-        
+
         let eventIdPredicate = NSPredicate(format: "eid == %@",eid)
         scheduleBatchUpdate.predicate = eventIdPredicate
         scheduleBatchUpdate.propertiesToUpdate = ["favorite":true]

@@ -11,13 +11,12 @@ import SafariServices
 import NVActivityIndicatorView
 import SDWebImage
 
-class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable {
+class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
     let sectionHeaders:[String] = ["Today's Events","Schedule","Results", "Instagram Feed"]
     let scrollView:UIScrollView = UIScrollView()
-
     let httpRequestObject = HTTPRequest()
     let instagramURL = "https://api.instagram.com/v1/tags/revels17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
     var instaObjects:[Instagram] = []
@@ -26,9 +25,13 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         super.viewDidLoad()
         fetchInstagram()
         tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
-        
         configureNavigationBar()
         configureScrollBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.delegate = self
     }
 
     
@@ -182,5 +185,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         }
     }
     
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        self.tableView.setContentOffset(CGPoint.zero, animated: true)
+    }
 }

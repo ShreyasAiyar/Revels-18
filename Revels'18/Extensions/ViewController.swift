@@ -97,11 +97,3 @@ extension UIViewController{
     
 }
 
-class customTabBar:UITabBar,UITabBarControllerDelegate{
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let homePageController = viewController as? HomePage
-        homePageController?.tableView.setContentOffset(CGPoint.0, animated: true)
-    }
-    
-    
-}

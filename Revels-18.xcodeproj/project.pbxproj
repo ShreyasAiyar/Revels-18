@@ -23,7 +23,6 @@
 		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
 		B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517011FF9012100C3D0F4 /* InstagramModel.swift */; };
 		B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517031FF93FC500C3D0F4 /* InstagramCell.swift */; };
-		B17E7E341FF87823009F3950 /* InstaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E7E331FF87823009F3950 /* InstaCell.xib */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
@@ -31,6 +30,7 @@
 		B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */; };
 		B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */; };
 		B1B71C1C1FFD137C00D24383 /* FavoritesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */; };
+		B1B71C1E1FFE5CB900D24383 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B71C1D1FFE5CB900D24383 /* CategoriesCell.swift */; };
 		B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */; };
 		B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */; };
 		B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */; };
@@ -69,7 +69,6 @@
 		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
 		B16517011FF9012100C3D0F4 /* InstagramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModel.swift; sourceTree = "<group>"; };
 		B16517031FF93FC500C3D0F4 /* InstagramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
-		B17E7E331FF87823009F3950 /* InstaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstaCell.xib; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		B1A736E11FD0275C0089CF78 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		B1B685AF1FD0EEDB002EC13F /* EventsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworking.swift; sourceTree = "<group>"; };
 		B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPage.swift; sourceTree = "<group>"; };
+		B1B71C1D1FFE5CB900D24383 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsNetworking.swift; sourceTree = "<group>"; };
 		B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
@@ -140,6 +140,7 @@
 			children = (
 				B14DB3731FEDF5310065CDD8 /* CategoriesPage.swift */,
 				B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */,
+				B1B71C1D1FFE5CB900D24383 /* CategoriesCell.swift */,
 				B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */,
 			);
 			path = CategoriesPage;
@@ -148,8 +149,8 @@
 		B16517061FFA8D0600C3D0F4 /* ResultsPage */ = {
 			isa = PBXGroup;
 			children = (
-				B1F302471FD3D648003A89E7 /* ResultsModel.swift */,
 				B163159B1FDFAB2400D2B428 /* ResultsPage.swift */,
+				B1F302471FD3D648003A89E7 /* ResultsModel.swift */,
 				B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */,
 				B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */,
 			);
@@ -161,8 +162,8 @@
 			children = (
 				B10141EC1FDD06C40048B540 /* HomePage.swift */,
 				B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */,
-				B12C152C1FE4E14D0062461F /* HomeHeaderCell.swift */,
 				B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */,
+				B12C152C1FE4E14D0062461F /* HomeHeaderCell.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -170,8 +171,8 @@
 		B16517081FFA90C900C3D0F4 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
-				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
 				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
+				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
 				B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */,
 				B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */,
 			);
@@ -226,7 +227,6 @@
 		B17E7E351FF87C97009F3950 /* NIB Files */ = {
 			isa = PBXGroup;
 			children = (
-				B17E7E331FF87823009F3950 /* InstaCell.xib */,
 				B15873FD1FFB2276005A55DD /* InstagramCell.xib */,
 				B15814E51FF8C99D00A362D7 /* EmptyView.xib */,
 				B15814E71FF8C9B500A362D7 /* NoInternetView.xib */,
@@ -248,6 +248,13 @@
 				B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */,
 			);
 			path = FavoritesPage;
+			sourceTree = "<group>";
+		};
+		B1B71C1F1FFE5CDD00D24383 /* RevelsCupPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RevelsCupPage;
 			sourceTree = "<group>";
 		};
 		B1D3CB711FCEB55300E8AD7A = {
@@ -275,6 +282,7 @@
 				B16517071FFA8D2500C3D0F4 /* HomePage */,
 				B16517081FFA90C900C3D0F4 /* SchedulePage */,
 				B16517051FFA8CA400C3D0F4 /* CategoriesPage */,
+				B1B71C1F1FFE5CDD00D24383 /* RevelsCupPage */,
 				B16517061FFA8D0600C3D0F4 /* ResultsPage */,
 				B165170B1FFA912D00C3D0F4 /* AboutPage */,
 				B165170A1FFA910700C3D0F4 /* DevelopersPage */,
@@ -379,7 +387,6 @@
 				B15873FE1FFB2276005A55DD /* InstagramCell.xib in Resources */,
 				B15814E81FF8C9B500A362D7 /* NoInternetView.xib in Resources */,
 				B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */,
-				B17E7E341FF87823009F3950 /* InstaCell.xib in Resources */,
 				B1044B821FE24986001141B7 /* Media.xcassets in Resources */,
 				B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */,
 				B15814E61FF8C99D00A362D7 /* EmptyView.xib in Resources */,
@@ -458,6 +465,7 @@
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
 				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
+				B1B71C1E1FFE5CB900D24383 /* CategoriesCell.swift in Sources */,
 				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
 				B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */,
 				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,

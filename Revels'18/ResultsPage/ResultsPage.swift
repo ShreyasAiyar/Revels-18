@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
+class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITabBarControllerDelegate {
     
     let segmentLabels:[String] = ["Results","Sports Results"]
     
@@ -32,8 +32,14 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         createBarButtonItems()
         configureNavigationBar()
         searchBar.delegate = self
+        tabBarController?.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.tintColor = UIColor.white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.delegate = self
     }
 
     override func searchButtonPressed() {
@@ -76,7 +82,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
         cell.eventName.text = resultsDataSource[indexPath.row].evename
-        cell.roundNo.text = resultsDataSource[indexPath.row].round
+        cell.roundNo.text = "Round " + resultsDataSource[indexPath.row].round
         return cell
     }
     
@@ -89,13 +95,13 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = self.view.bounds.width/3 - 10
-        let yourHeight = yourWidth + 20
+        let yourWidth = 85
+        let yourHeight = 110
         return CGSize(width: yourWidth, height: yourHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 
 
@@ -125,7 +131,9 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         }
         
     }
-
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        self.resultsCollectionView.setContentOffset(CGPoint.zero, animated: true)
+    }
 }
     
 

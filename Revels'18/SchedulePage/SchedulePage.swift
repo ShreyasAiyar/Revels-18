@@ -11,7 +11,7 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate{
     
     @IBOutlet var favoritesView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -32,10 +32,15 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        favoritesView.layer.cornerRadius = 5
+        favoritesView.layer.cornerRadius = 10
         createBarButtonItems()
         configureNavigationBar()
         fetchSchedules()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.delegate = self
     }
     
     func addToFavorites(eid:String) {
@@ -55,14 +60,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
             self.favoritesView.removeFromSuperview()
         }
     }
-    
-//   @IBAction func doneButtonSelected(_ sender: UIButton) {
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.favoritesView.alpha = 0
-//        }){ (success:Bool) in
-//            self.favoritesView.removeFromSuperview()
-//        }
-//    }
     
     
     //MARK: Reload Data When Reload Button Clicked
@@ -175,7 +172,11 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         }
     }
     
-    
-
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 1{
+            self.tableView.setContentOffset(CGPoint.zero, animated: true)
+        }
+    }
 
 }

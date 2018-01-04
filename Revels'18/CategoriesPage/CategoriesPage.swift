@@ -10,11 +10,20 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CategoriesPage: UICollectionViewController {
+class CategoriesPage: UICollectionViewController,UITabBarControllerDelegate {
+    
+    
+    let categoriesData:[Categories] = []
+    let categoriesURL = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.delegate = self
     }
   
 
@@ -31,9 +40,11 @@ class CategoriesPage: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-    
         return cell
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        self.collectionView?.setContentOffset(CGPoint.zero, animated: true)
     }
 
 
