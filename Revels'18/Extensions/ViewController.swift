@@ -50,7 +50,7 @@ extension UIViewController{
     }
     
     func createBarButtonItems(){
-        let whiteColor:UIColor = UIColor.white
+        let whiteColor:UIColor = self.view.tintColor
         let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
         moreButtonItem.image = UIImage(named: "More")
         moreButtonItem.tintColor = whiteColor
@@ -92,6 +92,15 @@ extension UIViewController{
     
     func presentNoNetworkView(){
         
+    }
+    
+    
+}
+
+class customTabBar:UITabBar,UITabBarControllerDelegate{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let homePageController = viewController as? HomePage
+        homePageController?.tableView.setContentOffset(CGPoint.0, animated: true)
     }
     
     

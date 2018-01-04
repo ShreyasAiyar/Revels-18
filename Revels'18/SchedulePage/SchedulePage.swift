@@ -48,7 +48,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
             self.favoritesView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.favoritesView.alpha = 1
         }
-        UIView.animate(withDuration: 0.5, delay: 1, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 1.5, options: [.curveEaseIn], animations: {
             self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
             self.favoritesView.alpha = 0
         }){ (success:Bool) in
@@ -166,7 +166,9 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
             case .Error(let errorMessage):
                 print(errorMessage)
                 DispatchQueue.main.async {
-                    NVActivityIndicatorPresenter.sharedInstance.setMessage("You Seem To Be Offline")
+                    self.stopAnimating()
+                    self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
+                    self.tableView.reloadData()
                 }
                 
             }

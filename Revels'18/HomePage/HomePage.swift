@@ -26,6 +26,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         super.viewDidLoad()
         fetchInstagram()
         tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+        
         configureNavigationBar()
         configureScrollBar()
     }
@@ -104,10 +105,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
             let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
             let profileURL = URL(string : instaObjects[indexPath.row].profilePictureURL)
             cell.instaView.sd_setImage(with: instaURL)
-            cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)"
+            cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)" + " likes"
             cell.profileView.sd_setImage(with: profileURL)
             cell.locationLabel.text = instaObjects[indexPath.row].location
-            cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)"
+            //cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)"
             return cell
     
         }
@@ -127,7 +128,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 3{
-            return 190 + self.view.bounds.width
+            return 160 + self.view.bounds.width
         }
         else{
             return CGFloat(100)
