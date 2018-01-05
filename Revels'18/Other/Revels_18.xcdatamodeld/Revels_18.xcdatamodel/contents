@@ -17,7 +17,18 @@
         <attribute name="ename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Favourites" representedClassName="Favourites" syncable="YES" codeGenerationType="class"/>
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES" codeGenerationType="class">
+        <attribute name="catid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="catname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="etime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Result" representedClassName="Result" syncable="YES" codeGenerationType="class">
         <attribute name="cat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eve" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,7 +45,6 @@
         <attribute name="eid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="etime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,7 +53,7 @@
         <element name="Category" positionX="-54" positionY="-18" width="128" height="90"/>
         <element name="Event" positionX="-63" positionY="-27" width="128" height="195"/>
         <element name="Result" positionX="-54" positionY="81" width="128" height="135"/>
-        <element name="Schedule" positionX="-54" positionY="45" width="128" height="210"/>
-        <element name="Favourites" positionX="-36" positionY="135" width="128" height="45"/>
+        <element name="Schedule" positionX="-54" positionY="45" width="128" height="195"/>
+        <element name="Favorite" positionX="-45" positionY="90" width="128" height="195"/>
     </elements>
 </model>

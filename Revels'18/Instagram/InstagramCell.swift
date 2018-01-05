@@ -17,6 +17,8 @@ class InstagramCell: UITableViewCell {
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var time: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

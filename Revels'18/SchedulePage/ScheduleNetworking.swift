@@ -46,7 +46,6 @@ class ScheduleNetworking{
             schedule.setValue(scheduleObject.round, forKey: "round")
             schedule.setValue(scheduleObject.stime, forKey: "stime")
             schedule.setValue(scheduleObject.venue, forKey: "venue")
-            schedule.setValue(false, forKey: "favorite")
             do{
                 try managedContext.save()
             }
@@ -98,27 +97,34 @@ class ScheduleNetworking{
     func addFavoritesToCoreData(eid:String){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let scheduleBatchUpdate = NSBatchUpdateRequest(entityName: "Schedule")
-
+        let scheduleFetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Schedule")
         let eventIdPredicate = NSPredicate(format: "eid == %@",eid)
-        scheduleBatchUpdate.predicate = eventIdPredicate
-        scheduleBatchUpdate.propertiesToUpdate = ["favorite":true]
-        let _ = try! managedContext.execute(scheduleBatchUpdate)
+        scheduleFetchRequest.predicate = eventIdPredicate
+        
+        var schedules:[NSManagedObject] = []
+        schedules = try! managedContext.fetch(scheduleFetchRequest)
+        
+//        let favoriteEntity =  NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)
+//        
+//        for favoriteObject in schedules{
+//            
+//        }
+        
 
     }
     
-    func fetchFavoritesFromCoreData() -> [NSManagedObject]{
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let favoritesFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Schedule")
-        
-        let favoritePredicate = NSPredicate(format: "favorite == true")
-        favoritesFetchRequest.predicate = favoritePredicate
-        var favoriteSchedules:[NSManagedObject] = []
-        
-        favoriteSchedules = try! managedContext.fetch(favoritesFetchRequest)
-        return favoriteSchedules
-    }
+//    func fetchFavoritesFromCoreData() -> [NSManagedObject]{
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//        let favoritesFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Schedule")
+//
+//        let favoritePredicate = NSPredicate(format: "favorite == true")
+//        favoritesFetchRequest.predicate = favoritePredicate
+//        var favoriteSchedules:[NSManagedObject] = []
+//
+//        favoriteSchedules = try! managedContext.fetch(favoritesFetchRequest)
+//        return favoriteSchedules
+//    }
     
     
     

@@ -23,11 +23,13 @@ class ScheduleCell: UITableViewCell{
         super.awakeFromNib()
         let highlightedImage = UIImage(named: "BlurFavorites")
         favouriteButton.setImage(highlightedImage, for: .selected)
+        location.layer.cornerRadius = 2
+        location.clipsToBounds = true
     }
     
     @IBAction func favoritesButtonClicked(_ sender: UIButton) {
         favouriteButton.isSelected = true
-        self.delegate.addToFavorites(eid: self.eid)
+        //self.delegate.addToFavorites(eid: self.eid)
     }
 }
 

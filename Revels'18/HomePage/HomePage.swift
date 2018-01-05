@@ -18,7 +18,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     let sectionHeaders:[String] = ["Today's Events","Schedule","Results", "Instagram Feed"]
     let scrollView:UIScrollView = UIScrollView()
     let httpRequestObject = HTTPRequest()
-    let instagramURL = "https://api.instagram.com/v1/tags/revels17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
+    let instagramURL = "https://api.instagram.com/v1/tags/techtatva17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
     var instaObjects:[Instagram] = []
     
     override func viewDidLoad() {
@@ -103,6 +103,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "InstaCell") as! InstagramCell
+            print(indexPath.section)
             cell.nameLabel.text = instaObjects[indexPath.row].username
             cell.captionLabel.text = instaObjects[indexPath.row].text
             let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
@@ -111,11 +112,44 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
             cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)" + " likes"
             cell.profileView.sd_setImage(with: profileURL)
             cell.locationLabel.text = instaObjects[indexPath.row].location
-            //cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)"
+            cell.time.text = convertDate(date: instaObjects[indexPath.row].time)
+            print(convertDate(date: instaObjects[indexPath.row].time))
+            
             return cell
     
         }
     }
+    
+    func convertDate(date:String) -> String{
+        let convertedDate = Date(timeIntervalSince1970: Double(date)!)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day,.hour,.minute,.second], from: convertedDate, to: currentDate)
+        
+        if components.day! > 0{
+            formatter.allowedUnits = .day
+        }
+        else if components.hour! > 0{
+            formatter.allowedUnits = .hour
+        }
+        else if components.minute! > 0{
+            formatter.allowedUnits = .minute
+        }
+        else{
+            formatter.allowedUnits = .second
+        }
+        let formatString = NSLocalizedString("%@ ago", comment: "Used to say how much time has passed. e.g. '2 hours ago'")
+        
+        guard let timeString = formatter.string(from: components) else {
+            return ""
+        }
+        return String(format: formatString, timeString)
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderCell") as! HomeHeaderCell
@@ -131,7 +165,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 3{
-            return 160 + self.view.bounds.width
+            return 165 + self.view.bounds.width
         }
         else{
             return CGFloat(100)
@@ -186,7 +220,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
         self.tableView.setContentOffset(CGPoint.zero, animated: true)
     }
 }

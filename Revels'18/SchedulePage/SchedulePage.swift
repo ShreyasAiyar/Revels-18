@@ -44,7 +44,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     }
     
     func addToFavorites(eid:String) {
-        scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
+        //scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
         self.view.addSubview(favoritesView)
         favoritesView.center = self.tableView.center
         favoritesView.alpha = 0
@@ -105,18 +105,10 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-        cell.delegate = self
         cell.eid = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "eid") as! String
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
-        print(scheduleDataSource[currentIndex][indexPath.row].value(forKey: "favorite") as! Bool)
-        if(scheduleDataSource[currentIndex][indexPath.row].value(forKey: "favorite") as! Bool  == true){
-            cell.favouriteButton.isSelected = true
-        }
-        else{
-            cell.favouriteButton.isSelected = false
-        }
         return cell
     }
     
@@ -138,8 +130,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
-        print(currentIndex)
-        tableView.reloadData()
+        self.tableView.reloadSections([0], with: .left)
     }
     
     
@@ -158,14 +149,14 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
                 self.scheduleNetworkingObject.saveSchedulesToCoreData(scheduleData: schedules)
                 self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
                 self.stopAnimating()
-                self.tableView.reloadData()
+                self.tableView.reloadSections([0], with: .left)
                 
             case .Error(let errorMessage):
                 print(errorMessage)
                 DispatchQueue.main.async {
                     self.stopAnimating()
                     self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
-                    self.tableView.reloadData()
+                    self.tableView.reloadSections([0], with: .left)
                 }
                 
             }

@@ -17,6 +17,7 @@ struct Instagram{
     let profilePictureURL:String
     let location:String?
     let commentsCount:Int
+    let time:String
     
     init(dictionary:Dictionary<String,Any>) {
         let user = dictionary["user"] as! [String:Any]
@@ -35,7 +36,7 @@ struct Instagram{
         self.profilePictureURL = user["profile_picture"] as! String
         
         if let dictLocation = dictionary["location"] as? Dictionary<String,Any>?{
-            self.location = dictLocation!["name"] as! String
+            self.location = dictLocation!["name"] as? String
         } else{
             self.location = ""
         }
@@ -43,5 +44,6 @@ struct Instagram{
         let comments = dictionary["comments"] as! Dictionary<String,Any>
         self.commentsCount = comments["count"] as! Int
         
+        self.time = dictionary["created_time"] as! String
     }
 }

@@ -17,28 +17,6 @@ class CategoriesNetworking{
     let httpRequestObject = HTTPRequest()
     
     
-    func categoriesMain(){
-        
-        let categoriesURL = "https://api.mitportals.in/categories/"
-        var categories:[Categories] = []
-        
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                for category in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let categoryObject = Categories(dictionary: category)
-                    categories.append(categoryObject)
-                }
-                self.saveCategoriesToCoreData(categoryData: categories)
-
-            case .Error(let errorMessage):
-                print(errorMessage)
-            }
-        }
-        
-    }
-    
     func saveCategoriesToCoreData(categoryData:[Categories]){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
@@ -74,9 +52,25 @@ class CategoriesNetworking{
         
     }
     
-    func fetchCategoriesFromCoreData(){
+    func fetchCategoriesFromCoreData() -> [Categories]{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let categoriesFetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Category")
         
-    
+        var categories:[Categories] = []
+        var coreDataCategories:[NSManagedObject] = []
+        
+        coreDataCategories = try! managedContext.fetch(categoriesFetchRequest)
+        
+        for category in coreDataCategories{
+            var categoryDictionary:Dictionary<String,String> = [:]
+            categoryDictionary["cid"] = category.value(forKey: "cid") as? String
+            categoryDictionary["cname"] = category.value(forKey: "cname") as? String
+            categoryDictionary["cdesc"] = (category.value(forKey: "cdesc") as! String)
+            let categoryObject = Categories(dictionary: categoryDictionary)
+            categories.append(categoryObject)
+        }
+        return categories
         
     }
     
