@@ -21,8 +21,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RevelsCircle" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-j0-Idp">
                                 <rect key="frame" x="112" y="258" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="9Yv-9L-VSj"/>
-                                    <constraint firstAttribute="height" constant="150" id="IN2-na-2oP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="9Yv-9L-VSj"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="IN2-na-2oP"/>
                                 </constraints>
                             </imageView>
                         </subviews>

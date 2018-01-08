@@ -12,31 +12,6 @@ import UIKit
 
 class ResultNetworking{
     
-    let httpRequestObject = HTTPRequest()
-    
-    
-    func resultsMain(){
-        
-        let resultsURL = "https://api.mitportals.in/results/"
-        var results:[Results] = []
-        
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                for retrievedResults in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let resultObject = Results(dictionary: retrievedResults)
-                    results.append(resultObject)
-                }
-                self.saveResultsToCoreData(resultData: results)
-                
-            case .Error(let errorMessage):
-                print(errorMessage)
-            }
-        }
-        
-    }
-    
     func saveResultsToCoreData(resultData:[Results]){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
@@ -71,7 +46,6 @@ class ResultNetworking{
                 print("Saving To CoreData Failed")
             }
         }
-        
     }
     
     func fetchResultsFromCoreData() -> [Results]{

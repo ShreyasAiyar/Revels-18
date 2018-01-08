@@ -49,11 +49,23 @@
         <attribute name="stime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Workshop" representedClassName="Workshop" syncable="YES" codeGenerationType="class">
+        <attribute name="cname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wcost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wdesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wkhatam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wshuru" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wvenue" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Category" positionX="-54" positionY="-18" width="128" height="90"/>
         <element name="Event" positionX="-63" positionY="-27" width="128" height="195"/>
+        <element name="Favorite" positionX="-45" positionY="90" width="128" height="195"/>
         <element name="Result" positionX="-54" positionY="81" width="128" height="135"/>
         <element name="Schedule" positionX="-54" positionY="45" width="128" height="195"/>
-        <element name="Favorite" positionX="-45" positionY="90" width="128" height="195"/>
+        <element name="Workshop" positionX="-54" positionY="108" width="128" height="180"/>
     </elements>
 </model>

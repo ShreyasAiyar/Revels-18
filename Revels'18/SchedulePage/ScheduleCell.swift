@@ -28,8 +28,13 @@ class ScheduleCell: UITableViewCell{
     }
     
     @IBAction func favoritesButtonClicked(_ sender: UIButton) {
-        favouriteButton.isSelected = true
-        //self.delegate.addToFavorites(eid: self.eid)
+        if favouriteButton.isSelected == true{
+            favouriteButton.isSelected = false
+        }
+        else{
+            favouriteButton.isSelected = true
+            self.delegate.addToFavorites(eid: self.eid)
+        }
     }
 }
 

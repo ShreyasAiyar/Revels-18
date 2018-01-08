@@ -20,6 +20,8 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createBarButtonItems()
+        configureNavigationBar()
         categoriesMain()
 
     }
@@ -87,7 +89,9 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
         
     }
     
-  
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        self.categoriesCollectionView.setContentOffset(CGPoint.zero, animated: true)
+    }
     
     
     

@@ -53,7 +53,6 @@ class ScheduleNetworking{
                 print("Saving To CoreData Failed")
             }
         }
-        
     }
     
     func fetchScheduleFromCoreData() -> [[NSManagedObject]]{
@@ -97,36 +96,59 @@ class ScheduleNetworking{
     func addFavoritesToCoreData(eid:String){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let favoriteEntityDescription = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)
         let scheduleFetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Schedule")
         let eventIdPredicate = NSPredicate(format: "eid == %@",eid)
         scheduleFetchRequest.predicate = eventIdPredicate
         
         var schedules:[NSManagedObject] = []
         schedules = try! managedContext.fetch(scheduleFetchRequest)
-        
-//        let favoriteEntity =  NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)
-//        
-//        for favoriteObject in schedules{
-//            
-//        }
-        
-
+        for favoriteObject in schedules{
+            let favoriteEntity =  NSManagedObject(entity: favoriteEntityDescription!, insertInto: managedContext)
+            favoriteEntity.setValue(favoriteObject.value(forKey: "eid"), forKey: "eid")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "ename"), forKey: "ename")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "catid"), forKey: "catid")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "catname"), forKey: "catname")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "round"), forKey: "round")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "venue"), forKey: "venue")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "stime"), forKey: "stime")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "etime"), forKey: "etime")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "day"), forKey: "day")
+            favoriteEntity.setValue(favoriteObject.value(forKey: "date"), forKey: "date")
+            do{
+                try managedContext.save()
+            }
+            catch{
+                print("Saving To CoreData Failed")
+            }
+        }
     }
     
-//    func fetchFavoritesFromCoreData() -> [NSManagedObject]{
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//        let favoritesFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Schedule")
-//
-//        let favoritePredicate = NSPredicate(format: "favorite == true")
-//        favoritesFetchRequest.predicate = favoritePredicate
-//        var favoriteSchedules:[NSManagedObject] = []
-//
-//        favoriteSchedules = try! managedContext.fetch(favoritesFetchRequest)
-//        return favoriteSchedules
-//    }
-    
-    
-    
-    
+    func fetchFavoritesFromCoreData() -> [Schedules]{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let favoritesFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+
+        var coreDatafavorites:[NSManagedObject] = []
+        var favorites:[Schedules] = []
+        
+       coreDatafavorites = try! managedContext.fetch(favoritesFetchRequest)
+        
+        for favorite in coreDatafavorites{
+            var favoriteDictionary:Dictionary<String,String> = [:]
+            favoriteDictionary["catid"] = favorite.value(forKey: "catid") as? String
+            favoriteDictionary["catname"] = favorite.value(forKey: "catname") as? String
+            favoriteDictionary["date"] = favorite.value(forKey: "date") as? String
+            favoriteDictionary["day"] = favorite.value(forKey: "day") as? String
+            favoriteDictionary["eid"] = favorite.value(forKey: "eid") as? String
+            favoriteDictionary["ename"] = favorite.value(forKey: "ename") as? String
+            favoriteDictionary["etime"] = favorite.value(forKey: "etime") as? String
+            favoriteDictionary["round"] = favorite.value(forKey: "round") as? String
+            favoriteDictionary["stime"] = favorite.value(forKey: "stime") as? String
+            favoriteDictionary["venue"] = favorite.value(forKey: "venue") as? String
+            let categoryObject = Schedules(dictionary: favoriteDictionary)
+            favorites.append(categoryObject)
+        }
+        return favorites
+    }
 }

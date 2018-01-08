@@ -33,8 +33,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
         configureNavigationBar()
         searchBar.delegate = self
         tabBarController?.delegate = self
-        searchBar.searchBarStyle = .minimal
-        searchBar.tintColor = UIColor.white
+        //searchBar.searchBarStyle = .minimal
+        //searchBar.tintColor = UIColor.white
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,7 +70,15 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
+        filteredDataSource = resultsDataSource.filter({ (result) -> Bool in
+            return result.evename.lowercased().range(of: searchText.lowercased()) != nil
+        })
+        if(filteredDataSource.count == 0){
+            searchActive = false
+        } else {
+            searchActive = true
+        }
+        self.resultsCollectionView.reloadData()
     }
     
     override func reloadData(){
@@ -81,13 +89,24 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
+        if searchActive == false{
         cell.eventName.text = resultsDataSource[indexPath.row].evename
         cell.roundNo.text = "Round " + resultsDataSource[indexPath.row].round
+        }
+        else{
+        cell.eventName.text = filteredDataSource[indexPath.row].evename
+        cell.roundNo.text = "Round " + filteredDataSource[indexPath.row].round
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if searchActive == false{
         return resultsDataSource.count
+        }
+        else{
+        return filteredDataSource.count
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

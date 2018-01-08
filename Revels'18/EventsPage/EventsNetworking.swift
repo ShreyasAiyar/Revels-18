@@ -39,7 +39,14 @@ class EventsNetworking{
             event.setValue(eventObject.cid, forKey: "cid")
             event.setValue(eventObject.cname, forKey: "cname")
             event.setValue(eventObject.day, forKey: "day")
-            
+            event.setValue(eventObject.cntctname, forKey: "cnctname")
+            event.setValue(eventObject.cntctno, forKey: "cntctno")
+            event.setValue(eventObject.edesc, forKey: "edesc")
+            event.setValue(eventObject.eid, forKey: "eid")
+            event.setValue(eventObject.emaxteamsize, forKey: "emaxtimesize")
+            event.setValue(eventObject.ename, forKey: "ename")
+            event.setValue(eventObject.hash, forKey: "hash")
+            event.setValue(eventObject.type, forKey: "type")
             do{
                 try managedContext.save()
             }

@@ -11,11 +11,13 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate,UIScrollViewDelegate{
     
     @IBOutlet var favoritesView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var popupView: UIView!
+    
     
     //MARK: Creating Objects
     let cacheCheck = CacheCheck()
@@ -24,6 +26,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     let categoriesURL = "https://api.mitportals.in/schedule/"
     var scheduleDataSource:[[NSManagedObject]] = [[]]
     var filteredDataSource:[[NSManagedObject]] = [[]]
+    var favoritesDataSource:[Schedules] = []
     var currentIndex:Int = 0
     var searchBar = UISearchBar()
     var shouldShowSearchResults = false
@@ -35,7 +38,9 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         favoritesView.layer.cornerRadius = 10
         createBarButtonItems()
         configureNavigationBar()
+        fetchFavorites()
         fetchSchedules()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,23 +49,24 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     }
     
     func addToFavorites(eid:String) {
-        //scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
+        scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
+        tableView.reloadData()
+        fetchFavorites()
         self.view.addSubview(favoritesView)
-        favoritesView.center = self.tableView.center
+        favoritesView.center = tableView.center
         favoritesView.alpha = 0
         favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
         UIView.animate(withDuration: 0.5){
             self.favoritesView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.favoritesView.alpha = 1
         }
-        UIView.animate(withDuration: 0.5, delay: 1.5, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 1.5, options: [.curveEaseInOut], animations: {
             self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
             self.favoritesView.alpha = 0
         }){ (success:Bool) in
             self.favoritesView.removeFromSuperview()
         }
     }
-    
     
     //MARK: Reload Data When Reload Button Clicked
     override func reloadData(){
@@ -79,8 +85,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         navigationItem.titleView = searchBar
         self.searchBar.becomeFirstResponder()
     }
-    
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResults = true
         searchBar.showsCancelButton = true
@@ -93,8 +98,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         tableView.reloadData()
     }
 
-    
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -105,32 +109,50 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
+        cell.delegate = self
         cell.eid = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "eid") as! String
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
         cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
+        if favoritesDataSource.contains(where: {$0.eid == cell.eid}){
+            cell.favouriteButton.isSelected = true
+        }else{
+         cell.favouriteButton.isSelected = false
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isSelectedIndex[currentIndex] = indexPath.row
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        presentPopupView()
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == isSelectedIndex[currentIndex]{
-            return CGFloat(150)
-        }
-        else{
             return CGFloat(80)
-        }
     }
     
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
-        self.tableView.reloadSections([0], with: .left)
+        self.tableView.reloadSections([0], with: .automatic)
+    }
+    
+    
+    func presentPopupView(){
+        self.view.addSubview(popupView)
+        popupView.center = self.tableView.center
+        popupView.alpha = 0
+        popupView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        UIView.animate(withDuration: 0.5){
+            self.popupView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.popupView.alpha = 1
+        }
+        
+    }
+    
+    func fetchFavorites(){
+        self.favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     }
     
     
@@ -149,20 +171,19 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
                 self.scheduleNetworkingObject.saveSchedulesToCoreData(scheduleData: schedules)
                 self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
                 self.stopAnimating()
-                self.tableView.reloadSections([0], with: .left)
+                self.tableView.reloadSections([0], with: .automatic)
                 
             case .Error(let errorMessage):
                 print(errorMessage)
                 DispatchQueue.main.async {
                     self.stopAnimating()
                     self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
-                    self.tableView.reloadSections([0], with: .left)
+                    self.tableView.reloadSections([0], with: .automatic)
                 }
-                
             }
         }
     }
-    
+
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1{
