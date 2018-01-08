@@ -13,6 +13,30 @@ import CoreData
 class ScheduleNetworking{
     
     let httpRequestObject = HTTPRequest()
+    let scheduleURL = "https://api.mitportals.in/schedule/"
+    
+    //MARK: Networking Call - Fetch Schedules
+    func fetchSchedules(completion:@escaping () -> ()){
+        var schedules:[Schedules] = []
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: scheduleURL){
+            result in
+            switch result{
+            case .Success(let parsedJSON):
+                for schedule in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let scheduleObject = Schedules(dictionary: schedule)
+                    schedules.append(scheduleObject)
+                }
+                self.saveSchedulesToCoreData(scheduleData: schedules)
+                completion()
+                
+            case .Error(let errorMessage):
+                print(errorMessage)
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
+    }
     
     func saveSchedulesToCoreData(scheduleData:[Schedules]){
         
@@ -150,5 +174,23 @@ class ScheduleNetworking{
             favorites.append(categoryObject)
         }
         return favorites
+    }
+    
+    func removeFavorites(eid:String){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let scheduleDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
+        print("Function Got Called")
+        let favoriteDeletePredicate = NSPredicate(format: "eid == %@",eid)
+        scheduleDeleteRequest.predicate = favoriteDeletePredicate
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: scheduleDeleteRequest)
+        
+        do{
+            try managedContext.execute(batchDeleteRequest)
+            print("Deleted ",eid)
+        }
+        catch{
+            print("Error Deleting Favorites")
+        }
     }
 }

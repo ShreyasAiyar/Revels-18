@@ -11,7 +11,7 @@ import UIKit
 import NVActivityIndicatorView
 import CoreData
 
-class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate,UIScrollViewDelegate{
+class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate,UIScrollViewDelegate,RemoveFromFavoritesProtocol{
     
     @IBOutlet var favoritesView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -68,10 +68,15 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         }
     }
     
+    func removeFromFavorites(eid: String) {
+        scheduleNetworkingObject.removeFavorites(eid: eid)
+        fetchFavorites()
+        tableView.reloadData()
+    }
+    
     //MARK: Reload Data When Reload Button Clicked
     override func reloadData(){
         //fetchSchedules()
-        self.scheduleDataSource = scheduleNetworkingObject.fetchScheduleFromCoreData()
         self.tableView.reloadData()
     }
 
@@ -109,7 +114,8 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-        cell.delegate = self
+        cell.delegate1 = self
+        cell.delegate2 = self
         cell.eid = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "eid") as! String
         cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
         cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
@@ -124,7 +130,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isSelectedIndex[currentIndex] = indexPath.row
-        presentPopupView()
+        //presentPopupView()
         
     }
     
@@ -151,38 +157,21 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         
     }
     
+    func fetchSchedules(){
+        startAnimating()
+        scheduleNetworkingObject.fetchSchedules(){
+            self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
+            self.tableView.reloadData()
+            self.stopAnimating()
+        }
+    }
+    
     func fetchFavorites(){
         self.favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     }
     
     
-    //MARK: Networking Call - Fetch Schedules
-    func fetchSchedules(){
-        startAnimating()
-        var schedules:[Schedules] = []
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                for schedule in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let scheduleObject = Schedules(dictionary: schedule)
-                    schedules.append(scheduleObject)
-                }
-                self.scheduleNetworkingObject.saveSchedulesToCoreData(scheduleData: schedules)
-                self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
-                self.stopAnimating()
-                self.tableView.reloadSections([0], with: .automatic)
-                
-            case .Error(let errorMessage):
-                print(errorMessage)
-                DispatchQueue.main.async {
-                    self.stopAnimating()
-                    self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
-                    self.tableView.reloadSections([0], with: .automatic)
-                }
-            }
-        }
-    }
+
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex

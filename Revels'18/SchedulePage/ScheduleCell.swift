@@ -17,7 +17,8 @@ class ScheduleCell: UITableViewCell{
     @IBOutlet weak var favouriteButton: UIButton!
     var eid:String!
     
-    var delegate:AddToFavoritesProtocol!
+    var delegate1:AddToFavoritesProtocol!
+    var delegate2:RemoveFromFavoritesProtocol!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,15 +30,22 @@ class ScheduleCell: UITableViewCell{
     
     @IBAction func favoritesButtonClicked(_ sender: UIButton) {
         if favouriteButton.isSelected == true{
+            print("Selected")
             favouriteButton.isSelected = false
+            self.delegate2.removeFromFavorites(eid: self.eid)
         }
         else{
+            print("Not Selected")
             favouriteButton.isSelected = true
-            self.delegate.addToFavorites(eid: self.eid)
+            self.delegate1.addToFavorites(eid: self.eid)
         }
     }
 }
 
 protocol AddToFavoritesProtocol{
     func addToFavorites(eid:String)
+}
+
+protocol RemoveFromFavoritesProtocol {
+    func removeFromFavorites(eid:String)
 }

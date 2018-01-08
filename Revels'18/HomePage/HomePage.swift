@@ -141,7 +141,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         else{
             formatter.allowedUnits = .second
         }
-        let formatString = NSLocalizedString("%@ ago", comment: "Used to say how much time has passed. e.g. '2 hours ago'")
+        let formatString = NSLocalizedString("%@ ago", comment: "Time")
         
         guard let timeString = formatter.string(from: components) else {
             return ""
@@ -182,7 +182,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
         self.present(favoritesViewController, animated: true, completion: nil)
     }
-    
     
     func selectButtonClicked(currentIndex: Int) {
         switch currentIndex{

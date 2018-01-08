@@ -12,6 +12,32 @@ import UIKit
 
 class ResultNetworking{
     
+    let resultsURL = "https://api.mitportals.in/results/"
+    let httpRequestObject = HTTPRequest()
+    
+    //MARK: Get JSON Data
+    func resultsMain(completion: @escaping () -> ()){
+        var results:[Results] = []
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){ status in
+            switch status{
+            case .Success(let parsedJSON):
+                for result in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let resultObject = Results(dictionary: result)
+                    results.append(resultObject)
+                }
+                self.saveResultsToCoreData(resultData: results)
+                completion()
+                
+            case .Error(let errorMessage):
+                DispatchQueue.main.async {
+                    print(errorMessage)
+                    completion()
+                }
+            }
+        }
+        
+    }
+    
     func saveResultsToCoreData(resultData:[Results]){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return

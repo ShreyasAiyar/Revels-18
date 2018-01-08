@@ -28,13 +28,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultsMain()
+        //resultsMain()
+        fetchResults()
         createBarButtonItems()
         configureNavigationBar()
         searchBar.delegate = self
         tabBarController?.delegate = self
-        //searchBar.searchBarStyle = .minimal
-        //searchBar.tintColor = UIColor.white
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +81,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     }
     
     override func reloadData(){
-        resultsMain()
+        fetchResults()
         self.resultsCollectionView.reloadData()
     }
     
@@ -130,34 +129,19 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-
-
-    //MARK: Get JSON Data
-    func resultsMain(){
+    
+    
+    func fetchResults(){
         startAnimating()
-        var results:[Results] = []
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){ status in
-            switch status{
-            case .Success(let parsedJSON):
-                for result in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let resultObject = Results(dictionary: result)
-                    results.append(resultObject)
-                }
-                self.resultsDataSource = results
-                self.resultNetworkingObject.saveResultsToCoreData(resultData: results)
-                self.stopAnimating()
-                self.resultsCollectionView.reloadData()
-                
-            case .Error(let errorMessage):
-                DispatchQueue.main.async {
-                    print(errorMessage)
-                    self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
-                }
-                
-            }
+        self.resultNetworkingObject.resultsMain(){
+        self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
+        self.stopAnimating()
+        self.resultsCollectionView.reloadData()
         }
-        
+
     }
+    //MARK: Get JSON Data
+
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.resultsCollectionView.setContentOffset(CGPoint.zero, animated: true)
     }
