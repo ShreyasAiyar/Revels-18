@@ -24,6 +24,7 @@
 		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
 		B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517011FF9012100C3D0F4 /* InstagramModel.swift */; };
 		B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517031FF93FC500C3D0F4 /* InstagramCell.swift */; };
+		B1760E1D20050475006EEAC1 /* InstagramNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
 		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
@@ -71,6 +72,7 @@
 		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
 		B16517011FF9012100C3D0F4 /* InstagramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModel.swift; sourceTree = "<group>"; };
 		B16517031FF93FC500C3D0F4 /* InstagramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
+		B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramNetworking.swift; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
 		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				B16517011FF9012100C3D0F4 /* InstagramModel.swift */,
 				B16517031FF93FC500C3D0F4 /* InstagramCell.swift */,
+				B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			files = (
 				B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */,
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
+				B1760E1D20050475006EEAC1 /* InstagramNetworking.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
 				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,

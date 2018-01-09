@@ -9,6 +9,10 @@
 import UIKit
 
 class HomeViewCell: UITableViewCell {
+   
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var dataSource:[String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,15 +25,16 @@ class HomeViewCell: UITableViewCell {
 }
 
 extension HomeViewCell: UICollectionViewDataSource{
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
-        cell.homeLabel.text = "Conclave"
-        cell.layer.cornerRadius = 5
         collectionView.backgroundColor = UIColor.white
+        cell.homeLabel.text = dataSource[indexPath.row]
         return cell
     }
     

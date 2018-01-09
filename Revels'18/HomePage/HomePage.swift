@@ -15,15 +15,21 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
     
     @IBOutlet weak var tableView: UITableView!
-    let sectionHeaders:[String] = ["Today's Events","Schedule","Results", "Instagram Feed"]
+    let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "Instagram Feed"]
     let scrollView:UIScrollView = UIScrollView()
     let httpRequestObject = HTTPRequest()
-    let instagramURL = "https://api.instagram.com/v1/tags/techtatva17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
+    
     var instaObjects:[Instagram] = []
+    var categoriesDataSource:[Categories] = []
+    var resultsDataSource:[Results] = []
+    
+    let resultsNetworkingObject = ResultNetworking()
+    let categoriesNetworkingObject = CategoriesNetworking()
+    let instagramNetworkingObject = InstagramNetworking()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchInstagram()
+        fetchAllData()
         tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
         configureNavigationBar()
         configureScrollBar()
@@ -33,7 +39,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         super.viewDidAppear(animated)
         self.tabBarController?.delegate = self
     }
-
     
     func configureScrollBar(){
         let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.3)
@@ -71,11 +76,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         let pageWidth:CGFloat = self.scrollView.frame.width
         let maxWidth:CGFloat = pageWidth * 2
         let contentOffset:CGFloat = self.scrollView.contentOffset.x
-        
         var slideToX = contentOffset + pageWidth
-        
-        if  contentOffset + pageWidth == maxWidth
-        {
+        if  contentOffset + pageWidth == maxWidth{
             slideToX = 0
         }
         self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
@@ -96,9 +98,13 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
+        cell.collectionView.reloadData()
+        cell.collectionView.backgroundColor = UIColor.white
+        cell.backgroundColor = UIColor.white
         if(indexPath.section < 3){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
-            cell.backgroundColor = UIColor.white
+            cell.dataSource = self.resultsDataSource.map{return $0.evename}
+            print(cell.dataSource)
             return cell
         }
         else{
@@ -114,40 +120,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
             cell.locationLabel.text = instaObjects[indexPath.row].location
             cell.time.text = convertDate(date: instaObjects[indexPath.row].time)
             print(convertDate(date: instaObjects[indexPath.row].time))
-            
             return cell
-    
         }
-    }
-    
-    func convertDate(date:String) -> String{
-        let convertedDate = Date(timeIntervalSince1970: Double(date)!)
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .full
-
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day,.hour,.minute,.second], from: convertedDate, to: currentDate)
-        
-        if components.day! > 0{
-            formatter.allowedUnits = .day
-        }
-        else if components.hour! > 0{
-            formatter.allowedUnits = .hour
-        }
-        else if components.minute! > 0{
-            formatter.allowedUnits = .minute
-        }
-        else{
-            formatter.allowedUnits = .second
-        }
-        let formatString = NSLocalizedString("%@ ago", comment: "Time")
-        
-        guard let timeString = formatter.string(from: components) else {
-            return ""
-        }
-        return String(format: formatString, timeString)
-        
     }
     
     
@@ -172,52 +146,39 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         }
     }
     
-    
     @IBAction func moreButtonSelected(_ sender: UIBarButtonItem) {
-        super.moreButtonClicked()
+        moreButtonClicked()
     }
     
     @IBAction func favoriteButtonSelected(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
-        self.present(favoritesViewController, animated: true, completion: nil)
+        presentFavoriteView()
     }
     
     func selectButtonClicked(currentIndex: Int) {
         switch currentIndex{
-        case 0:
-            self.tabBarController?.selectedIndex = 1
-        case 1:
-            self.tabBarController?.selectedIndex = 2
-        case 2:
-            self.tabBarController?.selectedIndex = 4
-        default:
-            print("Does Nothing")
+        case 0: self.tabBarController?.selectedIndex = 1
+        case 1: self.tabBarController?.selectedIndex = 2
+        case 2: self.tabBarController?.selectedIndex = 4
+        default: print("Does Nothing")
         }
     }
     
-    func fetchInstagram(){
-        startAnimating()
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: instagramURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                let instaData = parsedJSON as Dictionary<String,Any>
-                for instaDataItem in instaData["data"] as! [Dictionary<String,Any>]{
-                    let instaObject = Instagram(dictionary: instaDataItem)
-                    self.instaObjects.append(instaObject)
+    func fetchAllData(){
+        self.startAnimating()
+        instagramNetworkingObject.fetchInstagram{instaObjects in
+            self.instaObjects = instaObjects
+            self.resultsNetworkingObject.resultsMain {
+                self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
+                if self.resultsDataSource.count == 0{
+                    self.stopAnimating()
+                    self.presentEmptyView()
                 }
                 self.stopAnimating()
                 self.tableView.reloadData()
-            
-            case .Error(let errorString):
-                DispatchQueue.main.async {
-                    print(errorString)
-                }
             }
         }
     }
-    
+     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.tableView.setContentOffset(CGPoint.zero, animated: true)
     }

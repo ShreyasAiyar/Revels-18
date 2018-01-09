@@ -15,6 +15,7 @@ struct Results{
     let evename:String
     let round:String
     let pos:String
+    let name:String
     
     init(dictionary:Dictionary<String,String>) {
         self.tid = dictionary["tid"]!
@@ -23,6 +24,7 @@ struct Results{
         self.evename = dictionary["evename"]!
         self.round = dictionary["round"]!
         self.pos = dictionary["pos"]!
+        self.name = self.evename
     }
     
 }

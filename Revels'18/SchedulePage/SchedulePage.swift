@@ -135,7 +135,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return CGFloat(80)
+            return CGFloat(70)
     }
     
     
@@ -174,10 +174,7 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
 
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        if tabBarIndex == 1{
-            self.tableView.setContentOffset(CGPoint.zero, animated: true)
-        }
+        self.tableView.setContentOffset(CGPoint.zero, animated: true)
     }
 
 }

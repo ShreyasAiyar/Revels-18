@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 
 extension UIViewController{
     
+    // MARK: More Button Clicked
     func moreButtonClicked(){
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -25,7 +26,7 @@ extension UIViewController{
         
         let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
             Void in
-            let myURL = URL(string: "https://www.theverge.com")
+            let myURL = URL(string: "http://alpha.mitrevels.in/index.php")
             let safariViewController = SFSafariViewController(url: myURL!)
             self.present(safariViewController, animated: true,completion: nil)
         }
@@ -49,6 +50,7 @@ extension UIViewController{
         }
     }
     
+    // MARK: Create Bar Button Items
     func createBarButtonItems(){
         let whiteColor:UIColor = self.view.tintColor
         let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
@@ -70,6 +72,7 @@ extension UIViewController{
         
     }
     
+    
     func searchButtonPressed(){
         navigationItem.setLeftBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems(nil, animated: true)
@@ -87,13 +90,57 @@ extension UIViewController{
     }
     
     func presentEmptyView(){
-        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            view.backgroundColor = .clear
+            let blurEffect = UIBlurEffect(style: .dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = (self.tabBarController?.view.bounds)!
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            self.tabBarController?.view.addSubview(blurEffectView)
+        } else {
+            view.backgroundColor = .black
+        }
     }
     
     func presentNoNetworkView(){
         
     }
     
+    func presentFavoriteView(){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
+    self.present(favoritesViewController, animated: true, completion: nil)
+    }
+    
+    func convertDate(date:String) -> String{
+        let convertedDate = Date(timeIntervalSince1970: Double(date)!)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day,.hour,.minute,.second], from: convertedDate, to: currentDate)
+        
+        if components.day! > 0{
+            formatter.allowedUnits = .day
+        }
+        else if components.hour! > 0{
+            formatter.allowedUnits = .hour
+        }
+        else if components.minute! > 0{
+            formatter.allowedUnits = .minute
+        }
+        else{
+            formatter.allowedUnits = .second
+        }
+        let formatString = NSLocalizedString("%@ ago", comment: "Time")
+        
+        guard let timeString = formatter.string(from: components) else {
+            return ""
+        }
+        return String(format: formatString, timeString)
+        
+    }
     
 }
 

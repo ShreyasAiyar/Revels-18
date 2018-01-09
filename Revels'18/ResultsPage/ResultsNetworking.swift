@@ -65,6 +65,7 @@ class ResultNetworking{
             result.setValue(resultObject.pos, forKey: "pos")
             result.setValue(resultObject.round, forKey: "round")
             result.setValue(resultObject.tid, forKey: "tid")
+            result.setValue(resultObject.name, forKey: "name")
             do{
                 try managedContext.save()
             }
@@ -91,6 +92,7 @@ class ResultNetworking{
             resultDictionary["pos"] = result.value(forKey: "pos") as? String
             resultDictionary["round"] = result.value(forKey: "round") as? String
             resultDictionary["tid"] = result.value(forKey: "tid") as? String
+            resultDictionary["name"] = result.value(forKey: "name") as? String
             let resultObject = Results(dictionary: resultDictionary)
             resultsArray.append(resultObject)
         }

@@ -26,6 +26,12 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.delegate = self
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
