@@ -26,8 +26,11 @@ class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func configureDeveloperController(){
         let shreyasImage = UIImage(named: "Proshow Banner")
-        let shreyasDeveloper = Developers(developerName: "Shreyas", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Supermarine")
-        developerDataSource.append(shreyasDeveloper)
+        developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
+        developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: shreyasImage, developerPosition: "Organizer", developerMessage: "Supermarine"))
+        developerDataSource.append(Developers(developerName: "Anurag Choudhary", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
+        developerDataSource.append(Developers(developerName: "Gautham Vinod", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
+        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
