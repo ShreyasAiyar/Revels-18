@@ -18,8 +18,6 @@ struct Events{
     var cname:String
     var cntctname:String
     var cntctno:String
-    var type:String
-    var hash:String
     var day:String
 
     
@@ -32,8 +30,6 @@ struct Events{
         self.cname = dictionary["cname"]!
         self.cntctno = dictionary["cntctno"]!
         self.cntctname = dictionary["cntctname"]!
-        self.type = dictionary["hash"]!
-        self.hash = dictionary["type"]!
         self.day = dictionary["day"]!
 
     }

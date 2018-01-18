@@ -35,6 +35,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         configureScrollBar()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.delegate = self

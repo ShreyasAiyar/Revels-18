@@ -29,6 +29,7 @@ class ScheduleCell: UITableViewCell{
     }
     
     @IBAction func favoritesButtonClicked(_ sender: UIButton) {
+        sender.pulse()
         if favouriteButton.isSelected == true{
             print("Selected")
             favouriteButton.isSelected = false

@@ -16,6 +16,29 @@ class CategoriesNetworking{
     
     let httpRequestObject = HTTPRequest()
     
+    func categoriesMain(completion:@escaping () -> ()){
+        let categoriesURL = "https://api.mitportals.in/categories/"
+        var categories:[Categories] = []
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
+            result in
+            switch result{
+            case .Success(let parsedJSON):
+                for category in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let categoryObject = Categories(dictionary: category)
+                    categories.append(categoryObject)
+                }
+                self.saveCategoriesToCoreData(categoryData: categories)
+                completion()
+            case .Error(let errorMessage):
+                DispatchQueue.main.async {
+                    print(errorMessage)
+                    completion()
+                }
+            }
+        }
+        
+    }
+    
     
     func saveCategoriesToCoreData(categoryData:[Categories]){
         

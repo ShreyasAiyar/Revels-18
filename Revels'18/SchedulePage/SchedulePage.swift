@@ -16,7 +16,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     @IBOutlet var favoritesView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var popupView: UIView!
     
     
     //MARK: Creating Objects
@@ -50,22 +49,9 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func addToFavorites(eid:String) {
         scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
-        tableView.reloadData()
         fetchFavorites()
-        self.view.addSubview(favoritesView)
-        favoritesView.center = tableView.center
-        favoritesView.alpha = 0
-        favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        UIView.animate(withDuration: 0.5){
-            self.favoritesView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            self.favoritesView.alpha = 1
-        }
-        UIView.animate(withDuration: 0.5, delay: 1.5, options: [.curveEaseInOut], animations: {
-            self.favoritesView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            self.favoritesView.alpha = 0
-        }){ (success:Bool) in
-            self.favoritesView.removeFromSuperview()
-        }
+        tableView.reloadData()
+        
     }
     
     func removeFromFavorites(eid: String) {
@@ -130,7 +116,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isSelectedIndex[currentIndex] = indexPath.row
-        //presentPopupView()
         
     }
     
@@ -145,18 +130,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     }
     
     
-    func presentPopupView(){
-        self.view.addSubview(popupView)
-        popupView.center = self.tableView.center
-        popupView.alpha = 0
-        popupView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        UIView.animate(withDuration: 0.5){
-            self.popupView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            self.popupView.alpha = 1
-        }
-        
-    }
-    
     func fetchSchedules(){
         startAnimating()
         scheduleNetworkingObject.fetchSchedules(){
@@ -169,9 +142,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     func fetchFavorites(){
         self.favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     }
-    
-    
-
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.tableView.setContentOffset(CGPoint.zero, animated: true)

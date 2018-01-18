@@ -18,18 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RevelsCircle" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-j0-Idp">
-                                <rect key="frame" x="112" y="258" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="9Yv-9L-VSj"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="IN2-na-2oP"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Revels18 Logo 1" translatesAutoresizingMaskIntoConstraints="NO" id="Yx1-lV-4Kc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ld5-j0-Idp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="V4J-fo-Khg"/>
-                            <constraint firstItem="ld5-j0-Idp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gKB-DY-qfL"/>
+                            <constraint firstItem="Yx1-lV-4Kc" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="qbd-fo-eyT"/>
+                            <constraint firstItem="Yx1-lV-4Kc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sbz-yz-sRG"/>
+                            <constraint firstItem="Yx1-lV-4Kc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uGi-eV-hxV"/>
+                            <constraint firstItem="Yx1-lV-4Kc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="v7F-Qu-OXr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="RevelsCircle" width="120" height="120"/>
+        <image name="Revels18 Logo 1" width="697" height="1027.43994140625"/>
     </resources>
 </document>

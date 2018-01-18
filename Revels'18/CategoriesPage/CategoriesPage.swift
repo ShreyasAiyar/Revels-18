@@ -15,25 +15,22 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     var categoriesDataSource:[Categories] = []
+    var eventsDataSource:[Events] = []
     let httpRequestObject = HTTPRequest()
     let categoryNetworkingObject = CategoriesNetworking()
+    let eventsNetworkingObject = EventsNetworking()
+    var catid:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItems()
         configureNavigationBar()
         categoriesMain()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.delegate = self
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,32 +64,34 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
         return 5
     }
     
-    func categoriesMain(){
-        startAnimating()
-        let categoriesURL = "https://api.mitportals.in/categories/"
-        var categories:[Categories] = []
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                for category in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let categoryObject = Categories(dictionary: category)
-                    categories.append(categoryObject)
-                }
-                self.stopAnimating()
-                self.categoriesDataSource = categories
-                self.categoryNetworkingObject.saveCategoriesToCoreData(categoryData: categories)
-                self.categoriesCollectionView.reloadSections([0])
-                
-            case .Error(let errorMessage):
-                DispatchQueue.main.async {
-                    print(errorMessage)
-                    self.stopAnimating()
-                    self.categoriesDataSource = self.categoryNetworkingObject.fetchCategoriesFromCoreData()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.catid = categoriesDataSource[indexPath.row].cid
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CategoryDetailSegue"{
+            if let categoryDetailController = segue.destination as? CategoriesDetailController{
+                categoryDetailController.categoriesDataSource = categoriesDataSource.filter{
+                    $0.cid == self.catid
+                }.first
+//                categoryDetailController.eventsDataSource = self.eventsDataSource.filter{
+//                    $0.cid == self.catid
                 }
             }
         }
-        
+    
+    func categoriesMain(){
+        startAnimating()
+        categoryNetworkingObject.categoriesMain {
+            self.categoriesDataSource = self.categoryNetworkingObject.fetchCategoriesFromCoreData()
+            self.stopAnimating()
+            self.categoriesCollectionView.reloadData()
+            self.eventsNetworkingObject.eventsMain {
+                self.eventsDataSource = self.eventsNetworkingObject.fetchEventsFromCoreData()
+                self.categoriesCollectionView.reloadData()
+                self.stopAnimating()
+            }
+        }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

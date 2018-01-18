@@ -12,7 +12,31 @@ import UIKit
 
 class EventsNetworking{
     
+    
     let httpRequestObject = HTTPRequest()
+    let eventsURL = "https://api.mitportals.in/events/"
+    
+    func eventsMain(completion:@escaping () -> ()){
+        var events:[Events] = []
+        httpRequestObject.makeHTTPRequestForEvents(eventsURL: eventsURL){
+            result in
+            switch result{
+            case .Success(let parsedJSON):
+                for event in parsedJSON["data"] as! [Dictionary<String,String>]{
+                    let eventObject = Events(dictionary: event)
+                    events.append(eventObject)
+                }
+                self.saveEventsToCoreData(eventsData: events)
+                completion()
+                
+            case .Error(let errorMessage):
+                print(errorMessage)
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
+    }
     
     func saveEventsToCoreData(eventsData:[Events]){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
@@ -39,14 +63,12 @@ class EventsNetworking{
             event.setValue(eventObject.cid, forKey: "cid")
             event.setValue(eventObject.cname, forKey: "cname")
             event.setValue(eventObject.day, forKey: "day")
-            event.setValue(eventObject.cntctname, forKey: "cnctname")
+            event.setValue(eventObject.cntctname, forKey: "cntctname")
             event.setValue(eventObject.cntctno, forKey: "cntctno")
             event.setValue(eventObject.edesc, forKey: "edesc")
             event.setValue(eventObject.eid, forKey: "eid")
-            event.setValue(eventObject.emaxteamsize, forKey: "emaxtimesize")
+            event.setValue(eventObject.emaxteamsize, forKey: "emaxteamsize")
             event.setValue(eventObject.ename, forKey: "ename")
-            event.setValue(eventObject.hash, forKey: "hash")
-            event.setValue(eventObject.type, forKey: "type")
             do{
                 try managedContext.save()
             }
@@ -56,18 +78,31 @@ class EventsNetworking{
         }
     }
     
-    func fetchEventsFromCoreData(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
+    func fetchEventsFromCoreData() -> [Events]{
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let managedContext:NSManagedObjectContext = appDelegate!.persistentContainer.viewContext
         let eventsFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Event")
         
-        var events:[NSManagedObject] = []
-        events = try! managedContext.fetch(eventsFetchRequest)
-        print(events)
-        
+        var coreDataEvents:[NSManagedObject] = []
+        var events:[Events] = []
+        coreDataEvents = try! managedContext.fetch(eventsFetchRequest)
+        for event in coreDataEvents{
+            var dictionary:Dictionary<String,String> = [:]
+            dictionary["eid"] = event.value(forKey: "eid") as? String
+            dictionary["cid"] = event.value(forKey: "cid") as? String
+            dictionary["cname"] = event.value(forKey: "cname") as? String
+            dictionary["day"] = event.value(forKey: "day") as? String
+            dictionary["cntctname"] = event.value(forKey: "cntctname") as? String
+            dictionary["cntctno"] = event.value(forKey: "cntctno") as? String
+            dictionary["edesc"] = event.value(forKey: "edesc") as? String
+            dictionary["eid"] = event.value(forKey: "eid") as? String
+            dictionary["emaxteamsize"] = event.value(forKey: "emaxteamsize") as? String
+            dictionary["ename"] = event.value(forKey: "ename") as? String
+            let eventObject = Events(dictionary: dictionary)
+            events.append(eventObject)
+        }
+        return events
     }
     
     
