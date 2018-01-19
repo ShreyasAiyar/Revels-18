@@ -79,41 +79,38 @@ class ScheduleNetworking{
         }
     }
     
-    func fetchScheduleFromCoreData() -> [[NSManagedObject]]{
-        var day1Schedules:[NSManagedObject] = []
-        var day2Schedules:[NSManagedObject] = []
-        var day3Schedules:[NSManagedObject] = []
-        var day4Schedules:[NSManagedObject] = []
-        var allDays:[[NSManagedObject]] = [[]]
+    func fetchScheduleFromCoreData() -> [Schedules]{
+
+        var coreDataSchedules:[NSManagedObject] = []
+        var schedules:[Schedules] = []
+        var dayWiseSchedules:[[Schedules]] = [[]]
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         let scheduleFetchRequest = NSFetchRequest<NSManagedObject>(entityName:"Schedule")
         
-        let day1Predicate = NSPredicate(format: "day == 1")
-        let day2Predicate = NSPredicate(format: "day == 2")
-        let day3Predicate = NSPredicate(format: "day == 3")
-        let day4Predicate = NSPredicate(format: "day == 4")
+        coreDataSchedules = try! managedContext.fetch(scheduleFetchRequest)
+        for coreDataSchedule in coreDataSchedules{
+            var dictionary:Dictionary<String,String> = [:]
+            dictionary["eid"] = coreDataSchedule.value(forKey: "eid") as? String
+            dictionary["ename"] = coreDataSchedule.value(forKey: "ename") as? String
+            dictionary["catid"] = coreDataSchedule.value(forKey: "catid") as? String
+            dictionary["catname"] = coreDataSchedule.value(forKey: "catname") as? String
+            dictionary["round"] = coreDataSchedule.value(forKey: "round") as? String
+            dictionary["venue"] = coreDataSchedule.value(forKey: "venue") as? String
+            dictionary["stime"] = coreDataSchedule.value(forKey: "stime") as? String
+            dictionary["etime"] = coreDataSchedule.value(forKey: "etime") as? String
+            dictionary["day"] = coreDataSchedule.value(forKey: "day") as? String
+            dictionary["date"] = coreDataSchedule.value(forKey: "date") as? String
+            let scheduleObject:Schedules = Schedules(dictionary: dictionary)
+            schedules.append(scheduleObject)
+        }
+        dayWiseSchedules.append(schedules.filter{return $0.day == "1"})
+        dayWiseSchedules.append(schedules.filter{return $0.day == "2"})
+        dayWiseSchedules.append(schedules.filter{return $0.day == "3"})
+        dayWiseSchedules.append(schedules.filter{return $0.day == "4"})
         
-        allDays.removeAll()
-        
-        scheduleFetchRequest.predicate = day1Predicate
-        day1Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day1Schedules)
-        
-        scheduleFetchRequest.predicate = day2Predicate
-        day2Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day2Schedules)
-        
-        scheduleFetchRequest.predicate = day3Predicate
-        day3Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day3Schedules)
-        
-        scheduleFetchRequest.predicate = day4Predicate
-        day4Schedules = try! managedContext.fetch(scheduleFetchRequest)
-        allDays.append(day4Schedules)
-
-        return allDays
+        return schedules
  
     }
     

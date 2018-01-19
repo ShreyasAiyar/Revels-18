@@ -7,5 +7,6 @@ target 'Revels-18' do
 
 	pod 'NVActivityIndicatorView', '~> 3.6.0'
 	pod 'SDWebImage/WebP'
+	pod "ViewAnimator"
 
 end

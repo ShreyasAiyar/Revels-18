@@ -115,12 +115,17 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
             cell.captionLabel.text = instaObjects[indexPath.row].text
             let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
             let profileURL = URL(string : instaObjects[indexPath.row].profilePictureURL)
-            cell.instaView.sd_setImage(with: instaURL)
             cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)" + " likes"
-            cell.profileView.sd_setImage(with: profileURL)
             cell.locationLabel.text = instaObjects[indexPath.row].location
+            cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)" + " comments"
             cell.time.text = convertDate(date: instaObjects[indexPath.row].time)
             print(convertDate(date: instaObjects[indexPath.row].time))
+            cell.instaView.sd_setShowActivityIndicatorView(true)
+            cell.profileView.sd_setShowActivityIndicatorView(true)
+            cell.instaView.sd_setIndicatorStyle(.gray)
+            cell.profileView.sd_setIndicatorStyle(.gray)
+            cell.instaView.sd_setImage(with: instaURL)
+            cell.profileView.sd_setImage(with: profileURL)
             return cell
         }
     }

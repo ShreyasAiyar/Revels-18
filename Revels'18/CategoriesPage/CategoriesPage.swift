@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import ViewAnimator
 
 class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UITabBarControllerDelegate,NVActivityIndicatorViewable,UICollectionViewDelegateFlowLayout{
     
@@ -15,10 +16,10 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     var categoriesDataSource:[Categories] = []
-    var eventsDataSource:[Events] = []
+    var schedulesDataSource:[Schedules] = []
     let httpRequestObject = HTTPRequest()
     let categoryNetworkingObject = CategoriesNetworking()
-    let eventsNetworkingObject = EventsNetworking()
+    let schedulesNetworkingObject = ScheduleNetworking()
     var catid:String?
     
     override func viewDidLoad() {
@@ -26,11 +27,16 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
         createBarButtonItems()
         configureNavigationBar()
         categoriesMain()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.delegate = self
+    }
+    
+    override func reloadData() {
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,17 +74,18 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
         self.catid = categoriesDataSource[indexPath.row].cid
     }
     
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        self.catid = categoriesDataSource[indexPath.row].cid
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CategoryDetailSegue"{
             if let categoryDetailController = segue.destination as? CategoriesDetailController{
                 categoryDetailController.categoriesDataSource = categoriesDataSource.filter{
-                    $0.cid == self.catid
-                }.first
-//                categoryDetailController.eventsDataSource = self.eventsDataSource.filter{
-//                    $0.cid == self.catid
-                }
+                    return $0.cid == self.catid}.first
             }
         }
+    }
     
     func categoriesMain(){
         startAnimating()
@@ -86,22 +93,12 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
             self.categoriesDataSource = self.categoryNetworkingObject.fetchCategoriesFromCoreData()
             self.stopAnimating()
             self.categoriesCollectionView.reloadData()
-            self.eventsNetworkingObject.eventsMain {
-                self.eventsDataSource = self.eventsNetworkingObject.fetchEventsFromCoreData()
-                self.categoriesCollectionView.reloadData()
-                self.stopAnimating()
             }
         }
-    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.categoriesCollectionView.setContentOffset(CGPoint.zero, animated: true)
     }
     
-    
-    
-
-    
-
 
 }

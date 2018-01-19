@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import NVActivityIndicatorView
 import CoreData
+import ViewAnimator
+
 
 class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,AddToFavoritesProtocol,UITabBarControllerDelegate,UIScrollViewDelegate,RemoveFromFavoritesProtocol{
     
@@ -17,14 +19,11 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    
     //MARK: Creating Objects
-    let cacheCheck = CacheCheck()
-    let httpRequestObject = HTTPRequest()
     let scheduleNetworkingObject = ScheduleNetworking()
     let categoriesURL = "https://api.mitportals.in/schedule/"
-    var scheduleDataSource:[[NSManagedObject]] = [[]]
-    var filteredDataSource:[[NSManagedObject]] = [[]]
+    var scheduleDataSource:[[Schedules]] = [[]]
+    var filteredDataSource:[[Schedules]] = [[]]
     var favoritesDataSource:[Schedules] = []
     var currentIndex:Int = 0
     var searchBar = UISearchBar()
@@ -34,24 +33,21 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        favoritesView.layer.cornerRadius = 10
         createBarButtonItems()
         configureNavigationBar()
         fetchFavorites()
         fetchSchedules()
-        
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.delegate = self
+        tableView.animateRandom()
     }
     
     func addToFavorites(eid:String) {
         scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
         fetchFavorites()
         tableView.reloadData()
-        
     }
     
     func removeFromFavorites(eid: String) {
@@ -102,10 +98,11 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
         cell.delegate1 = self
         cell.delegate2 = self
-        cell.eid = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "eid") as! String
-        cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "ename") as! String
-        cell.time.text! = (scheduleDataSource[currentIndex][indexPath.row ].value(forKey: "stime") as! String) + " - " + (scheduleDataSource[currentIndex][indexPath.section].value(forKey: "etime") as! String)
-        cell.location.text! = scheduleDataSource[currentIndex][indexPath.row].value(forKey: "venue") as! String
+        cell.eid = scheduleDataSource[currentIndex][indexPath.row].eid
+        cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].ename
+        cell.time.text! = scheduleDataSource[currentIndex][indexPath.row].stime + " - " + scheduleDataSource[currentIndex][indexPath.row].etime
+       cell.location.text = scheduleDataSource[currentIndex][indexPath.row].venue
+        
         if favoritesDataSource.contains(where: {$0.eid == cell.eid}){
             cell.favouriteButton.isSelected = true
         }else{
@@ -118,11 +115,10 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
         isSelectedIndex[currentIndex] = indexPath.row
         
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return CGFloat(70)
     }
-    
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         currentIndex = segmentedControl.selectedSegmentIndex
@@ -133,7 +129,11 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
     func fetchSchedules(){
         startAnimating()
         scheduleNetworkingObject.fetchSchedules(){
-            self.scheduleDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
+            let schedules =  self.scheduleNetworkingObject.fetchScheduleFromCoreData()
+            self.scheduleDataSource.append(schedules.filter{return $0.day == "1"})
+            self.scheduleDataSource.append(schedules.filter{return $0.day == "2"})
+            self.scheduleDataSource.append(schedules.filter{return $0.day == "3"})
+            self.scheduleDataSource.append(schedules.filter{return $0.day == "4"})
             self.tableView.reloadData()
             self.stopAnimating()
         }

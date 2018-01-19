@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryDetailCell: UITableViewCell {
     
-    var dataSource:[Events]?
+    var dataSource:[Schedules]?
 
 }
 
