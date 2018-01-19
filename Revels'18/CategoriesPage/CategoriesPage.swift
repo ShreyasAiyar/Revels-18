@@ -26,7 +26,7 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
         super.viewDidLoad()
         createBarButtonItems()
         configureNavigationBar()
-        categoriesMain()
+        categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
         
     }
     
@@ -86,15 +86,6 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
             }
         }
     }
-    
-    func categoriesMain(){
-        startAnimating()
-        categoryNetworkingObject.categoriesMain {
-            self.categoriesDataSource = self.categoryNetworkingObject.fetchCategoriesFromCoreData()
-            self.stopAnimating()
-            self.categoriesCollectionView.reloadData()
-            }
-        }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.categoriesCollectionView.setContentOffset(CGPoint.zero, animated: true)

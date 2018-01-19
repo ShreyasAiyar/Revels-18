@@ -17,18 +17,15 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var resultsCollectionView: UICollectionView!
-    let resultsURL = "https://api.mitportals.in/results/"
+
     let resultNetworkingObject = ResultNetworking()
     var resultsDataSource:[Results] = []
     var filteredDataSource:[Results] = []
-    let httpRequestObject = HTTPRequest()
     var searchBar = UISearchBar()
     var searchActive:Bool = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //resultsMain()
         fetchResults()
         createBarButtonItems()
         configureNavigationBar()
@@ -132,15 +129,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     
     
     func fetchResults(){
-        startAnimating()
-        self.resultNetworkingObject.resultsMain(){
-        self.resultsDataSource = self.resultNetworkingObject.fetchResultsFromCoreData()
-        self.stopAnimating()
-        self.resultsCollectionView.reloadData()
-        }
-
-    }
-    //MARK: Get JSON Data
+      resultsDataSource = resultNetworkingObject.fetchResultsFromCoreData()
+  }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.resultsCollectionView.setContentOffset(CGPoint.zero, animated: true)
