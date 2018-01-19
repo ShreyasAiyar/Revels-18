@@ -84,7 +84,6 @@ class SchedulePage: UIViewController,NVActivityIndicatorViewable,UITableViewDele
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-    cell.delegate = self
     cell.eid = scheduleDataSource[currentIndex][indexPath.row].eid + "(" + scheduleDataSource[currentIndex][indexPath.row].round + ")"
     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].ename
     cell.time.text! = scheduleDataSource[currentIndex][indexPath.row].stime + " - " + scheduleDataSource[currentIndex][indexPath.row].etime

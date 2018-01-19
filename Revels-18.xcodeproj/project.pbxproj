@@ -42,6 +42,8 @@
 		B1C5EFB12010E7B900FA1B6D /* SanchezRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1C5EFB02010E7B700FA1B6D /* SanchezRegular.otf */; };
 		B1C5EFB32010E99B00FA1B6D /* BeyondTheMountains.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1C5EFB22010E99900FA1B6D /* BeyondTheMountains.otf */; };
 		B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */; };
+		B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */; };
+		B1C5EFB92011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
 		B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB811FCEB55300E8AD7A /* Main.storyboard */; };
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
@@ -97,6 +99,8 @@
 		B1C5EFB02010E7B700FA1B6D /* SanchezRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanchezRegular.otf; sourceTree = "<group>"; };
 		B1C5EFB22010E99900FA1B6D /* BeyondTheMountains.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BeyondTheMountains.otf; sourceTree = "<group>"; };
 		B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D3CB821FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
 				B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */,
 				B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */,
+				B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */,
+				B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */,
 			);
 			path = SchedulePage;
 			sourceTree = "<group>";
@@ -522,7 +528,9 @@
 				B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */,
 				B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */,
 				B1A193D6200E048D00F681DA /* CategoryDetailCollectionCell.swift in Sources */,
+				B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */,
 				B1E49F1B1FD66AFD00521661 /* ScheduleCell.swift in Sources */,
+				B1C5EFB92011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift in Sources */,
 				B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */,
 				B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */,
 				B1A193D8200E06CC00F681DA /* UIButton.swift in Sources */,

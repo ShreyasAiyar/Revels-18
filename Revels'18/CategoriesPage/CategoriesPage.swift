@@ -21,18 +21,23 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     let categoryNetworkingObject = CategoriesNetworking()
     let schedulesNetworkingObject = ScheduleNetworking()
     var catid:String?
+    var didShowAnimation:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItems()
         configureNavigationBar()
         categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.delegate = self
+      if(!didShowAnimation){
+        let animation = AnimationType.from(direction: .top, offset: 30)
+        categoriesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
+        didShowAnimation = true
+      }
     }
     
     override func reloadData() {
@@ -52,14 +57,14 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.bounds.width - 20)/3
+        let width = (self.view.bounds.width - 35)/4
         let height = width + 20
         return CGSize(width: width, height: height)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

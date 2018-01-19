@@ -14,7 +14,7 @@ import SDWebImage
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate {
   
   @IBOutlet weak var tableView: UITableView!
-  let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "Instagram Feed"]
+  let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "#Revels18 On Instagram"]
   let scrollView:UIScrollView = UIScrollView()
   
   var instaObjects:[Instagram] = []
