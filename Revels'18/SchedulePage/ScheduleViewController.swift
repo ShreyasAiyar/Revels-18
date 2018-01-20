@@ -85,15 +85,23 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 20, height: 80)
+    return CGSize(width: self.view.frame.width - 10, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return CGFloat(10)
+    return 5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let popupViewController = storyboard.instantiateViewController(withIdentifier: "PopupView")
+    popupViewController.modalPresentationStyle = .overCurrentContext
+    popupViewController.modalTransitionStyle = .crossDissolve
+    self.tabBarController?.present(popupViewController, animated: true, completion: nil)
   }
   
   func fetchFavorites(){

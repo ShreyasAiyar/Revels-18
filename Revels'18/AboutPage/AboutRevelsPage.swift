@@ -15,7 +15,6 @@ class AboutRevelsPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         aboutRevelsTextView.isEditable = false
     }
 

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVO-ZP-Qrj">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Revels Logo" translatesAutoresizingMaskIntoConstraints="NO" id="rVO-ZP-Qrj">
                     <rect key="frame" x="112" y="258" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="DCS-rS-q6Z"/>
@@ -32,4 +32,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
+    <resources>
+        <image name="Revels Logo" width="512" height="512"/>
+    </resources>
 </document>

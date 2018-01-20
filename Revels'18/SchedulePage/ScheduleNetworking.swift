@@ -12,32 +12,6 @@ import CoreData
 
 class ScheduleNetworking{
     
-    let httpRequestObject = HTTPRequest()
-    let scheduleURL = "https://api.mitportals.in/schedule/"
-    
-    //MARK: Networking Call - Fetch Schedules
-    func fetchSchedules(completion:@escaping () -> ()){
-        var schedules:[Schedules] = []
-        httpRequestObject.makeHTTPRequestForEvents(eventsURL: scheduleURL){
-            result in
-            switch result{
-            case .Success(let parsedJSON):
-                for schedule in parsedJSON["data"] as! [Dictionary<String,String>]{
-                    let scheduleObject = Schedules(dictionary: schedule)
-                    schedules.append(scheduleObject)
-                }
-                self.saveSchedulesToCoreData(scheduleData: schedules)
-                completion()
-                
-            case .Error(let errorMessage):
-                print(errorMessage)
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-        }
-    }
-    
     func saveSchedulesToCoreData(scheduleData:[Schedules]){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
@@ -190,4 +164,33 @@ class ScheduleNetworking{
             print("Error Deleting Favorites")
         }
     }
+  
+  func removeAllFavorites(){
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    let favoritesDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
+    let favoritesDeleteBatchRequest = NSBatchDeleteRequest(fetchRequest: favoritesDeleteRequest)
+    do{
+      try managedContext.execute(favoritesDeleteBatchRequest)
+    }
+    catch{
+      NSLog("Deleting Favorites From Core Data Failed")
+    }
+  }
+  
+  func removeDayFavorites(day:Int){
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    let favoritesDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
+    let dayPredicate = NSPredicate(format: "day == %@",day)
+    favoritesDeleteRequest.predicate = dayPredicate
+    let favoritesDeleteBatchRequest = NSBatchDeleteRequest(fetchRequest: favoritesDeleteRequest)
+    do{
+      try managedContext.execute(favoritesDeleteBatchRequest)
+    }
+    catch{
+      NSLog("Deleting Favorites From Core Data Failed")
+    }
+    
+  }
 }

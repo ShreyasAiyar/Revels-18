@@ -12,7 +12,6 @@
 		B1044B821FE24986001141B7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1044B811FE24986001141B7 /* Media.xcassets */; };
 		B10BB83E1FFE6B9400D9C579 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB83D1FFE6B9400D9C579 /* CategoriesCell.swift */; };
 		B10BB8401FFE6C2B00D9C579 /* CategoriesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB83F1FFE6C2B00D9C579 /* CategoriesPage.swift */; };
-		B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111C98C1FD31C95005DB863 /* CacheCheck.swift */; };
 		B12C152D1FE4E14D0062461F /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C152C1FE4E14D0062461F /* HomeHeaderCell.swift */; };
 		B12C152F1FE5753A0062461F /* DevelopersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C152E1FE5753A0062461F /* DevelopersPage.swift */; };
 		B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15301FE5757E0062461F /* DevelopersModel.swift */; };
@@ -24,10 +23,8 @@
 		B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163159B1FDFAB2400D2B428 /* ResultsPage.swift */; };
 		B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517011FF9012100C3D0F4 /* InstagramModel.swift */; };
 		B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517031FF93FC500C3D0F4 /* InstagramCell.swift */; };
-		B1760E1D20050475006EEAC1 /* InstagramNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
-		B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F3011FD597F00004ECB3 /* SchedulePage.swift */; };
 		B1993B7D1FE3EEB30036EA66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1993B7C1FE3EEB30036EA66 /* ViewController.swift */; };
 		B1A193D2200E030900F681DA /* CategoriesDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A193D1200E030900F681DA /* CategoriesDetailController.swift */; };
 		B1A193D4200E042500F681DA /* CategoryDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A193D3200E042500F681DA /* CategoryDetailCell.swift */; };
@@ -44,12 +41,13 @@
 		B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */; };
 		B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */; };
 		B1C5EFB92011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */; };
+		B1C5EFBB2012381700FA1B6D /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFBA2012381700FA1B6D /* FavoritesCollectionViewCell.swift */; };
+		B1C5EFBD2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFBC2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift */; };
 		B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */; };
 		B1D3CB831FCEB55300E8AD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB811FCEB55300E8AD7A /* Main.storyboard */; };
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
-		B1E49F1B1FD66AFD00521661 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */; };
 		B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */; };
 		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
 		B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */; };
@@ -59,6 +57,8 @@
 		B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302491FD3D750003A89E7 /* ScheduleModel.swift */; };
 		B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */; };
 		B1F90E5D2002107D00EA1DC7 /* WorkshopsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F90E5C2002107D00EA1DC7 /* WorkshopsNetworking.swift */; };
+		B1FBED852012F93A0070573B /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */; };
+		B1FBED88201322F60070573B /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED87201322F60070573B /* PopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +69,6 @@
 		B1044B811FE24986001141B7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B10BB83D1FFE6B9400D9C579 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		B10BB83F1FFE6C2B00D9C579 /* CategoriesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPage.swift; sourceTree = "<group>"; };
-		B111C98C1FD31C95005DB863 /* CacheCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCheck.swift; sourceTree = "<group>"; };
 		B12C152C1FE4E14D0062461F /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		B12C152E1FE5753A0062461F /* DevelopersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersPage.swift; sourceTree = "<group>"; };
 		B12C15301FE5757E0062461F /* DevelopersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersModel.swift; sourceTree = "<group>"; };
@@ -81,10 +80,8 @@
 		B163159B1FDFAB2400D2B428 /* ResultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPage.swift; sourceTree = "<group>"; };
 		B16517011FF9012100C3D0F4 /* InstagramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModel.swift; sourceTree = "<group>"; };
 		B16517031FF93FC500C3D0F4 /* InstagramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
-		B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramNetworking.swift; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
-		B196F3011FD597F00004ECB3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		B1993B7C1FE3EEB30036EA66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1A193D1200E030900F681DA /* CategoriesDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailController.swift; sourceTree = "<group>"; };
 		B1A193D3200E042500F681DA /* CategoryDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailCell.swift; sourceTree = "<group>"; };
@@ -101,6 +98,8 @@
 		B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1C5EFBA2012381700FA1B6D /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1C5EFBC2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1D3CB7A1FCEB55300E8AD7A /* Revels-18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels-18.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3CB7D1FCEB55300E8AD7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D3CB821FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		B1D3CB8A1FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
-		B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRevelsPage.swift; sourceTree = "<group>"; };
 		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -118,6 +116,8 @@
 		B1F302491FD3D750003A89E7 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		B1F3024B1FD3DA17003A89E7 /* WorkshopsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsModel.swift; sourceTree = "<group>"; };
 		B1F90E5C2002107D00EA1DC7 /* WorkshopsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsNetworking.swift; sourceTree = "<group>"; };
+		B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
+		B1FBED87201322F60070573B /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,14 +138,6 @@
 				9F3169E0A72D3AC9F0C64F1E /* Pods_Revels_18.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B111C98B1FD31C73005DB863 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				B111C98C1FD31C95005DB863 /* CacheCheck.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		B137876E1FD284CD00B7120D /* LandingPage */ = {
@@ -196,12 +188,10 @@
 		B16517081FFA90C900C3D0F4 /* SchedulePage */ = {
 			isa = PBXGroup;
 			children = (
-				B196F3011FD597F00004ECB3 /* SchedulePage.swift */,
-				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
-				B1E49F1A1FD66AFD00521661 /* ScheduleCell.swift */,
-				B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */,
 				B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */,
+				B1F302491FD3D750003A89E7 /* ScheduleModel.swift */,
 				B1C5EFB82011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift */,
+				B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */,
 			);
 			path = SchedulePage;
 			sourceTree = "<group>";
@@ -248,7 +238,6 @@
 			children = (
 				B16517011FF9012100C3D0F4 /* InstagramModel.swift */,
 				B16517031FF93FC500C3D0F4 /* InstagramCell.swift */,
-				B1760E1C20050475006EEAC1 /* InstagramNetworking.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -276,6 +265,9 @@
 			isa = PBXGroup;
 			children = (
 				B1B71C1B1FFD137C00D24383 /* FavoritesPage.swift */,
+				B1C5EFBA2012381700FA1B6D /* FavoritesCollectionViewCell.swift */,
+				B1C5EFBC2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift */,
+				B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */,
 			);
 			path = FavoritesPage;
 			sourceTree = "<group>";
@@ -321,8 +313,8 @@
 				B165170D1FFA917400C3D0F4 /* Instagram */,
 				B165170C1FFA914E00C3D0F4 /* EventsPage */,
 				B1993B7B1FE3ED200036EA66 /* Extensions */,
-				B111C98B1FD31C73005DB863 /* CoreData */,
 				B17E7E351FF87C97009F3950 /* NIB Files */,
+				B1FBED86201322D10070573B /* PopupView */,
 				B1D3CB921FCEB56F00E8AD7A /* Other */,
 				B1D3CB8C1FCEB55300E8AD7A /* Info.plist */,
 				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
@@ -343,6 +335,14 @@
 				B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		B1FBED86201322D10070573B /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				B1FBED87201322F60070573B /* PopupViewController.swift */,
+			);
+			path = PopupView;
 			sourceTree = "<group>";
 		};
 		D52AD90E7A1E2A16BB664FA2 /* Pods */ = {
@@ -498,24 +498,24 @@
 				B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */,
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
 				B1A193D4200E042500F681DA /* CategoryDetailCell.swift in Sources */,
-				B1760E1D20050475006EEAC1 /* InstagramNetworking.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
 				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,
 				B1F90E5D2002107D00EA1DC7 /* WorkshopsNetworking.swift in Sources */,
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
+				B1C5EFBD2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift in Sources */,
 				B10BB83E1FFE6B9400D9C579 /* CategoriesCell.swift in Sources */,
 				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
 				B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */,
-				B111C98D1FD31C95005DB863 /* CacheCheck.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
-				B196F3021FD597F00004ECB3 /* SchedulePage.swift in Sources */,
 				B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */,
 				B1A193D2200E030900F681DA /* CategoriesDetailController.swift in Sources */,
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,
+				B1FBED88201322F60070573B /* PopupViewController.swift in Sources */,
 				B1B685B01FD0EEDB002EC13F /* EventsNetworking.swift in Sources */,
 				B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */,
+				B1C5EFBB2012381700FA1B6D /* FavoritesCollectionViewCell.swift in Sources */,
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
@@ -529,12 +529,12 @@
 				B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */,
 				B1A193D6200E048D00F681DA /* CategoryDetailCollectionCell.swift in Sources */,
 				B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */,
-				B1E49F1B1FD66AFD00521661 /* ScheduleCell.swift in Sources */,
 				B1C5EFB92011D7FF00FA1B6D /* ScheduleCollectionViewCell.swift in Sources */,
 				B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */,
 				B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */,
 				B1A193D8200E06CC00F681DA /* UIButton.swift in Sources */,
 				B12C152D1FE4E14D0062461F /* HomeHeaderCell.swift in Sources */,
+				B1FBED852012F93A0070573B /* FavoritesHeaderView.swift in Sources */,
 				B1B71C1C1FFD137C00D24383 /* FavoritesPage.swift in Sources */,
 				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 				B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import SafariServices
 import NVActivityIndicatorView
 import SDWebImage
+import ViewAnimator
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate {
   
@@ -20,6 +21,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   var instaObjects:[Instagram] = []
   var categoriesDataSource:[Categories] = []
   var resultsDataSource:[Results] = []
+  var schedulesDataSource:[Schedules] = []
   let networkingObject = NetworkController()
   let resultsNetworkingObject = ResultNetworking()
   let scheduleNetworkingObject = ScheduleNetworking()
@@ -27,10 +29,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    fetchAllData()
-    tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
     configureNavigationBar()
     configureScrollBar()
+    tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+    fetchAllData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +70,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     
   }
   
-  
   func moveToNextPage(){
     let pageWidth:CGFloat = self.scrollView.frame.width
     let maxWidth:CGFloat = pageWidth * 2
@@ -79,7 +80,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
   }
-  
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return sectionHeaders.count
@@ -98,8 +98,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
     cell.collectionView.reloadData()
     cell.collectionView.backgroundColor = UIColor.white
-    cell.backgroundColor = UIColor.white
-    if(indexPath.section < 3){
+    if(indexPath.section == 0){
+      cell.dataSource = self.resultsDataSource.map{return $0.evename}
+      return cell
+    }
+    else if(indexPath.section == 1){
+      cell.dataSource = self.categoriesDataSource.map{return $0.cname}
+      return cell
+    }
+    else if(indexPath.section == 2){
       cell.dataSource = self.resultsDataSource.map{return $0.evename}
       return cell
     }
@@ -114,7 +121,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       cell.locationLabel.text = instaObjects[indexPath.row].location
       cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)" + " comments"
       cell.time.text = convertDate(date: instaObjects[indexPath.row].time)
-      print(convertDate(date: instaObjects[indexPath.row].time))
       cell.instaView.sd_setShowActivityIndicatorView(true)
       cell.profileView.sd_setShowActivityIndicatorView(true)
       cell.instaView.sd_setIndicatorStyle(.gray)
@@ -124,7 +130,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       return cell
     }
   }
-  
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerCell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderCell") as! HomeHeaderCell
@@ -169,6 +174,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     networkingObject.fetchAllData { (instaObject) in
       self.categoriesDataSource = self.categoriesNetworkingObject.fetchCategoriesFromCoreData()
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
+      self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
       self.stopAnimating()
       self.tableView.reloadData()

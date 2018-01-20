@@ -58,7 +58,7 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (self.view.bounds.width - 35)/4
-        let height = width + 20
+        let height = width + 30
         return CGSize(width: width, height: height)
         
     }

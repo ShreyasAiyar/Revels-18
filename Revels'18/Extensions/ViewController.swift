@@ -52,17 +52,19 @@ extension UIViewController{
   
   // MARK: Create Bar Button Items
   func createBarButtonItems(){
-    //let whiteColor:UIColor = self.view.tintColor
-    let whiteColor:UIColor = UIColor.white
+    //let color:UIColor = self.view.tintColor
+    //let color:UIColor = UIColor.white
+    //let color:UIColor = UIColor(red: 224/255, green: 116/255, blue: 40/255, alpha: 1)
+    let color:UIColor = UIColor(displayP3Red: 181/255, green: 28/255, blue: 18/255, alpha: 1)
     let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
     moreButtonItem.image = UIImage(named: "More")
-    moreButtonItem.tintColor = whiteColor
+    moreButtonItem.tintColor = color
     
     let reloadDataButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadData))
-    reloadDataButtonItem.tintColor = whiteColor
+    reloadDataButtonItem.tintColor = color
     
     let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
-    searchBarButtonItem.tintColor = whiteColor
+    searchBarButtonItem.tintColor = color
     
     
     self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
@@ -89,7 +91,9 @@ extension UIViewController{
     self.navigationController?.navigationBar.isTranslucent = false
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
-    NVActivityIndicatorView.DEFAULT_TYPE = .ballSpinFadeLoader
+    NVActivityIndicatorView.DEFAULT_TYPE = .ballRotateChase
+    //NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor.white
+    NVActivityIndicatorView.DEFAULT_COLOR = UIColor.black
   }
   
   func presentEmptyView(){
