@@ -30,6 +30,10 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if(favoritesDataSource[indexPath.section].isEmpty){
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoFavoritesCell", for: indexPath)
+      return cell
+    }
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCollectionCell", for: indexPath) as! FavoritesCollectionViewCell
     cell.backgroundColor = UIColor.white
     cell.dataSource = favoritesDataSource[indexPath.section]
@@ -38,7 +42,7 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if(favoritesDataSource[indexPath.section].isEmpty){
-    return CGSize(width: self.view.bounds.width - CGFloat(20), height: 20)
+    return CGSize(width: self.view.bounds.width - CGFloat(20), height: 40)
     }
     else{
       return CGSize(width: self.view.bounds.width - CGFloat(20), height: 100)

@@ -16,7 +16,6 @@
 		B12C152F1FE5753A0062461F /* DevelopersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C152E1FE5753A0062461F /* DevelopersPage.swift */; };
 		B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15301FE5757E0062461F /* DevelopersModel.swift */; };
 		B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15321FE578AF0062461F /* DeveloperCell.swift */; };
-		B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13787731FD28A8C00B7120D /* AboutViewCell.swift */; };
 		B15814E61FF8C99D00A362D7 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E51FF8C99D00A362D7 /* EmptyView.xib */; };
 		B15814E81FF8C9B500A362D7 /* NoInternetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E71FF8C9B500A362D7 /* NoInternetView.xib */; };
 		B15873FE1FFB2276005A55DD /* InstagramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15873FD1FFB2276005A55DD /* InstagramCell.xib */; };
@@ -48,7 +47,6 @@
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
-		B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */; };
 		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
 		B1F302421FD3D0F8003A89E7 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */; };
 		B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */; };
@@ -59,6 +57,7 @@
 		B1F90E5D2002107D00EA1DC7 /* WorkshopsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F90E5C2002107D00EA1DC7 /* WorkshopsNetworking.swift */; };
 		B1FBED852012F93A0070573B /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */; };
 		B1FBED88201322F60070573B /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED87201322F60070573B /* PopupViewController.swift */; };
+		B1FBED8A201365AE0070573B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED89201365AE0070573B /* AboutTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +72,6 @@
 		B12C152E1FE5753A0062461F /* DevelopersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersPage.swift; sourceTree = "<group>"; };
 		B12C15301FE5757E0062461F /* DevelopersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersModel.swift; sourceTree = "<group>"; };
 		B12C15321FE578AF0062461F /* DeveloperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperCell.swift; sourceTree = "<group>"; };
-		B13787731FD28A8C00B7120D /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
 		B15814E51FF8C99D00A362D7 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B15814E71FF8C9B500A362D7 /* NoInternetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoInternetView.xib; sourceTree = "<group>"; };
 		B15873FD1FFB2276005A55DD /* InstagramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstagramCell.xib; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 		B1D3CB8A1FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
-		B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRevelsPage.swift; sourceTree = "<group>"; };
 		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		B1F302411FD3D0F8003A89E7 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
@@ -118,6 +115,7 @@
 		B1F90E5C2002107D00EA1DC7 /* WorkshopsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsNetworking.swift; sourceTree = "<group>"; };
 		B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		B1FBED87201322F60070573B /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		B1FBED89201365AE0070573B /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,15 +213,6 @@
 			path = DevelopersPage;
 			sourceTree = "<group>";
 		};
-		B165170B1FFA912D00C3D0F4 /* AboutPage */ = {
-			isa = PBXGroup;
-			children = (
-				B1E49F1C1FD6C01B00521661 /* AboutRevelsPage.swift */,
-				B13787731FD28A8C00B7120D /* AboutViewCell.swift */,
-			);
-			path = AboutPage;
-			sourceTree = "<group>";
-		};
 		B165170C1FFA914E00C3D0F4 /* EventsPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +295,6 @@
 				B16517051FFA8CA400C3D0F4 /* CategoriesPage */,
 				B1B71C1F1FFE5CDD00D24383 /* RevelsCupPage */,
 				B16517061FFA8D0600C3D0F4 /* ResultsPage */,
-				B165170B1FFA912D00C3D0F4 /* AboutPage */,
 				B165170A1FFA910700C3D0F4 /* DevelopersPage */,
 				B16517091FFA90FA00C3D0F4 /* WorkshopsPage */,
 				B1B71C1A1FFD133300D24383 /* FavoritesPage */,
@@ -320,6 +308,7 @@
 				B1D3CB811FCEB55300E8AD7A /* Main.storyboard */,
 				B1044B811FE24986001141B7 /* Media.xcassets */,
 				B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */,
+				B1FBED89201365AE0070573B /* AboutTableViewController.swift */,
 			);
 			path = "Revels'18";
 			sourceTree = "<group>";
@@ -505,8 +494,8 @@
 				B1A736E21FD0275C0089CF78 /* LandingPageViewController.swift in Sources */,
 				B1C5EFBD2012390000FA1B6D /* NewFavoritesCollectionViewCell.swift in Sources */,
 				B10BB83E1FFE6B9400D9C579 /* CategoriesCell.swift in Sources */,
-				B1E49F1D1FD6C01B00521661 /* AboutRevelsPage.swift in Sources */,
 				B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */,
+				B1FBED8A201365AE0070573B /* AboutTableViewController.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
 				B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */,
@@ -536,7 +525,6 @@
 				B12C152D1FE4E14D0062461F /* HomeHeaderCell.swift in Sources */,
 				B1FBED852012F93A0070573B /* FavoritesHeaderView.swift in Sources */,
 				B1B71C1C1FFD137C00D24383 /* FavoritesPage.swift in Sources */,
-				B13787741FD28A8C00B7120D /* AboutViewCell.swift in Sources */,
 				B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
