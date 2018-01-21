@@ -12,14 +12,12 @@ import NVActivityIndicatorView
 import SDWebImage
 import ViewAnimator
 
-class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate {
-  
+class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate,SaveImageProtocol,HomePageSelectionProtocol {
   
   @IBOutlet weak var tableView: UITableView!
   let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "#Revels18 On Instagram"]
   let scrollView:UIScrollView = UIScrollView()
   let refreshControl = UIRefreshControl()
-  let activityIndicatorView = UIActivityIndicatorView()
   
   var instaObjects:[Instagram] = []
   var categoriesDataSource:[Categories] = []
@@ -29,20 +27,18 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   let resultsNetworkingObject = ResultNetworking()
   let scheduleNetworkingObject = ScheduleNetworking()
   let categoriesNetworkingObject = CategoriesNetworking()
+  var indexPosition:Int?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureNavigationBar()
-    configureScrollBar()
     setupTableView()
-    fetchAllData()
+    //fetchAllData()
   }
   
   func setupTableView(){
-    activityIndicatorView.center = tableView.center
-    activityIndicatorView.activityIndicatorViewStyle = .gray
-    activityIndicatorView.hidesWhenStopped = true
-    tableView.addSubview(activityIndicatorView)
+    tableView.allowsSelection = false
+    tableView.backgroundView = presentNoNetworkView()
     tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
     tableView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(fetchAllData), for: .valueChanged)
@@ -54,7 +50,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func configureScrollBar(){
-    let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4.3)
+    let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4)
     scrollView.frame = imageFrame
     scrollView.delegate = self
     scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
@@ -62,43 +58,30 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     revelsBanner.image = UIImage(named: "Revels Banner")
     revelsBanner.contentMode = .scaleToFill
     revelsBanner.clipsToBounds = true
-    //revelsBanner.layer.cornerRadius = 5
     
     let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
     proshowBanner.image = UIImage(named: "Proshow Banner")
     proshowBanner.contentMode = .scaleToFill
     proshowBanner.clipsToBounds = true
-    //proshowBanner.layer.cornerRadius = 5
     
     scrollView.showsHorizontalScrollIndicator = false
-    scrollView.isScrollEnabled = false
     
     scrollView.addSubview(revelsBanner)
     scrollView.addSubview(proshowBanner)
+    scrollView.isPagingEnabled = true
     
     scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height)
     tableView.tableHeaderView = scrollView
-    
-    Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
-  }
-  
-  func moveToNextPage(){
-    let pageWidth:CGFloat = self.scrollView.frame.width
-    let maxWidth:CGFloat = pageWidth * 2
-    let contentOffset:CGFloat = self.scrollView.contentOffset.x
-    var slideToX = contentOffset + pageWidth
-    if  contentOffset + pageWidth == maxWidth{
-      slideToX = 0
-    }
-    self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
+
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     if schedulesDataSource.isEmpty {
-      tableView.backgroundView = UIView()
+      tableView.backgroundView = presentNoNetworkView()
       return 0
     }
     else {
+      configureScrollBar()
       tableView.backgroundView = nil
       return sectionHeaders.count
     }
@@ -111,22 +94,27 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
+    cell.delegate = self
     cell.collectionView.reloadData()
     cell.collectionView.backgroundColor = UIColor.white
     if(indexPath.section == 0){
-      cell.dataSource = self.resultsDataSource.map{return $0.evename}
+      cell.dataSource = schedulesDataSource.map{return $0.ename}
+      cell.section = 0
       return cell
     }
     else if(indexPath.section == 1){
-      cell.dataSource = self.categoriesDataSource.map{return $0.cname}
+      cell.dataSource = categoriesDataSource.map{return $0.cname}
+      cell.section = 1
       return cell
     }
     else if(indexPath.section == 2){
-      cell.dataSource = self.resultsDataSource.map{return $0.evename}
+      cell.dataSource = resultsDataSource.map{return $0.evename}
+      cell.section = 2
       return cell
     }
     else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "InstaCell") as! InstagramCell
+      cell.delegate = self
       cell.nameLabel.text = instaObjects[indexPath.row].username
       cell.captionLabel.text = instaObjects[indexPath.row].text
       let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
@@ -143,6 +131,21 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       cell.profileView.sd_setImage(with: profileURL)
       return cell
     }
+  }
+  
+  func selectedCategories(indexPosition: Int) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let categoryDetailController = storyboard.instantiateViewController(withIdentifier: "CategoriesDetailController") as! CategoriesDetailController
+    categoryDetailController.categoriesDataSource = categoriesDataSource[indexPosition]
+    navigationController?.pushViewController(categoryDetailController, animated: true)
+  }
+  
+  func selectedResults(indexPosition: Int) {
+    
+  }
+  
+  func selectedSchedule(indexPosition: Int) {
+    
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -185,23 +188,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func fetchAllData(){
-    activityIndicatorView.startAnimating()
+    startAnimating()
     networkingObject.fetchAllData { (instaObject) in
       self.categoriesDataSource = self.categoriesNetworkingObject.fetchCategoriesFromCoreData()
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
       self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
       self.refreshControl.endRefreshing()
-      self.activityIndicatorView.stopAnimating()
+      self.stopAnimating()
       self.tableView.reloadData()
-    }
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if(indexPath.section == 3){
-      let cell = tableView.cellForRow(at: indexPath) as! InstagramCell
-      let imageToSave:UIImage = cell.instaView.image!
-      saveImageToPhotos(image: imageToSave)
     }
   }
   
@@ -209,18 +204,26 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     self.tableView.setContentOffset(CGPoint.zero, animated: true)
   }
   
-  func saveImageToPhotos(image: UIImage) {
-    NSLog("Did Select Image To Save")
-    UIImageWriteToSavedPhotosAlbum(image, self,  #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+  func saveImageToPhotos(image:UIImage) {
+    let downloadController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    downloadController.addAction(UIAlertAction(title: "Download Image", style: .default, handler: { _ in
+      NSLog("Did Select Image To Save")
+      UIImageWriteToSavedPhotosAlbum(image, self,  #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }))
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+    downloadController.addAction(cancelAction)
+    present(downloadController, animated: true, completion: nil)
   }
+
   
   func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-    if let error = error {
-      let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+    if error != nil {
+      let ac = UIAlertController(title: "Save Error", message: "Please allow Photos access in Settings", preferredStyle: .alert)
       ac.addAction(UIAlertAction(title: "OK", style: .default))
       present(ac, animated: true)
     } else {
-      let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photos.", preferredStyle: .alert)
+      let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to Photos.", preferredStyle: .alert)
       ac.addAction(UIAlertAction(title: "OK", style: .default))
       present(ac, animated: true)
     }

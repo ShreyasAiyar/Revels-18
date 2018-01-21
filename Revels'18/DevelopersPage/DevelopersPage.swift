@@ -25,7 +25,7 @@ class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func configureDeveloperController(){
-        let shreyasImage = UIImage(named: "Proshow Banner")
+        let shreyasImage = UIImage(named: "Revels18_Logo")
         developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
         developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: shreyasImage, developerPosition: "Organizer", developerMessage: "Supermarine"))
         developerDataSource.append(Developers(developerName: "Anurag Choudhary", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18"))

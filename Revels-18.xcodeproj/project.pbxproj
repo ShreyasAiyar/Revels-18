@@ -58,6 +58,7 @@
 		B1FBED852012F93A0070573B /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */; };
 		B1FBED88201322F60070573B /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED87201322F60070573B /* PopupViewController.swift */; };
 		B1FBED8A201365AE0070573B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED89201365AE0070573B /* AboutTableViewController.swift */; };
+		B1FBED8C201464130070573B /* RevelsCupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBED8B201464130070573B /* RevelsCupController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		B1FBED842012F93A0070573B /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		B1FBED87201322F60070573B /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		B1FBED89201365AE0070573B /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		B1FBED8B201464130070573B /* RevelsCupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelsCupController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 		B1B71C1F1FFE5CDD00D24383 /* RevelsCupPage */ = {
 			isa = PBXGroup;
 			children = (
+				B1FBED8B201464130070573B /* RevelsCupController.swift */,
 			);
 			path = RevelsCupPage;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,
 				B10BB8401FFE6C2B00D9C579 /* CategoriesPage.swift in Sources */,
 				B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */,
+				B1FBED8C201464130070573B /* RevelsCupController.swift in Sources */,
 				B1993B7D1FE3EEB30036EA66 /* ViewController.swift in Sources */,
 				B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,

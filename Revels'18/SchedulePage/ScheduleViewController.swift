@@ -15,6 +15,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   
   let scheduleNetworkingObject = ScheduleNetworking()
+  let networkingObject = NetworkController()
   let categoriesURL = "https://api.mitportals.in/schedule/"
   var scheduleDataSource:[[Schedules]] = [[]]
   var filteredDataSource:[[Schedules]] = [[]]
@@ -24,21 +25,26 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   var searchBar = UISearchBar()
   var shouldShowSearchResults = false
   var isSelectedIndex:[Int] = [-1,-1,-1,-1]
+  let refreshControl = UIRefreshControl()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.delegate = self
     createBarButtonItems()
     configureNavigationBar()
-    fetchFavorites()
-    fetchSchedules()
+    setupCollectionView()
+  }
+  
+  func setupCollectionView(){
+    schedulesCollectionView.backgroundView = presentNoNetworkView()
+    schedulesCollectionView.refreshControl = refreshControl
+    refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.tabBarController?.delegate = self
-    fetchFavorites()
-    fetchSchedules()
+    fetchData()
     if didShowAnimation == false{
       let animation = AnimationType.from(direction: .left, offset: 30)
       schedulesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
@@ -47,7 +53,15 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     
   }
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
+    if(scheduleDataSource[0].isEmpty){
+      NSLog("No Schedules To Present")
+      schedulesCollectionView.backgroundView = presentNoNetworkView()
+      return 0
+    }
+    else{
+      schedulesCollectionView.backgroundView = nil
+      return 1
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,7 +80,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     }else{
       cell.favouriteButton.isSelected = false
     }
-    
     return cell
   }
   
@@ -75,8 +88,9 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     self.schedulesCollectionView.reloadData()
   }
   
-  func fetchSchedules(){
+  func fetchData(){
     let schedules =  self.scheduleNetworkingObject.fetchScheduleFromCoreData()
+    favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     NSLog("Size Of Schedules Is %d", schedules.count)
     scheduleDataSource.removeAll()
     self.scheduleDataSource.append(schedules.filter{return $0.day == "1"})
@@ -84,6 +98,13 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     self.scheduleDataSource.append(schedules.filter{return $0.day == "3"})
     self.scheduleDataSource.append(schedules.filter{return $0.day == "4"})
     self.schedulesCollectionView.reloadData()
+  }
+  
+  override func reloadData() {
+    networkingObject.fetchAllData{_ in
+      self.fetchData()
+      self.refreshControl.endRefreshing()
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -106,19 +127,15 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     self.tabBarController?.present(popupViewController, animated: true, completion: nil)
   }
   
-  func fetchFavorites(){
-    favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
-  }
-  
   func addToFavorites(eid: String) {
     scheduleNetworkingObject.addFavoritesToCoreData(eid: eid)
-    fetchFavorites()
+    fetchData()
     self.schedulesCollectionView.reloadData()
   }
   
   func removeFromFavorites(eid: String) {
     scheduleNetworkingObject.removeFavorites(eid: eid)
-    fetchFavorites()
+    fetchData()
     self.schedulesCollectionView.reloadData()
   }
   
@@ -132,6 +149,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     cell?.contentView.backgroundColor = nil
   }
   
-
-
+  
+  
 }

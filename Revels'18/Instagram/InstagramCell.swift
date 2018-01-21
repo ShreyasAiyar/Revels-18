@@ -19,6 +19,7 @@ class InstagramCell: UITableViewCell {
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var time: UILabel!
   
+  var delegate:SaveImageProtocol?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -28,5 +29,11 @@ class InstagramCell: UITableViewCell {
     profileView.layer.cornerRadius = profileView.frame.height/2
   }
   
+  @IBAction func didSelectMoreButton(_ sender: Any) {
+    delegate?.saveImageToPhotos(image: self.instaView.image!)
+  }
 }
 
+protocol SaveImageProtocol{
+  func saveImageToPhotos(image:UIImage)
+}

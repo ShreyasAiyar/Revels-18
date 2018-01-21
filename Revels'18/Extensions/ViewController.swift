@@ -91,23 +91,14 @@ extension UIViewController{
     self.navigationController?.navigationBar.isTranslucent = false
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
+    NVActivityIndicatorView.DEFAULT_TYPE = .ballRotateChase
+    NVActivityIndicatorView.DEFAULT_COLOR = UIColor.white
   }
+
   
-  func presentEmptyView(){
-    if !UIAccessibilityIsReduceTransparencyEnabled() {
-      view.backgroundColor = .clear
-      let blurEffect = UIBlurEffect(style: .dark)
-      let blurEffectView = UIVisualEffectView(effect: blurEffect)
-      blurEffectView.frame = (self.tabBarController?.view.bounds)!
-      blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-      self.tabBarController?.view.addSubview(blurEffectView)
-    } else {
-      view.backgroundColor = .black
-    }
-  }
-  
-  func presentNoNetworkView(){
-    
+  func presentNoNetworkView() -> UIView{
+    let noNetworkView:UIView = Bundle.main.loadNibNamed("EmptyView", owner: nil, options: nil)?.first as! UIView
+    return noNetworkView
   }
   
   func presentFavoriteView(){

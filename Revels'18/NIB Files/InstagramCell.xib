@@ -90,15 +90,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N12-sq-kvh">
-                    <rect key="frame" x="270" y="44" width="100" height="13.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="S1i-OF-9G6"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cmk-td-w2z">
                     <rect key="frame" x="113" y="455" width="150" height="25"/>
                     <subviews>
@@ -120,20 +111,43 @@
                         <constraint firstAttribute="width" constant="150" id="D6h-ZC-QES"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-fH-IDG">
+                    <rect key="frame" x="339" y="33" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="1rO-vc-Naw"/>
+                        <constraint firstAttribute="width" constant="20" id="NUH-mr-Xda"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" image="More"/>
+                    <connections>
+                        <action selector="didSelectMoreButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Pi-Fa-feE"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N12-sq-kvh">
+                    <rect key="frame" x="265" y="460" width="100" height="13.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="S1i-OF-9G6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ggG-LE-ZVq" secondAttribute="trailing" id="0ce-kR-GGl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fZb-fH-IDG" secondAttribute="trailing" constant="16" id="1FT-na-lWa"/>
                 <constraint firstItem="ggG-LE-ZVq" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="3IG-Lq-bhz"/>
                 <constraint firstItem="ggG-LE-ZVq" firstAttribute="top" secondItem="dOD-wX-rve" secondAttribute="bottom" constant="10" id="4at-hQ-wdW"/>
+                <constraint firstItem="fZb-fH-IDG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="13" id="4up-4E-n7g"/>
                 <constraint firstItem="cmk-td-w2z" firstAttribute="leading" secondItem="dXN-fX-vOG" secondAttribute="trailing" constant="8" id="KLq-aS-rQC"/>
                 <constraint firstItem="ZAe-aS-MEo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="LOX-QA-OQW"/>
                 <constraint firstItem="dOD-wX-rve" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="Pgo-w1-9ZQ"/>
                 <constraint firstItem="dOD-wX-rve" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="QCS-TD-lDW"/>
                 <constraint firstItem="ZAe-aS-MEo" firstAttribute="top" secondItem="dXN-fX-vOG" secondAttribute="bottom" constant="5" id="Vgw-Kh-Fc0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="N12-sq-kvh" secondAttribute="trailing" constant="10" id="eKu-lu-TDx"/>
+                <constraint firstItem="N12-sq-kvh" firstAttribute="top" secondItem="ggG-LE-ZVq" secondAttribute="bottom" constant="10" id="juA-T1-vv6"/>
                 <constraint firstItem="dXN-fX-vOG" firstAttribute="top" secondItem="ggG-LE-ZVq" secondAttribute="bottom" constant="5" id="mrr-Ao-iml"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="N12-sq-kvh" secondAttribute="trailing" constant="5" id="oTc-Cx-geK"/>
-                <constraint firstItem="ggG-LE-ZVq" firstAttribute="top" secondItem="N12-sq-kvh" secondAttribute="bottom" constant="17.5" id="qXm-he-u3h"/>
                 <constraint firstItem="dXN-fX-vOG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="rkF-QX-uPt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZAe-aS-MEo" secondAttribute="trailing" constant="5" id="smm-3Z-jCd"/>
                 <constraint firstItem="ggG-LE-ZVq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vVH-KU-t2N"/>
@@ -156,5 +170,6 @@
     <resources>
         <image name="BlurFavorites" width="60" height="60"/>
         <image name="Comments" width="45" height="45"/>
+        <image name="More" width="30" height="30"/>
     </resources>
 </document>
