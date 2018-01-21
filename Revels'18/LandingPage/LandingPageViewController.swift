@@ -11,19 +11,14 @@ import UIKit
 class LandingPageViewController: UIPageViewController,UIPageViewControllerDataSource,UIPageViewControllerDelegate {
     
     lazy var viewControllerList:[UIViewController] = {
-        
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let page1 = storyboard.instantiateViewController(withIdentifier:"PageOne")
         let page2 = storyboard.instantiateViewController(withIdentifier:"PageTwo")
         let page3 = storyboard.instantiateViewController(withIdentifier:"PageThree")
-        
         return [page1,page2,page3]
-        
     }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self

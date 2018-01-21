@@ -37,6 +37,8 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.tabBarController?.delegate = self
+    fetchFavorites()
+    fetchSchedules()
     if didShowAnimation == false{
       let animation = AnimationType.from(direction: .left, offset: 30)
       schedulesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
@@ -119,10 +121,17 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     fetchFavorites()
     self.schedulesCollectionView.reloadData()
   }
-  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    self.schedulesCollectionView.setContentOffset(CGPoint.zero, animated: true)
+  
+  func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath)
+    cell?.contentView.backgroundColor = UIColor(white: 217.0/255.0, alpha: 1.0)
   }
   
+  func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath)
+    cell?.contentView.backgroundColor = nil
+  }
   
-  
+
+
 }

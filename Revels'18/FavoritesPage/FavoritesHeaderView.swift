@@ -13,11 +13,16 @@ class FavoritesHeaderView: UICollectionReusableView {
   @IBOutlet weak var dayLabel: UILabel!
   @IBOutlet weak var clearButton: UIButton!
   var day:Int?
-  
+  var delegate:RemoveDayFromFavoritesProtocol!
+
   
   @IBAction func didSelectClearButton(_ sender: UIButton) {
+    print(day!)
+    self.delegate!.removeDayFromFavorites(day: day!)
   }
-  
-  
-  
+
+}
+
+protocol RemoveDayFromFavoritesProtocol{
+  func removeDayFromFavorites(day:Int)
 }

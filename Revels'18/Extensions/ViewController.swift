@@ -91,9 +91,6 @@ extension UIViewController{
     self.navigationController?.navigationBar.isTranslucent = false
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
-    NVActivityIndicatorView.DEFAULT_TYPE = .ballRotateChase
-    //NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor.white
-    NVActivityIndicatorView.DEFAULT_COLOR = UIColor.black
   }
   
   func presentEmptyView(){

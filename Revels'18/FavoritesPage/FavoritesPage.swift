@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,RemoveDayFromFavoritesProtocol {
   
   @IBOutlet weak var favoritesCollectionView: UICollectionView!
   let scheduleObject = ScheduleNetworking()
@@ -35,6 +35,7 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
       return cell
     }
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCollectionCell", for: indexPath) as! FavoritesCollectionViewCell
+    cell.collectionView.reloadData()
     cell.backgroundColor = UIColor.white
     cell.dataSource = favoritesDataSource[indexPath.section]
     return cell
@@ -42,7 +43,7 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if(favoritesDataSource[indexPath.section].isEmpty){
-    return CGSize(width: self.view.bounds.width - CGFloat(20), height: 40)
+      return CGSize(width: self.view.bounds.width - CGFloat(20), height: 40)
     }
     else{
       return CGSize(width: self.view.bounds.width - CGFloat(20), height: 100)
@@ -54,9 +55,17 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   }
   
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FavoritesHeaderView", for: indexPath) as! FavoritesHeaderView
-    headerView.dayLabel.text = days[indexPath.section]
-    return headerView
+    if(kind == UICollectionElementKindSectionHeader){
+      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FavoritesHeaderView", for: indexPath) as! FavoritesHeaderView
+      NSLog("%d", indexPath.section)
+      headerView.delegate = self
+      headerView.dayLabel.text = days[indexPath.section]
+      headerView.day = indexPath.section + 1
+      return headerView
+    }
+    else{
+      return UICollectionReusableView()
+    }
   }
   
   @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
@@ -74,6 +83,11 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
     favoritesCollectionView.reloadData()
   }
   
+  func removeDayFromFavorites(day: Int) {
+    scheduleObject.removeDayFavorites(day: String(day))
+    fetchFavorites()
+    self.favoritesCollectionView.reloadData()
+  }
   
   
 }

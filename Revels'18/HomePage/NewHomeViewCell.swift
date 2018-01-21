@@ -9,10 +9,20 @@
 import UIKit
 
 class NewHomeViewCell: UICollectionViewCell {
+  
+  @IBOutlet weak var homeLabel: UILabel!
 
-    @IBOutlet weak var homeLabel: UILabel!
-    
-    override func awakeFromNib() {
-        self.layer.cornerRadius = 5
+  
+  override var isHighlighted: Bool{
+    didSet{
+      self.alpha = 0.5
     }
+  }
+  
+  override func awakeFromNib() {
+    self.layer.cornerRadius = 5
+  }
+  
+  
+  
 }

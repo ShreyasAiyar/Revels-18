@@ -14,7 +14,7 @@ class HomeViewCell: UITableViewCell {
     var dataSource:[String] = []
 }
 
-extension HomeViewCell: UICollectionViewDataSource{
+extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -29,6 +29,18 @@ extension HomeViewCell: UICollectionViewDataSource{
         cell.homeLabel.text = dataSource[indexPath.row]
         return cell
     }
+  
+  func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath)
+    cell?.alpha = 0.5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath)
+    cell?.alpha = 1
+  }
+  
+  
     
     
 }

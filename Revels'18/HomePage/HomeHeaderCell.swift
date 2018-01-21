@@ -13,6 +13,7 @@ protocol SelectMoreButtonProtocol {
 }
 
 class HomeHeaderCell: UITableViewCell {
+  
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var seeAllButton: UIButton!
@@ -26,7 +27,7 @@ class HomeHeaderCell: UITableViewCell {
 
     @IBAction func seeAllButtonClicked(_ sender: UIButton) {
         self.delegate.selectButtonClicked(currentIndex:currentIndex)
-    }
+  }
     
 
 }

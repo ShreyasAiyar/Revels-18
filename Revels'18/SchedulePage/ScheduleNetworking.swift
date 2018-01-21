@@ -178,7 +178,7 @@ class ScheduleNetworking{
     }
   }
   
-  func removeDayFavorites(day:Int){
+  func removeDayFavorites(day:String){
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
     let favoritesDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")

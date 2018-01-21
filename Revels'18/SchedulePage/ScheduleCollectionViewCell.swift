@@ -17,7 +17,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
   var eid:String?
   
   var delegate:AddToFavoritesProtocol!
-  
+
   override func awakeFromNib() {
     let highlightedImage = UIImage(named: "BlurFavorites")
     favouriteButton.setImage(highlightedImage, for: .selected)
@@ -39,6 +39,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
       self.delegate.addToFavorites(eid: self.eid!)
     }
   }
+  
 }
 
 protocol AddToFavoritesProtocol{

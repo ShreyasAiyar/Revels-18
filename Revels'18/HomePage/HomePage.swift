@@ -14,9 +14,12 @@ import ViewAnimator
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate {
   
+  
   @IBOutlet weak var tableView: UITableView!
   let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "#Revels18 On Instagram"]
   let scrollView:UIScrollView = UIScrollView()
+  let refreshControl = UIRefreshControl()
+  let activityIndicatorView = UIActivityIndicatorView()
   
   var instaObjects:[Instagram] = []
   var categoriesDataSource:[Categories] = []
@@ -31,8 +34,18 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     super.viewDidLoad()
     configureNavigationBar()
     configureScrollBar()
-    tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+    setupTableView()
     fetchAllData()
+  }
+  
+  func setupTableView(){
+    activityIndicatorView.center = tableView.center
+    activityIndicatorView.activityIndicatorViewStyle = .gray
+    activityIndicatorView.hidesWhenStopped = true
+    tableView.addSubview(activityIndicatorView)
+    tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
+    tableView.refreshControl = refreshControl
+    refreshControl.addTarget(self, action: #selector(fetchAllData), for: .valueChanged)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +80,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     tableView.tableHeaderView = scrollView
     
     Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
-    
   }
   
   func moveToNextPage(){
@@ -82,16 +94,19 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return sectionHeaders.count
+    if schedulesDataSource.isEmpty {
+      tableView.backgroundView = UIView()
+      return 0
+    }
+    else {
+      tableView.backgroundView = nil
+      return sectionHeaders.count
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if (section >= 3){
-      return instaObjects.count
-    }
-    else{
-      return 1
-    }
+    if (section >= 3){ return instaObjects.count}
+    else{ return 1 }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,7 +127,6 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     }
     else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "InstaCell") as! InstagramCell
-      print(indexPath.section)
       cell.nameLabel.text = instaObjects[indexPath.row].username
       cell.captionLabel.text = instaObjects[indexPath.row].text
       let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
@@ -146,6 +160,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 3{
       return 165 + self.view.bounds.width
+
     }
     else{
       return CGFloat(100)
@@ -170,18 +185,46 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func fetchAllData(){
-    startAnimating()
+    activityIndicatorView.startAnimating()
     networkingObject.fetchAllData { (instaObject) in
       self.categoriesDataSource = self.categoriesNetworkingObject.fetchCategoriesFromCoreData()
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
       self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
-      self.stopAnimating()
+      self.refreshControl.endRefreshing()
+      self.activityIndicatorView.stopAnimating()
       self.tableView.reloadData()
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if(indexPath.section == 3){
+      let cell = tableView.cellForRow(at: indexPath) as! InstagramCell
+      let imageToSave:UIImage = cell.instaView.image!
+      saveImageToPhotos(image: imageToSave)
     }
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     self.tableView.setContentOffset(CGPoint.zero, animated: true)
   }
+  
+  func saveImageToPhotos(image: UIImage) {
+    NSLog("Did Select Image To Save")
+    UIImageWriteToSavedPhotosAlbum(image, self,  #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+  }
+  
+  func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    if let error = error {
+      let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+      ac.addAction(UIAlertAction(title: "OK", style: .default))
+      present(ac, animated: true)
+    } else {
+      let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photos.", preferredStyle: .alert)
+      ac.addAction(UIAlertAction(title: "OK", style: .default))
+      present(ac, animated: true)
+    }
+  }
+  
+  
 }
