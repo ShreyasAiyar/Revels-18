@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableViewController: UITableViewController {
 
@@ -14,10 +15,7 @@ class AboutTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
@@ -33,5 +31,31 @@ class AboutTableViewController: UITableViewController {
   dismiss(animated: true, completion: nil)
   }
   
+  @IBAction func didSelectTwitterbutton(_ sender: UIButton) {
+    let myURL = URL(string: "https://twitter.com/revelsmit")
+    let safariViewController = SFSafariViewController(url: myURL!)
+    self.present(safariViewController, animated: true,completion: nil)
+  }
 
+  @IBAction func didSelectYoutubeButton(_ sender: UIButton) {
+    let myURL = URL(string: "https://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw")
+    let safariViewController = SFSafariViewController(url: myURL!)
+    self.present(safariViewController, animated: true,completion: nil)
+  }
+  
+  @IBAction func didSelectInstagramButton(_ sender: UIButton) {
+    let myURL = URL(string: "https://www.instagram.com/revelsmit")
+    let safariViewController = SFSafariViewController(url: myURL!)
+    self.present(safariViewController, animated: true,completion: nil)
+  }
+  
+  @IBAction func didSelectFacebookButton(_ sender: UIButton) {
+    let myURL = URL(string: "https://www.facebook.com/mitrevels/")
+    let safariViewController = SFSafariViewController(url: myURL!)
+    self.present(safariViewController, animated: true,completion: nil)
+  }
+  
+  
+  
+  
 }

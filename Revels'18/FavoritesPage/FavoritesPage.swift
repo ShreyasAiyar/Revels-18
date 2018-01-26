@@ -61,6 +61,9 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
       headerView.delegate = self
       headerView.dayLabel.text = days[indexPath.section]
       headerView.day = indexPath.section + 1
+      if(favoritesDataSource[indexPath.section].isEmpty){
+        headerView.clearButton.isHidden = true
+      }
       return headerView
     }
     else{
@@ -88,6 +91,12 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
     fetchFavorites()
     self.favoritesCollectionView.reloadData()
   }
+  
+  @IBAction func didSelectRemoveAllFavorites(_ sender: Any) {
+    scheduleObject.removeAllFavorites()
+    self.favoritesCollectionView.reloadData()
+  }
+  
   
   
 }

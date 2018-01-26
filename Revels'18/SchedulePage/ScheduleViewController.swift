@@ -24,12 +24,14 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   var didShowAnimation:Bool = false
   var searchBar = UISearchBar()
   var shouldShowSearchResults = false
-  var isSelectedIndex:[Int] = [-1,-1,-1,-1]
+  //var isSelectedIndex:[Int] = [-1,-1,-1,-1]
   let refreshControl = UIRefreshControl()
+  var eid:String!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.delegate = self
+    navigationController?.hideHairline()
     createBarButtonItems()
     configureNavigationBar()
     setupCollectionView()
@@ -108,23 +110,27 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 10, height: 80)
+    return CGSize(width: self.view.frame.width - 20, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 5
+    return 10
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let popupViewController = storyboard.instantiateViewController(withIdentifier: "PopupView")
-    popupViewController.modalPresentationStyle = .overCurrentContext
-    popupViewController.modalTransitionStyle = .crossDissolve
-    self.tabBarController?.present(popupViewController, animated: true, completion: nil)
+    eid = scheduleDataSource[currentIndex][indexPath.row].eid
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if(segue.identifier == "PopupViewSegue"){
+      let destinationVC = segue.destination as! PopupViewController
+      destinationVC.eventID = eid!
+      
+    }
   }
   
   func addToFavorites(eid: String) {
@@ -140,6 +146,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    eid = scheduleDataSource[currentIndex][indexPath.row].eid
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.contentView.backgroundColor = UIColor(white: 217.0/255.0, alpha: 1.0)
   }
@@ -148,6 +155,8 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.contentView.backgroundColor = nil
   }
+  
+  
   
   
   

@@ -24,7 +24,7 @@ class InstagramCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     profileView.clipsToBounds = true
-    profileView.layer.borderColor = UIColor.white.cgColor
+    profileView.layer.borderColor = UIColor.black.cgColor
     profileView.layer.borderWidth = 1
     profileView.layer.cornerRadius = profileView.frame.height/2
   }

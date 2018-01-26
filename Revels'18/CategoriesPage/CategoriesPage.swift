@@ -17,7 +17,6 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   
   var categoriesDataSource:[Categories] = []
   var schedulesDataSource:[Schedules] = []
-  let httpRequestObject = HTTPRequest()
   let categoryNetworkingObject = CategoriesNetworking()
   let schedulesNetworkingObject = ScheduleNetworking()
   var catid:String?
@@ -26,6 +25,7 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationController?.hideHairline()
     createBarButtonItems()
     configureNavigationBar()
     categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
@@ -58,10 +58,9 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = (self.view.bounds.width - 35)/4
+    let width = (self.view.bounds.width - 30)/3
     let height = width + 30
     return CGSize(width: width, height: height)
-    
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

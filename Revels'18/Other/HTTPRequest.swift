@@ -38,7 +38,10 @@ class HTTPRequest{
                 return completion(.Error("Parsing Failed"))
             }
             DispatchQueue.main.async {
-                completion(.Success(parsedJSON!))
+              if let parsedJSON = parsedJSON{
+                completion(.Success(parsedJSON))
+              }
+                
             }
         }
         task.resume()

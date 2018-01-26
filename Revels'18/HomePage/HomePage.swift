@@ -28,12 +28,13 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   let scheduleNetworkingObject = ScheduleNetworking()
   let categoriesNetworkingObject = CategoriesNetworking()
   var indexPosition:Int?
+  var bannerTimer:Timer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureNavigationBar()
     setupTableView()
-    //fetchAllData()
+    fetchAllData()
   }
   
   func setupTableView(){
@@ -50,30 +51,51 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func configureScrollBar(){
+    if(bannerTimer != nil){
+    bannerTimer?.invalidate()
+    bannerTimer = nil
+    }
     let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4)
     scrollView.frame = imageFrame
     scrollView.delegate = self
-    scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
-    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
-    revelsBanner.image = UIImage(named: "Revels Banner")
-    revelsBanner.contentMode = .scaleToFill
-    revelsBanner.clipsToBounds = true
+    //scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+    scrollView.backgroundColor = UIColor.white
     
-    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
+    revelsBanner.image = UIImage(named: "Revels18_Banner1")
+    revelsBanner.contentMode = .scaleAspectFill
+    revelsBanner.clipsToBounds = true
+    revelsBanner.layer.cornerRadius = 5
+    
+    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width + 5 , y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
     proshowBanner.image = UIImage(named: "Proshow Banner")
     proshowBanner.contentMode = .scaleToFill
     proshowBanner.clipsToBounds = true
+    proshowBanner.layer.cornerRadius = 5
     
     scrollView.showsHorizontalScrollIndicator = false
     
     scrollView.addSubview(revelsBanner)
     scrollView.addSubview(proshowBanner)
     scrollView.isPagingEnabled = true
-    
     scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height)
     tableView.tableHeaderView = scrollView
+    if(bannerTimer == nil){
+    bannerTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+    }
+}
 
+
+func moveToNextPage(){
+  let pageWidth:CGFloat = self.scrollView.frame.width
+  let maxWidth:CGFloat = pageWidth * 2
+  let contentOffset:CGFloat = self.scrollView.contentOffset.x
+  var slideToX = contentOffset + pageWidth
+  if  contentOffset + pageWidth == maxWidth{
+    slideToX = 0
   }
+  self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
+}
   
   func numberOfSections(in tableView: UITableView) -> Int {
     if schedulesDataSource.isEmpty {
@@ -145,7 +167,10 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func selectedSchedule(indexPosition: Int) {
-    
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let eventsVC = storyboard.instantiateViewController(withIdentifier: "PopupView") as! PopupViewController
+    eventsVC.eventID = schedulesDataSource[indexPosition].eid
+    navigationController?.pushViewController(eventsVC, animated: true)
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -166,7 +191,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
 
     }
     else{
-      return CGFloat(100)
+      return CGFloat(120)
     }
   }
   

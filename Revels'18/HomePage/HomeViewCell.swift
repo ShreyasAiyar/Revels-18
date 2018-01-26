@@ -16,7 +16,7 @@ class HomeViewCell: UITableViewCell {
   var delegate:HomePageSelectionProtocol?
 }
 
-extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate{
+extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
   
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -31,6 +31,15 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate{
     cell.homeLabel.text = dataSource[indexPath.row]
     return cell
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 10)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 70, height: 110)
+  }
+  
   
   func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath)

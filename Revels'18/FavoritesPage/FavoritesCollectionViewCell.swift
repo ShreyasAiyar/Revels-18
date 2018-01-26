@@ -18,7 +18,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
   }
 }
 
-extension FavoritesCollectionViewCell:UICollectionViewDataSource,UICollectionViewDelegate{
+extension FavoritesCollectionViewCell:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return dataSource.count
@@ -29,5 +29,7 @@ extension FavoritesCollectionViewCell:UICollectionViewDataSource,UICollectionVie
     cell.eventName.text = dataSource[indexPath.row].ename
     return cell
   }
+  
+  
 
 }

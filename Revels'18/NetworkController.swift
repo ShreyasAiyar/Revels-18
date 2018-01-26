@@ -10,10 +10,10 @@ import Foundation
 
 class NetworkController{
   
-  let httpRequestObject = HTTPRequest()
   let eventsURL = "https://api.mitportals.in/events/"
   let instagramURL = "https://api.instagram.com/v1/tags/techtatva17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
   let resultsURL = "https://api.mitportals.in/results/"
+  let sportsURL = "https://api.mitportals.in/sports/"
   let categoriesURL = "https://api.mitportals.in/categories/"
   let scheduleURL = "https://api.mitportals.in/schedule/"
   
@@ -21,12 +21,47 @@ class NetworkController{
   let resultsObject = ResultNetworking()
   let categoriesObject = CategoriesNetworking()
   let scheduleObject = ScheduleNetworking()
-  
   var instagramObjects:[Instagram] = []
+  
+  enum Status<T>:Error{
+    case Success(T)
+    case Error(String)
+  }
+  
+  func makeHTTPRequestForEvents (eventsURL:String, completion: @escaping (Status<[String:Any]>) -> ()){
+    guard let url = URL(string:eventsURL) else{
+      print("No URL Provided")
+      return
+    }
+    let task = URLSession.shared.dataTask(with: url){
+      (data,reponse,error) in
+      
+      guard error == nil else{
+        return completion(.Error("No Connection"))
+      }
+      guard let data = data else{
+        print("No Data Found")
+        return completion(.Error("No Data Found"))
+      }
+      let dataString:String! = String(data:data,encoding: .utf8)
+      let jsonData = dataString.data(using: .utf8)!
+      guard let parsedJSON = try? JSONSerialization.jsonObject(with: jsonData) as? [String:Any] else{
+        print("Parsing Failed")
+        return completion(.Error("Parsing Failed"))
+      }
+      DispatchQueue.main.async {
+        if let parsedJSON = parsedJSON{
+          completion(.Success(parsedJSON))
+        }
+        
+      }
+    }
+    task.resume()
+  }
   
   func fetchEvents(completion:@escaping () -> ()){
     var events:[Events] = []
-    httpRequestObject.makeHTTPRequestForEvents(eventsURL: eventsURL){
+    makeHTTPRequestForEvents(eventsURL: eventsURL){
       result in
       switch result{
       case .Success(let parsedJSON):
@@ -48,7 +83,7 @@ class NetworkController{
   
   func fetchInstagram(completion: @escaping (_ instaObjects:[Instagram]) -> ()){
     var instaObjects:[Instagram] = []
-    httpRequestObject.makeHTTPRequestForEvents(eventsURL: instagramURL){
+    makeHTTPRequestForEvents(eventsURL: instagramURL){
       result in
       switch result{
       case .Success(let parsedJSON):
@@ -69,7 +104,7 @@ class NetworkController{
   
   func fetchResults(completion: @escaping () -> ()){
     var results:[Results] = []
-    httpRequestObject.makeHTTPRequestForEvents(eventsURL: resultsURL){ status in
+    makeHTTPRequestForEvents(eventsURL: resultsURL){ status in
       switch status{
       case .Success(let parsedJSON):
         for result in parsedJSON["data"] as! [Dictionary<String,String>]{
@@ -90,7 +125,7 @@ class NetworkController{
   
   func fetchCategories(completion:@escaping () -> ()){
     var categories:[Categories] = []
-    httpRequestObject.makeHTTPRequestForEvents(eventsURL: categoriesURL){
+    makeHTTPRequestForEvents(eventsURL: categoriesURL){
       result in
       switch result{
       case .Success(let parsedJSON):
@@ -111,7 +146,7 @@ class NetworkController{
   
   func fetchSchedules(completion:@escaping () -> ()){
     var schedules:[Schedules] = []
-    httpRequestObject.makeHTTPRequestForEvents(eventsURL: scheduleURL){
+    makeHTTPRequestForEvents(eventsURL: scheduleURL){
       result in
       switch result{
       case .Success(let parsedJSON):
@@ -134,6 +169,7 @@ class NetworkController{
   
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
     let dispatchGroup = DispatchGroup()
+    
     
     dispatchGroup.enter()
     fetchEvents{

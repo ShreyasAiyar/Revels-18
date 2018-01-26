@@ -14,7 +14,9 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var time: UILabel!
   @IBOutlet weak var location: UILabel!
   @IBOutlet weak var favouriteButton: UIButton!
+  @IBOutlet weak var categoryImage: UIImageView!
   var eid:String?
+  let color:UIColor = UIColor(displayP3Red: 181/255, green: 28/255, blue: 18/255, alpha: 1)
   
   var delegate:AddToFavoritesProtocol!
 
@@ -24,6 +26,10 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     location.layer.cornerRadius = 2
     location.clipsToBounds = true
     layer.cornerRadius = 10
+    categoryImage.layer.cornerRadius = categoryImage.bounds.height/2
+    categoryImage.layer.borderWidth = 0.5
+    categoryImage.layer.borderColor = UIColor.gray.cgColor
+    categoryImage.layer.masksToBounds = true
   }
   
   @IBAction func didSelectFavoritesButton(_ sender: UIButton) {

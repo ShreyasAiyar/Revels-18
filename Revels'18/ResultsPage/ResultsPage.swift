@@ -19,9 +19,11 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   @IBOutlet weak var resultsCollectionView: UICollectionView!
   
   let resultNetworkingObject = ResultNetworking()
+  var results:[Results] = []
   var resultsDataSource:[Results] = []
   var filteredDataSource:[Results] = []
   var searchBar = UISearchBar()
+  var currentIndex:Int = 0
   var searchActive:Bool = false
   
   override func viewDidLoad() {
@@ -113,7 +115,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = (self.view.bounds.width - 35)/4
-    let height = width + 30
+    let height = width + 40
     return CGSize(width: width, height: height)
   }
   
@@ -129,13 +131,43 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     return 5
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let result:Results = resultsDataSource[indexPath.row]
+    let resultArray = results.filter{return $0.evename == result.evename}
+    var message = ""
+    for result in resultArray{
+      message.append("Team ID: \(result.tid)  Position: \(result.pos) \n")
+    }
+    let alertView = UIAlertController(title: result.evename, message: message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    alertView.addAction(okAction)
+    present(alertView, animated: true, completion: nil)
+  }
+  
   
   func fetchResults(){
-    resultsDataSource = resultNetworkingObject.fetchResultsFromCoreData()
+    results = resultNetworkingObject.fetchResultsFromCoreData()
+    resultsDataSource = results.unique{$0.evename}
+    
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     self.resultsCollectionView.setContentOffset(CGPoint.zero, animated: true)
+  }
+}
+
+extension Array {
+  func unique<T:Hashable>(map: ((Element) -> (T)))  -> [Element] {
+    var set = Set<T>()
+    var arrayOrdered = [Element]()
+    for value in self {
+      if !set.contains(map(value)) {
+        set.insert(map(value))
+        arrayOrdered.append(value)
+      }
+    }
+    
+    return arrayOrdered
   }
 }
 
