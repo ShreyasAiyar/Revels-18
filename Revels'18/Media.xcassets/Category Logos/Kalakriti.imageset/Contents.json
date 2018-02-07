@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "512x512bb.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Kalakriti.png",
       "scale" : "2x"
     },
     {

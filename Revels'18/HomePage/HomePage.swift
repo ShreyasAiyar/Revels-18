@@ -61,17 +61,15 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     //scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     scrollView.backgroundColor = UIColor.white
     
-    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
+    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
     revelsBanner.image = UIImage(named: "Revels18_Banner1")
     revelsBanner.contentMode = .scaleAspectFill
     revelsBanner.clipsToBounds = true
-    revelsBanner.layer.cornerRadius = 5
     
-    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width + 5 , y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
+    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width , y: 0, width: self.view.frame.width, height: scrollView.frame.height))
     proshowBanner.image = UIImage(named: "Proshow Banner")
     proshowBanner.contentMode = .scaleToFill
     proshowBanner.clipsToBounds = true
-    proshowBanner.layer.cornerRadius = 5
     
     scrollView.showsHorizontalScrollIndicator = false
     
@@ -98,7 +96,7 @@ func moveToNextPage(){
 }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    if schedulesDataSource.isEmpty {
+    if categoriesDataSource.isEmpty {
       tableView.backgroundView = presentNoNetworkView()
       return 0
     }

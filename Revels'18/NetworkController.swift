@@ -33,6 +33,7 @@ class NetworkController{
       print("No URL Provided")
       return
     }
+    
     let task = URLSession.shared.dataTask(with: url){
       (data,reponse,error) in
       
@@ -43,12 +44,15 @@ class NetworkController{
         print("No Data Found")
         return completion(.Error("No Data Found"))
       }
+      
       let dataString:String! = String(data:data,encoding: .utf8)
       let jsonData = dataString.data(using: .utf8)!
       guard let parsedJSON = try? JSONSerialization.jsonObject(with: jsonData) as? [String:Any] else{
         print("Parsing Failed")
         return completion(.Error("Parsing Failed"))
       }
+  
+      
       DispatchQueue.main.async {
         if let parsedJSON = parsedJSON{
           completion(.Success(parsedJSON))
@@ -174,24 +178,29 @@ class NetworkController{
     dispatchGroup.enter()
     fetchEvents{
       dispatchGroup.leave()
+      print("Events Done")
     }
-    dispatchGroup.enter()
-    fetchSchedules {
-      dispatchGroup.leave()
-    }
+//    dispatchGroup.enter()
+//    fetchSchedules {
+//      dispatchGroup.leave()
+//      print("Schedules Done")
+//    }
     dispatchGroup.enter()
     fetchResults {
       dispatchGroup.leave()
+      print("Results Done")
     }
     dispatchGroup.enter()
     fetchCategories {
       dispatchGroup.leave()
+      print("Categories Done")
     }
     
     dispatchGroup.enter()
     fetchInstagram { (instragramObject) in
       self.instagramObjects = instragramObject
       dispatchGroup.leave()
+      print("Insta Done")
     }
     
     dispatchGroup.notify(queue: .main) {
