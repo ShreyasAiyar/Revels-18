@@ -20,6 +20,7 @@
 		B12C152F1FE5753A0062461F /* DevelopersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C152E1FE5753A0062461F /* DevelopersPage.swift */; };
 		B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15301FE5757E0062461F /* DevelopersModel.swift */; };
 		B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15321FE578AF0062461F /* DeveloperCell.swift */; };
+		B154E74A20307F4B000868D7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154E74920307F4B000868D7 /* NoDataView.swift */; };
 		B15814E61FF8C99D00A362D7 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E51FF8C99D00A362D7 /* EmptyView.xib */; };
 		B15814E81FF8C9B500A362D7 /* NoInternetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E71FF8C9B500A362D7 /* NoInternetView.xib */; };
 		B15873FE1FFB2276005A55DD /* InstagramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15873FD1FFB2276005A55DD /* InstagramCell.xib */; };
@@ -81,6 +82,7 @@
 		B12C152E1FE5753A0062461F /* DevelopersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersPage.swift; sourceTree = "<group>"; };
 		B12C15301FE5757E0062461F /* DevelopersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersModel.swift; sourceTree = "<group>"; };
 		B12C15321FE578AF0062461F /* DeveloperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperCell.swift; sourceTree = "<group>"; };
+		B154E74920307F4B000868D7 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		B15814E51FF8C99D00A362D7 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B15814E71FF8C9B500A362D7 /* NoInternetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoInternetView.xib; sourceTree = "<group>"; };
 		B15873FD1FFB2276005A55DD /* InstagramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstagramCell.xib; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				B1044B811FE24986001141B7 /* Media.xcassets */,
 				B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */,
 				B1FBED89201365AE0070573B /* AboutTableViewController.swift */,
+				B154E74920307F4B000868D7 /* NoDataView.swift */,
 			);
 			path = "Revels'18";
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				B1613E23201AE713003817C4 /* NavigationController.swift in Sources */,
 				B10BB83E1FFE6B9400D9C579 /* CategoriesCell.swift in Sources */,
 				B163159C1FDFAB2400D2B428 /* ResultsPage.swift in Sources */,
+				B154E74A20307F4B000868D7 /* NoDataView.swift in Sources */,
 				B1FBED8A201365AE0070573B /* AboutTableViewController.swift in Sources */,
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,

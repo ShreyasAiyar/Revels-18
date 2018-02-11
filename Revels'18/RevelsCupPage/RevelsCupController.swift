@@ -28,7 +28,7 @@ class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if(revelsCupDataSource.isEmpty){
-      tableView.backgroundView = presentNoNetworkView()
+      tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
     else{

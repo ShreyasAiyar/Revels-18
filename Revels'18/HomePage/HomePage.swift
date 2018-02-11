@@ -23,6 +23,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   var categoriesDataSource:[Categories] = []
   var resultsDataSource:[Results] = []
   var schedulesDataSource:[Schedules] = []
+  var combinedDataSource:[[Any]] = [[]]
   let networkingObject = NetworkController()
   let resultsNetworkingObject = ResultNetworking()
   let scheduleNetworkingObject = ScheduleNetworking()
@@ -39,7 +40,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   func setupTableView(){
     tableView.allowsSelection = false
-    tableView.backgroundView = presentNoNetworkView()
+    tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
     tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
     tableView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(fetchAllData), for: .valueChanged)
@@ -55,18 +56,22 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     bannerTimer?.invalidate()
     bannerTimer = nil
     }
-    let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/4)
+    let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/3)
+    
+
+    
+    
     scrollView.frame = imageFrame
     scrollView.delegate = self
     //scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     scrollView.backgroundColor = UIColor.white
     
-    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+    let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
     revelsBanner.image = UIImage(named: "Revels18_Banner1")
-    revelsBanner.contentMode = .scaleAspectFill
+    revelsBanner.contentMode = .scaleToFill
     revelsBanner.clipsToBounds = true
     
-    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width , y: 0, width: self.view.frame.width, height: scrollView.frame.height))
+    let proshowBanner:UIImageView = UIImageView(frame: CGRect(x: self.view.frame.width + 5 , y: 5, width: self.view.frame.width - 10, height: scrollView.frame.height - 10))
     proshowBanner.image = UIImage(named: "Proshow Banner")
     proshowBanner.contentMode = .scaleToFill
     proshowBanner.clipsToBounds = true
@@ -97,7 +102,7 @@ func moveToNextPage(){
   
   func numberOfSections(in tableView: UITableView) -> Int {
     if categoriesDataSource.isEmpty {
-      tableView.backgroundView = presentNoNetworkView()
+      tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
     else {
@@ -180,18 +185,27 @@ func moveToNextPage(){
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return CGFloat(40)
+    if(combinedDataSource[section].isEmpty){
+      return 0
+    }
+    else{
+      return 40
+    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 3{
       return 165 + self.view.bounds.width
-
     }
     else{
-      return CGFloat(120)
+      if(combinedDataSource[indexPath.section].isEmpty){
+      return 0
+    }
+    else{
+      return 120
     }
   }
+}
   
   @IBAction func moreButtonSelected(_ sender: UIBarButtonItem) {
     moreButtonClicked()
@@ -217,6 +231,9 @@ func moveToNextPage(){
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
       self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
+      self.combinedDataSource.append(self.categoriesDataSource)
+      self.combinedDataSource.append(self.schedulesDataSource)
+      self.combinedDataSource.append(self.resultsDataSource)
       self.refreshControl.endRefreshing()
       self.stopAnimating()
       self.tableView.reloadData()

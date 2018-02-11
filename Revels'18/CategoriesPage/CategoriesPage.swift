@@ -25,21 +25,20 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationController?.hideHairline()
     createBarButtonItems()
     configureNavigationBar()
     categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    tabBarController?.delegate = self
-    if(!didShowAnimation){
-      let animation = AnimationType.from(direction: .top, offset: 30)
-      categoriesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
-      didShowAnimation = true
-    }
-  }
+//  override func viewDidAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//    tabBarController?.delegate = self
+//    if(!didShowAnimation){
+//      let animation = AnimationType.from(direction: .top, offset: 30)
+//      categoriesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
+//      didShowAnimation = true
+//    }
+//  }
   
   override func reloadData() {
     
@@ -52,8 +51,8 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCell", for: indexPath) as! CategoriesCell
     cell.categoryName.text = categoriesDataSource[indexPath.row].cname
+    cell.categoryImage.image = UIImage(named: categoriesDataSource[indexPath.row].cname)
     cell.layer.cornerRadius = 5
-    cell.backgroundColor = UIColor.white
     return cell
   }
   

@@ -11,7 +11,8 @@ import UIKit
 class NewHomeViewCell: UICollectionViewCell {
   
   @IBOutlet weak var homeLabel: UILabel!
-
+  @IBOutlet weak var homeImage: UIImageView!
+  
   
   override var isHighlighted: Bool{
     didSet{

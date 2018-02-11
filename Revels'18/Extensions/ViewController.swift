@@ -91,15 +91,19 @@ extension UIViewController{
   }
 
   
-  func presentNoNetworkView() -> UIView{
-    let noNetworkView:UIView = Bundle.main.loadNibNamed("EmptyView", owner: nil, options: nil)?.first as! UIView
-    return noNetworkView
+  func presentNoNetworkView(primaryMessage:String,secondaryMessage:String,mainImage:String) -> UIView{
+    let noDataView = NoDataView()
+    noDataView.mainLabel.text = primaryMessage
+    noDataView.secondaryLabel.text = secondaryMessage
+    noDataView.noDataImageView.image = UIImage(named: mainImage)
+    return noDataView
   }
   
   func presentFavoriteView(){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
-    self.present(favoritesViewController, animated: true, completion: nil)
+    favoritesViewController.modalPresentationStyle = .popover
+    self.navigationController?.pushViewController(favoritesViewController, animated: true)
   }
   
   func convertDate(date:String) -> String{

@@ -12,10 +12,9 @@ class CategoriesCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
-    
-    
+  
     override func awakeFromNib() {
-       
+  
     }
     
 }

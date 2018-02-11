@@ -21,7 +21,13 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   }
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 4
+    if(favoritesDataSource[0].isEmpty && favoritesDataSource[1].isEmpty && favoritesDataSource[2].isEmpty && favoritesDataSource[3].isEmpty){
+      favoritesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "You Have No Favorites", secondaryMessage: "You should try adding some", mainImage: "Love")
+      return 0
+    }
+    else{
+      return 4
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

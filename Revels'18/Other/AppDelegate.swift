@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else{
             window?.rootViewController = tabBarController
         }
+        UIApplication.shared.statusBarStyle = .lightContent
         
 
         return true

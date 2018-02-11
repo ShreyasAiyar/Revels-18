@@ -38,7 +38,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func setupCollectionView(){
-    schedulesCollectionView.backgroundView = presentNoNetworkView()
+    schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
     schedulesCollectionView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
   }
@@ -57,7 +57,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     if(scheduleDataSource[0].isEmpty){
       NSLog("No Schedules To Present")
-      schedulesCollectionView.backgroundView = presentNoNetworkView()
+      schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found...", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
     else{

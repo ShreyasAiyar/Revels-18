@@ -11,7 +11,7 @@ import Foundation
 class NetworkController{
   
   let eventsURL = "https://api.mitportals.in/events/"
-  let instagramURL = "https://api.instagram.com/v1/tags/techtatva17/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
+  let instagramURL = "https://api.instagram.com/v1/tags/Revels18/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c"
   let resultsURL = "https://api.mitportals.in/results/"
   let sportsURL = "https://api.mitportals.in/sports/"
   let categoriesURL = "https://api.mitportals.in/categories/"
@@ -45,17 +45,19 @@ class NetworkController{
         return completion(.Error("No Data Found"))
       }
       
+
       let dataString:String! = String(data:data,encoding: .utf8)
       let jsonData = dataString.data(using: .utf8)!
       guard let parsedJSON = try? JSONSerialization.jsonObject(with: jsonData) as? [String:Any] else{
         print("Parsing Failed")
         return completion(.Error("Parsing Failed"))
       }
-  
-      
+
       DispatchQueue.main.async {
         if let parsedJSON = parsedJSON{
           completion(.Success(parsedJSON))
+        }else{
+          completion(.Error("No Data"))
         }
         
       }
@@ -180,11 +182,11 @@ class NetworkController{
       dispatchGroup.leave()
       print("Events Done")
     }
-//    dispatchGroup.enter()
-//    fetchSchedules {
-//      dispatchGroup.leave()
-//      print("Schedules Done")
-//    }
+    dispatchGroup.enter()
+    fetchSchedules {
+      dispatchGroup.leave()
+      print("Schedules Done")
+    }
     dispatchGroup.enter()
     fetchResults {
       dispatchGroup.leave()

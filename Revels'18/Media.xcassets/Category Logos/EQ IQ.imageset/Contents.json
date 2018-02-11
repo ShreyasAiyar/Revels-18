@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "EQ-IQ.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Iredescent.png",
       "scale" : "2x"
     },
     {

@@ -27,6 +27,7 @@ class InstagramCell: UITableViewCell {
     profileView.layer.borderColor = UIColor.black.cgColor
     profileView.layer.borderWidth = 1
     profileView.layer.cornerRadius = profileView.frame.height/2
+    
   }
   
   @IBAction func didSelectMoreButton(_ sender: Any) {
