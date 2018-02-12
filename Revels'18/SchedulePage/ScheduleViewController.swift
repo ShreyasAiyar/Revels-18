@@ -24,7 +24,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   var didShowAnimation:Bool = false
   var searchBar = UISearchBar()
   var shouldShowSearchResults = false
-  //var isSelectedIndex:[Int] = [-1,-1,-1,-1]
   let refreshControl = UIRefreshControl()
   var eid:String!
   

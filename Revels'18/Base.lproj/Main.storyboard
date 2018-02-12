@@ -29,7 +29,7 @@
                     <view key="view" contentMode="scaleToFill" id="ti3-I8-0Gj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.44030570000000002" blue="0.4797278962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="NJD-ZJ-jXP"/>
                     </view>
                 </viewController>
@@ -44,7 +44,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.44030570000000002" blue="0.4797278962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -61,22 +61,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u79-lC-9dF">
-                                <rect key="frame" x="37" y="612" width="300" height="35"/>
+                                <rect key="frame" x="37" y="568" width="300" height="35"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.92710572481155396" green="0.43095606565475464" blue="0.47450125217437744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="continueButtonSelected:" destination="pld-o3-k0b" eventType="touchUpInside" id="G5b-pr-wAT"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Revels18_LogoTransparent" translatesAutoresizingMaskIntoConstraints="NO" id="u8T-fP-GxJ">
+                                <rect key="frame" x="67" y="57" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.44030570000000002" blue="0.4797278962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="u79-lC-9dF" firstAttribute="leading" secondItem="dsP-bf-tb3" secondAttribute="leading" constant="37" id="AAy-48-7ho"/>
-                            <constraint firstItem="dsP-bf-tb3" firstAttribute="bottom" secondItem="u79-lC-9dF" secondAttribute="bottom" constant="20" id="dvN-LV-Vze"/>
-                            <constraint firstItem="dsP-bf-tb3" firstAttribute="trailing" secondItem="u79-lC-9dF" secondAttribute="trailing" constant="38" id="uIq-Ju-2Pz"/>
+                            <constraint firstItem="u79-lC-9dF" firstAttribute="leading" secondItem="dsP-bf-tb3" secondAttribute="leading" constant="37" id="fUO-wu-Fph"/>
+                            <constraint firstItem="dsP-bf-tb3" firstAttribute="bottom" secondItem="u79-lC-9dF" secondAttribute="bottom" constant="64" id="hSN-Ha-wkg"/>
+                            <constraint firstItem="dsP-bf-tb3" firstAttribute="trailing" secondItem="u79-lC-9dF" secondAttribute="trailing" constant="38" id="ovP-gY-5BE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dsP-bf-tb3"/>
                     </view>
@@ -332,15 +336,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventHeaderCell" rowHeight="140" id="zsY-7T-K5P" customClass="EventHeaderCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventHeaderCell" rowHeight="126" id="zsY-7T-K5P" customClass="EventHeaderCell" customModule="Revels_18" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zsY-7T-K5P" id="E8l-lo-nZu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EQ IQ" translatesAutoresizingMaskIntoConstraints="NO" id="7wH-Hh-tym">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Anubhuti" translatesAutoresizingMaskIntoConstraints="NO" id="7wH-Hh-tym">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -355,7 +359,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventInformationCell" rowHeight="50" id="FcQ-08-PEs" customClass="EventInformationCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="168" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="154" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FcQ-08-PEs" id="DWD-bC-VD7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -400,7 +404,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailCell" rowHeight="240" id="oIm-R2-NBe" customClass="EventDetailCell" customModule="Revels_18" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="218" width="375" height="240"/>
+                                        <rect key="frame" x="0.0" y="204" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oIm-R2-NBe" id="eoh-BU-Zyx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -453,10 +457,14 @@
                             <barButtonItem image="Phone" id="Lbz-Et-poD">
                                 <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
-                                    <action selector="didSelectCallButton:" destination="jtB-q7-0Pw" id="0Vk-BR-rp6"/>
+                                    <action selector="didSelectCallButton:" destination="jtB-q7-0Pw" id="N1p-2v-N36"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="Alarm" id="xVh-S2-HYc"/>
+                            <barButtonItem title="Item" image="Alarm" id="xVh-S2-HYc">
+                                <connections>
+                                    <action selector="didSelectAlarmButton:" destination="jtB-q7-0Pw" id="s8n-8y-Xyd"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -1144,18 +1152,18 @@
                             </tableViewSection>
                             <tableViewSection id="InE-Wa-U7y">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="218" id="93e-P5-Edz">
-                                        <rect key="frame" x="0.0" y="272" width="375" height="218"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="270" id="93e-P5-Edz">
+                                        <rect key="frame" x="0.0" y="272" width="375" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="93e-P5-Edz" id="cHw-Tv-Fg4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ywe-3q-tzV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywe-3q-tzV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">One foot firmly rooted in our traditions. Another foot forward, towards a better future, marked by cleaner, and greener technology. The Revels'18 logo brings these two concepts together. Moreover, the colours signify a concept each. The red leaf signifies wars, an integral part of our traditional history. The orange flame is allegorical to the most primal form of energy. The blue water droplet and the green leaf signify cleaner forms of energy such as hydro, tidal, and geothermal.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -1172,7 +1180,7 @@
                             <tableViewSection id="tHs-e4-1n3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="pEc-Y2-ppD">
-                                        <rect key="frame" x="0.0" y="492" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="544" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pEc-Y2-ppD" id="sQF-rg-eDo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -1422,56 +1430,49 @@
             </objects>
             <point key="canvasLocation" x="2061" y="2310"/>
         </scene>
-        <!--View Controller-->
+        <!--Workshops-->
         <scene sceneID="fp5-al-oAK">
             <objects>
                 <viewController id="EgR-dl-rdv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XB5-ZQ-a8M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Eoz-vI-xEi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OuA-Qf-8qp">
+                                    <size key="itemSize" width="375" height="220"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="M4B-l0-xg0">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QO1-rL-Ysc" firstAttribute="trailing" secondItem="Eoz-vI-xEi" secondAttribute="trailing" id="Blb-OV-22n"/>
+                            <constraint firstItem="Eoz-vI-xEi" firstAttribute="top" secondItem="QO1-rL-Ysc" secondAttribute="top" id="KvR-9I-xMR"/>
+                            <constraint firstItem="QO1-rL-Ysc" firstAttribute="bottom" secondItem="Eoz-vI-xEi" secondAttribute="bottom" id="e9q-so-AsJ"/>
+                            <constraint firstItem="Eoz-vI-xEi" firstAttribute="leading" secondItem="QO1-rL-Ysc" secondAttribute="leading" id="pIL-f2-N5u"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QO1-rL-Ysc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Tre-E3-QfL"/>
+                    <navigationItem key="navigationItem" title="Workshops" id="Tre-E3-QfL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKm-E8-CgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2948" y="3026"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="cZt-Lf-WzH">
-            <objects>
-                <viewController id="Dt2-3d-CP6" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SBM-O1-9Os">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFf-qg-ohF">
-                                <rect key="frame" x="54" y="588" width="240" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.34877996575342468" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2N3-f2-7Fq">
-                                <rect key="frame" x="0.0" y="255" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="GJ3-FR-xKc">
-                                <rect key="frame" x="155" y="501" width="38" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </pageControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Revels18_Banner1" translatesAutoresizingMaskIntoConstraints="NO" id="zZ1-ZD-ZCY">
-                                <rect key="frame" x="54" y="391" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="J4p-g8-42e"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gIo-cC-2nh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4015.1999999999998" y="2813.3433283358322"/>
+            <point key="canvasLocation" x="2948" y="3025.6371814092954"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="rck-DZ-lKI">
@@ -1604,9 +1605,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sf2-sh-xRj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nWk-Wn-x1x">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nWk-Wn-x1x">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1625,7 +1630,6 @@
         <image name="Anubhuti" width="1992" height="1686"/>
         <image name="Calendar" width="30" height="30"/>
         <image name="Categories" width="30" height="30"/>
-        <image name="EQ IQ" width="4295" height="3088"/>
         <image name="Facebook_Logo" width="45" height="45"/>
         <image name="Favorites" width="30" height="30"/>
         <image name="HollowFavorites" width="30" height="30"/>
@@ -1634,9 +1638,9 @@
         <image name="More" width="30" height="30"/>
         <image name="Phone" width="30" height="30"/>
         <image name="Results" width="30" height="30"/>
-        <image name="Revels18_Banner1" width="968" height="544"/>
         <image name="Revels18_Logo" width="915" height="915"/>
         <image name="Revels18_Logo1" width="1300" height="1300"/>
+        <image name="Revels18_LogoTransparent" width="828" height="900"/>
         <image name="Time" width="30" height="30"/>
         <image name="Trophy" width="30" height="30"/>
         <image name="Twitter_Logo" width="45" height="45"/>

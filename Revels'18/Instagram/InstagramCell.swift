@@ -28,6 +28,8 @@ class InstagramCell: UITableViewCell {
     profileView.layer.borderWidth = 1
     profileView.layer.cornerRadius = profileView.frame.height/2
     
+    captionLabel.adjustsFontForContentSizeCategory = true
+
   }
   
   @IBAction func didSelectMoreButton(_ sender: Any) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
   
@@ -18,6 +19,7 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   var eventID:String?
   let eventObject = EventsNetworking()
   let scheduleObject = ScheduleNetworking()
+  var dateTimeValue:Date!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -110,5 +112,53 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     UIApplication.shared.open(number, options: [:], completionHandler: nil)
   }
   
+  @IBAction func didSelectAlarmButton(_ sender: Any) {
+    let vc = UIViewController()
+    let dateTimePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
+    dateTimePicker.datePickerMode = .dateAndTime
+    vc.preferredContentSize = CGSize(width: 250,height: 300)
+    vc.view.addSubview(dateTimePicker)
+     let alertController = UIAlertController(title: "Add Notification", message: "Add a date and time", preferredStyle: .alert)
+    alertController.setValue(vc, forKey: "contentViewController")
+    alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+      self.dateTimeValue = dateTimePicker.date
+      self.createNotifications()
+    }))
+    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    present(alertController, animated: true)
+  }
   
+  func createNotifications(){
+    let center = UNUserNotificationCenter.current()
+    center.getNotificationSettings { (settings) in
+      if settings.authorizationStatus == .authorized{
+        NSLog("Creating A Notification")
+        let content = UNMutableNotificationContent()
+        NSLog("Date Time Value is \(self.dateTimeValue)")
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: self.dateTimeValue)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        content.title = (self.eventsDataSource?.ename)!
+        content.body = (self.eventsDataSource?.cname)! + " has an event coming up!"
+        content.sound = UNNotificationSound.default()
+        
+        let identifier = "Revels18Event"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: { (error) in
+          if let error = error{
+            NSLog(error.localizedDescription)
+          }else{
+            let alertController = UIAlertController(title: "Notification Created!", message: nil, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          }
+          
+        })
+      }
+      else{
+        let alertController = UIAlertController(title: "Allow Notification Access", message: "Please allow notifications from settings", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+      }
+    }
+  }
 }

@@ -10,5 +10,4 @@ import UIKit
 
 class NewFavoritesCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var eventName: UILabel!
-  
 }

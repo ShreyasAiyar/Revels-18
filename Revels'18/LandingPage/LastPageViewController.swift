@@ -17,21 +17,7 @@ class LastPageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     continueButton.setTitleColor(UIColor.lightGray, for: .highlighted)
-    continueButton.layer.cornerRadius = 5
-    
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    if(!didAnimate){
-    continueButton.alpha = 0
-    self.continueButton.frame.origin.y -= 20
-    UIView.animate(withDuration: 1){
-      self.continueButton.frame.origin.y += 20
-      self.continueButton.alpha = 1.0
-    }
-    }
-    
+    continueButton.layer.cornerRadius = 10
   }
   
   @IBAction func continueButtonSelected(_ sender: UIButton) {

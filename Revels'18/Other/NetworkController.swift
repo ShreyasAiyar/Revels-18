@@ -16,6 +16,7 @@ class NetworkController{
   let sportsURL = "https://api.mitportals.in/sports/"
   let categoriesURL = "https://api.mitportals.in/categories/"
   let scheduleURL = "https://api.mitportals.in/schedule/"
+  let workshopURL = "https://api.mitportals.in/workshops/"
   
   let eventsObject = EventsNetworking()
   let resultsObject = ResultNetworking()
