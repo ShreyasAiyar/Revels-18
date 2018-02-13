@@ -14,6 +14,7 @@ import ViewAnimator
 
 class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,SelectMoreButtonProtocol,NVActivityIndicatorViewable,UITabBarControllerDelegate,SaveImageProtocol,HomePageSelectionProtocol {
   
+  
   @IBOutlet weak var tableView: UITableView!
   let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "#Revels18 On Instagram"]
   let scrollView:UIScrollView = UIScrollView()
@@ -40,7 +41,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   func setupTableView(){
     tableView.allowsSelection = false
-    tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
+    tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found...", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
     tableView.register(UINib(nibName: "InstagramCell", bundle: nil), forCellReuseIdentifier: "InstaCell")
     tableView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(fetchAllData), for: .valueChanged)
@@ -53,12 +54,12 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   func configureScrollBar(){
     if(bannerTimer != nil){
-    bannerTimer?.invalidate()
-    bannerTimer = nil
+      bannerTimer?.invalidate()
+      bannerTimer = nil
     }
     let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/3)
     
-
+    
     
     
     scrollView.frame = imageFrame
@@ -67,7 +68,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     scrollView.backgroundColor = UIColor.white
     
     let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
-    revelsBanner.image = UIImage(named: "Revels18_Banner1")
+    revelsBanner.image = UIImage(named: "Revels18 Banner")
     revelsBanner.contentMode = .scaleToFill
     revelsBanner.clipsToBounds = true
     
@@ -84,25 +85,25 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     scrollView.contentSize = CGSize(width: scrollView.frame.width, height: scrollView.frame.height)
     tableView.tableHeaderView = scrollView
     if(bannerTimer == nil){
-    bannerTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+      bannerTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
-}
-
-
-func moveToNextPage(){
-  let pageWidth:CGFloat = self.scrollView.frame.width
-  let maxWidth:CGFloat = pageWidth * 2
-  let contentOffset:CGFloat = self.scrollView.contentOffset.x
-  var slideToX = contentOffset + pageWidth
-  if  contentOffset + pageWidth == maxWidth{
-    slideToX = 0
   }
-  self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
-}
+  
+  
+  func moveToNextPage(){
+    let pageWidth:CGFloat = self.scrollView.frame.width
+    let maxWidth:CGFloat = pageWidth * 2
+    let contentOffset:CGFloat = self.scrollView.contentOffset.x
+    var slideToX = contentOffset + pageWidth
+    if  contentOffset + pageWidth == maxWidth{
+      slideToX = 0
+    }
+    self.scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.scrollView.frame.height), animated: true)
+  }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     if categoriesDataSource.isEmpty {
-      tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
+      tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found...", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
     else {
@@ -144,6 +145,7 @@ func moveToNextPage(){
       cell.captionLabel.text = instaObjects[indexPath.row].text
       let instaURL = URL(string: instaObjects[indexPath.row].standardResolutionURL)
       let profileURL = URL(string : instaObjects[indexPath.row].profilePictureURL)
+      cell.url = instaObjects[indexPath.row].url
       cell.likeCount.text = "\(instaObjects[indexPath.row].likesCount)" + " likes"
       cell.locationLabel.text = instaObjects[indexPath.row].location
       cell.commentCount.text = "\(instaObjects[indexPath.row].commentsCount)" + " comments"
@@ -199,13 +201,13 @@ func moveToNextPage(){
     }
     else{
       if(combinedDataSource[indexPath.section].isEmpty){
-      return 0
-    }
-    else{
-      return 120
+        return 0
+      }
+      else{
+        return 120
+      }
     }
   }
-}
   
   @IBAction func moreButtonSelected(_ sender: UIBarButtonItem) {
     moreButtonClicked()
@@ -244,18 +246,24 @@ func moveToNextPage(){
     self.tableView.setContentOffset(CGPoint.zero, animated: true)
   }
   
-  func saveImageToPhotos(image:UIImage) {
+  func saveImageToPhotos(image:UIImage,url:String) {
     let downloadController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     downloadController.addAction(UIAlertAction(title: "Download Image", style: .default, handler: { _ in
       NSLog("Did Select Image To Save")
       UIImageWriteToSavedPhotosAlbum(image, self,  #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }))
+    downloadController.addAction(UIAlertAction(title: "Visit Page", style: .default, handler: { (_) in
+      let myURL = URL(string: url)
+      let safariViewController = SFSafariViewController(url: myURL!)
+      self.present(safariViewController, animated: true,completion: nil)
+      
     }))
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
     downloadController.addAction(cancelAction)
     present(downloadController, animated: true, completion: nil)
   }
-
+  
   
   func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
     if error != nil {
@@ -269,5 +277,11 @@ func moveToNextPage(){
     }
   }
   
+  // Login Controller
   
+  @IBAction func didSelectLoginButton(_ sender: Any) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let loginViewController = storyboard.instantiateViewController(withIdentifier: "DelegateLogin")
+    present(loginViewController, animated: true, completion: nil)
+  }
 }

@@ -177,7 +177,6 @@ class NetworkController{
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
     let dispatchGroup = DispatchGroup()
     
-    
     dispatchGroup.enter()
     fetchEvents{
       dispatchGroup.leave()

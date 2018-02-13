@@ -39,11 +39,17 @@ extension UIViewController{
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
     
+    let workshopAction = UIAlertAction(title: "Workshops", style: .default) { (_) in
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let workshopsViewController = storyboard.instantiateViewController(withIdentifier: "WorkshopsPage")
+      self.present(workshopsViewController, animated: true, completion: nil)
+    }
     
     alertController.addAction(aboutAction)
     alertController.addAction(cancelAction)
     alertController.addAction(developerAction)
     alertController.addAction(proshowAction)
+    alertController.addAction(workshopAction)
     
     present(alertController, animated: true){
     }

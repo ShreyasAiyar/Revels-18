@@ -13,6 +13,7 @@ import CoreData
 class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITabBarControllerDelegate {
   
   let segmentLabels:[String] = ["Results","Sports Results"]
+  let imageNames:[String] = ["Animania","Anubhuti","Kalakriti","Lensation","EQ IQ","Paradigm Shift","Footloose","Iridescent","Psychus","Haute Couture"]
   
   @IBOutlet weak var segmentView: UIView!
   @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -32,7 +33,6 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     createBarButtonItems()
     configureNavigationBar()
     searchBar.delegate = self
-    tabBarController?.delegate = self
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +42,10 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   override func searchButtonPressed() {
     super.searchButtonPressed()
+    searchBar.searchBarStyle = .minimal
+    searchBar.tintColor = UIColor.white
+    let textField = searchBar.value(forKey: "searchField") as! UITextField
+    textField.textColor = UIColor.white
     self.searchBar.becomeFirstResponder()
     searchBar.alpha = 1
     navigationItem.titleView = searchBar
@@ -92,6 +96,9 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     if searchActive == false{
       cell.eventName.text = resultsDataSource[indexPath.row].evename
       cell.roundNo.text = "Round " + resultsDataSource[indexPath.row].round
+      cell.teamID.text = "Team ID: " + resultsDataSource[indexPath.row].tid
+      let index = indexPath.row%imageNames.count
+      cell.categoryImage.image = UIImage(named: imageNames[index])
     }
     else{
       cell.eventName.text = filteredDataSource[indexPath.row].evename
@@ -132,13 +139,9 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let result:Results = resultsDataSource[indexPath.row]
-    let resultArray = results.filter{return $0.evename == result.evename}
-    var message = ""
-    for result in resultArray{
-      message.append("Team ID: \(result.tid)  Position: \(result.pos) \n")
-    }
-    let alertView = UIAlertController(title: result.evename, message: message, preferredStyle: .alert)
+    let message = resultsDataSource[indexPath.row].pos
+    let title = resultsDataSource[indexPath.row].evename
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
     alertView.addAction(okAction)
     present(alertView, animated: true, completion: nil)
@@ -146,8 +149,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   
   func fetchResults(){
-    results = resultNetworkingObject.fetchResultsFromCoreData()
-    
+    resultsDataSource = resultNetworkingObject.fetchResultsFromCoreData()
+    self.resultsCollectionView.reloadData()
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

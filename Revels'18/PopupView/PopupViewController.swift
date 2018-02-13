@@ -15,7 +15,7 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   var eventsDataSource:Events?
   var scheduleDataSource:Schedules?
-  let informationHeaders:[String] = ["Category","Round","Date","Time","Venue","Team Of","Contact Name","Contact Number"]
+  let informationHeaders:[String] = ["Category","Round","Date","Time","Team Of","Contact Name","Contact Number"]
   var eventID:String?
   let eventObject = EventsNetworking()
   let scheduleObject = ScheduleNetworking()
@@ -39,19 +39,19 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
       let cell = tableView.dequeueReusableCell(withIdentifier: "EventInformationCell") as! EventInformationCell
       cell.information.text = informationHeaders[indexPath.row]
       if(indexPath.row == 0){
-        cell.informationValue.text = scheduleDataSource?.day
+        cell.informationValue.text = scheduleDataSource?.catname
         cell.eventInfoImage.image = UIImage(named: informationHeaders[indexPath.row])
       }
       if(indexPath.row == 1){
-        cell.informationValue.text = scheduleDataSource?.date
+        cell.informationValue.text = scheduleDataSource?.round
         cell.eventInfoImage.image = UIImage(named: informationHeaders[indexPath.row])
       }
       if(indexPath.row == 2){
-        cell.informationValue.text = scheduleDataSource?.etime
+        cell.informationValue.text = scheduleDataSource?.date
         cell.eventInfoImage.image = UIImage(named: informationHeaders[indexPath.row])
       }
       if(indexPath.row == 3){
-        cell.informationValue.text = scheduleDataSource?.venue
+        cell.informationValue.text = scheduleDataSource?.stime
         cell.eventInfoImage.image = UIImage(named: informationHeaders[indexPath.row])
       }
       if(indexPath.row == 4){

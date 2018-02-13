@@ -28,7 +28,6 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
   }
   
   @IBAction func didSelectFavoritesButton(_ sender: UIButton) {
-    favouriteButton.pulse()
     if favouriteButton.isSelected == true{
       print("Selected")
       favouriteButton.isSelected = false

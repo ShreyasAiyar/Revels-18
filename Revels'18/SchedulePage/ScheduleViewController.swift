@@ -30,7 +30,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.delegate = self
-    navigationController?.hideHairline()
     createBarButtonItems()
     configureNavigationBar()
     setupCollectionView()
