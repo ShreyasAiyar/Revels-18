@@ -52,16 +52,16 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     self.tabBarController?.delegate = self
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    setupQRCodeView()
+  }
+  
   func configureScrollBar(){
     if(bannerTimer != nil){
       bannerTimer?.invalidate()
       bannerTimer = nil
     }
     let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/3)
-    
-    
-    
-    
     scrollView.frame = imageFrame
     scrollView.delegate = self
     //scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
@@ -233,8 +233,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
       self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
-      self.combinedDataSource.append(self.categoriesDataSource)
       self.combinedDataSource.append(self.schedulesDataSource)
+      self.combinedDataSource.append(self.categoriesDataSource)
       self.combinedDataSource.append(self.resultsDataSource)
       self.refreshControl.endRefreshing()
       self.stopAnimating()
@@ -283,5 +283,28 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let loginViewController = storyboard.instantiateViewController(withIdentifier: "DelegateLogin")
     present(loginViewController, animated: true, completion: nil)
+  }
+  
+  func didSelectQRButton(){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let QRViewController = storyboard.instantiateViewController(withIdentifier: "QRLogin")
+    present(QRViewController, animated: true, completion: nil)
+  }
+  
+  func setupQRCodeView(){
+    let defaults = UserDefaults.standard
+    let loggedin = defaults.bool(forKey: "LoggedIn")
+    if(loggedin){
+      let QRImage = UIImage(named: "QRCode")
+      let barButtonItem = UIBarButtonItem(image: QRImage, style: .plain, target: self, action: #selector(didSelectQRButton))
+      barButtonItem.tintColor = UIColor.white
+      navigationItem.setLeftBarButton(barButtonItem, animated: true)
+    }
+    else{
+      let loginImage = UIImage(named: "Add-User")
+      let barButtonItem = UIBarButtonItem(image: loginImage, style: .plain, target: self, action: #selector(didSelectLoginButton(_:)))
+      barButtonItem.tintColor = UIColor.white
+      navigationItem.setLeftBarButton(barButtonItem, animated: true)
+    }
   }
 }

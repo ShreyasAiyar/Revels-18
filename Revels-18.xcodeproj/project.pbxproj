@@ -39,6 +39,7 @@
 		B1BB5CAF1FDFF9DC00FE2CC3 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */; };
 		B1BB5CB11FE00A7A00FE2CC3 /* ResultsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */; };
 		B1C3A5CB2031F0B400B86A6E /* WorkshopsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3A5CA2031F0B400B86A6E /* WorkshopsPage.swift */; };
+		B1C47DC72034692300F57B62 /* QRPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C47DC62034692300F57B62 /* QRPage.swift */; };
 		B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */; };
 		B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */; };
 		B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */; };
@@ -98,6 +99,7 @@
 		B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsNetworking.swift; sourceTree = "<group>"; };
 		B1C3A5CA2031F0B400B86A6E /* WorkshopsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsPage.swift; sourceTree = "<group>"; };
+		B1C47DC62034692300F57B62 /* QRPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPage.swift; sourceTree = "<group>"; };
 		B1C4EEA01FDAD52900D6359D /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		B1C5EFB4201183BB00FA1B6D /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		B1C5EFB62011C89700FA1B6D /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				B172280F2033332E00C84C10 /* LoginPage.swift */,
+				B1C47DC62034692300F57B62 /* QRPage.swift */,
 			);
 			path = LoginPage;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				B118DBE22018DF3900EA188E /* EventDetailCell.swift in Sources */,
 				B1C5EFBB2012381700FA1B6D /* FavoritesCollectionViewCell.swift in Sources */,
 				B118DBDE2018DE2600EA188E /* EventHeaderCell.swift in Sources */,
+				B1C47DC72034692300F57B62 /* QRPage.swift in Sources */,
 				B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */,
 				B1F302481FD3D648003A89E7 /* ResultsModel.swift in Sources */,
 				B1C4EEA11FDAD52900D6359D /* HomeViewCell.swift in Sources */,

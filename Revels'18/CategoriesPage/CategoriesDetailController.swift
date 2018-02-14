@@ -47,6 +47,11 @@
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
+    if(scheduleDataSource?.isEmpty)!{
+      let message = (categoriesDataSource?.cname)! + " has no events for this day"
+      tableView.backgroundView = presentNoNetworkView(primaryMessage: message, secondaryMessage: "Blame It On Websis", mainImage: "Revels18_Logo")
+      return 0
+    }
     return 4
   }
   
