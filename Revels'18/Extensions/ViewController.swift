@@ -23,12 +23,12 @@ extension UIViewController{
       self.present(aboutViewController, animated: true, completion: nil)
     }
     
-    let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
-      Void in
-      let myURL = URL(string: "http://alpha.mitrevels.in/index.php")
-      let safariViewController = SFSafariViewController(url: myURL!)
-      self.present(safariViewController, animated: true,completion: nil)
-    }
+//    let proshowAction = UIAlertAction(title: "Proshow Portal", style: .default){
+//      Void in
+//      let myURL = URL(string: "http://alpha.mitrevels.in/index.php")
+//      let safariViewController = SFSafariViewController(url: myURL!)
+//      self.present(safariViewController, animated: true,completion: nil)
+//    }
     
     let developerAction = UIAlertAction(title: "Developers", style: .default){
       Void in
@@ -48,7 +48,7 @@ extension UIViewController{
     alertController.addAction(aboutAction)
     alertController.addAction(cancelAction)
     alertController.addAction(developerAction)
-    alertController.addAction(proshowAction)
+    //alertController.addAction(proshowAction)
     alertController.addAction(workshopAction)
     
     present(alertController, animated: true){

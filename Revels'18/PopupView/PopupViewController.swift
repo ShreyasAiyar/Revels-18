@@ -87,13 +87,13 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if(indexPath.section == 0){
-      return 250
+      return 100
     }
     else if(indexPath.section == 1){
       return 50
     }
     else{
-      return 300
+      return 150
     }
   }
   

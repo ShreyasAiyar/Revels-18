@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Psychus.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Psychus.png",
       "scale" : "2x"
     },
     {

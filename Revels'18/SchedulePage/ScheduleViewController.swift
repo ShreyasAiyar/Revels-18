@@ -71,6 +71,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCollectionCell", for: indexPath) as! ScheduleCollectionViewCell
     cell.delegate = self
+    cell.categoryImage.image = UIImage(named:scheduleDataSource[currentIndex][indexPath.row].catname)
     cell.eid = scheduleDataSource[currentIndex][indexPath.row].eid
     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].ename + "(" + scheduleDataSource[currentIndex][indexPath.row].round + ")"
     cell.time.text! = scheduleDataSource[currentIndex][indexPath.row].stime + " - " + scheduleDataSource[currentIndex][indexPath.row].etime
@@ -93,10 +94,12 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     NSLog("Size Of Schedules Is %d", schedules.count)
     scheduleDataSource.removeAll()
-    self.scheduleDataSource.append(schedules.filter{return $0.day == "1"})
-    self.scheduleDataSource.append(schedules.filter{return $0.day == "2"})
-    self.scheduleDataSource.append(schedules.filter{return $0.day == "3"})
-    self.scheduleDataSource.append(schedules.filter{return $0.day == "4"})
+    let revelsEvents = schedules.filter({return $0.isRevels == "0"})
+    self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "1"})
+    self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "2"})
+    self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "3"})
+    self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "4"})
+    self.scheduleDataSource.append(schedules.filter({return $0.isRevels == "1"}))
     self.schedulesCollectionView.reloadData()
   }
   

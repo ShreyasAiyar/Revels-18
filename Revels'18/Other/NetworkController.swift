@@ -25,6 +25,7 @@ class NetworkController{
   let categoriesObject = CategoriesNetworking()
   let scheduleObject = ScheduleNetworking()
   let revelsCupObject = RevelsCupNetworking()
+  let workshopsObject = WorkshopsNetworking()
   var instagramObjects:[Instagram] = []
   
   enum Status<T>:Error{
@@ -199,6 +200,28 @@ class NetworkController{
 
   }
   
+  func fetchWorkshops(completion:@escaping () -> ()){
+    var workshops:[Workshops] = []
+    makeHTTPRequestForEvents(eventsURL: workshopURL){
+      result in
+      switch result{
+      case .Success(let parsedJSON):
+        for workshop in parsedJSON["data"] as! [Dictionary<String,String>]{
+          let workshopObject = Workshops(dictionary: workshop)
+          workshops.append(workshopObject)
+        }
+        self.workshopsObject.saveWorkshopsToCoreData(workshopsData: workshops)
+        completion()
+        
+      case .Error(let errorMessage):
+        print(errorMessage)
+        DispatchQueue.main.async {
+          completion()
+        }
+      }
+    }
+  }
+  
   
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
     let dispatchGroup = DispatchGroup()
@@ -235,6 +258,12 @@ class NetworkController{
     fetchRevelsCupData {
       dispatchGroup.leave()
       print("RevelsCup Done")
+    }
+    
+    dispatchGroup.enter()
+    fetchWorkshops {
+      dispatchGroup.leave()
+      print("Workshops Done")
     }
     
     dispatchGroup.notify(queue: .main) {

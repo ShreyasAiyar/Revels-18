@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Dramebaaz.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Dramebaaz.png",
       "scale" : "2x"
     },
     {

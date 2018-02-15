@@ -9,5 +9,6 @@
 import UIKit
 
 class NewFavoritesCollectionViewCell: UICollectionViewCell {
+  @IBOutlet weak var favoriteImage: UIImageView!
   @IBOutlet weak var eventName: UILabel!
 }

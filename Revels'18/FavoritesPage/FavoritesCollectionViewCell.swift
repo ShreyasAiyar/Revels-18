@@ -27,6 +27,7 @@ extension FavoritesCollectionViewCell:UICollectionViewDataSource,UICollectionVie
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewFavoritesCollectionCell", for: indexPath) as! NewFavoritesCollectionViewCell
     cell.eventName.text = dataSource[indexPath.row].ename
+    cell.favoriteImage.image = UIImage(named: dataSource[indexPath.row].catname)
     return cell
   }
   

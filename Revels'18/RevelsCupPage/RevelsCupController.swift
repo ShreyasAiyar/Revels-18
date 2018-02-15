@@ -21,7 +21,7 @@ class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataS
   }
   
   func configureTableView(){
-    tableView.refreshControl = refreshControl
+    //tableView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
     
   }

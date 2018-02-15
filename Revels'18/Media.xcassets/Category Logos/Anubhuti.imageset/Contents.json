@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Anubhuti.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Anubhuti.png",
       "scale" : "2x"
     },
     {

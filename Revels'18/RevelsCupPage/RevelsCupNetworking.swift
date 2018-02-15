@@ -66,7 +66,7 @@ class RevelsCupNetworking{
       revelsCupDictionary["sname"] = revelsCupObject.value(forKey: "sname") as? String
       revelsCupDictionary["team1"] = revelsCupObject.value(forKey: "team1") as? String
       revelsCupDictionary["team2"] = revelsCupObject.value(forKey: "team2") as? String
-      revelsCupDictionary["time"] = revelsCupObject.value(forKey: "time") as! String
+      revelsCupDictionary["time"] = revelsCupObject.value(forKey: "time") as? String
       revelsCupDictionary["venue"] = revelsCupObject.value(forKey: "venue") as? String
       let revelsCupDataObject = RevelsCups(dictionary: revelsCupDictionary)
       revelsCup.append(revelsCupDataObject)

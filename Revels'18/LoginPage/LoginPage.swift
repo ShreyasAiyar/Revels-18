@@ -30,7 +30,7 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
     super.viewDidLoad()
     loginButton.layer.cornerRadius = 5
     signUpButton.layer.cornerRadius = 5
-    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
   }
 
@@ -61,7 +61,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
             alertController.message = errorMessage
             self.present(alertController, animated: true, completion: nil)
           case 3:
-            let url = payload["url"] as! String
             let errorMessage = "Login Successful. Please Change Your Password"
             alertController.message = errorMessage
             alertController.addAction(UIAlertAction(title: "Change Password", style: .default, handler: { (_) in
@@ -129,9 +128,9 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
       }
       // Cookie Value
       let cookieStorage = HTTPCookieStorage.shared
-      let cookies = cookieStorage.cookies as! [HTTPCookie]
+      let cookies = cookieStorage.cookies
       var cookieValues:[String] = []
-      for cookie in cookies{
+      for cookie in cookies!{
         cookieValues.append(cookie.value)
         print(cookie.value)
       }
