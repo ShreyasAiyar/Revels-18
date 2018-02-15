@@ -194,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6q-li-a8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2643" y="-1009"/>
+            <point key="canvasLocation" x="2981.5999999999999" y="-1009.7451274362819"/>
         </scene>
         <!--Categories Detail Controller-->
         <scene sceneID="gMW-aL-6MD">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rT-x9-3DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3391" y="-1010"/>
+            <point key="canvasLocation" x="3728.8000000000002" y="-1010.6446776611695"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="JaZ-PI-UeQ">
@@ -1757,11 +1757,11 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-f0-Xja">
                                 <rect key="frame" x="16" y="525" width="343" height="30"/>
-                                <state key="normal" title="Scan QR Code">
+                                <state key="normal" title="Register For Events">
                                     <color key="titleColor" red="0.62745098040000002" green="0.2470588235" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="didSelectGenerateQRCode:" destination="t2P-sy-e6q" eventType="touchUpInside" id="Zqa-PA-ld0"/>
+                                    <action selector="didSelectRegisterForEvents:" destination="t2P-sy-e6q" eventType="touchUpInside" id="iEw-Jg-ZOX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVJ-fI-1L5">
@@ -1796,7 +1796,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="D7z-eL-ftb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="didSelectDismissButton:" destination="t2P-sy-e6q" id="OEh-iH-CBs"/>
+                                <action selector="didSelectDismissButton:" destination="t2P-sy-e6q" id="scB-6D-uwE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1806,13 +1806,14 @@
                         <outlet property="email" destination="l80-MF-jgE" id="bzx-73-ae9"/>
                         <outlet property="location" destination="gBa-fe-JGK" id="Qdr-QZ-HEk"/>
                         <outlet property="phoneNumber" destination="hVm-gR-rCO" id="r7S-be-KZr"/>
+                        <outlet property="previewView" destination="x7a-a7-N9v" id="J64-s7-ZfL"/>
                         <outlet property="regno" destination="XXh-0a-CFs" id="t5s-Bn-1iI"/>
                         <outlet property="welcomeMessage" destination="9sw-cc-LG8" id="mlH-9h-Ir3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tr4-gI-qLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.79999999999995" y="-827.13643178410803"/>
+            <point key="canvasLocation" x="924" y="-827"/>
         </scene>
         <!--Categories-->
         <scene sceneID="caB-7J-wt6">
@@ -1837,7 +1838,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czJ-Ck-8Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-1008"/>
+            <point key="canvasLocation" x="2352.8000000000002" y="-1008.8455772113944"/>
         </scene>
         <!--Revels Cup-->
         <scene sceneID="mix-lT-EUW">
@@ -1960,6 +1961,26 @@
             </objects>
             <point key="canvasLocation" x="126" y="-73"/>
         </scene>
+        <!--Register For Events-->
+        <scene sceneID="wcp-cQ-q9b">
+            <objects>
+                <viewController id="nZv-OM-fYY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8D6-ic-ImR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uwr-m0-zhm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Register For Events" id="rO4-M5-qxU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="mDB-JD-HbQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPS-PK-4tU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-1522"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WmB-Tr-IhI">
             <objects>
@@ -1983,7 +2004,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKV-wG-kaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209" y="-826"/>
+            <point key="canvasLocation" x="126" y="-827"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6eP-at-qnD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xjf-3j-zVQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zNF-QF-RHx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.69357281920000002" green="0.26721471549999998" blue="0.19994783399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nZv-OM-fYY" kind="relationship" relationship="rootViewController" id="hJo-Cg-rhY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omr-oP-ulF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="-1522"/>
         </scene>
     </scenes>
     <resources>

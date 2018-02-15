@@ -64,7 +64,11 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
             let url = payload["url"] as! String
             let errorMessage = "Login Successful. Please Change Your Password"
             alertController.message = errorMessage
-//            alertController.addAction(UIAlertAction(title: "r", style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
+            alertController.addAction(UIAlertAction(title: "Change Password", style: .default, handler: { (_) in
+              let myURL = URL(string: "https://mitportals.in/loginform.php")
+              let safariViewController = SFSafariViewController(url: myURL!)
+              self.present(safariViewController, animated: true, completion: nil)
+            }))
             self.present(alertController, animated: true, completion: nil)
           case 4:
             let errorMessage = "Login Successful"
@@ -143,10 +147,9 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
     task.resume()
   }
   @IBAction func didSelectSignUpButton(_ sender: Any) {
-    let myURL = URL(string: "https://mitportals.in/loginform.phpw")
+    let myURL = URL(string: "https://mitportals.in/loginform.php")
     let safariViewController = SFSafariViewController(url: myURL!)
     self.present(safariViewController, animated: true, completion: nil)
-    
   }
   func dismissKeyboard() {
     view.endEditing(true)

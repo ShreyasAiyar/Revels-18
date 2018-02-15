@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 
 extension UIViewController{
   
-  func moreButtonClicked(){
+  @objc func moreButtonClicked(){
     
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let aboutAction =  UIAlertAction(title: "About Revels", style: .default){
@@ -76,10 +76,10 @@ extension UIViewController{
     self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
   }
   
-  func reloadData(){
+  @objc func reloadData(){
   }
   
-  func searchButtonPressed(){
+  @objc func searchButtonPressed(){
     navigationItem.setLeftBarButtonItems(nil, animated: true)
     navigationItem.setRightBarButtonItems(nil, animated: true)
   }
@@ -97,7 +97,7 @@ extension UIViewController{
   }
 
   
-  func presentNoNetworkView(primaryMessage:String,secondaryMessage:String,mainImage:String) -> UIView{
+  @objc func presentNoNetworkView(primaryMessage:String,secondaryMessage:String,mainImage:String) -> UIView{
     let noDataView = NoDataView()
     noDataView.mainLabel.text = primaryMessage
     noDataView.secondaryLabel.text = secondaryMessage

@@ -27,7 +27,7 @@
   }
 
   
-  override func createBarButtonItems() {
+  @objc override func createBarButtonItems() {
     let infoButton = UIButton(type: .infoLight)
     infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchDown)
     let barButton = UIBarButtonItem(customView: infoButton)
