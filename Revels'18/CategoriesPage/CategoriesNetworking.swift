@@ -13,8 +13,7 @@ import CoreData
 // MARK: Write Main Function For Categories
 
 class CategoriesNetworking{
-  
-  
+
   func saveCategoriesToCoreData(categoryData:[Categories]){
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{

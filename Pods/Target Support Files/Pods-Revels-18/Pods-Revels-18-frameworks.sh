@@ -103,12 +103,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework"

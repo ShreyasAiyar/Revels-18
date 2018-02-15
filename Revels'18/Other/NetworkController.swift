@@ -17,11 +17,14 @@ class NetworkController{
   let categoriesURL = "https://api.mitportals.in/categories/"
   let scheduleURL = "https://api.mitportals.in/schedule/"
   let workshopURL = "https://api.mitportals.in/workshops/"
+  let revelsCupURL = "https://api.mitportals.in/revelscup/"
+
   
   let eventsObject = EventsNetworking()
   let resultsObject = ResultNetworking()
   let categoriesObject = CategoriesNetworking()
   let scheduleObject = ScheduleNetworking()
+  let revelsCupObject = RevelsCupNetworking()
   var instagramObjects:[Instagram] = []
   
   enum Status<T>:Error{
@@ -173,6 +176,29 @@ class NetworkController{
     }
   }
   
+  func fetchRevelsCupData(completion:@escaping () -> ()){
+    var revelsCups:[RevelsCups] = []
+    makeHTTPRequestForEvents(eventsURL: revelsCupURL){
+      result in
+      switch result{
+      case .Success(let parsedJSON):
+        for revelsCup in parsedJSON["data"] as! [Dictionary<String,String>]{
+          let revelsCupObject = RevelsCups(dictionary: revelsCup)
+          revelsCups.append(revelsCupObject)
+        }
+        self.revelsCupObject.saveRevelsCupToCoreData(revelsCupData: revelsCups)
+        completion()
+
+      case .Error(let errorMessage):
+        print(errorMessage)
+        DispatchQueue.main.async {
+          completion()
+        }
+      }
+    }
+
+  }
+  
   
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
     let dispatchGroup = DispatchGroup()
@@ -203,6 +229,12 @@ class NetworkController{
       self.instagramObjects = instragramObject
       dispatchGroup.leave()
       print("Insta Done")
+    }
+    
+    dispatchGroup.enter()
+    fetchRevelsCupData {
+      dispatchGroup.leave()
+      print("RevelsCup Done")
     }
     
     dispatchGroup.notify(queue: .main) {

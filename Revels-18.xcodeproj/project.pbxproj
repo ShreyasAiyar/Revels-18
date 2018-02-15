@@ -20,6 +20,7 @@
 		B12C152F1FE5753A0062461F /* DevelopersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C152E1FE5753A0062461F /* DevelopersPage.swift */; };
 		B12C15311FE5757E0062461F /* DevelopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15301FE5757E0062461F /* DevelopersModel.swift */; };
 		B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15321FE578AF0062461F /* DeveloperCell.swift */; };
+		B13AF7022035BD9500598DF0 /* RevelsCupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF7012035BD9500598DF0 /* RevelsCupCell.swift */; };
 		B154E74A20307F4B000868D7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154E74920307F4B000868D7 /* NoDataView.swift */; };
 		B15814E61FF8C99D00A362D7 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15814E51FF8C99D00A362D7 /* EmptyView.xib */; };
 		B15873FE1FFB2276005A55DD /* InstagramCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15873FD1FFB2276005A55DD /* InstagramCell.xib */; };
@@ -51,6 +52,8 @@
 		B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D3CB841FCEB55300E8AD7A /* Revels_18.xcdatamodeld */; };
 		B1D3CB8B1FCEB55300E8AD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D3CB891FCEB55300E8AD7A /* LaunchScreen.storyboard */; };
 		B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */; };
+		B1E387D42034C35A0039CB63 /* RevelsCupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E387D32034C35A0039CB63 /* RevelsCupModel.swift */; };
+		B1E387D62034C4560039CB63 /* RevelsCupNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E387D52034C4560039CB63 /* RevelsCupNetworking.swift */; };
 		B1ED69CC1FD18C520009662A /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED69CB1FD18C520009662A /* LastPageViewController.swift */; };
 		B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */; };
 		B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */; };
@@ -80,6 +83,7 @@
 		B12C152E1FE5753A0062461F /* DevelopersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersPage.swift; sourceTree = "<group>"; };
 		B12C15301FE5757E0062461F /* DevelopersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersModel.swift; sourceTree = "<group>"; };
 		B12C15321FE578AF0062461F /* DeveloperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperCell.swift; sourceTree = "<group>"; };
+		B13AF7012035BD9500598DF0 /* RevelsCupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelsCupCell.swift; sourceTree = "<group>"; };
 		B154E74920307F4B000868D7 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		B15814E51FF8C99D00A362D7 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B15873FD1FFB2276005A55DD /* InstagramCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstagramCell.xib; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 		B1D3CB8A1FCEB55300E8AD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D3CB8C1FCEB55300E8AD7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0D601FD0E46A0041DBB9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		B1E387D32034C35A0039CB63 /* RevelsCupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelsCupModel.swift; sourceTree = "<group>"; };
+		B1E387D52034C4560039CB63 /* RevelsCupNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelsCupNetworking.swift; sourceTree = "<group>"; };
 		B1ED69CB1FD18C520009662A /* LastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		B1F302431FD3D4A4003A89E7 /* CategoriesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworking.swift; sourceTree = "<group>"; };
 		B1F302451FD3D4E5003A89E7 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -282,6 +288,9 @@
 			isa = PBXGroup;
 			children = (
 				B1FBED8B201464130070573B /* RevelsCupController.swift */,
+				B1E387D32034C35A0039CB63 /* RevelsCupModel.swift */,
+				B1E387D52034C4560039CB63 /* RevelsCupNetworking.swift */,
+				B13AF7012035BD9500598DF0 /* RevelsCupCell.swift */,
 			);
 			path = RevelsCupPage;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Revels-18/Pods-Revels-18-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -467,6 +477,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -504,6 +515,7 @@
 				B12C15331FE578AF0062461F /* DeveloperCell.swift in Sources */,
 				B118DBE02018DE8400EA188E /* EventInformationCell.swift in Sources */,
 				B1F302461FD3D4E5003A89E7 /* CategoriesModel.swift in Sources */,
+				B1E387D42034C35A0039CB63 /* RevelsCupModel.swift in Sources */,
 				B1A193D4200E042500F681DA /* CategoryDetailCell.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
@@ -535,9 +547,11 @@
 				B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */,
 				B1FBED8C201464130070573B /* RevelsCupController.swift in Sources */,
 				B1993B7D1FE3EEB30036EA66 /* ViewController.swift in Sources */,
+				B1E387D62034C4560039CB63 /* RevelsCupNetworking.swift in Sources */,
 				B10141ED1FDD06C40048B540 /* HomePage.swift in Sources */,
 				B1F3024A1FD3D750003A89E7 /* ScheduleModel.swift in Sources */,
 				B12C152F1FE5753A0062461F /* DevelopersPage.swift in Sources */,
+				B13AF7022035BD9500598DF0 /* RevelsCupCell.swift in Sources */,
 				B1C5EFB5201183BB00FA1B6D /* NetworkController.swift in Sources */,
 				B1A193D6200E048D00F681DA /* CategoryDetailCollectionCell.swift in Sources */,
 				B1C5EFB72011C89700FA1B6D /* ScheduleViewController.swift in Sources */,

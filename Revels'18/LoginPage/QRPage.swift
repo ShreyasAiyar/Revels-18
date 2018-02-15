@@ -41,22 +41,32 @@ class QRPage: UIViewController,NVActivityIndicatorViewable {
   }
   
   @IBAction func didSelectGenerateQRCode(_ sender: Any) {
-    
+
   }
   
   @IBAction func didSelectLogoutButton(_ sender: Any) {
     let defaults = UserDefaults.standard
     defaults.set(false, forKey: "LoggedIn")
     defaults.set("", forKey: "Cookie")
-    self.dismiss(animated: true, completion: nil)
+    let alertViewController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout", preferredStyle: .alert)
+    alertViewController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+      self.dismiss(animated: true, completion: nil)
+    }))
+    alertViewController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+    present(alertViewController, animated: true, completion: nil)
   }
   
-  func createQRFromString(_ str: String) -> CIImage? {
-    let stringData = str.data(using: String.Encoding.utf8)
-    let filter = CIFilter(name: "CIQRCodeGenerator")
-    filter?.setValue(stringData, forKey: "inputMessage")
-    filter?.setValue("H", forKey: "inputCorrectionLevel")
-    return filter?.outputImage
+  func generateQRCode(from string: String) -> UIImage? {
+    let data = string.data(using: String.Encoding.ascii)
+    if let filter = CIFilter(name: "CIQRCodeGenerator") {
+      filter.setValue(data, forKey: "inputMessage")
+      let transform = CGAffineTransform(scaleX: 3, y: 3)
+      if let output = filter.outputImage?.applying(transform) {
+        return UIImage(ciImage: output)
+      }
+    }
+    
+    return nil
   }
   
   
@@ -64,7 +74,6 @@ class QRPage: UIViewController,NVActivityIndicatorViewable {
     startAnimating()
     let defaults = UserDefaults.standard
     cookieValue = defaults.object(forKey: "Cookie") as! String
-    //cookieValue = "kj2cd2db8q3stuhlk8l13db786"
     getData(cookieValue: cookieValue) { (status) in
       switch status{
       case .Success(let parsedJSON):
@@ -75,7 +84,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable {
         self.phoneNumber.text = parsedJSON["student_phone"] as? String
         self.email.text = parsedJSON["student_mail"] as? String
         self.location.text = parsedJSON["student_college"] as? String
-        //self.QRView = createQRFromString((parsedJSON["qr"] as? String)!)
+        self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
         self.stopAnimating()
       case .Error(let error):
         print(error)
@@ -111,13 +120,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable {
           completion(.Error("No Data. Check Your Internet Connection"))
         }
       }
-      
     }
     task.resume()
   }
-  
-  
-  
-  
-  
 }

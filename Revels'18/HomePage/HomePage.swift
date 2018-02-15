@@ -37,6 +37,14 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     configureNavigationBar()
     setupTableView()
     fetchAllData()
+    let defaults = UserDefaults.standard
+    guard let loggedIn = defaults.value(forKey: "LoggedIn") as? Bool else{
+    didSelectLoginButton(self)
+    return
+    }
+    if(!loggedIn){
+      didSelectLoginButton(self)
+    }
   }
   
   func setupTableView(){

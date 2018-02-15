@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
+//    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
+//    window?.rootViewController = tabBarController
+//    
     //
     //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
     //        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
@@ -37,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("Could Not Grant Notification Access")
       }
     }
-    
     
     UIApplication.shared.statusBarStyle = .lightContent
     

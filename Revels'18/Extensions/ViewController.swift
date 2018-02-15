@@ -108,8 +108,7 @@ extension UIViewController{
   func presentFavoriteView(){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesPage")
-    favoritesViewController.modalPresentationStyle = .popover
-    self.navigationController?.pushViewController(favoritesViewController, animated: true)
+    present(favoritesViewController, animated: true, completion: nil)
   }
   
   func convertDate(date:String) -> String{

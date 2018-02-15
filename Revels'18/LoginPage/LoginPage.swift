@@ -8,8 +8,9 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SafariServices
 
-class LoginPage: UIViewController{
+class LoginPage: UIViewController,NVActivityIndicatorViewable{
   
   enum Status<T>:Error{
     case Success(T)
@@ -21,22 +22,27 @@ class LoginPage: UIViewController{
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var userNameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var signUpButton: UIButton!
   var cookieValue:String?
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     loginButton.layer.cornerRadius = 5
+    signUpButton.layer.cornerRadius = 5
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    view.addGestureRecognizer(tap)
   }
-  
-  
-  @IBAction func didSelectCrossButton(_ sender: Any) {
+
+  @IBAction func didSelectContinueAsGuest(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
+  
   
   @IBAction func didSelectLoginButton(_ sender: Any) {
     if(!(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)!){
       performLogin(completion: { (status) in
+        self.stopAnimating()
         switch status{
         case .Success(let parsedJSON):
           let payload = parsedJSON["payload"] as! [String:Any]
@@ -55,8 +61,10 @@ class LoginPage: UIViewController{
             alertController.message = errorMessage
             self.present(alertController, animated: true, completion: nil)
           case 3:
+            let url = payload["url"] as! String
             let errorMessage = "Login Successful. Please Change Your Password"
             alertController.message = errorMessage
+//            alertController.addAction(UIAlertAction(title: "r", style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
             self.present(alertController, animated: true, completion: nil)
           case 4:
             let errorMessage = "Login Successful"
@@ -88,6 +96,7 @@ class LoginPage: UIViewController{
       // No Username,Password Entered
     else{
       let alertController = UIAlertController(title: "Error", message: "Please enter a username and password", preferredStyle: .alert)
+      alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alertController, animated: true, completion: nil)
     }
   }
@@ -95,6 +104,7 @@ class LoginPage: UIViewController{
   // MARK: Perform Login
   
   func performLogin(completion:@escaping (Status<[String:Any]>) -> ()){
+    startAnimating()
     var request = URLRequest(url: url!)
     request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.httpMethod = "POST"
@@ -119,8 +129,9 @@ class LoginPage: UIViewController{
       var cookieValues:[String] = []
       for cookie in cookies{
         cookieValues.append(cookie.value)
+        print(cookie.value)
       }
-      self.cookieValue = cookieValues[0]
+      self.cookieValue = cookieValues[4]
       DispatchQueue.main.async {
         if let parsedJSON = parsedJSON{
           completion(.Success(parsedJSON))
@@ -130,6 +141,19 @@ class LoginPage: UIViewController{
       }
     }
     task.resume()
+  }
+  @IBAction func didSelectSignUpButton(_ sender: Any) {
+    let myURL = URL(string: "https://mitportals.in/loginform.phpw")
+    let safariViewController = SFSafariViewController(url: myURL!)
+    self.present(safariViewController, animated: true, completion: nil)
+    
+  }
+  func dismissKeyboard() {
+    view.endEditing(true)
+  }
+  
+  func changePassword(newPassword:String){
+    
   }
   
 }
