@@ -67,7 +67,7 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
           let message = payload["message"] as! String
           let code = payload["code"] as! Int
           let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
-          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+          alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
           NSLog("Message %s Code %d", message,code)
           switch(code){
           case 1:
@@ -113,7 +113,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
         }
       })
     }
-      
       // No Username,Password Entered
     else{
       let alertController = UIAlertController(title: "Error", message: "Please enter a username and password", preferredStyle: .alert)
@@ -123,7 +122,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
   }
   
   // MARK: Perform Login
-  
   func performLogin(completion:@escaping (Status<[String:Any]>) -> ()){
     startAnimating()
     var request = URLRequest(url: url!)
@@ -135,8 +133,7 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
     
     // POST Data For Login
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-      
-      
+    
       guard let data = data else{
         return completion(.Error("Please Check Your Internet Connection"))
       }
@@ -173,8 +170,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
     view.endEditing(true)
   }
   
-  func changePassword(newPassword:String){
-    
-  }
+
   
 }

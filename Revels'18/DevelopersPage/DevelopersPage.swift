@@ -33,13 +33,13 @@ class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate
     let gauthamImage = UIImage(named: "Gautham")
     let anjaliImage = UIImage(named: "Anjali")
     
-    //developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18 iOS Developer"))
-    //developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: harshImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
-    developerDataSource.append(Developers(developerName: "Anurag Choudhary", developerImage: anuragImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
-    developerDataSource.append(Developers(developerName: "Saptarishi Roy", developerImage: saptarishiImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
-    developerDataSource.append(Developers(developerName: "Rahul Sathanapalli", developerImage: rahulImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
-    developerDataSource.append(Developers(developerName: "Gautham Vinod", developerImage: gauthamImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
-    developerDataSource.append(Developers(developerName: "Anjali Premjit", developerImage: anjaliImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
+    developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels 18 iOS Developer"))
+    developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: harshImage, developerPosition: "Organizer", developerMessage: "Revels 18 iOS Developer"))
+    developerDataSource.append(Developers(developerName: "Anurag Choudhary", developerImage: anuragImage, developerPosition: "Cathead", developerMessage: "Revels 18 Android Developer"))
+    developerDataSource.append(Developers(developerName: "Saptarshi Roy Choudhuri", developerImage: saptarishiImage, developerPosition: "Organizer", developerMessage: "Revels 18 Android Developer"))
+    developerDataSource.append(Developers(developerName: "Rahul Sathanapalli", developerImage: rahulImage, developerPosition: "Organizer", developerMessage: "Revels 18 Android Developer"))
+    developerDataSource.append(Developers(developerName: "Gautham Vinod", developerImage: gauthamImage, developerPosition: "Cathead", developerMessage: "Revels 18 Windows? Developer"))
+    developerDataSource.append(Developers(developerName: "Anjali Premjit", developerImage: anjaliImage, developerPosition: "Organizer", developerMessage: "Revels 18 Windows? Developer"))
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {

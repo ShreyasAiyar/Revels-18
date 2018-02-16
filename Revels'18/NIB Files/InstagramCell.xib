@@ -27,20 +27,20 @@
                                 <constraint firstAttribute="width" constant="40" id="cfr-Jw-v8z"/>
                             </constraints>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="1NQ-ai-n9V">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="1NQ-ai-n9V">
                             <rect key="frame" x="45" y="0.0" width="250" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Q-K1-0Ue">
-                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="15"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="0tI-e1-Ts7"/>
+                                        <constraint firstAttribute="height" constant="15" id="0tI-e1-Ts7"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLb-Eq-RTt">
-                                    <rect key="frame" x="0.0" y="25.5" width="30.5" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="15" width="30.5" height="25"/>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

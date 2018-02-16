@@ -65,7 +65,8 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCollectionCell", for: indexPath) as! ScheduleCollectionViewCell
     cell.delegate = self
-    cell.categoryImage.image = UIImage(named:scheduleDataSource[currentIndex][indexPath.row].catname)
+    let imageName = scheduleDataSource[currentIndex][indexPath.row].catname + " Large"
+    cell.categoryImage.image = UIImage(named:imageName)
     cell.eid = scheduleDataSource[currentIndex][indexPath.row].eid
     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].ename + "(" + scheduleDataSource[currentIndex][indexPath.row].round + ")"
     cell.time.text! = scheduleDataSource[currentIndex][indexPath.row].stime + " - " + scheduleDataSource[currentIndex][indexPath.row].etime
@@ -105,15 +106,15 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 10, height: 80)
+    return CGSize(width: self.view.frame.width - 20, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 5
+    return 7
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -149,9 +150,4 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.contentView.backgroundColor = nil
   }
-  
-  
-  
-  
-  
 }

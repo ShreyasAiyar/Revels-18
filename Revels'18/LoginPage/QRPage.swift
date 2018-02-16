@@ -69,11 +69,12 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
   }
   
   @IBAction func didSelectLogoutButton(_ sender: Any) {
-    let alertViewController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout", preferredStyle: .alert)
+    let alertViewController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout?", preferredStyle: .alert)
     alertViewController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
       let defaults = UserDefaults.standard
       defaults.set(false, forKey: "LoggedIn")
       defaults.set("", forKey: "Cookie")
+      self.performLogout()
       self.dismiss(animated: true, completion: nil)
     }))
     alertViewController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -99,18 +100,29 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
     let defaults = UserDefaults.standard
     cookieValue = defaults.object(forKey: "Cookie") as! String
     getData(cookieValue: cookieValue) { (status) in
+      self.stopAnimating()
       switch status{
       case .Success(let parsedJSON):
-        print("Cookie Is " + self.cookieValue)
-        print(parsedJSON)
-        self.welcomeMessage.text = "Name: " + (parsedJSON["student_name"] as? String)!
-        self.delegateID.text = parsedJSON["student_delno"] as? String
-        self.regno.text = parsedJSON["student_regno"] as? String
-        self.phoneNumber.text = parsedJSON["student_phone"] as? String
-        self.email.text = parsedJSON["student_mail"] as? String
-        self.location.text = parsedJSON["student_college"] as? String
-        self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
-        self.stopAnimating()
+        let statusCode = parsedJSON["status"] as! Int
+        let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        switch(statusCode){
+        case 0:
+          let message = parsedJSON["message"] as! String
+          self.present(alertController, animated: true, completion: nil)
+        case 1:
+          alertController.message = "Successful Login"
+          self.present(alertController, animated: true, completion: nil)
+          self.welcomeMessage.text = "Name: " + (parsedJSON["student_name"] as? String)!
+          self.delegateID.text = parsedJSON["student_delno"] as? String
+          self.regno.text = parsedJSON["student_regno"] as? String
+          self.phoneNumber.text = parsedJSON["student_phone"] as? String
+          self.email.text = parsedJSON["student_mail"] as? String
+          self.location.text = parsedJSON["student_college"] as? String
+          self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
+        default:
+          print()
+        }
       case .Error(let error):
         DispatchQueue.main.async {
           self.stopAnimating()
@@ -176,21 +188,21 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           alertController.message = message
           self.present(alertController, animated: true, completion: nil)
           
-          // Failure
+        // Failure
         case 1:
           let message = parsedJSON["message"] as! String
           alertController.message = message
           self.present(alertController, animated: true, completion: nil)
           
-          //Create New Team
+        //Create New Team
         case 2:
           let eventName = parsedJSON["event_name"] as! String
           let maxTeamSize = parsedJSON["event_max_team_number"] as! String
-          let presentTeamSize = "0"
+          let presentTeamSize = "1"
           let teamID = " "
           eventRegistrationViewController.eventNameValue = eventName
           eventRegistrationViewController.maxTeamSizeValue = maxTeamSize
-          eventRegistrationViewController.presentTeamSizeValue = presentTeamSize
+          eventRegistrationViewController.presentTeamSizeValue = Int(presentTeamSize)
           eventRegistrationViewController.teamIDValue = teamID
           alertController.message = "Do You Want To Create A New Team For " + eventName
           alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_) in
@@ -198,7 +210,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           }))
           self.present(alertController, animated: true, completion: nil)
           
-          // Already Registered
+        // Already Registered
         case 3:
           let message = "You have already registered"
           alertController.message = message
@@ -209,14 +221,14 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           print(eventName + maxTeamSize + presentTeamSize + teamID)
           eventRegistrationViewController.eventNameValue = eventName
           eventRegistrationViewController.maxTeamSizeValue = maxTeamSize
-          eventRegistrationViewController.presentTeamSizeValue = presentTeamSize
+          eventRegistrationViewController.presentTeamSizeValue = Int(presentTeamSize)
           eventRegistrationViewController.teamIDValue = teamID
           alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_) in
             self.present(navigationViewController, animated: true, completion: nil)
           }))
           self.present(alertController, animated: true, completion: nil)
           
-          // Default
+        // Default
         default:
           let message = "Unknown Error"
           alertController.message = message
@@ -269,6 +281,18 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
   @IBAction func didSelectDismissButton(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
-
+  
+  func performLogout(){
+    let logoutURL = URL(string:"https://mitportals.in/includes/logout.php")
+    let newCookie = "PHPSESSID=" + cookieValue
+    var request = URLRequest(url: logoutURL!)
+    request.addValue(newCookie, forHTTPHeaderField: "Cookie")
+    request.httpMethod = "GET"
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+      }
+    
+    task.resume()
+  }
+  
   
 }

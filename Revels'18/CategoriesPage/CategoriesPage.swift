@@ -30,22 +30,28 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
   }
   
-//  override func viewDidAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated)
-//    tabBarController?.delegate = self
-//    if(!didShowAnimation){
-//      let animation = AnimationType.from(direction: .top, offset: 30)
-//      categoriesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
-//      didShowAnimation = true
-//    }
-//  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.delegate = self
+    if(!didShowAnimation){
+      let animation = AnimationType.from(direction: .top, offset: 30)
+      categoriesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
+      didShowAnimation = true
+    }
+  }
   
   override func reloadData() {
     
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return categoriesDataSource.count
+    if(categoriesDataSource.isEmpty){
+      categoriesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Categories Data", secondaryMessage: "Check Your Internet Connection And Retry...", mainImage: "Revels18_Logo")
+      return 0
+    }else{
+      categoriesCollectionView.backgroundView = nil
+      return categoriesDataSource.count
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

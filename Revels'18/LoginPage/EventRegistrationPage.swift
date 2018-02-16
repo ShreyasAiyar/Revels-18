@@ -20,7 +20,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
   
   var eventNameValue:String?
   var teamIDValue:String?
-  var presentTeamSizeValue:String?
+  var presentTeamSizeValue:Int?
   var maxTeamSizeValue:String?
   
   lazy var readerVC = QRCodeReaderViewController(builder: QRCodeReaderViewControllerBuilder {
@@ -57,10 +57,10 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
   }
   
   func setValues(){
-    eventName.text = "Event Name: " + eventNameValue!
-    teamID.text = "Team ID: " + teamIDValue!
-    presentTeamSize.text = "Present Team Size: " + presentTeamSizeValue!
-    maxTeamSize.text = "Max Team Size: " + maxTeamSizeValue!
+    eventName.text = eventNameValue!
+    teamID.text = teamIDValue!
+    presentTeamSize.text = "\(presentTeamSizeValue!)"
+    maxTeamSize.text = maxTeamSizeValue!
   }
   
   
@@ -88,6 +88,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
       self.stopAnimating()
       switch status{
       case .Success(let parsedJSON):
+        print(parsedJSON)
         let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
         let statusCode = parsedJSON["status"] as! Int
         let message = parsedJSON["message"] as! String
@@ -117,6 +118,8 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
           self.present(alertController, animated: true, completion: nil)
         case 4:
           print("Success Scenario")
+          let teamID = parsedJSON["team_id"] as! Int
+          self.teamID.text = "\(teamID)"
           alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
           self.present(alertController, animated: true, completion: nil)
         default:
@@ -146,6 +149,9 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
     request.httpMethod = "GET"
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+      
+      print(data,response,error)
+      
       guard error == nil else{
         return completion(.Error("Error. Please Check Your Internet Connection"))
       }
@@ -181,6 +187,10 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
           let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           self.present(alertController, animated: true, completion: nil)
+          if(statusCode == 4){
+            let count = Int(self.presentTeamSize.text!)
+            self.presentTeamSize.text = "\(count! + 1)"
+          }
           
         case .Error(let error):
           DispatchQueue.main.async {

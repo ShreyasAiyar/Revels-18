@@ -41,13 +41,16 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
     if(sectionIndex == 0){
       cell.homeLabel.text = schedulesDataSource![indexPath.row].ename
-      cell.homeImage.image = UIImage(named: schedulesDataSource![indexPath.row].catname)
+      let imageName = schedulesDataSource![indexPath.row].catname + " Large"
+      cell.homeImage.image = UIImage(named: imageName)
     }else if(sectionIndex == 1){
       cell.homeLabel.text = categoriesDataSource![indexPath.row].cname
-      cell.homeImage.image = UIImage(named: categoriesDataSource![indexPath.row].cname)
+      let imageName = categoriesDataSource![indexPath.row].cname + " Large"
+      cell.homeImage.image = UIImage(named: imageName)
     }else{
       cell.homeLabel.text = resultsDataSource![indexPath.row].evename
-      cell.homeImage.image = UIImage(named: resultsDataSource![indexPath.row].cat)
+      let imageName = resultsDataSource![indexPath.row].cat + " Large"
+      cell.homeImage.image = UIImage(named: imageName)
     }
     return cell
   }

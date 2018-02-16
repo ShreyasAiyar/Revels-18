@@ -200,27 +200,27 @@ class NetworkController{
 
   }
   
-//  func fetchWorkshops(completion:@escaping () -> ()){
-//    var workshops:[Workshops] = []
-//    makeHTTPRequestForEvents(eventsURL: workshopURL){
-//      result in
-//      switch result{
-//      case .Success(let parsedJSON):
-//        for workshop in parsedJSON["data"] as! [Dictionary<String,String>]{
-//          let workshopObject = Workshops(dictionary: workshop)
-//          workshops.append(workshopObject)
-//        }
-//        self.workshopsObject.saveWorkshopsToCoreData(workshopsData: workshops)
-//        completion()
-//
-//      case .Error(let errorMessage):
-//        print(errorMessage)
-//        DispatchQueue.main.async {
-//          completion()
-//        }
-//      }
-//    }
-//  }
+  func fetchWorkshops(completion:@escaping () -> ()){
+    var workshops:[Workshops] = []
+    makeHTTPRequestForEvents(eventsURL: workshopURL){
+      result in
+      switch result{
+      case .Success(let parsedJSON):
+        for workshop in parsedJSON["data"] as! [Dictionary<String,String>]{
+          let workshopObject = Workshops(dictionary: workshop)
+          workshops.append(workshopObject)
+        }
+        self.workshopsObject.saveWorkshopsToCoreData(workshopsData: workshops)
+        completion()
+
+      case .Error(let errorMessage):
+        print(errorMessage)
+        DispatchQueue.main.async {
+          completion()
+        }
+      }
+    }
+  }
   
   
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
@@ -229,42 +229,35 @@ class NetworkController{
     dispatchGroup.enter()
     fetchEvents{
       dispatchGroup.leave()
-      print("Events Done")
     }
     dispatchGroup.enter()
     fetchSchedules {
       dispatchGroup.leave()
-      print("Schedules Done")
     }
     dispatchGroup.enter()
     fetchResults {
       dispatchGroup.leave()
-      print("Results Done")
     }
     dispatchGroup.enter()
     fetchCategories {
       dispatchGroup.leave()
-      print("Categories Done")
     }
     
     dispatchGroup.enter()
     fetchInstagram { (instragramObject) in
       self.instagramObjects = instragramObject
       dispatchGroup.leave()
-      print("Insta Done")
     }
     
     dispatchGroup.enter()
     fetchRevelsCupData {
       dispatchGroup.leave()
-      print("RevelsCup Done")
     }
     
-//    dispatchGroup.enter()
-//    fetchWorkshops {
-//      dispatchGroup.leave()
-//      print("Workshops Done")
-//    }
+    dispatchGroup.enter()
+    fetchWorkshops {
+      dispatchGroup.leave()
+    }
     
     dispatchGroup.notify(queue: .main) {
       NSLog("Finished Downloading All Data")

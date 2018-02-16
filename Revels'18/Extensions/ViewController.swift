@@ -72,7 +72,7 @@ extension UIViewController{
     searchBarButtonItem.tintColor = color
     
     
-    self.navigationItem.setRightBarButtonItems([moreButtonItem,searchBarButtonItem], animated: true)
+    self.navigationItem.setRightBarButtonItems([moreButtonItem], animated: true)
     self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
   }
   

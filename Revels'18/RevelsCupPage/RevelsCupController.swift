@@ -10,20 +10,22 @@ import UIKit
 
 class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataSource {
   
-  @IBOutlet weak var tableView: UITableView!
-  var revelsCupDataSource:[String] = []
+
+  @IBOutlet weak var revelsCupCollectionView: UICollectionView!
+  var revelsCupDataSource:[RevelsCups] = []
   let refreshControl = UIRefreshControl()
+  let revelsCupObject = RevelsCupNetworking()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureTableView()
     configureNavigationBar()
+    fetchRevelsCupData()
   }
   
   func configureTableView(){
-    //tableView.refreshControl = refreshControl
+    revelsCupCollectionView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,6 +46,11 @@ class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   override func reloadData() {
     refreshControl.endRefreshing()
+  }
+  
+  func fetchRevelsCupData(){
+    revelsCupDataSource = revelsCupObject.fetchRevelsCupFromCoreData()
+    print(revelsCupDataSource)
   }
   
   

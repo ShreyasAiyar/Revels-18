@@ -195,18 +195,17 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    print(section)
     if(combinedDataSource[section].isEmpty){
       return 0
     }
     else{
-      return 40
+      return 35
     }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 3{
-      return 165 + self.view.bounds.width
+      return 170 + self.view.bounds.width
     }
     else{
       if(combinedDataSource[indexPath.section].isEmpty){

@@ -11,6 +11,8 @@ import UIKit
 class FavoritesCollectionViewCell: UICollectionViewCell {
   
   var dataSource:[Schedules] = []
+  var delegate:DidSelectFavoritesProtocol!
+  var indexPosition:Int!
   @IBOutlet weak var collectionView: UICollectionView!
   
   override func awakeFromNib() {
@@ -27,10 +29,20 @@ extension FavoritesCollectionViewCell:UICollectionViewDataSource,UICollectionVie
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewFavoritesCollectionCell", for: indexPath) as! NewFavoritesCollectionViewCell
     cell.eventName.text = dataSource[indexPath.row].ename
-    cell.favoriteImage.image = UIImage(named: dataSource[indexPath.row].catname)
+    let image = dataSource[indexPath.row].catname + " Large"
+    cell.favoriteImage.image = UIImage(named: image)
     return cell
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.delegate.didSelectFavorites(outerIndex: indexPosition, innerIndex: indexPath.row)
+  }
   
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 70, height: 120)
+  }
+}
 
+protocol DidSelectFavoritesProtocol{
+  func didSelectFavorites(outerIndex:Int,innerIndex:Int)
 }
