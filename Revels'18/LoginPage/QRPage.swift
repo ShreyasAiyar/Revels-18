@@ -101,6 +101,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
     getData(cookieValue: cookieValue) { (status) in
       switch status{
       case .Success(let parsedJSON):
+        print("Cookie Is " + self.cookieValue)
         print(parsedJSON)
         self.welcomeMessage.text = "Name: " + (parsedJSON["student_name"] as? String)!
         self.delegateID.text = parsedJSON["student_delno"] as? String
@@ -165,6 +166,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
         let navigationViewController = storyboard.instantiateViewController(withIdentifier: "EventRegistration")
         let eventRegistrationViewController = navigationViewController.childViewControllers.first as! EventRegistrationPage
         let statusCode = parsedJSON["status"] as! Int
+        print(parsedJSON)
         
         let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
@@ -191,7 +193,6 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           eventRegistrationViewController.presentTeamSizeValue = presentTeamSize
           eventRegistrationViewController.teamIDValue = teamID
           alertController.message = "Do You Want To Create A New Team For " + eventName
-          self.present(alertController, animated: true, completion: nil)
           alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_) in
             self.present(navigationViewController, animated: true, completion: nil)
           }))

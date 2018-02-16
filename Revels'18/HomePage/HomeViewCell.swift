@@ -13,7 +13,10 @@ class HomeViewCell: UITableViewCell {
   @IBOutlet weak var collectionView: UICollectionView!
   var dataSource:[String] = []
   var categoryName:[String] = []
-  var section:Int?
+  var schedulesDataSource:[Schedules]?
+  var categoriesDataSource:[Categories]?
+  var resultsDataSource:[Results]?
+  var sectionIndex:Int?
   var delegate:HomePageSelectionProtocol?
 }
 
@@ -21,17 +24,31 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
   
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if(dataSource.count > 10){
-      return 10
+    if(sectionIndex == 0){
+      let count = schedulesDataSource!.count > 10 ? 10:schedulesDataSource!.count
+      return count
+    } else if(sectionIndex == 1){
+      let count = categoriesDataSource!.count > 10 ? 10:categoriesDataSource!.count
+      return count
+    }else {
+      let count = resultsDataSource!.count > 10 ? 10:resultsDataSource!.count
+      return count
     }
-    return dataSource.count
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
-    cell.homeLabel.text = dataSource[indexPath.row]
-    cell.homeImage.image = UIImage(named: categoryName[indexPath.row])
-    
+    if(sectionIndex == 0){
+      cell.homeLabel.text = schedulesDataSource![indexPath.row].ename
+      cell.homeImage.image = UIImage(named: schedulesDataSource![indexPath.row].catname)
+    }else if(sectionIndex == 1){
+      cell.homeLabel.text = categoriesDataSource![indexPath.row].cname
+      cell.homeImage.image = UIImage(named: categoriesDataSource![indexPath.row].cname)
+    }else{
+      cell.homeLabel.text = resultsDataSource![indexPath.row].evename
+      cell.homeImage.image = UIImage(named: resultsDataSource![indexPath.row].cat)
+    }
     return cell
   }
   
@@ -55,13 +72,13 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if(section! == 0){
+    if(sectionIndex! == 0){
       delegate?.selectedSchedule(indexPosition: indexPath.row)
     }
-    if(section! == 1){
+    if(sectionIndex! == 1){
       delegate?.selectedCategories(indexPosition: indexPath.row)
     }
-    if(section! == 2){
+    if(sectionIndex! == 2){
       delegate?.selectedResults(indexPosition: indexPath.row)
     }
   }

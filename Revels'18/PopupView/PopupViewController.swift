@@ -20,6 +20,7 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   let eventObject = EventsNetworking()
   let scheduleObject = ScheduleNetworking()
   var dateTimeValue:Date!
+  var eventName:String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,7 +33,8 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if(indexPath.section == 0){
       let cell = tableView.dequeueReusableCell(withIdentifier: "EventHeaderCell") as! EventHeaderCell
-      cell.eventImage.image = UIImage(named: "Animania")
+      let eventName = scheduleDataSource!.catname + " Large"
+      cell.eventImage.image = UIImage(named: eventName)
       return cell
     }
     else if(indexPath.section == 1){
@@ -87,22 +89,21 @@ class PopupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if(indexPath.section == 0){
-      return 100
+      return 200
     }
     else if(indexPath.section == 1){
       return 50
     }
     else{
-      return 150
+      return 200
     }
   }
   
   func fetchEventsFromCoreData(){
     let events = eventObject.fetchEventsFromCoreData()
-    eventsDataSource = events.filter{return $0.eid == self.eventID}.first
-    let schedule = scheduleObject.fetchScheduleFromCoreData()
-    scheduleDataSource = schedule.filter{return $0.eid == eventsDataSource?.eid}.filter{return $0.day == eventsDataSource?.day}.first
+    eventsDataSource = events.filter{return $0.eid == scheduleDataSource?.eid}.first
   }
+  
   
 
   @IBAction func didSelectCallButton(_ sender: Any) {

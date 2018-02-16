@@ -13,7 +13,6 @@ import CoreData
 class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITabBarControllerDelegate {
   
   let segmentLabels:[String] = ["Results","Sports Results"]
-  let imageNames:[String] = ["Animania","Anubhuti","Kalakriti","Lensation","EQ IQ","Paradigm Shift","Footloose","Iridescent","Psychus","Haute Couture"]
   
   @IBOutlet weak var segmentView: UIView!
   @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -97,8 +96,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
       cell.eventName.text = resultsDataSource[indexPath.row].evename
       cell.roundNo.text = "Round " + resultsDataSource[indexPath.row].round
       cell.teamID.text = "Team ID: " + resultsDataSource[indexPath.row].tid
-      let index = indexPath.row%imageNames.count
-      cell.categoryImage.image = UIImage(named: imageNames[index])
+      cell.categoryImage.image = UIImage(named: resultsDataSource[indexPath.row].cat)
     }
     else{
       cell.eventName.text = filteredDataSource[indexPath.row].evename
@@ -140,7 +138,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let message = resultsDataSource[indexPath.row].pos
-    let title = resultsDataSource[indexPath.row].evename
+    let title = "Position: " + resultsDataSource[indexPath.row].evename
     let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
     alertView.addAction(okAction)

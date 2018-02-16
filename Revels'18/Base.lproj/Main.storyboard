@@ -590,7 +590,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" id="n7D-1k-4af">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="eJy-d0-gH4">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" id="eJy-d0-gH4">
                                             <rect key="frame" x="0.0" y="7" width="375" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -2218,7 +2218,6 @@
         <!--Navigation Controller-->
         <scene sceneID="6eP-at-qnD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="omr-oP-ulF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="EventRegistration" automaticallyAdjustsScrollViewInsets="NO" id="xjf-3j-zVQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zNF-QF-RHx">
@@ -2234,6 +2233,7 @@
                         <segue destination="nZv-OM-fYY" kind="relationship" relationship="rootViewController" id="hJo-Cg-rhY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omr-oP-ulF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="126" y="-1522"/>
         </scene>

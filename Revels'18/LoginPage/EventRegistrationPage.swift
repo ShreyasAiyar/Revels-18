@@ -60,7 +60,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
     eventName.text = "Event Name: " + eventNameValue!
     teamID.text = "Team ID: " + teamIDValue!
     presentTeamSize.text = "Present Team Size: " + presentTeamSizeValue!
-    maxTeamSize.text = "Maximum Team Size " + maxTeamSizeValue!
+    maxTeamSize.text = "Max Team Size: " + maxTeamSizeValue!
   }
   
   
@@ -72,6 +72,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
     readerVC.delegate = self
     readerVC.completionBlock = { (result: QRCodeReaderResult?) in
       if let QRString = result?.value{
+        NSLog(QRString)
         self.addTeamMate(with: QRString)
       }
     }
@@ -98,9 +99,12 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
           }))
           self.present(alertController, animated: true, completion: nil)
         case 0:
-          print("First Scan Of QR")
+          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+          }))
+          self.present(alertController, animated: true, completion: nil)
         case 1:
-          print("Already Registered...")
+          alertController.message = "Add Teammates"
         case 2:
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
             self.dismiss(animated: true, completion: nil)
@@ -110,6 +114,10 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
             self.dismiss(animated: true, completion: nil)
           }))
+          self.present(alertController, animated: true, completion: nil)
+        case 4:
+          print("Success Scenario")
+          alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
           self.present(alertController, animated: true, completion: nil)
         default:
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
@@ -126,6 +134,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
       }
     }
   }
+  // MARK: GET Request
   
   func confirmTeamDetails(completion:@escaping (Status<[String:Any]>)->()){
     let createTeamURL = URL(string: "https://mitportals.in/includes/create-team.php")
@@ -163,28 +172,29 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
   
   func addTeamMate(with QRString:String){
     startAnimating()
-    postTeamMateDetails { (status) in
-      switch(status){
-      case .Success(let parsedJSON):
-        print(parsedJSON)
-        
-        
-        
-        
-        
-      case .Error(let error):
-        DispatchQueue.main.async {
-          let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+    postTeamMateDetails(with: QRString, completion: { (status) in
+        self.stopAnimating()
+        switch(status){
+        case .Success(let parsedJSON):
+          let statusCode = parsedJSON["status"] as! Int
+          let message = parsedJSON["message"] as! String
+          let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           self.present(alertController, animated: true, completion: nil)
+          
+        case .Error(let error):
+          DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          }
         }
-      }
       
-    }
+    })
     
   }
   
-  func postTeamMateDetails(completion:@escaping (Status<[String:Any]>)->()){
+  func postTeamMateDetails(with QRString:String,completion:@escaping (Status<[String:Any]>)->()){
     let addTeamMateURL = URL(string: "https://mitportals.in/includes/add-to-team.php")
     let defaults = UserDefaults.standard
     let cookieValue = defaults.value(forKey: "Cookie") as! String
@@ -192,6 +202,8 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
     var request = URLRequest(url: addTeamMateURL!)
     request.addValue(newCookie, forHTTPHeaderField: "Cookie")
     request.httpMethod = "POST"
+    let paramString = "qr=" + QRString
+    request.httpBody = paramString.data(using: .utf8)
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
       guard error == nil else{

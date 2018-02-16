@@ -147,12 +147,13 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
       // Cookie Value
       let cookieStorage = HTTPCookieStorage.shared
       let cookies = cookieStorage.cookies
+      print(cookies)
       var cookieValues:[String] = []
       for cookie in cookies!{
-        cookieValues.append(cookie.value)
-        print(cookie.value)
+        if(cookie.name == "PHPSESSID"){
+        self.cookieValue = cookie.value
       }
-      self.cookieValue = cookieValues[4]
+      }
       DispatchQueue.main.async {
         if let parsedJSON = parsedJSON{
           completion(.Success(parsedJSON))

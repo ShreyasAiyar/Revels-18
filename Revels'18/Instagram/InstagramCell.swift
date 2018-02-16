@@ -42,7 +42,9 @@ class InstagramCell: UITableViewCell {
   func imageTapped(gesture: UIGestureRecognizer) {
     NSLog("Image Long Pressed")
     if (gesture.view as? UIImageView) != nil {
-      delegate?.saveImageToPhotos(image: self.instaView.image!,url: self.url)
+      if let instaImage = self.instaView.image{
+        delegate?.saveImageToPhotos(image: instaImage,url: self.url)
+      }
     }
   }
 }

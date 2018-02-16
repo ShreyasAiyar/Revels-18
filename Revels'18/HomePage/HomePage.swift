@@ -16,7 +16,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   
   
   @IBOutlet weak var tableView: UITableView!
-  let sectionHeaders:[String] = ["Today's Schedule","Categories","Results", "#Revels18 On Instagram"]
+  let sectionHeaders:[String] = ["Events","Categories","Results", "#Revels18 On Instagram"]
   let scrollView:UIScrollView = UIScrollView()
   let refreshControl = UIRefreshControl()
   
@@ -132,21 +132,18 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     cell.collectionView.reloadData()
     cell.collectionView.backgroundColor = UIColor.white
     if(indexPath.section == 0){
-      cell.dataSource = schedulesDataSource.map{return $0.ename}
-      cell.categoryName = schedulesDataSource.map{return $0.catname}
-      cell.section = 0
+      cell.schedulesDataSource = schedulesDataSource
+      cell.sectionIndex = 0
       return cell
     }
     else if(indexPath.section == 1){
-      cell.dataSource = categoriesDataSource.map{return $0.cname}
-      cell.categoryName = categoriesDataSource.map{return $0.cname}
-      cell.section = 1
+      cell.categoriesDataSource = categoriesDataSource
+      cell.sectionIndex = 1
       return cell
     }
     else if(indexPath.section == 2){
-      cell.dataSource = resultsDataSource.map{return $0.evename}
-      cell.categoryName = resultsDataSource.map{return $0.cat}
-      cell.section = 2
+      cell.resultsDataSource = resultsDataSource
+      cell.sectionIndex = 2
       return cell
     }
     else{
@@ -185,7 +182,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   func selectedSchedule(indexPosition: Int) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let eventsVC = storyboard.instantiateViewController(withIdentifier: "PopupView") as! PopupViewController
-    eventsVC.eventID = schedulesDataSource[indexPosition].eid
+    eventsVC.scheduleDataSource = schedulesDataSource[indexPosition]
     navigationController?.pushViewController(eventsVC, animated: true)
   }
   

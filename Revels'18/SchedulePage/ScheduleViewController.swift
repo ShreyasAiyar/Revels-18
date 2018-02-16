@@ -25,7 +25,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   var searchBar = UISearchBar()
   var shouldShowSearchResults = false
   let refreshControl = UIRefreshControl()
-  var eid:String!
+  var schedule:Schedules!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -105,26 +105,25 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 20, height: 80)
+    return CGSize(width: self.view.frame.width - 10, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 10
+    return 5
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    eid = scheduleDataSource[currentIndex][indexPath.row].eid
+    schedule = scheduleDataSource[currentIndex][indexPath.row]
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if(segue.identifier == "PopupViewSegue"){
       let destinationVC = segue.destination as! PopupViewController
-      destinationVC.eventID = eid!
-      
+      destinationVC.scheduleDataSource = schedule
     }
   }
   
@@ -141,7 +140,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-    eid = scheduleDataSource[currentIndex][indexPath.row].eid
+    schedule = scheduleDataSource[currentIndex][indexPath.row]
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.contentView.backgroundColor = UIColor(white: 217.0/255.0, alpha: 1.0)
   }
