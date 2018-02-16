@@ -33,8 +33,8 @@ class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate
     let gauthamImage = UIImage(named: "Gautham")
     let anjaliImage = UIImage(named: "Anjali")
     
-    developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18 iOS Developer"))
-    developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: harshImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
+    //developerDataSource.append(Developers(developerName: "Shreyas Aiyar", developerImage: shreyasImage, developerPosition: "Cathead", developerMessage: "Revels-18 iOS Developer"))
+    //developerDataSource.append(Developers(developerName: "Harsh Mutha", developerImage: harshImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
     developerDataSource.append(Developers(developerName: "Anurag Choudhary", developerImage: anuragImage, developerPosition: "Cathead", developerMessage: "Revels-18"))
     developerDataSource.append(Developers(developerName: "Saptarishi Roy", developerImage: saptarishiImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
     developerDataSource.append(Developers(developerName: "Rahul Sathanapalli", developerImage: rahulImage, developerPosition: "Organizer", developerMessage: "Revels-18"))
@@ -53,7 +53,7 @@ class DevelopersPage: UIViewController,UITableViewDataSource,UITableViewDelegate
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "DeveloperCell") as! DeveloperCell
     cell.developerName.text = developerDataSource[indexPath.row].developerName
-    cell.developerImage.image = developerDataSource[indexPath.row].developerImage!
+    cell.developerImage.image = developerDataSource[indexPath.row].developerImage
     return cell
   }
   

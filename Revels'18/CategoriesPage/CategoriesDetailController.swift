@@ -93,9 +93,8 @@
   
   func fetchSchedules(){
     let data = scheduleNetworkingObject.fetchScheduleFromCoreData()
-    scheduleDataSource = data.filter{
-      return $0.catid == self.categoriesDataSource?.cid
-    }
+    let allSchedules = data.filter{return $0.isRevels == "1"}
+    scheduleDataSource = allSchedules.filter{return $0.catid == self.categoriesDataSource?.cid}
     tableView.reloadData()
   }
   

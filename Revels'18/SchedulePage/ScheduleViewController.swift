@@ -45,15 +45,9 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     super.viewDidAppear(animated)
     self.tabBarController?.delegate = self
     fetchData()
-    if didShowAnimation == false{
-      let animation = AnimationType.from(direction: .left, offset: 30)
-      schedulesCollectionView.animateViews(animations: [animation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, duration: 0.3, animationInterval: 0.075, completion: nil)
-      didShowAnimation = true
-    }
-    
   }
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    if(scheduleDataSource[0].isEmpty){
+    if(scheduleDataSource[currentIndex].isEmpty){
       NSLog("No Schedules To Present")
       schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found...", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
@@ -94,12 +88,12 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
     NSLog("Size Of Schedules Is %d", schedules.count)
     scheduleDataSource.removeAll()
-    let revelsEvents = schedules.filter({return $0.isRevels == "0"})
+    let revelsEvents = schedules.filter({return $0.isRevels == "1"})
     self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "1"})
     self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "2"})
     self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "3"})
     self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "4"})
-    self.scheduleDataSource.append(schedules.filter({return $0.isRevels == "1"}))
+    self.scheduleDataSource.append(schedules.filter({return $0.isRevels == "0"}))
     self.schedulesCollectionView.reloadData()
   }
   

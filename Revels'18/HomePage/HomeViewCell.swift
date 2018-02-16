@@ -12,6 +12,7 @@ class HomeViewCell: UITableViewCell {
   
   @IBOutlet weak var collectionView: UICollectionView!
   var dataSource:[String] = []
+  var categoryName:[String] = []
   var section:Int?
   var delegate:HomePageSelectionProtocol?
 }
@@ -29,7 +30,7 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! NewHomeViewCell
     cell.homeLabel.text = dataSource[indexPath.row]
-    cell.homeImage.image = UIImage(named: dataSource[indexPath.row])
+    cell.homeImage.image = UIImage(named: categoryName[indexPath.row])
     
     return cell
   }

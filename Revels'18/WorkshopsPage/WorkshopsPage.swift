@@ -38,7 +38,7 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
     cell.date.text = workshopsDataSource[indexPath.row].wshuru + "-" + workshopsDataSource[indexPath.row].wkhatam
     cell.name.text = workshopsDataSource[indexPath.row].cname
     cell.location.text = workshopsDataSource[indexPath.row].wvenue
-    cell.price.text = workshopsDataSource[indexPath.row].wcost
+    cell.price.text = workshopsDataSource[indexPath.row].wcost 
     cell.workshopName.text = workshopsDataSource[indexPath.row].wname
     return cell
   }
@@ -62,7 +62,7 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 15
+    return 10
   }
   
   

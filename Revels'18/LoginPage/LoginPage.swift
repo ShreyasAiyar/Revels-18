@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import SafariServices
 
-class LoginPage: UIViewController,NVActivityIndicatorViewable{
+class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegate{
   
   enum Status<T>:Error{
     case Success(T)
@@ -30,8 +30,26 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable{
     super.viewDidLoad()
     loginButton.layer.cornerRadius = 5
     signUpButton.layer.cornerRadius = 5
+    setupTextField()
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+      nextField.becomeFirstResponder()
+    } else {
+      textField.resignFirstResponder()
+    }
+    return false
+  }
+  
+  
+  func setupTextField(){
+    userNameTextField.tag = 0
+    passwordTextField.tag = 1
+    userNameTextField.delegate = self
+    passwordTextField.delegate = self
   }
 
   @IBAction func didSelectContinueAsGuest(_ sender: Any) {

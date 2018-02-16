@@ -69,11 +69,11 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
   }
   
   @IBAction func didSelectLogoutButton(_ sender: Any) {
-    let defaults = UserDefaults.standard
-    defaults.set(false, forKey: "LoggedIn")
-    defaults.set("", forKey: "Cookie")
     let alertViewController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout", preferredStyle: .alert)
     alertViewController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+      let defaults = UserDefaults.standard
+      defaults.set(false, forKey: "LoggedIn")
+      defaults.set("", forKey: "Cookie")
       self.dismiss(animated: true, completion: nil)
     }))
     alertViewController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -111,7 +111,14 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
         self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
         self.stopAnimating()
       case .Error(let error):
-        print(error)
+        DispatchQueue.main.async {
+          self.stopAnimating()
+          let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+          }))
+          self.present(alertController, animated: true, completion: nil)
+        }
       }
     }
   }
@@ -154,37 +161,72 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
       self.stopAnimating()
       switch status{
       case .Success(let parsedJSON):
-        print(parsedJSON)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationViewController = storyboard.instantiateViewController(withIdentifier: "EventRegistration")
+        let eventRegistrationViewController = navigationViewController.childViewControllers.first as! EventRegistrationPage
         let statusCode = parsedJSON["status"] as! Int
+        
         let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         switch(statusCode){
         case 0:
           let message = parsedJSON["message"] as! String
           alertController.message = message
           self.present(alertController, animated: true, completion: nil)
+          
+          // Failure
         case 1:
           let message = parsedJSON["message"] as! String
           alertController.message = message
           self.present(alertController, animated: true, completion: nil)
+          
+          //Create New Team
         case 2:
-          let message = parsedJSON["event_name"] as! String
-          alertController.message = "Do You Want To Create A New Team For " + message
+          let eventName = parsedJSON["event_name"] as! String
+          let maxTeamSize = parsedJSON["event_max_team_number"] as! String
+          let presentTeamSize = "0"
+          let teamID = " "
+          eventRegistrationViewController.eventNameValue = eventName
+          eventRegistrationViewController.maxTeamSizeValue = maxTeamSize
+          eventRegistrationViewController.presentTeamSizeValue = presentTeamSize
+          eventRegistrationViewController.teamIDValue = teamID
+          alertController.message = "Do You Want To Create A New Team For " + eventName
           self.present(alertController, animated: true, completion: nil)
-          alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
-            self.createTeam()
+          alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_) in
+            self.present(navigationViewController, animated: true, completion: nil)
           }))
+          self.present(alertController, animated: true, completion: nil)
+          
+          // Already Registered
         case 3:
           let message = "You have already registered"
           alertController.message = message
+          let eventName = parsedJSON["event_name"] as! String
+          let maxTeamSize = parsedJSON["event_max_team_number"] as! String
+          let presentTeamSize = parsedJSON["present_team_size"] as! String
+          let teamID = parsedJSON["team_id"] as! String
+          print(eventName + maxTeamSize + presentTeamSize + teamID)
+          eventRegistrationViewController.eventNameValue = eventName
+          eventRegistrationViewController.maxTeamSizeValue = maxTeamSize
+          eventRegistrationViewController.presentTeamSizeValue = presentTeamSize
+          eventRegistrationViewController.teamIDValue = teamID
+          alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_) in
+            self.present(navigationViewController, animated: true, completion: nil)
+          }))
           self.present(alertController, animated: true, completion: nil)
+          
+          // Default
         default:
           let message = "Unknown Error"
           alertController.message = message
           self.present(alertController, animated: true, completion: nil)
         }
       case .Error(let error):
-        NSLog(error)
+        DispatchQueue.main.async {
+          let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+          self.present(alertController, animated: true, completion: nil)
+        }
       }
     }
     
@@ -226,82 +268,6 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
   @IBAction func didSelectDismissButton(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
-  
-  
-  func addTeam(){
-    
-  }
-  
-  func createTeam(){
-    NSLog("Creating Team...")
-    confirmTeamDetails { (status) in
-      switch status{
-      case .Success(let parsedJSON):
-        let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
-        let statusCode = parsedJSON["status"] as! Int
-        let message = parsedJSON["message"] as! String
-        alertController.message = message
-        switch statusCode{
-        case -1:
-          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-          }))
-          self.present(alertController, animated: true, completion: nil)
-        case 0:
-          print("First Scan Of QR")
-        case 1:
-          print("Already Registered...")
-        case 2:
-          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-          }))
-          self.present(alertController, animated: true, completion: nil)
-        case 3:
-          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-          }))
-          self.present(alertController, animated: true, completion: nil)
-        default:
-          alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-          }))
-          self.present(alertController, animated: true, completion: nil)
-        }
-      case .Error(let error):
-        NSLog(error)
-      }
-    }
-  }
-  
-  func confirmTeamDetails(completion:@escaping (Status<[String:Any]>)->()){
-    let createTeamURL = URL(string: "https://mitportals.in/includes/create-team.php")
-    let newCookie = "PHPSESSID=" + cookieValue
-    var request = URLRequest(url: createTeamURL!)
-    request.addValue(newCookie, forHTTPHeaderField: "Cookie")
-    request.httpMethod = "GET"
-    
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-      guard error == nil else{
-        return completion(.Error("Error. Please Check Your Internet Connection"))
-      }
-      guard let data = data else{
-        return completion(.Error("Error. Please Check Your Internet Connection"))
-      }
-      let dataString:String! = String(data:data,encoding: .utf8)
-      let jsonData = dataString.data(using: .utf8)!
-      guard let parsedJSON = try? JSONSerialization.jsonObject(with: jsonData) as? [String:Any] else{
-        return
-      }
-      DispatchQueue.main.async {
-        if let parsedJSON = parsedJSON{
-          completion(.Success(parsedJSON))
-        }else{
-          completion(.Error("No Data. Check Your Internet Connection"))
-        }
-      }
-    }
-    task.resume()
-    
-  }
+
   
 }

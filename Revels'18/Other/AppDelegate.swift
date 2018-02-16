@@ -17,34 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-//    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
-//    window?.rootViewController = tabBarController
-//    
-    //
-    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //        let landingPageViewController = storyboard.instantiateViewController(withIdentifier: "LandingPageView")
-    //        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarView")
-    //        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
-    //            UserDefaults.standard.set(true, forKey: "notFirstInApp")
-    //            window?.rootViewController = landingPageViewController
-    //        }
-    //        else{
-    //            window?.rootViewController = tabBarController
-    //        }
-    
     let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
-    
     center.requestAuthorization(options: options) { (granted, error) in
       if !granted{
         NSLog("Could Not Grant Notification Access")
       }
     }
-    
     UIApplication.shared.statusBarStyle = .lightContent
-    
-    
     return true
   }
   

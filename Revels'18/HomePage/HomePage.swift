@@ -133,16 +133,19 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     cell.collectionView.backgroundColor = UIColor.white
     if(indexPath.section == 0){
       cell.dataSource = schedulesDataSource.map{return $0.ename}
+      cell.categoryName = schedulesDataSource.map{return $0.catname}
       cell.section = 0
       return cell
     }
     else if(indexPath.section == 1){
       cell.dataSource = categoriesDataSource.map{return $0.cname}
+      cell.categoryName = categoriesDataSource.map{return $0.cname}
       cell.section = 1
       return cell
     }
     else if(indexPath.section == 2){
       cell.dataSource = resultsDataSource.map{return $0.evename}
+      cell.categoryName = resultsDataSource.map{return $0.cat}
       cell.section = 2
       return cell
     }
@@ -195,6 +198,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    print(section)
     if(combinedDataSource[section].isEmpty){
       return 0
     }
@@ -241,9 +245,11 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       self.resultsDataSource = self.resultsNetworkingObject.fetchResultsFromCoreData()
       self.schedulesDataSource = self.scheduleNetworkingObject.fetchScheduleFromCoreData()
       self.instaObjects = instaObject
+      self.combinedDataSource.removeAll()
       self.combinedDataSource.append(self.schedulesDataSource)
       self.combinedDataSource.append(self.categoriesDataSource)
       self.combinedDataSource.append(self.resultsDataSource)
+      self.combinedDataSource.append(self.instaObjects)
       self.refreshControl.endRefreshing()
       self.stopAnimating()
       self.tableView.reloadData()
