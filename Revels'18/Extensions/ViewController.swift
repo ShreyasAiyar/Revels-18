@@ -57,10 +57,7 @@ extension UIViewController{
   
   // MARK: Create Bar Button Items
   func createBarButtonItems(){
-    //let color:UIColor = self.view.tintColor
     let color:UIColor = UIColor.white
-    //let color:UIColor = UIColor(red: 224/255, green: 116/255, blue: 40/255, alpha: 1)
-    //let color:UIColor = UIColor(displayP3Red: 181/255, green: 28/255, blue: 18/255, alpha: 1)
     let moreButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"More"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(moreButtonClicked))
     moreButtonItem.image = UIImage(named: "More")
     moreButtonItem.tintColor = color
@@ -76,10 +73,11 @@ extension UIViewController{
     self.navigationItem.setLeftBarButton(reloadDataButtonItem, animated: true)
   }
   
-  @objc func reloadData(){
+  func reloadData(){
+  
   }
   
-  @objc func searchButtonPressed(){
+  func searchButtonPressed(){
     navigationItem.setLeftBarButtonItems(nil, animated: true)
     navigationItem.setRightBarButtonItems(nil, animated: true)
   }

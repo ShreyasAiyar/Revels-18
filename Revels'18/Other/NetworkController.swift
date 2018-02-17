@@ -228,7 +228,6 @@ class NetworkController{
       result in
       switch result{
       case .Success(let parsedJSON):
-        print(parsedJSON)
         for sport in parsedJSON["data"] as! [Dictionary<String,String>]{
           let sportsObject = SportsResults(dictionary: sport)
           sportsResults.append(sportsObject)

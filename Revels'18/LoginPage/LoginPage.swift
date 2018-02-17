@@ -72,7 +72,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
         switch status{
         case .Success(let parsedJSON):
           let payload = parsedJSON["payload"] as! [String:Any]
-          let message = payload["message"] as! String
           let code = payload["code"] as! Int
           let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
           alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))

@@ -176,7 +176,12 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func selectedResults(indexPosition: Int) {
-    
+    let message = "Position: " + resultsDataSource[indexPosition].pos
+    let title = "Event Name: " + resultsDataSource[indexPosition].evename
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    alertView.addAction(okAction)
+    present(alertView, animated: true, completion: nil)
   }
   
   func selectedSchedule(indexPosition: Int) {
@@ -191,6 +196,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     headerCell.delegate = self
     headerCell.nameLabel.text = sectionHeaders[section]
     headerCell.currentIndex = section
+    if(section >= 3){
+      headerCell.seeAllButton.isEnabled = false
+    }
     return headerCell
   }
   
@@ -199,7 +207,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
       return 0
     }
     else{
-      return 35
+      return 40
     }
   }
   

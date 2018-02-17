@@ -27,7 +27,7 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
     super.viewDidLoad()
     createBarButtonItems()
     configureNavigationBar()
-    categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
+    fetchCategories()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +41,12 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   }
   
   override func reloadData() {
-    
+    let networkingObject = NetworkController()
+    startAnimating()
+    networkingObject.fetchAllData { _ in
+      self.stopAnimating()
+      self.fetchCategories()
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -99,6 +104,11 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     self.categoriesCollectionView.setContentOffset(CGPoint.zero, animated: true)
+  }
+  
+  func fetchCategories(){
+    categoriesDataSource = categoryNetworkingObject.fetchCategoriesFromCoreData()
+    self.categoriesCollectionView.reloadData()
   }
   
   

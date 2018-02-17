@@ -8,8 +8,9 @@
 
 import UIKit
 import ViewAnimator
+import NVActivityIndicatorView
 
-class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITabBarControllerDelegate,UIScrollViewDelegate,UISearchBarDelegate,AddToFavoritesProtocol {
+class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITabBarControllerDelegate,UIScrollViewDelegate,UISearchBarDelegate,AddToFavoritesProtocol,NVActivityIndicatorViewable {
   
   @IBOutlet weak var schedulesCollectionView:UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -22,9 +23,8 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   var favoritesDataSource:[Schedules] = []
   var currentIndex:Int = 0
   var didShowAnimation:Bool = false
-  var searchBar = UISearchBar()
   var shouldShowSearchResults = false
-  let refreshControl = UIRefreshControl()
+  let searchBar = UISearchBar()
   var schedule:Schedules!
   
   override func viewDidLoad() {
@@ -32,14 +32,9 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     searchBar.delegate = self
     createBarButtonItems()
     configureNavigationBar()
-    setupCollectionView()
   }
   
-  func setupCollectionView(){
-    schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
-    schedulesCollectionView.refreshControl = refreshControl
-    refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-  }
+
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -49,7 +44,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     if(scheduleDataSource[currentIndex].isEmpty){
       NSLog("No Schedules To Present")
-      schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found...", secondaryMessage: "Pull To Refresh To Try Again", mainImage: "Revels18_Logo")
+      schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found...", secondaryMessage: "Click Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
     else{
@@ -99,9 +94,10 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   override func reloadData() {
+    startAnimating()
     networkingObject.fetchAllData{_ in
+      self.stopAnimating()
       self.fetchData()
-      self.refreshControl.endRefreshing()
     }
   }
   
@@ -149,5 +145,9 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath)
     cell?.contentView.backgroundColor = nil
+  }
+  
+  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    self.schedulesCollectionView.setContentOffset(CGPoint.zero, animated: true)
   }
 }

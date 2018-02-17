@@ -29,7 +29,7 @@ class ProfilePage: UIViewController,UITableViewDelegate,UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) 
     cell.textLabel?.text = "Event Name: " + profileData[indexPath.row]["event_name"]!
     cell.detailTextLabel?.text = "Team ID: " + profileData[indexPath.row]["team_id"]!
     

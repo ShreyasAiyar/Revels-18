@@ -107,6 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     else if shortcutItem.type == "Manipal.Revels-18.ResultsPage"{
       tabBarController?.selectedIndex = 4
     }
+    if shortcutItem.type == "Manipal.Revels-18.RevelsCup"{
+      tabBarController?.selectedIndex = 3
+    }
+    
   }
   
 }

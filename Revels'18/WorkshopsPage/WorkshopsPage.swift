@@ -28,7 +28,7 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 10, height: 180)
+    return CGSize(width: self.view.frame.width - 20, height: 180)
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,10 +36,10 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
     cell.delegate = self
     cell.position = indexPath.row
     cell.date.text = workshopsDataSource[indexPath.row].wshuru + "-" + workshopsDataSource[indexPath.row].wkhatam
-    cell.name.text = workshopsDataSource[indexPath.row].cname
-    cell.location.text = workshopsDataSource[indexPath.row].wvenue
-    cell.price.text = workshopsDataSource[indexPath.row].wcost 
-    cell.workshopName.text = workshopsDataSource[indexPath.row].wname
+    cell.name.text = (workshopsDataSource[indexPath.row].cname).isEmpty ? "No Data":workshopsDataSource[indexPath.row].cname
+    cell.location.text = (workshopsDataSource[indexPath.row].wvenue).isEmpty ? "No Data":workshopsDataSource[indexPath.row].wvenue
+    cell.price.text = (workshopsDataSource[indexPath.row].wcost.isEmpty) ? "No Data":workshopsDataSource[indexPath.row].wcost
+    cell.workshopName.text = (workshopsDataSource[indexPath.row].wname).isEmpty ? "No Data":workshopsDataSource[indexPath.row].wname
     return cell
   }
   

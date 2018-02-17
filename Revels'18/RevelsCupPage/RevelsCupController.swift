@@ -7,26 +7,21 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,NVActivityIndicatorViewable{
   
   @IBOutlet weak var revelsCupCollectionView: UICollectionView!
   var revelsCupDataSource:[RevelsCups] = []
-  let refreshControl = UIRefreshControl()
   let revelsCupObject = RevelsCupNetworking()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureCollectionView()
     configureNavigationBar()
     createBarButtonItems()
     fetchRevelsCupData()
   }
-  
-  func configureCollectionView(){
-    revelsCupCollectionView.refreshControl = refreshControl
-    refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-  }
+
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if(revelsCupDataSource.isEmpty){
@@ -62,7 +57,12 @@ class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectio
   }
   
   override func reloadData() {
-    refreshControl.endRefreshing()
+    startAnimating()
+    let networkingObject = NetworkController()
+    networkingObject.fetchAllData { (_) in
+      self.fetchRevelsCupData()
+      self.stopAnimating()
+    }
   }
   
   func fetchRevelsCupData(){

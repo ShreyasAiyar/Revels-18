@@ -65,13 +65,16 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     if(kind == UICollectionElementKindSectionHeader){
       let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FavoritesHeaderView", for: indexPath) as! FavoritesHeaderView
-      NSLog("%d", indexPath.section)
+      if(indexPath.section == 4){
+        headerView.clearButton.isHidden = true
+      }
       headerView.delegate = self
       headerView.dayLabel.text = days[indexPath.section]
       headerView.day = indexPath.section + 1
       if(favoritesDataSource[indexPath.section].isEmpty){
         headerView.clearButton.isHidden = true
       }
+      
       return headerView
     }
     else{

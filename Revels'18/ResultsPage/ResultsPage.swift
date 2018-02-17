@@ -90,8 +90,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
 //  }
   
   override func reloadData(){
-    fetchResults()
-    self.resultsCollectionView.reloadData()
+    startAnimating()
+    let networkingObject = NetworkController()
+    networkingObject.fetchAllData { (_) in
+      self.stopAnimating()
+      self.fetchResults()
+    }
   }
   
   //MARK: Collection View Methods
