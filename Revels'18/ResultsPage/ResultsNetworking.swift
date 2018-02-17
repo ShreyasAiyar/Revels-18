@@ -11,8 +11,7 @@ import CoreData
 import UIKit
 
 class ResultNetworking{
-  
-  
+
   func saveResultsToCoreData(resultData:[Results]){
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
       return
@@ -73,5 +72,64 @@ class ResultNetworking{
     }
     return resultsArray
   }
+  
+  
+  func saveSportsResultsToCoreData(sportsResults:[SportsResults]){
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+      return
+    }
+    let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    
+    // MARK: Deleting Records From CoreData
+    let resultDeleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"SportsResult")
+    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: resultDeleteRequest)
+    
+    do{
+      try managedContext.execute(batchDeleteRequest)
+    }
+    catch{
+      print("Deleting Error Failed")
+    }
+    // MARK: Updating Records In CoreData After Deletion
+    let sportsEntity = NSEntityDescription.entity(forEntityName: "SportsResult", in: managedContext)
+    for sportsResultObject in sportsResults{
+      let sportsResult:NSManagedObject! = NSManagedObject(entity: sportsEntity!, insertInto: managedContext)
+      sportsResult.setValue(sportsResultObject.catid, forKey: "catid")
+      sportsResult.setValue(sportsResultObject.evename, forKey: "evename")
+      sportsResult.setValue(sportsResultObject.position, forKey: "position")
+      sportsResult.setValue(sportsResultObject.roundno, forKey: "roundno")
+      sportsResult.setValue(sportsResultObject.teamID, forKey: "teamid")
+      do{
+        try managedContext.save()
+      }
+      catch{
+        print("Saving To CoreData Failed")
+      }
+    }
+  }
+  
+  func fetchSportsResultsFromCoreData() -> [Results]{
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let managedContext:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    let sportsResultFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SportsResult")
+    
+    var sportsResultsCoreData:[NSManagedObject] = []
+    var sportsResultsArray:[Results] = []
+    sportsResultsCoreData = try! managedContext.fetch(sportsResultFetchRequest)
+    
+    for result in sportsResultsCoreData{
+      var sportsResultsDictionary:Dictionary<String,String> = [:]
+      sportsResultsDictionary["tid"] = result.value(forKey: "teamid") as? String
+      sportsResultsDictionary["cat"] = result.value(forKey: "catid") as? String
+      sportsResultsDictionary["eve"] = result.value(forKey: "evename") as? String
+      sportsResultsDictionary["round"] = result.value(forKey: "roundno") as? String
+      sportsResultsDictionary["pos"] = result.value(forKey: "position") as? String
+      sportsResultsDictionary["evename"] = " "
+      let sportsResultObject = Results(dictionary: sportsResultsDictionary)
+      sportsResultsArray.append(sportsResultObject)
+    }
+    return sportsResultsArray
+  }
+  
 }
 

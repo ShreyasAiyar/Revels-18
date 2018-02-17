@@ -32,9 +32,13 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
   @IBOutlet weak var welcomeMessage: UILabel!
   @IBOutlet var previewView: UIView!
   
+  var eventData:[Dictionary<String,String>]?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     authenticateUser()
+    QRView.contentMode = .scaleAspectFit
+    QRView.layer.masksToBounds = true
   }
   
   lazy var readerVC = QRCodeReaderViewController(builder: QRCodeReaderViewControllerBuilder {
@@ -87,7 +91,9 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
       filter.setValue(data, forKey: "inputMessage")
       let transform = CGAffineTransform(scaleX: 3, y: 3)
       if let output = filter.outputImage?.applying(transform) {
-        return UIImage(ciImage: output)
+        let image = UIImage(ciImage: output)
+        print(image.size)
+        return image
       }
     }
     
@@ -103,6 +109,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
       self.stopAnimating()
       switch status{
       case .Success(let parsedJSON):
+        print(parsedJSON)
         let statusCode = parsedJSON["status"] as! Int
         let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -121,7 +128,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           self.email.text = parsedJSON["student_mail"] as? String
           self.location.text = parsedJSON["student_college"] as? String
           self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
-          
+          self.eventData = parsedJSON["event_data"] as? [Dictionary<String,String>]
         default:
           print()
         }
@@ -294,6 +301,15 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
       }
     
     task.resume()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if(segue.identifier == "ProfilePageSegue"){
+      if let profilePageViewController = segue.destination as? ProfilePage{
+        profilePageViewController.profileData = self.eventData
+      }
+      
+    }
   }
   
   

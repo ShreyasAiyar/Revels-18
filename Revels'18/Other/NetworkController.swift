@@ -222,6 +222,31 @@ class NetworkController{
     }
   }
   
+  func fetchSportsResults(completion:@escaping () -> ()){
+    var sportsResults:[SportsResults] = []
+    makeHTTPRequestForEvents(eventsURL: sportsURL){
+      result in
+      switch result{
+      case .Success(let parsedJSON):
+        print(parsedJSON)
+        for sport in parsedJSON["data"] as! [Dictionary<String,String>]{
+          let sportsObject = SportsResults(dictionary: sport)
+          sportsResults.append(sportsObject)
+        }
+        self.resultsObject.saveSportsResultsToCoreData(sportsResults: sportsResults)
+        completion()
+        
+      case .Error(let errorMessage):
+        print(errorMessage)
+        DispatchQueue.main.async {
+          completion()
+        }
+      }
+    }
+  }
+  
+  
+  
   
   func fetchAllData(completion:@escaping (_ instaObjects:[Instagram]) -> ()){
     let dispatchGroup = DispatchGroup()
@@ -258,6 +283,11 @@ class NetworkController{
     fetchWorkshops {
       dispatchGroup.leave()
     }
+    
+    dispatchGroup.enter()
+      fetchSportsResults {
+        dispatchGroup.leave()
+      }
     
     dispatchGroup.notify(queue: .main) {
       NSLog("Finished Downloading All Data")

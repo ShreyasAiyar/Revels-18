@@ -29,6 +29,8 @@
 		B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517011FF9012100C3D0F4 /* InstagramModel.swift */; };
 		B16517041FF93FC500C3D0F4 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16517031FF93FC500C3D0F4 /* InstagramCell.swift */; };
 		B17228102033332E00C84C10 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172280F2033332E00C84C10 /* LoginPage.swift */; };
+		B18057C82037F355002BC01C /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18057C72037F355002BC01C /* ProfilePage.swift */; };
+		B18057CA20380077002BC01C /* SportResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18057C920380077002BC01C /* SportResultsModel.swift */; };
 		B18E1B6D2036088E00468422 /* WorkshopsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E1B6C2036088E00468422 /* WorkshopsCell.swift */; };
 		B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */; };
 		B196F2FE1FD592BF0004ECB3 /* ScheduleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */; };
@@ -94,6 +96,8 @@
 		B16517011FF9012100C3D0F4 /* InstagramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModel.swift; sourceTree = "<group>"; };
 		B16517031FF93FC500C3D0F4 /* InstagramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
 		B172280F2033332E00C84C10 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		B18057C72037F355002BC01C /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		B18057C920380077002BC01C /* SportResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportResultsModel.swift; sourceTree = "<group>"; };
 		B18E1B6C2036088E00468422 /* WorkshopsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopsCell.swift; sourceTree = "<group>"; };
 		B18FF85F1FDC0A3300BC47E7 /* NewHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewCell.swift; sourceTree = "<group>"; };
 		B196F2FD1FD592BF0004ECB3 /* ScheduleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNetworking.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				B1F302471FD3D648003A89E7 /* ResultsModel.swift */,
 				B1BB5CAE1FDFF9DC00FE2CC3 /* ResultsCell.swift */,
 				B1BB5CB01FE00A7A00FE2CC3 /* ResultsNetworking.swift */,
+				B18057C920380077002BC01C /* SportResultsModel.swift */,
 			);
 			path = ResultsPage;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				B172280F2033332E00C84C10 /* LoginPage.swift */,
 				B1C47DC62034692300F57B62 /* QRPage.swift */,
 				B11F743D2036A07A004C9C3D /* EventRegistrationPage.swift */,
+				B18057C72037F355002BC01C /* ProfilePage.swift */,
 			);
 			path = LoginPage;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				B1A193D4200E042500F681DA /* CategoryDetailCell.swift in Sources */,
 				B1F302441FD3D4A4003A89E7 /* CategoriesNetworking.swift in Sources */,
 				B1F3024C1FD3DA17003A89E7 /* WorkshopsModel.swift in Sources */,
+				B18057C82037F355002BC01C /* ProfilePage.swift in Sources */,
 				B18FF8601FDC0A3300BC47E7 /* NewHomeViewCell.swift in Sources */,
 				B11F743E2036A07A004C9C3D /* EventRegistrationPage.swift in Sources */,
 				B1F90E5D2002107D00EA1DC7 /* WorkshopsNetworking.swift in Sources */,
@@ -538,6 +545,7 @@
 				B1D3CB861FCEB55300E8AD7A /* Revels_18.xcdatamodeld in Sources */,
 				B1DC0D611FD0E46A0041DBB9 /* EventsModel.swift in Sources */,
 				B17228102033332E00C84C10 /* LoginPage.swift in Sources */,
+				B18057CA20380077002BC01C /* SportResultsModel.swift in Sources */,
 				B16517021FF9012100C3D0F4 /* InstagramModel.swift in Sources */,
 				B1A193D2200E030900F681DA /* CategoriesDetailController.swift in Sources */,
 				B1D3CB7E1FCEB55300E8AD7A /* AppDelegate.swift in Sources */,

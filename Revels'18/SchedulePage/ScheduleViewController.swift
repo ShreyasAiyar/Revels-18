@@ -106,15 +106,15 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 20, height: 80)
+    return CGSize(width: self.view.frame.width - 10, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 7
+    return 5
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

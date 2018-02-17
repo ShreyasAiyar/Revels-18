@@ -19,8 +19,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   @IBOutlet weak var resultsCollectionView: UICollectionView!
   
   let resultNetworkingObject = ResultNetworking()
-  var results:[Results] = []
-  var resultsDataSource:[Results] = []
+  var resultsDataSource:[[Results]] = [[]]
   var filteredDataSource:[Results] = []
   var searchBar = UISearchBar()
   var currentIndex:Int = 0
@@ -33,6 +32,12 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     configureNavigationBar()
     searchBar.delegate = self
   }
+  
+  @IBAction func didChangeSegmentedIndex(_ sender: Any) {
+    self.currentIndex = segmentControl.selectedSegmentIndex
+    self.resultsCollectionView.reloadData()
+  }
+  
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -72,17 +77,17 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
     searchActive = false
   }
   
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    filteredDataSource = resultsDataSource.filter({ (result) -> Bool in
-      return result.evename.lowercased().range(of: searchText.lowercased()) != nil
-    })
-    if(filteredDataSource.count == 0){
-      searchActive = false
-    } else {
-      searchActive = true
-    }
-    self.resultsCollectionView.reloadData()
-  }
+//  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//    filteredDataSource = resultsDataSource.filter({ (result) -> Bool in
+//      return result.evename.lowercased().range(of: searchText.lowercased()) != nil
+//    })
+//    if(filteredDataSource.count == 0){
+//      searchActive = false
+//    } else {
+//      searchActive = true
+//    }
+//    self.resultsCollectionView.reloadData()
+//  }
   
   override func reloadData(){
     fetchResults()
@@ -93,10 +98,11 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
     if searchActive == false{
-      cell.eventName.text = resultsDataSource[indexPath.row].evename
-      cell.roundNo.text = "Round " + resultsDataSource[indexPath.row].round
-      cell.teamID.text = "Team ID: " + resultsDataSource[indexPath.row].tid
-      cell.categoryImage.image = UIImage(named: resultsDataSource[indexPath.row].cat)
+      cell.eventName.text = resultsDataSource[currentIndex][indexPath.row].eve
+      cell.roundNo.text = "Round " + resultsDataSource[currentIndex][indexPath.row].round
+      cell.teamID.text = "Team ID: " + resultsDataSource[currentIndex][indexPath.row].tid
+      //cell.categoryImage.image = UIImage(named: resultsDataSource[currentIndex][indexPath.row].cat)
+      cell.categoryImage.image = UIImage(named: "Revels18_Logo")
     }
     else{
       cell.eventName.text = filteredDataSource[indexPath.row].evename
@@ -107,7 +113,7 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if searchActive == false{
-      return resultsDataSource.count
+      return resultsDataSource[currentIndex].count
     }
     else{
       return filteredDataSource.count
@@ -137,8 +143,8 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let message = resultsDataSource[indexPath.row].pos
-    let title = "Position: " + resultsDataSource[indexPath.row].evename
+    let message = "Position: " + resultsDataSource[currentIndex][indexPath.row].pos
+    let title = "Event Name: " + resultsDataSource[currentIndex][indexPath.row].evename
     let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
     alertView.addAction(okAction)
@@ -147,7 +153,9 @@ class ResultsPage: UIViewController,NVActivityIndicatorViewable,UICollectionView
   
   
   func fetchResults(){
-    resultsDataSource = resultNetworkingObject.fetchResultsFromCoreData()
+    resultsDataSource.removeAll()
+    resultsDataSource.append(resultNetworkingObject.fetchResultsFromCoreData())
+    resultsDataSource.append(resultNetworkingObject.fetchSportsResultsFromCoreData())
     self.resultsCollectionView.reloadData()
   }
   

@@ -60,6 +60,13 @@
         <attribute name="stime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SportsResult" representedClassName="SportsResult" syncable="YES" codeGenerationType="class">
+        <attribute name="catid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="evename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roundno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Workshop" representedClassName="Workshop" syncable="YES" codeGenerationType="class">
         <attribute name="cname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cnumb" optional="YES" attributeType="String" syncable="YES"/>
@@ -79,5 +86,6 @@
         <element name="RevelsCup" positionX="-54" positionY="108" width="128" height="135"/>
         <element name="Schedule" positionX="-54" positionY="45" width="128" height="210"/>
         <element name="Workshop" positionX="-54" positionY="108" width="128" height="180"/>
+        <element name="SportsResult" positionX="-54" positionY="117" width="128" height="120"/>
     </elements>
 </model>

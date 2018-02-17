@@ -88,7 +88,6 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
       self.stopAnimating()
       switch status{
       case .Success(let parsedJSON):
-        print(parsedJSON)
         let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
         let statusCode = parsedJSON["status"] as! Int
         let message = parsedJSON["message"] as! String
@@ -117,7 +116,7 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
           }))
           self.present(alertController, animated: true, completion: nil)
         case 4:
-          print("Success Scenario")
+          //Success Scenario
           let teamID = parsedJSON["team_id"] as! Int
           self.teamID.text = "\(teamID)"
           alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))

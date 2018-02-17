@@ -48,7 +48,7 @@
   
   func numberOfSections(in tableView: UITableView) -> Int {
     if(scheduleDataSource?.isEmpty)!{
-      let message = (categoriesDataSource?.cname)! + " has no events for this day"
+      let message = (categoriesDataSource?.cname)! + " has no events as of yet"
       tableView.backgroundView = presentNoNetworkView(primaryMessage: message, secondaryMessage: "Blame It On Sys Admin", mainImage: "Revels18_Logo")
       return 0
     }
@@ -101,7 +101,7 @@
   func selectedCategory(scheduleObject: Schedules) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let popupVC = storyboard.instantiateViewController(withIdentifier: "PopupView") as! PopupViewController
-    popupVC.eventID = scheduleObject.eid
+    popupVC.scheduleDataSource = scheduleObject
     navigationController?.pushViewController(popupVC, animated: true)
     
   }

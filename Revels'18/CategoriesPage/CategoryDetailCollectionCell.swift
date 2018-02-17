@@ -14,9 +14,5 @@ class CategoryDetailCollectionCell: UICollectionViewCell {
   @IBOutlet weak var categoryImage: UIImageView!
   
   override func awakeFromNib() {
-    categoryImage.layer.cornerRadius = categoryImage.bounds.height/2
-    categoryImage.layer.borderWidth = 2
-    categoryImage.layer.borderColor = UIColor.black.cgColor
-    categoryImage.layer.masksToBounds = true
   }
 }

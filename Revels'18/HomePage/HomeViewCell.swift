@@ -48,9 +48,9 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
       let imageName = categoriesDataSource![indexPath.row].cname + " Large"
       cell.homeImage.image = UIImage(named: imageName)
     }else{
-      cell.homeLabel.text = resultsDataSource![indexPath.row].evename
-      let imageName = resultsDataSource![indexPath.row].cat + " Large"
-      cell.homeImage.image = UIImage(named: imageName)
+      cell.homeLabel.text = resultsDataSource![indexPath.row].eve
+      //let imageName = resultsDataSource![indexPath.row].cat + " Large"
+      cell.homeImage.image = UIImage(named: "Revels18_Logo")
     }
     return cell
   }

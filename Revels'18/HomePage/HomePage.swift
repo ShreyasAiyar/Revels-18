@@ -39,8 +39,8 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     fetchAllData()
     let defaults = UserDefaults.standard
     guard let loggedIn = defaults.value(forKey: "LoggedIn") as? Bool else{
-    didSelectLoginButton(self)
-    return
+      didSelectLoginButton(self)
+      return
     }
     if(!loggedIn){
       didSelectLoginButton(self)
@@ -292,6 +292,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   @IBAction func didSelectLoginButton(_ sender: Any) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let loginViewController = storyboard.instantiateViewController(withIdentifier: "DelegateLogin")
+    //loginViewController.modalPresentationStyle = .overCurrentContext
     present(loginViewController, animated: true, completion: nil)
   }
   

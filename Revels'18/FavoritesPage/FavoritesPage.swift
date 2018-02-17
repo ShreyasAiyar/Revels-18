@@ -103,6 +103,7 @@ class FavoritesPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   
   @IBAction func didSelectRemoveAllFavorites(_ sender: Any) {
     scheduleObject.removeAllFavorites()
+    fetchFavorites()
     self.favoritesCollectionView.reloadData()
   }
   

@@ -76,7 +76,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
           let code = payload["code"] as! Int
           let alertController = UIAlertController(title: "Message", message: nil, preferredStyle: .alert)
           alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-          NSLog("Message %s Code %d", message,code)
           switch(code){
           case 1:
             let errorMessage = "Email Or Password Not Specified"
@@ -113,7 +112,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
           }
         case .Error(let error):
           DispatchQueue.main.async {
-          NSLog(error)
           let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
           alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           self.present(alertController, animated: true, completion: nil)
@@ -136,7 +134,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
     request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.httpMethod = "POST"
     let paramString = "email=" + userNameTextField.text! + "&password=" + passwordTextField.text!
-    NSLog(paramString)
     request.httpBody = paramString.data(using: .utf8)
     
     // POST Data For Login
