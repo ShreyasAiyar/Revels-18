@@ -109,6 +109,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
         switch(statusCode){
         case 0:
           let message = parsedJSON["message"] as! String
+          alertController.message = message
           self.present(alertController, animated: true, completion: nil)
         case 1:
           alertController.message = "Successful Login"
@@ -120,6 +121,7 @@ class QRPage: UIViewController,NVActivityIndicatorViewable,QRCodeReaderViewContr
           self.email.text = parsedJSON["student_mail"] as? String
           self.location.text = parsedJSON["student_college"] as? String
           self.QRView.image = self.generateQRCode(from: (parsedJSON["qr"] as? String)!)
+          
         default:
           print()
         }

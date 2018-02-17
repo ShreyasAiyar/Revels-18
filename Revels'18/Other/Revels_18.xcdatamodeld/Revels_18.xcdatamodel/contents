@@ -62,7 +62,7 @@
     </entity>
     <entity name="Workshop" representedClassName="Workshop" syncable="YES" codeGenerationType="class">
         <attribute name="cname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="numb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cnumb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wcost" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wdesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wid" optional="YES" attributeType="String" syncable="YES"/>

@@ -18,7 +18,7 @@ struct Workshops{
   let wdesc:String
   let wvenue:String
   let cname:String
-  //let numb:String
+  let cnumb:String
   
   init(dictionary:Dictionary<String,String>) {
     self.wid = dictionary["wid"]!
@@ -29,7 +29,7 @@ struct Workshops{
     self.wdesc = dictionary["wdesc"]!
     self.wvenue = dictionary["wvenue"]!
     self.cname = dictionary["cname"]!
-    //self.numb = dictionary["numb"]!
+    self.cnumb = dictionary["cnumb"]!
   }
   
 }

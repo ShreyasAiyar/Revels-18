@@ -8,9 +8,8 @@
 
 import UIKit
 
-class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
   
-
   @IBOutlet weak var revelsCupCollectionView: UICollectionView!
   var revelsCupDataSource:[RevelsCups] = []
   let refreshControl = UIRefreshControl()
@@ -18,30 +17,48 @@ class RevelsCupController: UIViewController,UITableViewDelegate,UITableViewDataS
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureTableView()
+    configureCollectionView()
     configureNavigationBar()
+    createBarButtonItems()
     fetchRevelsCupData()
   }
   
-  func configureTableView(){
+  func configureCollectionView(){
     revelsCupCollectionView.refreshControl = refreshControl
     refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if(revelsCupDataSource.isEmpty){
-      tableView.backgroundView = presentNoNetworkView(primaryMessage: "No Data Found For Revels Cup", secondaryMessage: "Pull To refresh To Try Again", mainImage: "Revels18_Logo")
+      revelsCupCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "Revels Cup Details Haven't Arrived", secondaryMessage: "Be Patient...", mainImage: "Revels18_Logo")
       return 0
-    }
-    else{
-      tableView.backgroundView = nil
+    }else{
+      revelsCupCollectionView.backgroundView = nil
       return revelsCupDataSource.count
     }
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "RevelsCupCell", for: indexPath)
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RevelsCupCell", for: indexPath) as! RevelsCupCell
+    cell.sportDate.text = revelsCupDataSource[indexPath.row].date
+    cell.sportName.text = revelsCupDataSource[indexPath.row].sname
+    cell.sportTime.text = revelsCupDataSource[indexPath.row].time
+    cell.teamID1.text = "Team ID 1: " + revelsCupDataSource[indexPath.row].team1
+    cell.teamID2.text = "Team ID 2: " + revelsCupDataSource[indexPath.row].team2
+    cell.sportVenue.text = revelsCupDataSource[indexPath.row].venue
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: self.view.bounds.width - 10, height: 100)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
   
   override func reloadData() {

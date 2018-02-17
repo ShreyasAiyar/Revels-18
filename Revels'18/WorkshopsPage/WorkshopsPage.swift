@@ -54,6 +54,10 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   }
   
   func selectedCallButton(position: Int) {
+    guard let number = URL(string: "tel://" + (workshopsDataSource[position].cnumb)) else{
+      return
+    }
+    UIApplication.shared.open(number, options: [:], completionHandler: nil)
     
   }
   

@@ -46,6 +46,14 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
   
   
   func setupTextField(){
+    let userView = UIImageView(frame: CGRect(x: 20, y: 0, width: 25, height: 25))
+    let passView = UIImageView(frame: CGRect(x: 20, y: 0, width: 25, height: 25))
+    userNameTextField.leftViewMode = .always
+    passwordTextField.leftViewMode = .always
+    userView.image = UIImage(named: "Email")
+    passView.image = UIImage(named: "Password")
+    userNameTextField.leftView = userView
+    passwordTextField.leftView = passView
     userNameTextField.tag = 0
     passwordTextField.tag = 1
     userNameTextField.delegate = self
@@ -144,8 +152,6 @@ class LoginPage: UIViewController,NVActivityIndicatorViewable,UITextFieldDelegat
       // Cookie Value
       let cookieStorage = HTTPCookieStorage.shared
       let cookies = cookieStorage.cookies
-      print(cookies)
-      var cookieValues:[String] = []
       for cookie in cookies!{
         if(cookie.name == "PHPSESSID"){
         self.cookieValue = cookie.value

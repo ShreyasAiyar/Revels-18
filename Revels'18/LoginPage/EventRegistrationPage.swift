@@ -149,9 +149,6 @@ class EventRegistrationPage: UIViewController,QRCodeReaderViewControllerDelegate
     request.httpMethod = "GET"
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-      
-      print(data,response,error)
-      
       guard error == nil else{
         return completion(.Error("Error. Please Check Your Internet Connection"))
       }

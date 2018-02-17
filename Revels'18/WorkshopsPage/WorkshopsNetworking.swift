@@ -33,7 +33,7 @@ class WorkshopsNetworking{
     for workshopObject in workshopsData{
       let workshop:NSManagedObject! = NSManagedObject(entity: scheduleEntity!, insertInto: managedContext)
       workshop.setValue(workshopObject.cname, forKey: "cname")
-      //workshop.setValue(workshopObject.numb, forKey: "numb")
+      workshop.setValue(workshopObject.cnumb, forKey: "cnumb")
       workshop.setValue(workshopObject.wcost, forKey: "wcost")
       workshop.setValue(workshopObject.wdesc, forKey: "wdesc")
       workshop.setValue(workshopObject.wid, forKey: "wid")
@@ -68,7 +68,7 @@ class WorkshopsNetworking{
       workshopsDictionary["wdesc"] = workshopData.value(forKey: "wdesc") as? String
       workshopsDictionary["wvenue"] = workshopData.value(forKey: "wvenue") as? String
       workshopsDictionary["cname"] = workshopData.value(forKey: "cname") as? String
-      //workshopsDictionary["numb"] = workshopData.value(forKey: "numb") as? String
+      workshopsDictionary["cnumb"] = workshopData.value(forKey: "cnumb") as? String
       let workshopsObject = Workshops(dictionary: workshopsDictionary)
       workshops.append(workshopsObject)
     }
