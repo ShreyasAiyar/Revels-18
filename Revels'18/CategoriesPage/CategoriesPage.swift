@@ -51,7 +51,7 @@ class CategoriesPage: UIViewController,UICollectionViewDelegate,UICollectionView
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if(categoriesDataSource.isEmpty){
-      categoriesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Categories Data", secondaryMessage: "Check Your Internet Connection And Retry...", mainImage: "Revels18_Logo")
+      categoriesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Categories Data Found", secondaryMessage: "Click Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }else{
       categoriesCollectionView.backgroundView = nil

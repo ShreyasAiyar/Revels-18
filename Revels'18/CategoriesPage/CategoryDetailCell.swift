@@ -22,6 +22,7 @@ extension CategoryDetailCell:UICollectionViewDataSource,UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCollectionCell", for: indexPath) as! CategoryDetailCollectionCell
     cell.eventName.text = dataSource![indexPath.row].ename
+    cell.categoryImage.image = UIImage(named: dataSource![indexPath.row].catname + " Large")
     return cell
   }
   
@@ -32,6 +33,11 @@ extension CategoryDetailCell:UICollectionViewDataSource,UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
   delegate.selectedCategory(scheduleObject: dataSource![indexPath.row])
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+  }
+  
   
   
 }

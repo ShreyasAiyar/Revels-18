@@ -42,25 +42,32 @@ extension HomeViewCell: UICollectionViewDataSource,UICollectionViewDelegate,UICo
     if(sectionIndex == 0){
       cell.homeLabel.text = schedulesDataSource![indexPath.row].ename
       let imageName = schedulesDataSource![indexPath.row].catname + " Large"
+      cell.teamIDLabel.text = nil
       cell.homeImage.image = UIImage(named: imageName)
     }else if(sectionIndex == 1){
       cell.homeLabel.text = categoriesDataSource![indexPath.row].cname
       let imageName = categoriesDataSource![indexPath.row].cname + " Large"
       cell.homeImage.image = UIImage(named: imageName)
+      cell.teamIDLabel.text = nil
     }else{
       cell.homeLabel.text = resultsDataSource![indexPath.row].eve
-      //let imageName = resultsDataSource![indexPath.row].cat + " Large"
+      cell.teamIDLabel.text = "Team ID: " + resultsDataSource![indexPath.row].tid
+      let image = UIImage(named: (resultsDataSource![indexPath.row].cat + " Large"))
+      if(image != nil){
+        cell.homeImage.image = image
+      }else{
       cell.homeImage.image = UIImage(named: "Revels18_Logo")
+      }
     }
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 10)
+    return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 70, height: 110)
+    return CGSize(width: 70, height: 130)
   }
   
   

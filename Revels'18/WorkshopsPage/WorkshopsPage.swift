@@ -14,13 +14,20 @@ class WorkshopsPage: UIViewController,UICollectionViewDelegate,UICollectionViewD
   var workshopsDataSource:[Workshops] = []
   let workshopsNetworking = WorkshopsNetworking()
   
+  @IBOutlet weak var workshopsCollectionView: UICollectionView!
   override func viewDidLoad() {
     super.viewDidLoad()
     fetchWorkshopsFromCoreData()
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return workshopsDataSource.count
+    if(workshopsDataSource.isEmpty){
+      workshopsCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Workshops Data Found", secondaryMessage: "Try Again Later", mainImage: "Revels18_Logo")
+      return 0
+    }else{
+      workshopsCollectionView.backgroundView = nil
+      return workshopsDataSource.count
+    }
   }
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -25,7 +25,7 @@ class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectio
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if(revelsCupDataSource.isEmpty){
-      revelsCupCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "Revels Cup Details Haven't Arrived", secondaryMessage: "Be Patient...", mainImage: "Revels18_Logo")
+      revelsCupCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Revels Cup Data Found", secondaryMessage: "Click Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }else{
       revelsCupCollectionView.backgroundView = nil
@@ -67,6 +67,7 @@ class RevelsCupController: UIViewController,UICollectionViewDelegate,UICollectio
   
   func fetchRevelsCupData(){
     revelsCupDataSource = revelsCupObject.fetchRevelsCupFromCoreData()
+    self.revelsCupCollectionView.reloadData()
     print(revelsCupDataSource)
   }
   

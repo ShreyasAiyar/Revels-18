@@ -43,7 +43,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     if(scheduleDataSource[currentIndex].isEmpty){
-      NSLog("No Schedules To Present")
       schedulesCollectionView.backgroundView = presentNoNetworkView(primaryMessage: "No Schedules Data Found...", secondaryMessage: "Click Refresh To Try Again", mainImage: "Revels18_Logo")
       return 0
     }
@@ -65,7 +64,7 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
     cell.eid = scheduleDataSource[currentIndex][indexPath.row].eid
     cell.eventName.text! = scheduleDataSource[currentIndex][indexPath.row].ename + "(" + scheduleDataSource[currentIndex][indexPath.row].round + ")"
     cell.time.text! = scheduleDataSource[currentIndex][indexPath.row].stime + " - " + scheduleDataSource[currentIndex][indexPath.row].etime
-    cell.location.text = scheduleDataSource[currentIndex][indexPath.row].venue
+    cell.location.text = scheduleDataSource[currentIndex][indexPath.row].venue + " " + scheduleDataSource[currentIndex][indexPath.row].date
     if favoritesDataSource.contains(where: {$0.eid == cell.eid}){
       cell.favouriteButton.isSelected = true
     }else{
@@ -82,7 +81,6 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   func fetchData(){
     let schedules =  self.scheduleNetworkingObject.fetchScheduleFromCoreData()
     favoritesDataSource = scheduleNetworkingObject.fetchFavoritesFromCoreData()
-    NSLog("Size Of Schedules Is %d", schedules.count)
     scheduleDataSource.removeAll()
     let revelsEvents = schedules.filter({return $0.isRevels == "1"})
     self.scheduleDataSource.append(revelsEvents.filter{return $0.day == "1"})
@@ -102,11 +100,11 @@ class ScheduleViewController: UIViewController,UICollectionViewDelegate,UICollec
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width - 10, height: 80)
+    return CGSize(width: self.view.frame.width - 20, height: 80)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -24,7 +24,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     favouriteButton.setImage(highlightedImage, for: .selected)
     location.layer.cornerRadius = 2
     location.clipsToBounds = true
-    layer.cornerRadius = 5
+    layer.cornerRadius = 10
     self.layer.masksToBounds = false
     self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
     self.layer.shadowOpacity = 0.5

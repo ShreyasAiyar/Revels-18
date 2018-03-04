@@ -12,7 +12,7 @@ class NewHomeViewCell: UICollectionViewCell {
   
   @IBOutlet weak var homeLabel: UILabel!
   @IBOutlet weak var homeImage: UIImageView!
-  
+  @IBOutlet weak var teamIDLabel: UILabel!
   
   override var isHighlighted: Bool{
     didSet{

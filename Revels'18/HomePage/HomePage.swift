@@ -72,8 +72,9 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
     let imageFrame:CGRect = CGRect(x: 0, y: 0, width:self.view.frame.width*2, height: self.view.frame.height/3)
     scrollView.frame = imageFrame
     scrollView.delegate = self
-    //scrollView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     scrollView.backgroundColor = UIColor.white
+    
+    
     
     let revelsBanner:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: scrollView.frame.height))
     revelsBanner.image = UIImage(named: "Revels18 Banner")
@@ -176,7 +177,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
   }
   
   func selectedResults(indexPosition: Int) {
-    let message = "Position: " + resultsDataSource[indexPosition].pos
+    let message = "Position: " + resultsDataSource[indexPosition].pos + "\n" + "Round: " + resultsDataSource[indexPosition].round
     let title = "Event Name: " + resultsDataSource[indexPosition].evename
     let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -220,7 +221,7 @@ class HomePage: UIViewController,UITableViewDelegate,UITableViewDataSource,Selec
         return 0
       }
       else{
-        return 120
+        return 130
       }
     }
   }

@@ -64,7 +64,6 @@ class NetworkController{
         }else{
           completion(.Error("No Data"))
         }
-        
       }
     }
     task.resume()
@@ -215,6 +214,7 @@ class NetworkController{
 
       case .Error(let errorMessage):
         print(errorMessage)
+        
         DispatchQueue.main.async {
           completion()
         }
